@@ -59,7 +59,7 @@ export async function onRequestPost(context) {
         `Hallo ${firstname},`,
         '',
         'danke für dein Interesse am Second Skin Shirt.',
-        'Du bist auf der Pre-Release-Liste. Wir melden uns vor dem Launch (voraussichtlich Feb / März 2027) mit deinem Vorkaufsrecht.',
+        'Du bist auf der Pre-Release-Liste. Wir melden uns vor dem Launch (voraussichtlich Februar / März 2027) mit deinem Vorkaufsrecht.',
         '',
         `Schnitt: ${fit}`,
         `Grösse: ${size}`,

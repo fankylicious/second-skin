@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://secondskin.run/sitemap.xml
