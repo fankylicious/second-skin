@@ -123,15 +123,8 @@
       linear-gradient(115deg, transparent 60%, rgba(62,168,155,0.10) 61%, transparent 62%);
     filter:blur(.3px);
     transform-origin:right center;
-    opacity:0;
-    transform:scale(0.97);
-    animation:skinGrow 2.4s cubic-bezier(0.22, 1, 0.36, 1) 0.3s forwards;
-  }
-  @keyframes skinGrow{
-    to{
-      opacity:.9;
-      transform:scale(1);
-    }
+    opacity:0.9;
+    transform:scale(1);
   }
   .hero-inner{ position:relative; z-index:2; max-width:920px;}
   .hero .eyebrow{ display:block; margin-bottom:1.8rem;}
@@ -144,11 +137,7 @@
   }
   .hero h1 span{
     color:transparent;
-    -webkit-text-stroke:1.5px transparent;
-    animation:strokeAppear 1.8s ease 0.9s forwards;
-  }
-  @keyframes strokeAppear{
-    to{ -webkit-text-stroke-color:var(--teal-bright); }
+    -webkit-text-stroke:1.5px var(--teal-bright);
   }
   .hero .tagline{
     margin-top:1.6rem;
@@ -948,15 +937,6 @@
     html{ scroll-behavior:auto; }
     .gallery-item img,
     .btn{ transition:none; }
-    .hero .crack{
-      animation:none;
-      opacity:.9;
-      transform:scale(1);
-    }
-    .hero h1 span{
-      animation:none;
-      -webkit-text-stroke-color:var(--teal-bright);
-    }
   }
 </style>
 </head>
@@ -1005,13 +985,13 @@ alt=""
       <h2 data-de="Design Konzept" data-en="Design Concept">Design Konzept</h2>
     </div>
     <div class="gallery-intro">
-      <p data-de="Inspiriert vom Häutungsprozess der Schlange. Die alte Haut fällt ab, darunter wächst etwas Stärkeres. Genau dazwischen entsteht die Second Skin."
-         data-en="Inspired by the snake shedding its skin. The old skin falls away, something stronger grows beneath. Right there, the Second Skin is born.">
-        Inspiriert vom Häutungsprozess der Schlange. Die alte Haut fällt ab, darunter wächst etwas Stärkeres. Genau dazwischen entsteht die Second Skin.
+      <p data-de="Inspiriert vom Häutungsprozess der Schlange: Die alte Haut fällt ab. Darunter wächst etwas Stärkeres. Genau in diesem Loslassen entsteht die Second Skin."
+         data-en="Inspired by the snake’s shedding process: the old skin falls away. Something stronger grows beneath. Exactly in this letting go, the Second Skin is born.">
+        Inspiriert vom Häutungsprozess der Schlange: Die alte Haut fällt ab. Darunter wächst etwas Stärkeres. Genau in diesem Loslassen entsteht die Second Skin.
       </p>
-      <p data-de="Das Textil fühlt sich wie eine zweite Haut an und sieht auch so aus: nah am Körper, reduziert, teal auf schwarz. Für den Moment, in dem Verletzlichkeit und Erneuerung zusammentreffen."
-         data-en="The textile feels like a second skin and looks like one too: close to the body, reduced, teal on black. For the moment when vulnerability and renewal meet.">
-        Das Textil fühlt sich wie eine zweite Haut an und sieht auch so aus: nah am Körper, reduziert, teal auf schwarz. Für den Moment, in dem Verletzlichkeit und Erneuerung zusammentreffen.
+      <p data-de="Das Textil liegt nah am Körper – reduziert, teal auf schwarz. Für den Moment, in dem man das Alte abstreift und dem Neuen vertraut."
+         data-en="The textile sits close to the body – reduced, teal on black. For the moment you shed the old and trust what comes next.">
+        Das Textil liegt nah am Körper – reduziert, teal auf schwarz. Für den Moment, in dem man das Alte abstreift und dem Neuen vertraut.
       </p>
     </div>
     <div class="gallery-grid">
@@ -1026,30 +1006,26 @@ alt=""
   <section class="concept" id="concept">
     <div class="section-head">
       <span class="num">01</span>
-      <h2 data-de="Über die Verletzlichkeit" data-en="On vulnerability">Über die Verletzlichkeit</h2>
+      <h2 data-de="Loslassen & Vertrauen" data-en="Letting go & Trust">Loslassen & Vertrauen</h2>
     </div>
     <div class="concept-body">
       <p class="lead-line"
-         data-de="Die Verletzlichkeit ist kein Fehler im System. Sie ist der Preis für Wachstum."
-         data-en="Vulnerability is not a flaw in the system. It is the price of growth.">
-        Die Verletzlichkeit ist kein Fehler im System. Sie ist der Preis für Wachstum.
+         data-de="Wachstum beginnt nicht mit dem Neuen. Es beginnt damit, das Alte loszulassen."
+         data-en="Growth does not begin with the new. It begins with letting go of the old.">
+        Wachstum beginnt nicht mit dem Neuen. Es beginnt damit, das Alte loszulassen.
       </p>
-      <p data-de="Wenn die alte Haut reisst, liegt darunter nicht sofort die neue. Es liegt nackte, empfindliche Haut. Dünn. Durchlässig. Jeder Reibungspunkt wird spürbar. Jeder Windzug. Jede Unebenheit des Trails."
-         data-en="When the old skin tears, what lies underneath is not instantly the new one. It is bare, sensitive skin. Thin. Permeable. Every point of friction becomes noticeable. Every gust of wind. Every unevenness of the trail.">
-        Wenn die alte Haut reisst, liegt darunter nicht sofort die neue. Es liegt nackte, empfindliche Haut. Dünn. Durchlässig. Jeder Reibungspunkt wird spürbar. Jeder Windzug. Jede Unebenheit des Trails.
+      <p data-de="Die alte Haut schützt nicht mehr. Sie engt ein. Wer weiterlaufen will, muss sie abstreifen – noch bevor klar ist, was darunter kommt."
+         data-en="The old skin no longer protects. It constrains. To keep moving, you have to shed it — before you know what lies underneath.">
+        Die alte Haut schützt nicht mehr. Sie engt ein. Wer weiterlaufen will, muss sie abstreifen – noch bevor klar ist, was darunter kommt.
       </p>
-      <p data-de="Genau in diesem Zwischenraum – weder geschützt noch schon neu gerüstet – geschieht das Wesentliche. Der Körper gibt auf, was er bisher war. Was getragen hat, wird dünn. Und in diesem Moment entscheidet sich, ob etwas Neues entsteht oder ob man zurück in die alte, eng gewordene Haut kriecht."
-         data-en="Exactly in this in-between — neither protected nor newly armored — the essential happens. The body lets go of what it was. What carried you grows thin. And in that moment it is decided whether something new emerges, or whether you crawl back into the old skin that has grown too tight.">
-        Genau in diesem Zwischenraum – weder geschützt noch schon neu gerüstet – geschieht das Wesentliche. Der Körper gibt auf, was er bisher war. Was getragen hat, wird dünn. Und in diesem Moment entscheidet sich, ob etwas Neues entsteht oder ob man zurück in die alte, eng gewordene Haut kriecht.
-      </p>
-      <p data-de="Für den Runner ist das der Punkt, an dem die Beine nicht mehr wollen und der Wille allein nicht mehr reicht. Dann muss etwas anderes tragen: eine Form, die nah genug am Körper ist, um die Verletzlichkeit nicht zu verstecken, sondern sie zu halten, während darunter schon die stärkere Version wächst."
-         data-en="For the runner, this is the point where the legs no longer want to and willpower alone is no longer enough. Then something else has to carry you: a form close enough to the body not to hide the vulnerability, but to hold it — while underneath, the stronger version is already growing.">
-        Für den Runner ist das der Punkt, an dem die Beine nicht mehr wollen und der Wille allein nicht mehr reicht. Dann muss etwas anderes tragen: eine Form, die nah genug am Körper ist, um die Verletzlichkeit nicht zu verstecken, sondern sie zu halten, während darunter schon die stärkere Version wächst.
+      <p data-de="Für den Runner ist das der Punkt, an dem die Beine nicht mehr wollen und der Wille allein nicht mehr trägt. Dann braucht es etwas, das nah genug am Körper ist, um den Übergang zu halten, während darunter schon die stärkere Version wächst."
+         data-en="For the runner, this is the point where the legs no longer want to and willpower alone is no longer enough. Then you need something close enough to the body to hold the transition — while underneath, the stronger version is already growing.">
+        Für den Runner ist das der Punkt, an dem die Beine nicht mehr wollen und der Wille allein nicht mehr trägt. Dann braucht es etwas, das nah genug am Körper ist, um den Übergang zu halten, während darunter schon die stärkere Version wächst.
       </p>
       <p class="closing"
-         data-de="Die Verletzlichkeit ist kein Zustand, den man überwinden muss. Sie ist der Übergang selbst. Der einzige Ort, an dem echte Erneuerung stattfinden kann."
-         data-en="Vulnerability is not a state to be overcome. It is the transition itself. The only place where real renewal can take place.">
-        Die Verletzlichkeit ist kein Zustand, den man überwinden muss. Sie ist der Übergang selbst. Der einzige Ort, an dem echte Erneuerung stattfinden kann.
+         data-de="Loslassen ist kein Verlust. Es ist die Voraussetzung dafür, dass etwas Neues tragen kann."
+         data-en="Letting go is not a loss. It is the condition for something new to carry you.">
+        Loslassen ist kein Verlust. Es ist die Voraussetzung dafür, dass etwas Neues tragen kann.
       </p>
     </div>
   </section>
@@ -1062,13 +1038,13 @@ alt=""
     </div>
     <div class="story-grid">
       <div>
-        <p data-de="Eine Schlange häutet sich nicht, weil sie anders aussehen will. Sie häutet sich, weil die alte Haut nicht mehr mitwächst und nicht mehr schützt. Wachstum macht die alte Haut obsolet – noch bevor die neue sichtbar wird."
-           data-en="A snake doesn't shed because it wants to look different. It sheds because the old skin can no longer grow with it and no longer protects it. Growth makes the old skin obsolete — before the new one is even visible.">
-          Eine Schlange häutet sich nicht, weil sie anders aussehen will. Sie häutet sich, weil die alte Haut nicht mehr mitwächst und nicht mehr schützt. Wachstum macht die alte Haut obsolet – noch bevor die neue sichtbar wird.
+        <p data-de="Eine Schlange häutet sich nicht, weil sie anders aussehen will. Sie häutet sich, weil die alte Haut nicht mehr mitwächst. Wachstum macht das Alte obsolet – noch bevor das Neue sichtbar wird."
+           data-en="A snake doesn’t shed because it wants to look different. It sheds because the old skin can no longer grow with it. Growth makes the old obsolete — before the new is even visible.">
+          Eine Schlange häutet sich nicht, weil sie anders aussehen will. Sie häutet sich, weil die alte Haut nicht mehr mitwächst. Wachstum macht das Alte obsolet – noch bevor das Neue sichtbar wird.
         </p>
-        <p data-de="Zwischen beiden liegt ein Moment totaler Verletzlichkeit: keine alte Haut, noch nicht die neue. Jede:r Runner:in kennt diesen Moment auf dem Trail – den Punkt, an dem der Körper nichts mehr gibt und etwas anderes dich weitertragen muss."
-           data-en="Between the two lies a moment of complete vulnerability: no old skin, not yet the new one. Every runner knows this moment on the trail — the point where the body has nothing left to give, and something else has to carry you forward.">
-          Zwischen beiden liegt ein Moment totaler Verletzlichkeit: keine alte Haut, noch nicht die neue. Jede:r Runner:in kennt diesen Moment auf dem Trail – den Punkt, an dem der Körper nichts mehr gibt und etwas anderes dich weitertragen muss.
+        <p data-de="Zwischen beiden liegt der Moment, den jede:r Runner:in kennt: der Körper gibt nichts mehr, und etwas anderes muss dich weitertragen."
+           data-en="Between the two lies the moment every runner knows: the body has nothing left to give, and something else has to carry you forward.">
+          Zwischen beiden liegt der Moment, den jede:r Runner:in kennt: der Körper gibt nichts mehr, und etwas anderes muss dich weitertragen.
         </p>
       </div>
       <div class="pullquote">
@@ -1098,18 +1074,14 @@ alt=""
          data-en="Between letting go and arriving lies an empty space.">
         Zwischen dem Ablegen und dem Ankommen liegt ein leerer Raum.
       </p>
-      <p data-de="Aus dem Zwischenraum wächst nicht sofort Stärke. Zuerst wächst Angst. Die alte Form ist weg. Die neue hat keine Kontur, keinen Halt. Angst vor dem Unbekannten, vor dem Verlust von Kontrolle."
-         data-en="From the in-between, strength does not arrive first. Fear does. The old form is gone. The new one has no contour, no hold. Fear of the unknown, of losing control.">
-        Aus dem Zwischenraum wächst nicht sofort Stärke. Zuerst wächst Angst. Die alte Form ist weg. Die neue hat keine Kontur, keinen Halt. Angst vor dem Unbekannten, vor dem Verlust von Kontrolle.
-      </p>
-      <p data-de="Diese Angst ist kein Feind. Sie ist das Signal, dass gerade Erneuerung stattfindet. Wer lernt, sie anzunehmen statt vor ihr zu fliehen, beginnt den leeren Raum nicht als Mangel zu lesen, sondern als Möglichkeit. Die Angst wird integriert, gehalten, durchquert und verwandelt sich in neue Kraft."
-         data-en="This fear is not an enemy. It is the signal that renewal is happening. Whoever learns to accept it instead of fleeing it begins to read the empty space not as lack, but as possibility. The fear is integrated, held, crossed and transforms into new strength.">
-        Diese Angst ist kein Feind. Sie ist das Signal, dass gerade Erneuerung stattfindet. Wer lernt, sie anzunehmen statt vor ihr zu fliehen, beginnt den leeren Raum nicht als Mangel zu lesen, sondern als Möglichkeit. Die Angst wird integriert, gehalten, durchquert und verwandelt sich in neue Kraft.
+      <p data-de="Zuerst wächst nicht Stärke – zuerst wächst Unsicherheit. Die alte Form ist weg. Die neue hat noch keine Kontur. Genau hier entscheidet sich, ob man zurückkriecht oder dem Neuen vertraut."
+         data-en="Strength does not arrive first — uncertainty does. The old form is gone. The new one has no contour yet. This is where you decide whether to crawl back or trust what comes next.">
+        Zuerst wächst nicht Stärke – zuerst wächst Unsicherheit. Die alte Form ist weg. Die neue hat noch keine Kontur. Genau hier entscheidet sich, ob man zurückkriecht oder dem Neuen vertraut.
       </p>
       <p class="closing"
-         data-de="Erneuerung heisst nicht, das Alte zu verwerfen. Es heisst, die Angst auszuhalten, bis daraus die stärkere Version wächst."
-         data-en="Renewal does not mean discarding the old. It means enduring the fear until the stronger version grows from it.">
-        Erneuerung heisst nicht, das Alte zu verwerfen. Es heisst, die Angst auszuhalten, bis daraus die stärkere Version wächst.
+         data-de="Erneuerung heisst nicht, das Alte zu verwerfen. Es heisst, dem Zwischenraum zu vertrauen, bis daraus die stärkere Version wächst."
+         data-en="Renewal does not mean discarding the old. It means trusting the in-between until the stronger version grows from it.">
+        Erneuerung heisst nicht, das Alte zu verwerfen. Es heisst, dem Zwischenraum zu vertrauen, bis daraus die stärkere Version wächst.
       </p>
     </div>
   </section>
