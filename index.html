@@ -1,0 +1,1470 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Second Skin: Special Edition · X-Bionic Exclusive by EinOhm</title>
+<meta name="description" content="Second Skin. Less Pain. More Endurance. X-Bionic exclusive for trail running. Release expected Feb/Mar 2027.">
+<!-- Meta Pixel Code -->
+<script>
+  window.META_PIXEL_ID = '1357278253275422';
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1357278253275422');
+  fbq('track', 'PageView');
+</script>
+<!-- End Meta Pixel Code -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600&family=Inter:ital@1&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black:#080b0a;
+    --panel:#0f1613;
+    --panel-2:#141d19;
+    --teal:#3ea89b;
+    --teal-bright:#5fe8d3;
+    --text:#eef3f1;
+    --muted:#8b9a95;
+    --line:#223330;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--black);
+    color:var(--text);
+    font-family:'Inter',sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+  .scaletex{
+    position:absolute; inset:0;
+    background-image:
+      radial-gradient(circle at 1px 1px, rgba(94,232,211,0.06) 1px, transparent 1px);
+    background-size:14px 14px;
+    pointer-events:none;
+  }
+
+  .eyebrow{
+    font-family:'JetBrains Mono',monospace;
+    font-size:.72rem;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:var(--teal-bright);
+  }
+
+  /* LANG */
+  .lang-bar{
+    position:absolute; top:1.4rem; right:8vw; z-index:5;
+    display:flex; gap:4px;
+  }
+  .lang-bar button{
+    background:transparent;
+    border:1px solid var(--line);
+    color:var(--muted);
+    font-family:'JetBrains Mono',monospace;
+    font-size:.68rem;
+    letter-spacing:.1em;
+    padding:.35rem .55rem;
+    cursor:pointer;
+    transition:all .25s ease;
+  }
+  .lang-bar button.active{
+    background:var(--teal);
+    border-color:var(--teal);
+    color:#041210;
+  }
+
+  /* HERO */
+  .hero{
+    position:relative;
+    min-height:92vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    padding:8vh 8vw 10vh;
+    overflow:hidden;
+    background:linear-gradient(180deg, var(--black) 0%, #060908 100%);
+  }
+  .hero .crack{
+    position:absolute; top:0; right:-10%; height:140%; width:70%;
+    background:
+      linear-gradient(115deg, transparent 46%, rgba(62,168,155,0.18) 47%, rgba(95,232,211,0.35) 48%, transparent 49%),
+      linear-gradient(115deg, transparent 60%, rgba(62,168,155,0.10) 61%, transparent 62%);
+    filter:blur(.3px);
+    opacity:.9;
+  }
+  .hero-inner{ position:relative; z-index:2; max-width:920px;}
+  .hero .eyebrow{ display:block; margin-bottom:1.8rem;}
+  .hero h1{
+    font-family:'Bebas Neue',sans-serif;
+    font-size:clamp(3.6rem, 11vw, 8.2rem);
+    line-height:.92;
+    letter-spacing:.01em;
+    color:var(--text);
+  }
+  .hero h1 span{
+    color:transparent;
+    -webkit-text-stroke:1.5px var(--teal-bright);
+  }
+  .hero .tagline{
+    margin-top:1.6rem;
+    font-family:'JetBrains Mono',monospace;
+    font-size:clamp(.85rem, 2vw, 1rem);
+    letter-spacing:.12em;
+    color:var(--teal-bright);
+    text-transform:uppercase;
+  }
+  .hero .tagline-sub{
+    margin-top:.55rem;
+    font-family:'JetBrains Mono',monospace;
+    font-size:.78rem;
+    letter-spacing:.14em;
+    color:var(--muted);
+    text-transform:uppercase;
+  }
+  .hero .meta{
+    margin-top:3.2rem;
+    display:flex; gap:2.4rem; flex-wrap:wrap;
+    font-family:'JetBrains Mono',monospace;
+    font-size:.75rem;
+    color:var(--muted);
+    letter-spacing:.05em;
+  }
+  .hero .meta strong{ color:var(--text); font-weight:600;}
+  .hero-cta{
+    margin-top:2.4rem;
+    display:flex; flex-wrap:wrap; gap:.8rem;
+  }
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center;
+    font-family:'JetBrains Mono',monospace;
+    font-size:.72rem;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    text-decoration:none;
+    padding:.9rem 1.3rem;
+    border:1px solid transparent;
+    cursor:pointer;
+    transition:transform .25s ease, background .25s ease, color .25s ease, border-color .25s ease;
+  }
+  .btn:hover{ transform:translateY(-1px); }
+  .btn-primary{ background:var(--teal-bright); color:#041210; }
+  .btn-primary:hover{ background:#8ff0e0; }
+  .btn-ghost{ background:transparent; border-color:var(--line); color:var(--text); }
+  .btn-ghost:hover{ border-color:var(--teal-bright); color:var(--teal-bright); }
+
+  /* SECTIONS */
+  section{ position:relative; padding:7rem 8vw;}
+  .section-head{
+    display:flex; align-items:baseline; gap:1rem;
+    margin-bottom:2.6rem;
+    border-bottom:1px solid var(--line);
+    padding-bottom:1.2rem;
+  }
+  .section-head h2{
+    font-family:'Bebas Neue',sans-serif;
+    font-size:clamp(1.8rem,3.4vw,2.6rem);
+    letter-spacing:.02em;
+    color:var(--text);
+  }
+  .section-head .num{
+    font-family:'JetBrains Mono',monospace;
+    color:var(--teal);
+    font-size:.85rem;
+  }
+
+  /* GALLERY */
+  .gallery{ background:var(--black); padding-top:3.5rem; padding-bottom:3.5rem; }
+  .gallery-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:2px;
+    background:var(--line);
+    max-width:1200px;
+  }
+  .gallery-item{ background:var(--panel); }
+  .gallery-item .img-wrap{
+    height:360px;
+    overflow:hidden;
+    background:#000;
+  }
+  .gallery-item img{
+    display:block;
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    object-position:center;
+    background:#000;
+    transition:transform .5s cubic-bezier(.2,.8,.2,1);
+    will-change:transform;
+  }
+  .gallery-item:hover img{ transform:scale(1.08); }
+  .gallery-item figcaption{
+    padding:.75rem 1.1rem 1rem;
+    font-family:'JetBrains Mono',monospace;
+    font-size:.72rem;
+    letter-spacing:.05em;
+    color:var(--muted);
+  }
+  .gallery-item figcaption strong{ color:var(--teal-bright); font-weight:600;}
+
+  @media (max-width:600px){
+    .gallery-item .img-wrap{ height:240px;}
+  }
+
+  /* STORY */
+  .story{ background:var(--black); }
+  .story-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:4rem;
+    max-width:1200px;
+  }
+  .story p{
+    font-size:1.05rem;
+    color:#cfd8d5;
+    margin-bottom:1.3rem;
+    max-width:52ch;
+  }
+  .story p:first-child{ font-size:1.18rem; color:var(--text);}
+  .pullquote{
+    align-self:start;
+    border-left:2px solid var(--teal-bright);
+    padding-left:1.6rem;
+    font-style:italic;
+    font-size:1.3rem;
+    line-height:1.5;
+    color:var(--teal-bright);
+  }
+  .pullquote small{
+    display:block;
+    margin-top:1rem;
+    font-family:'JetBrains Mono',monospace;
+    font-style:normal;
+    font-size:.7rem;
+    letter-spacing:.15em;
+    text-transform:uppercase;
+    color:var(--muted);
+  }
+  .pullquote .idea-line{
+    margin-top:1rem;
+    font-style:normal;
+    font-size:1.02rem;
+    line-height:1.45;
+    color:var(--text);
+    max-width:36ch;
+  }
+
+  /* CONCEPT / VULNERABILITY */
+  .concept{
+    background:var(--panel);
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+  }
+  .concept-body{
+    max-width:62ch;
+  }
+  .concept-body p{
+    font-size:1.05rem;
+    color:#cfd8d5;
+    margin-bottom:1.15rem;
+  }
+  .concept-body p.lead-line{
+    font-size:1.18rem;
+    color:var(--text);
+  }
+  .concept-body p.closing{
+    margin-top:1.6rem;
+    color:var(--teal-bright);
+  }
+
+  /* COLOR */
+  .color{
+    background:var(--panel);
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+  }
+  .color-grid{
+    display:grid;
+    grid-template-columns:220px 1fr;
+    gap:3rem;
+    align-items:center;
+    max-width:1200px;
+  }
+  .swatch{
+    height:220px;
+    border-radius:2px;
+    background:repeating-linear-gradient(135deg, var(--teal) 0 6px, #0c1512 6px 12px);
+    position:relative;
+    overflow:hidden;
+  }
+  .swatch::after{
+    content:"";
+    position:absolute; inset:0;
+    background:radial-gradient(circle at 30% 20%, rgba(95,232,211,.5), transparent 60%);
+    mix-blend-mode:screen;
+  }
+  .color p{ color:#cfd8d5; max-width:60ch; font-size:1.02rem;}
+  .color p + p{ margin-top:1rem;}
+
+  /* POEM */
+  .poem{
+    background:var(--black);
+    text-align:center;
+    padding-top:8rem; padding-bottom:8rem;
+  }
+  .poem .eyebrow{ display:block; margin-bottom:2.4rem;}
+  .poem-title{
+    font-family:'Bebas Neue',sans-serif;
+    font-size:clamp(2rem,4.2vw,3.2rem);
+    letter-spacing:.03em;
+    color:var(--teal-bright);
+    margin-bottom:2.8rem;
+  }
+  .poem-lines{
+    max-width:520px;
+    margin:0 auto;
+    font-size:1.15rem;
+    color:#dbe4e1;
+  }
+  .poem-lines p{ margin-bottom:.35rem;}
+  .poem-lines .beat{ height:1rem;}
+  .poem-lines .close{
+    margin-top:1.6rem;
+    font-family:'JetBrains Mono',monospace;
+    font-size:.85rem;
+    letter-spacing:.1em;
+    color:var(--muted);
+    text-transform:uppercase;
+  }
+
+  /* VERBIER */
+  .verbier{ background:var(--panel-2); border-top:1px solid var(--line); }
+  .verbier .lead{
+    max-width:70ch;
+    color:#cfd8d5;
+    font-size:1.05rem;
+    margin-bottom:2rem;
+  }
+  .verbier .lead strong{ color:var(--teal-bright); font-weight:600; }
+  .values-banner{
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    padding:1.6rem 0;
+    margin-bottom:2.2rem;
+  }
+  .values-banner .event{
+    margin-top:0;
+    font-family:'JetBrains Mono',monospace;
+    font-size:.72rem;
+    letter-spacing:.06em;
+    color:var(--muted);
+  }
+  .community-quote{
+    border-left:2px solid var(--teal-bright);
+    padding-left:1.6rem;
+    margin-bottom:0;
+    max-width:70ch;
+  }
+  .community-quote p{
+    font-size:1.1rem;
+    color:#dbe4e1;
+    font-style:italic;
+    line-height:1.55;
+  }
+  .community-quote cite{
+    display:block;
+    margin-top:1rem;
+    font-style:normal;
+    font-family:'JetBrains Mono',monospace;
+    font-size:.7rem;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--muted);
+  }
+  .community-quote cite a{
+    color:var(--muted);
+    text-decoration:none;
+    border-bottom:1px solid var(--line);
+    transition:color .25s ease, border-color .25s ease;
+  }
+  .community-quote cite a:hover{
+    color:var(--teal-bright);
+    border-color:var(--teal-bright);
+  }
+  .values-link{
+    display:inline-block;
+    margin-top:1.2rem;
+    font-family:'Bebas Neue',sans-serif;
+    font-size:clamp(1.4rem, 3.5vw, 2.2rem);
+    letter-spacing:.18em;
+    color:var(--teal-bright);
+    text-decoration:none;
+    border-bottom:1px solid transparent;
+    transition:color .25s ease, border-color .25s ease;
+  }
+  .values-link:hover{
+    color:#8ff0e0;
+    border-bottom-color:rgba(95,232,211,.5);
+  }
+  .section-divider{
+    max-width:900px;
+    height:1px;
+    margin:2.8rem 0 2.6rem;
+    border:0;
+    background:var(--line);
+  }
+  .mission-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:2rem;
+    max-width:900px;
+    margin-bottom:2.8rem;
+  }
+  .mission-item h3{
+    font-family:'JetBrains Mono',monospace;
+    font-size:.72rem;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:var(--teal-bright);
+    margin-bottom:.55rem;
+  }
+  .mission-item p{ color:#cfd8d5; font-size:.98rem; }
+  .edition-visual{
+    max-width:1200px;
+    background:#000;
+    padding:1.5rem 1rem 1.2rem;
+    border:1px solid var(--line);
+    margin-bottom:2rem;
+  }
+  .edition-visual .img-wrap{
+    height:min(420px, 55vw);
+    overflow:hidden;
+  }
+  .edition-visual img{
+    display:block;
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    transition:transform .5s cubic-bezier(.2,.8,.2,1);
+  }
+  .edition-visual:hover img{ transform:scale(1.06); }
+  .edition-caption{
+    margin-top:1rem;
+    font-family:'JetBrains Mono',monospace;
+    font-size:.72rem;
+    letter-spacing:.05em;
+    color:var(--muted);
+  }
+  .edition-caption strong{ color:var(--teal-bright); }
+
+  .verbier-cta{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    gap:1.4rem;
+    max-width:1200px;
+  }
+  .btn-register{
+    position:relative;
+    display:inline-flex;
+    align-items:center;
+    gap:.85rem;
+    font-family:'Bebas Neue',sans-serif;
+    font-size:clamp(1.35rem, 3vw, 1.75rem);
+    letter-spacing:.08em;
+    text-decoration:none;
+    color:#041210;
+    background:linear-gradient(135deg, var(--teal-bright) 0%, var(--teal) 100%);
+    padding:1.05rem 1.7rem 0.95rem 1.55rem;
+    border:none;
+    box-shadow:
+      0 0 0 1px rgba(95,232,211,.35),
+      0 12px 40px rgba(62,168,155,.28);
+    transition:transform .25s ease, box-shadow .25s ease, filter .25s ease;
+  }
+  .btn-register::after{
+    content:"→";
+    font-family:'JetBrains Mono',monospace;
+    font-size:.95rem;
+    letter-spacing:0;
+    opacity:.85;
+  }
+  .btn-register:hover{
+    transform:translateY(-2px);
+    filter:brightness(1.06);
+    box-shadow:
+      0 0 0 1px rgba(95,232,211,.55),
+      0 18px 48px rgba(62,168,155,.4);
+  }
+  .btn-register:active{ transform:translateY(0); }
+  .verbier-cta-note{
+    font-family:'JetBrains Mono',monospace;
+    font-size:.72rem;
+    letter-spacing:.06em;
+    color:var(--muted);
+    max-width:36ch;
+    line-height:1.5;
+  }
+
+  /* IDEA */
+  .idea{ background:var(--black); border-top:1px solid var(--line);}
+  .idea p.lead{ max-width:70ch; color:#cfd8d5; font-size:1.05rem; margin-bottom:2.8rem;}
+  .idea p.lead strong{ color:var(--teal-bright); font-weight:600;}
+
+  .counter{
+    max-width:760px;
+    margin-bottom:2.4rem;
+    display:grid;
+    gap:1.4rem;
+  }
+  .counter-block{}
+  .counter-row{
+    display:flex; justify-content:space-between; align-items:baseline;
+    font-family:'JetBrains Mono',monospace;
+    font-size:.75rem;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:var(--muted);
+    margin-bottom:.6rem;
+  }
+  .counter-row strong{ color:var(--text); font-size:1rem;}
+  .counter-row .count-live{
+    color:var(--teal-bright);
+    font-variant-numeric: tabular-nums;
+  }
+  .bar{
+    height:10px; width:100%;
+    background:#0c1512;
+    border:1px solid var(--line);
+    position:relative; overflow:hidden;
+  }
+  .bar-fill{
+    height:100%; width:0%;
+    background:linear-gradient(90deg, var(--teal), var(--teal-bright));
+    transition:width .7s cubic-bezier(.2,.8,.2,1), background .3s ease;
+  }
+  .bar-fill::after{
+    content:"";
+    position:absolute; inset:0;
+    background-image:repeating-linear-gradient(135deg, rgba(0,0,0,.15) 0 4px, transparent 4px 8px);
+  }
+  .bar-fill.is-over{
+    background:linear-gradient(90deg, var(--teal-bright), #9ff5e6);
+  }
+  .count-live.is-over{
+    color:#9ff5e6;
+  }
+  .counter-caption{
+    margin-top:.2rem;
+    font-family:'JetBrains Mono',monospace;
+    font-size:.72rem;
+    color:var(--muted);
+  }
+  .ticker-cta{
+    display:inline-flex;
+    align-items:center;
+    gap:.55rem;
+    margin-top:.4rem;
+    margin-bottom:2.4rem;
+    font-family:'JetBrains Mono',monospace;
+    font-size:.78rem;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    text-decoration:none;
+    color:#041210;
+    background:var(--teal-bright);
+    padding:.85rem 1.2rem;
+    transition:transform .25s ease, background .25s ease;
+  }
+  .ticker-cta:hover{
+    transform:translateY(-1px);
+    background:#8ff0e0;
+  }
+  .ticker-cta span.arrow{ opacity:.8; }
+
+  .reserve-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(140px,1fr));
+    gap:1px;
+    background:var(--line);
+    max-width:900px;
+    margin-bottom:3.2rem;
+  }
+  .reserve-card{ background:var(--panel-2); padding:1.6rem; }
+  .reserve-card .who{
+    font-family:'JetBrains Mono',monospace;
+    font-size:.7rem;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:var(--muted);
+    margin-bottom:.5rem;
+  }
+  .reserve-card .qty{
+    font-family:'Bebas Neue',sans-serif;
+    font-size:2.2rem;
+    color:var(--teal-bright);
+    line-height:1;
+  }
+  .reserve-card .unit{ font-size:.75rem; color:var(--muted); }
+
+  .flow{
+    display:flex; flex-direction:column;
+    max-width:760px;
+    border-top:1px solid var(--line);
+  }
+  .flow-step{
+    display:grid;
+    grid-template-columns:110px minmax(0,1fr);
+    gap:1.4rem;
+    padding:1.2rem 0;
+    border-bottom:1px solid var(--line);
+    align-items:baseline;
+  }
+  .flow-step .k{
+    font-family:'JetBrains Mono',monospace;
+    color:var(--teal);
+    font-size:.8rem;
+    white-space:nowrap;
+  }
+  .flow-step .v{ color:#dbe4e1; font-size:.98rem; min-width:0;}
+
+  /* REGISTER */
+  .register{
+    background:var(--panel);
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+  }
+  .register .lead{
+    max-width:62ch;
+    color:#cfd8d5;
+    font-size:1.02rem;
+    margin-bottom:2.2rem;
+  }
+  .form-grid{
+    display:grid;
+    gap:1rem;
+    max-width:640px;
+  }
+  @media (min-width:560px){
+    .form-grid.two{ grid-template-columns:1fr 1fr; }
+  }
+  .field label{
+    display:block;
+    font-family:'JetBrains Mono',monospace;
+    font-size:.68rem;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--muted);
+    margin-bottom:.4rem;
+  }
+  .field input, .field select{
+    width:100%;
+    background:var(--black);
+    border:1px solid var(--line);
+    color:var(--text);
+    font-family:inherit;
+    font-size:.95rem;
+    padding:.85rem .9rem;
+    outline:none;
+    transition:border-color .25s ease;
+  }
+  .field input:focus, .field select:focus{ border-color:var(--teal-bright); }
+  .field select{
+    appearance:none;
+    background-image:
+      linear-gradient(45deg, transparent 50%, var(--teal-bright) 50%),
+      linear-gradient(135deg, var(--teal-bright) 50%, transparent 50%);
+    background-position: calc(100% - 18px) 55%, calc(100% - 12px) 55%;
+    background-size:6px 6px, 6px 6px;
+    background-repeat:no-repeat;
+  }
+  .field select:disabled{ opacity:.45; cursor:not-allowed; }
+
+  .chip-wrap{ display:flex; gap:.6rem; }
+  .chip-wrap .opt{ flex:1; position:relative; }
+  .chip-wrap .opt input{
+    position:absolute; opacity:0; width:0; height:0;
+  }
+  .chip-wrap .opt span{
+    display:flex; align-items:center; justify-content:center;
+    padding:.75rem;
+    border:1px solid var(--line);
+    background:var(--black);
+    font-family:'JetBrains Mono',monospace;
+    font-size:.72rem;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:var(--muted);
+    cursor:pointer;
+    transition:border-color .25s ease, color .25s ease, background .25s ease;
+  }
+  .chip-wrap .opt input:checked + span{
+    border-color:var(--teal-bright);
+    color:var(--teal-bright);
+    background:rgba(95,232,211,.08);
+  }
+
+  .form-actions{ margin-top:1.5rem; max-width:640px; }
+  .form-error{
+    display:none;
+    margin-top:.8rem;
+    font-size:.85rem;
+    color:#e8a0a0;
+  }
+  .form-error.show{ display:block; }
+  .form-success{
+    display:none;
+    max-width:560px;
+    border-top:1px solid var(--line);
+    padding-top:1.5rem;
+  }
+  .form-success.show{ display:block; }
+  .form-success h3{
+    font-family:'Bebas Neue',sans-serif;
+    font-size:1.8rem;
+    color:var(--teal-bright);
+    letter-spacing:.02em;
+    margin-bottom:.4rem;
+  }
+  .form-success p{ color:var(--muted); }
+
+  /* ARTIST */
+  .artist{ background:var(--panel); border-top:1px solid var(--line);}
+  .artist-grid{
+    display:grid;
+    grid-template-columns:280px 1fr;
+    gap:3rem;
+    max-width:1200px;
+  }
+  .artist-title{
+    font-family:'Bebas Neue',sans-serif;
+    font-size:2.4rem;
+    line-height:1.05;
+    color:var(--text);
+  }
+  .artist-alias{
+    margin-top:.4rem;
+    font-family:'JetBrains Mono',monospace;
+    font-size:.85rem;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:var(--teal-bright);
+  }
+  .artist-bio p{
+    color:#cfd8d5;
+    font-size:1.02rem;
+    max-width:60ch;
+    margin-bottom:1.6rem;
+  }
+  .artist-links{ display:flex; gap:1.6rem; flex-wrap:wrap;}
+  .artist-links a{
+    font-family:'JetBrains Mono',monospace;
+    font-size:.8rem;
+    letter-spacing:.05em;
+    color:var(--teal-bright);
+    text-decoration:none;
+    border-bottom:1px solid var(--teal);
+    padding-bottom:2px;
+  }
+  .artist-links a:hover{ color:var(--text); border-color:var(--text);}
+
+  /* LOGOS */
+  .logos{
+    background:var(--black);
+    border-top:1px solid var(--line);
+    display:flex; gap:3rem; flex-wrap:wrap;
+    align-items:center;
+    padding-top:4rem; padding-bottom:4rem;
+  }
+  .logo-item{
+    display:flex; align-items:center; gap:1.2rem;
+    text-decoration:none;
+    opacity:.9;
+    transition:opacity .3s ease;
+  }
+  .logo-item:hover{ opacity:1;}
+  .logo-item img{
+    height:56px; width:56px;
+    object-fit:contain;
+  }
+  .logo-caption{ display:flex; flex-direction:column; gap:.2rem;}
+  .logo-caption span{
+    font-family:'JetBrains Mono',monospace;
+    font-size:.75rem;
+    letter-spacing:.05em;
+    color:var(--muted);
+  }
+  .logo-caption span:first-child{ color:var(--text);}
+  .logo-item:hover .logo-caption span:first-child{ color:var(--teal-bright);}
+
+  footer{
+    padding:3rem 8vw;
+    display:flex; justify-content:space-between; align-items:center;
+    font-family:'JetBrains Mono',monospace;
+    font-size:.72rem;
+    color:var(--muted);
+    letter-spacing:.05em;
+    gap:1rem; flex-wrap:wrap;
+  }
+
+  @media (max-width:820px){
+    .hero{
+      min-height:auto;
+      padding:7rem 5vw 4rem;
+    }
+    .hero .eyebrow{
+      max-width:85%;
+      line-height:1.5;
+    }
+    .hero h1 span{ -webkit-text-stroke:1.2px var(--teal-bright); }
+    .hero .meta{
+      gap:.85rem 1.4rem;
+      font-size:.7rem;
+    }
+    .hero .meta span{
+      flex:1 1 100%;
+    }
+    .hero-cta{
+      flex-direction:column;
+      align-items:stretch;
+    }
+    .hero-cta .btn{ width:100%; }
+    section{ padding:4.5rem 5vw; }
+    .gallery{ padding-top:3.5rem; }
+    .artist-grid{ grid-template-columns:1fr; gap:1.2rem;}
+    .story-grid{ grid-template-columns:1fr;}
+    .color-grid{ grid-template-columns:1fr;}
+    .mission-grid{ grid-template-columns:1fr;}
+    .swatch{ height:140px;}
+    .reserve-grid{ grid-template-columns:1fr;}
+    .gallery-grid{ grid-template-columns:1fr;}
+    .hero .crack{ width:100%; right:-30%;}
+    .flow-step{ grid-template-columns:80px minmax(0,1fr); gap:.8rem;}
+    .lang-bar{ right:4vw; top:1rem; }
+    .values-link{ letter-spacing:.12em; }
+    .verbier-cta{
+      flex-direction:column;
+      align-items:stretch;
+    }
+    .btn-register{ justify-content:center; width:100%; }
+    .verbier-cta-note{ max-width:none; }
+    .edition-visual .img-wrap{ height:min(280px, 58vw); }
+    .gallery-item figcaption{
+      font-size:.65rem;
+      line-height:1.5;
+      word-break:break-word;
+    }
+    .ticker-cta{ width:100%; justify-content:center; }
+    .section-head{
+      flex-wrap:wrap;
+      gap:.4rem .8rem;
+    }
+    .section-head h2{ max-width:100%; }
+    footer{
+      flex-direction:column;
+      align-items:flex-start;
+      gap:.75rem;
+    }
+  }
+
+  @media (max-width:480px){
+    .hero{ padding:6.5rem 4vw 3.5rem; }
+    .hero h1{ font-size:clamp(2.8rem, 16vw, 4.2rem); }
+    .hero .tagline{ letter-spacing:.08em; }
+    section{ padding:3.5rem 4vw; }
+    .gallery-item .img-wrap{ height:240px; }
+    .btn-register{
+      font-size:1.2rem;
+      padding:.95rem 1.1rem;
+    }
+    .chip-wrap{ flex-direction:column; }
+    .logos{ gap:1.6rem; padding-top:2.5rem; padding-bottom:2.5rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    .gallery-item img{ transition:none; }
+  }
+</style>
+</head>
+<body>
+<!-- Meta Pixel (noscript) -->
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1357278253275422&ev=PageView&noscript=1"
+alt=""
+/></noscript>
+<!-- End Meta Pixel (noscript) -->
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="crack"></div>
+    <div class="scaletex"></div>
+    <div class="lang-bar">
+      <button type="button" id="btn-de" class="active">DE</button>
+      <button type="button" id="btn-en">EN</button>
+    </div>
+    <div class="hero-inner">
+      <span class="eyebrow">Special Edition · X-Bionic Exclusive by EinOhm</span>
+      <h1>SECOND <span>SKIN</span></h1>
+      <div class="tagline">Less Pain. More Endurance.</div>
+      <div class="meta">
+        <span><strong data-de="Trigger:" data-en="Trigger:">Trigger:</strong> <span data-de="Schlangenhäutung" data-en="snake shedding its skin">Schlangenhäutung</span></span>
+        <span><strong data-de="Colorway:" data-en="Colorway:">Colorway:</strong> teal on black</span>
+        <span><strong data-de="Product:" data-en="Product:">Product:</strong> <span data-de="Corefusion Run Shirt, Shortsleeve · Women Crop Top"
+             data-en="Corefusion Run Shirt, Shortsleeve · Women Crop Top">Corefusion Run Shirt, Shortsleeve · Women Crop Top</span></span>
+        <span><strong data-de="Release:" data-en="Release:">Release:</strong> Feb / Mär 2027</span>
+      </div>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#register"
+           data-de="Registrierung"
+           data-en="Register">Registrierung</a>
+        <a class="btn btn-ghost" href="#concept"
+           data-de="Design Concept"
+           data-en="Design Concept">Design Concept</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- GALLERY -->
+  <section class="gallery" id="design">
+    <div class="section-head">
+      <span class="num">00</span>
+      <h2 data-de="Das Design" data-en="The design">Das Design</h2>
+    </div>
+    <div class="gallery-grid">
+      <figure class="gallery-item">
+        <div class="img-wrap"><img src="gallery-artseries.png" alt="Second Skin Special Edition longsleeve, teal on black, front and back"></div>
+        <figcaption><strong>Special Edition</strong> · Long Sleeve · Prototype</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- DESIGN CONCEPT: VULNERABILITY -->
+  <section class="concept" id="concept">
+    <div class="section-head">
+      <span class="num">01</span>
+      <h2 data-de="Über die Verletzlichkeit" data-en="On vulnerability">Über die Verletzlichkeit</h2>
+    </div>
+    <div class="concept-body">
+      <p class="lead-line"
+         data-de="Die Verletzlichkeit ist kein Fehler im System. Sie ist der Preis für Wachstum."
+         data-en="Vulnerability is not a flaw in the system. It is the price of growth.">
+        Die Verletzlichkeit ist kein Fehler im System. Sie ist der Preis für Wachstum.
+      </p>
+      <p data-de="Wenn die alte Haut reisst, liegt darunter nicht sofort die neue. Es liegt nackte, empfindliche Haut. Dünn. Durchlässig. Jeder Reibungspunkt wird spürbar. Jeder Windzug. Jede Unebenheit des Trails."
+         data-en="When the old skin tears, what lies underneath is not instantly the new one. It is bare, sensitive skin. Thin. Permeable. Every point of friction becomes noticeable. Every gust of wind. Every unevenness of the trail.">
+        Wenn die alte Haut reisst, liegt darunter nicht sofort die neue. Es liegt nackte, empfindliche Haut. Dünn. Durchlässig. Jeder Reibungspunkt wird spürbar. Jeder Windzug. Jede Unebenheit des Trails.
+      </p>
+      <p data-de="Genau in diesem Zwischenraum – weder geschützt noch schon neu gerüstet – geschieht das Wesentliche. Der Körper gibt auf, was er bisher war. Die mentale Struktur, die bis eben noch getragen hat, wird dünn. Und in diesem Moment entscheidet sich, ob etwas Neues entsteht oder ob man zurück in die alte, eng gewordene Haut kriecht."
+         data-en="Exactly in this in-between — neither protected nor newly armored — the essential happens. The body lets go of what it was. The mental structure that carried you until a moment ago grows thin. And in that moment it is decided whether something new emerges, or whether you crawl back into the old skin that has grown too tight.">
+        Genau in diesem Zwischenraum – weder geschützt noch schon neu gerüstet – geschieht das Wesentliche. Der Körper gibt auf, was er bisher war. Die mentale Struktur, die bis eben noch getragen hat, wird dünn. Und in diesem Moment entscheidet sich, ob etwas Neues entsteht oder ob man zurück in die alte, eng gewordene Haut kriecht.
+      </p>
+      <p data-de="Für den Runner ist das der Punkt, an dem die Beine nicht mehr wollen, der Kopf zu laut wird und der Wille allein nicht mehr reicht. Dann muss etwas anderes tragen: eine Form, die nah genug am Körper ist, um die Verletzlichkeit nicht zu verstecken, sondern sie zu halten, während darunter schon die stärkere Version wächst."
+         data-en="For the runner, this is the point where the legs no longer want to, the mind grows too loud, and willpower alone is no longer enough. Then something else has to carry you: a form close enough to the body not to hide the vulnerability, but to hold it — while underneath, the stronger version is already growing.">
+        Für den Runner ist das der Punkt, an dem die Beine nicht mehr wollen, der Kopf zu laut wird und der Wille allein nicht mehr reicht. Dann muss etwas anderes tragen: eine Form, die nah genug am Körper ist, um die Verletzlichkeit nicht zu verstecken, sondern sie zu halten, während darunter schon die stärkere Version wächst.
+      </p>
+      <p class="closing"
+         data-de="Die Verletzlichkeit ist kein Zustand, den man überwinden muss. Sie ist der Übergang selbst. Der einzige Ort, an dem echte Erneuerung stattfinden kann."
+         data-en="Vulnerability is not a state to be overcome. It is the transition itself. The only place where real renewal can take place.">
+        Die Verletzlichkeit ist kein Zustand, den man überwinden muss. Sie ist der Übergang selbst. Der einzige Ort, an dem echte Erneuerung stattfinden kann.
+      </p>
+    </div>
+  </section>
+
+  <!-- STORY -->
+  <section class="story" id="story">
+    <div class="section-head">
+      <span class="num">02</span>
+      <h2 data-de="Die Story hinter dem Design" data-en="Story behind the design">Die Story hinter dem Design</h2>
+    </div>
+    <div class="story-grid">
+      <div>
+        <p data-de="Eine Schlange häutet sich nicht, weil sie anders aussehen will. Sie häutet sich, weil die alte Haut nicht mehr mitwächst und nicht mehr schützt. Wachstum macht die alte Haut obsolet – noch bevor die neue sichtbar wird."
+           data-en="A snake doesn't shed because it wants to look different. It sheds because the old skin can no longer grow with it and no longer protects it. Growth makes the old skin obsolete — before the new one is even visible.">
+          Eine Schlange häutet sich nicht, weil sie anders aussehen will. Sie häutet sich, weil die alte Haut nicht mehr mitwächst und nicht mehr schützt. Wachstum macht die alte Haut obsolet – noch bevor die neue sichtbar wird.
+        </p>
+        <p data-de="Zwischen beiden liegt ein Moment totaler Verletzlichkeit: keine alte Haut, noch nicht die neue. Jede:r Runner:in kennt diesen Moment auf dem Trail – den Punkt, an dem der Körper nichts mehr gibt und etwas anderes dich weitertragen muss."
+           data-en="Between the two lies a moment of complete vulnerability: no old skin, not yet the new one. Every runner knows this moment on the trail — the point where the body has nothing left to give, and something else has to carry you forward.">
+          Zwischen beiden liegt ein Moment totaler Verletzlichkeit: keine alte Haut, noch nicht die neue. Jede:r Runner:in kennt diesen Moment auf dem Trail – den Punkt, an dem der Körper nichts mehr gibt und etwas anderes dich weitertragen muss.
+        </p>
+      </div>
+      <div class="pullquote">
+        <span data-de="„Du trägst nicht nur ein Shirt nah am Körper. Du trägst die Erinnerung, dass das, was darunter freigelegt wird, stärker und ehrlicher ist als das, was abgelegt wurde.“"
+              data-en="“You're not just wearing a shirt close to your body. You're wearing the reminder that what is revealed underneath is stronger and more honest than what was shed.”">
+          „Du trägst nicht nur ein Shirt nah am Körper. Du trägst die Erinnerung, dass das, was darunter freigelegt wird, stärker und ehrlicher ist als das, was abgelegt wurde.“
+        </span>
+        <small data-de="Die Idee in einem Satz" data-en="The idea in one line">Die Idee in einem Satz</small>
+        <p class="idea-line"
+           data-de="Das Shirt ist die zweite Haut – entstanden genau in dem Moment, in dem die erste abfällt."
+           data-en="The shirt is the second skin — born in the exact moment the first one falls away.">
+          Das Shirt ist die zweite Haut – entstanden genau in dem Moment, in dem die erste abfällt.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- RENEWAL -->
+  <section class="concept" id="renewal">
+    <div class="section-head">
+      <span class="num">03</span>
+      <h2 data-de="Angst &amp; Erneuerung" data-en="Fears &amp; Renewal">Angst &amp; Erneuerung</h2>
+    </div>
+    <div class="concept-body">
+      <p class="lead-line"
+         data-de="Zwischen dem Ablegen und dem Ankommen liegt ein leerer Raum."
+         data-en="Between letting go and arriving lies an empty space.">
+        Zwischen dem Ablegen und dem Ankommen liegt ein leerer Raum.
+      </p>
+      <p data-de="Noch weiss man nicht, was das Neue ist. Die alte Form ist weg. Die neue hat noch keinen Namen, keine Kontur, keinen Halt. In diesem Zwischenraum entsteht Angst: Angst vor dem Unbekannten, vor dem Verlust von Kontrolle, vor dem Moment, in dem nichts mehr trägt und noch nichts Neues hält."
+         data-en="You do not yet know what the new is. The old form is gone. The new one has no name yet, no contour, no hold. In this in-between, fear arises: fear of the unknown, of losing control, of the moment when nothing carries you anymore and nothing new is holding you yet.">
+        Noch weiss man nicht, was das Neue ist. Die alte Form ist weg. Die neue hat noch keinen Namen, keine Kontur, keinen Halt. In diesem Zwischenraum entsteht Angst: Angst vor dem Unbekannten, vor dem Verlust von Kontrolle, vor dem Moment, in dem nichts mehr trägt und noch nichts Neues hält.
+      </p>
+      <p data-de="Diese Angst ist kein Feind. Sie ist der Hinweis, dass gerade Erneuerung stattfindet. Wer lernt, sie anzunehmen statt sie zu fliehen, beginnt den leeren Raum nicht als Mangel zu lesen, sondern als Möglichkeit. Die Angst wird integriert, gehalten, durchquert und verwandelt sich in neue Kraft."
+         data-en="This fear is not an enemy. It is the signal that renewal is happening. Whoever learns to accept it instead of fleeing it begins to read the empty space not as lack, but as possibility. The fear is integrated, held, crossed — and transforms into new strength.">
+        Diese Angst ist kein Feind. Sie ist der Hinweis, dass gerade Erneuerung stattfindet. Wer lernt, sie anzunehmen statt sie zu fliehen, beginnt den leeren Raum nicht als Mangel zu lesen, sondern als Möglichkeit. Die Angst wird integriert, gehalten, durchquert und verwandelt sich in neue Kraft.
+      </p>
+      <p class="closing"
+         data-de="Erneuerung heisst nicht, das Alte zu verwerfen. Es heisst, den Zwischenraum auszuhalten, bis daraus die stärkere Version wächst."
+         data-en="Renewal does not mean discarding the old. It means enduring the in-between until the stronger version grows from it.">
+        Erneuerung heisst nicht, das Alte zu verwerfen. Es heisst, den Zwischenraum auszuhalten, bis daraus die stärkere Version wächst.
+      </p>
+    </div>
+  </section>
+
+  <!-- COLOR -->
+  <section class="color">
+    <div class="section-head">
+      <span class="num">04</span>
+      <h2 data-de="Warum Teal" data-en="Why teal">Warum Teal</h2>
+    </div>
+    <div class="color-grid">
+      <div class="swatch"></div>
+      <div>
+        <p data-de="Das Teal im Schwarz ist keine Dekoration. Die Farbpsychologie verbindet Blau-Grün-Töne mit reduzierter physiologischer Erregung, geringerer Schmerzwahrnehmung und klarerem Denken unter Stress. Teal liegt genau in dieser Schnittmenge. Weniger empfundener Schmerz. Mehr Fokus. Mehr Ausdauer. Es ist der Fokus-Blitz der Ruhe, der genau dann erscheint, wenn der Körper aufhört zu diskutieren."
+           data-en="The teal in the black is not decoration. Color psychology research links blue-green hues to reduced physiological arousal, lower pain perception, and greater mental clarity under stress. Teal sits exactly at that intersection. Less perceived pain. More focus. More endurance. It is the flash of calm that appears exactly when the body stops arguing.">
+          Das Teal im Schwarz ist keine Dekoration. Die Farbpsychologie verbindet Blau-Grün-Töne mit reduzierter physiologischer Erregung, geringerer Schmerzwahrnehmung und klarerem Denken unter Stress. Teal liegt genau in dieser Schnittmenge. Weniger empfundener Schmerz. Mehr Fokus. Mehr Ausdauer. Es ist der Fokus-Blitz der Ruhe, der genau dann erscheint, wenn der Körper aufhört zu diskutieren.
+        </p>
+        <p data-de="Less Pain. More Endurance."
+           data-en="Less Pain. More Endurance.">
+          Less Pain. More Endurance.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- VERBIER ULTRA 2026 -->
+  <section class="verbier" id="verbier">
+    <div class="section-head">
+      <span class="num">05</span>
+      <h2 data-de="Verbier Ultra 2026" data-en="Verbier Ultra 2026">Verbier Ultra 2026</h2>
+    </div>
+    <p class="lead"
+       data-de="Am Verbier Ultra 2026 werden <strong>alle Runner und der gesamte Staff</strong> mit einer X-Bionic Special Edition ausgerüstet. Ein gemeinsames Stück für die, die die Strecke laufen — und für die, die sie möglich machen."
+       data-en="At Verbier Ultra 2026, <strong>every runner and the entire staff</strong> will be equipped with an X-Bionic Special Edition. One shared piece for those who run the course — and for those who make it possible.">
+      Am Verbier Ultra 2026 werden <strong>alle Runner und der gesamte Staff</strong> mit einer X-Bionic Special Edition ausgerüstet. Ein gemeinsames Stück für die, die die Strecke laufen — und für die, die sie möglich machen.
+    </p>
+
+    <div class="values-banner">
+      <div class="event">Édition 2026 · Bagnes Traverse · 11–13 September · 102 km · +/− 8000 m D+</div>
+    </div>
+
+    <blockquote class="community-quote">
+      <p data-de="Die Community der Ultra-Traileurs ist eine grosse Familie: schlammige Schnürsenkel als Erinnerungen an Kilometer, Uhrenbräune als Messwerte der eigenen Ausdauer, Verpflegungspunkte als temporäre Labore mitten im Nirgendwo. Am Ende ist es kein Race allein — es ist ein kollektives Abenteuer, in dem jede:r anfeuert, stützt und Geschichten tauscht, so wild wie die Trails."
+         data-en="The ultra-trail community is a large family: muddy laces as memories of kilometres, watch tans as measurements of one’s own endurance, aid stations as temporary laboratories in the middle of nowhere. In the end it is not a race alone — it is a collective adventure in which everyone cheers, supports and exchanges stories as wild as the trails themselves.">
+        Die Community der Ultra-Traileurs ist eine grosse Familie: schlammige Schnürsenkel als Erinnerungen an Kilometer, Uhrenbräune als Messwerte der eigenen Ausdauer, Verpflegungspunkte als temporäre Labore mitten im Nirgendwo. Am Ende ist es kein Race allein — es ist ein kollektives Abenteuer, in dem jede:r anfeuert, stützt und Geschichten tauscht, so wild wie die Trails.
+      </p>
+      <cite>
+        <a href="https://www.verbierultra.com/" target="_blank" rel="noopener">verbierultra.com · Communauté</a>
+      </cite>
+      <a class="values-link" href="https://www.verbierultra.com/" target="_blank" rel="noopener">Pur. Brut. Essentiel.</a>
+    </blockquote>
+
+    <hr class="section-divider">
+
+    <p class="lead" style="margin-bottom:2rem"
+       data-de="Organisiert von der Non-Profit-Association <strong>Les Coureurs UltraSolidaires</strong> seit 2023: zurück zum Wesentlichen, roh und authentisch im Val de Bagnes."
+       data-en="Organised by the non-profit association <strong>Les Coureurs UltraSolidaires</strong> since 2023: back to the essentials, raw and authentic in Val de Bagnes.">
+      Organisiert von der Non-Profit-Association <strong>Les Coureurs UltraSolidaires</strong> seit 2023: zurück zum Wesentlichen, roh und authentisch im Val de Bagnes.
+    </p>
+
+    <div class="edition-visual">
+      <div class="img-wrap">
+        <img src="gallery-verbier.png" alt="X-Bionic Verbier Ultra Special Edition — front and back">
+      </div>
+      <div class="edition-caption">
+        <strong>Verbier Ultra Edition</strong>
+        <span data-de=" · Corefusion Run Shirt · für Runner und Staff · Swiss Engineered"
+              data-en=" · Corefusion Run Shirt · for runners and staff · Swiss Engineered"> · Corefusion Run Shirt · für Runner und Staff · Swiss Engineered</span>
+      </div>
+    </div>
+
+    <div class="verbier-cta">
+      <a class="btn-register"
+         href="https://onreg.datasport.com/de/verbier-ultra-2026"
+         target="_blank"
+         rel="noopener"
+         id="verbier-register-btn"
+         data-de="Register now"
+         data-en="Register now">Register now</a>
+      <span class="verbier-cta-note"
+            data-de="Mit der Anmeldung erhältst du das X-Bionic Verbier Ultra Shirt"
+            data-en="With registration you receive the X-Bionic Verbier Ultra shirt">
+        Mit der Anmeldung erhältst du das X-Bionic Verbier Ultra Shirt
+      </span>
+    </div>
+  </section>
+
+  <!-- LIMITED / IDEA -->
+  <section class="idea" id="limited">
+    <div class="section-head">
+      <span class="num">06</span>
+      <h2 data-de="Special Edition · X-Bionic Exclusive" data-en="Special Edition · X-Bionic Exclusive">Special Edition · X-Bionic Exclusive</h2>
+    </div>
+    <p class="lead"
+       data-de="Wir legen Wert auf nachhaltige Produktion. Wir sammeln den Demand, damit wir die genaue Stückzahl produzieren können, ohne Überproduktion. Beispiel: Verbier Ultra Edition 2026, 175 bestellt. Second Skin folgt demselben Prinzip als Special Edition · X-Bionic Exclusive, Release voraussichtlich Feb / März 2027."
+       data-en="We care about sustainable production. We collect demand so we can produce the exact quantity, without overproduction. Example: Verbier Ultra Edition 2026, 175 ordered. Second Skin follows the same principle as Special Edition · X-Bionic Exclusive, release expected Feb / Mar 2027.">
+      Wir legen Wert auf nachhaltige Produktion. Wir sammeln den Demand, damit wir die genaue Stückzahl produzieren können, ohne Überproduktion. Beispiel: Verbier Ultra Edition 2026, 175 bestellt. Second Skin folgt demselben Prinzip als Special Edition · X-Bionic Exclusive, Release voraussichtlich Feb / März 2027.
+    </p>
+
+    <div class="counter" id="edition-ticker" aria-live="polite">
+      <div class="counter-block" data-fit="men">
+        <div class="counter-row">
+          <span>Men</span>
+          <strong class="count-live"><span data-count="men">18</span> / 100</strong>
+        </div>
+        <div class="bar"><div class="bar-fill" id="bar-men" style="width:18%"></div></div>
+      </div>
+      <div class="counter-block" data-fit="women">
+        <div class="counter-row">
+          <span>Women</span>
+          <strong class="count-live"><span data-count="women">0</span> / 50</strong>
+        </div>
+        <div class="bar"><div class="bar-fill" id="bar-women" style="width:0%"></div></div>
+      </div>
+    </div>
+
+    <a class="ticker-cta" href="#register">
+      <span data-de="Jetzt registrieren" data-en="Register now">Jetzt registrieren</span>
+      <span class="arrow" aria-hidden="true">→</span>
+    </a>
+  </section>
+
+  <!-- REGISTER -->
+  <section class="register" id="register">
+    <div class="section-head">
+      <span class="num">07</span>
+      <h2 data-de="Pre-Release Liste" data-en="Pre-release list">Pre-Release Liste</h2>
+    </div>
+    <p class="lead"
+       data-de="Trag dich ein mit Vorname, Name, E-Mail und Grösse. Deine Registrierung zählt zum Demand — so produzieren wir die richtige Stückzahl. Mit der Eintragung sicherst du dir ein <strong>Vorkaufsrecht</strong> vor dem öffentlichen Release. Wir informieren dich vor dem Launch (voraussichtlich Feb / März 2027)."
+       data-en="Enter your first name, last name, email and size. Your registration counts toward demand — so we produce the right quantity. By signing up you secure <strong>priority purchase rights</strong> ahead of the public release. We'll notify you before launch (expected Feb / Mar 2027).">
+      Trag dich ein mit Vorname, Name, E-Mail und Grösse. Deine Registrierung zählt zum Demand — so produzieren wir die richtige Stückzahl. Mit der Eintragung sicherst du dir ein <strong>Vorkaufsrecht</strong> vor dem öffentlichen Release. Wir informieren dich vor dem Launch (voraussichtlich Feb / März 2027).
+    </p>
+
+    <form id="reg-form" novalidate>
+      <div class="form-grid two">
+        <div class="field">
+          <label for="firstname" data-de="Vorname" data-en="First name">Vorname</label>
+          <input id="firstname" name="firstname" type="text" autocomplete="given-name" required>
+        </div>
+        <div class="field">
+          <label for="lastname" data-de="Name" data-en="Last name">Name</label>
+          <input id="lastname" name="lastname" type="text" autocomplete="family-name" required>
+        </div>
+      </div>
+
+      <div class="form-grid" style="margin-top:1rem">
+        <div class="field">
+          <label for="email" data-de="E-Mail-Adresse" data-en="Email address">E-Mail-Adresse</label>
+          <input id="email" name="email" type="email" autocomplete="email" required>
+        </div>
+      </div>
+
+      <div class="form-grid two" style="margin-top:1rem">
+        <div class="field">
+          <label id="fit-label" data-de="Schnitt" data-en="Fit">Schnitt</label>
+          <div class="chip-wrap" role="radiogroup" aria-labelledby="fit-label">
+            <label class="opt">
+              <input type="radio" name="gender" value="men" required>
+              <span data-de="Männer" data-en="Men">Männer</span>
+            </label>
+            <label class="opt">
+              <input type="radio" name="gender" value="women">
+              <span data-de="Frauen" data-en="Women">Frauen</span>
+            </label>
+          </div>
+        </div>
+        <div class="field">
+          <label for="size" data-de="Grösse" data-en="Size">Grösse</label>
+          <select id="size" name="size" required disabled>
+            <option value="" data-de="Zuerst Schnitt wählen" data-en="Choose fit first">Zuerst Schnitt wählen</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary"
+                data-de="Auf die Liste"
+                data-en="Join the list">Auf die Liste</button>
+        <p class="form-error" id="form-error"
+           data-de="Bitte alle Felder korrekt ausfüllen."
+           data-en="Please fill in all fields correctly.">
+          Bitte alle Felder korrekt ausfüllen.
+        </p>
+      </div>
+    </form>
+
+    <div class="form-success" id="form-success">
+      <h3 data-de="Du bist drauf." data-en="You're on the list.">Du bist drauf.</h3>
+      <p data-de="Dein Platz zählt im Live-Ticker oben. Wir melden uns vor dem Release."
+         data-en="Your spot now counts in the live ticker above. We'll be in touch before release.">
+        Dein Platz zählt im Live-Ticker oben. Wir melden uns vor dem Release.
+      </p>
+    </div>
+  </section>
+
+  <!-- ARTIST -->
+  <section class="artist">
+    <div class="section-head">
+      <span class="num">08</span>
+      <h2 data-de="Über den Artist" data-en="About the artist">Über den Artist</h2>
+    </div>
+    <div class="artist-grid">
+      <div class="artist-name">
+        <div class="artist-title">Thomas Fankhauser</div>
+        <div class="artist-alias">EinOhm</div>
+      </div>
+      <div class="artist-bio">
+        <p data-de="Data &amp; Systems Architect bei X-Bionic und Visual Artist. Arbeitet an der Schnittstelle zwischen technischen und kreativen Disziplinen. Er sucht bewusst in den Grenzbereichen von scheinbar Unverbindbarem – Sport und Kunst, Technologie und Natur – und findet dort Liminalität, Übergangszustände und neue Verbindungen."
+           data-en="Data &amp; Systems Architect at X-Bionic and visual artist. Working at the interface between technical and creative disciplines. He deliberately seeks the border zones of what seems incompatible — sport and art, technology and nature — and finds liminality, transitional states, and new connections there.">
+          Data &amp; Systems Architect bei X-Bionic und Visual Artist. Arbeitet an der Schnittstelle zwischen technischen und kreativen Disziplinen. Er sucht bewusst in den Grenzbereichen von scheinbar Unverbindbarem – Sport und Kunst, Technologie und Natur – und findet dort Liminalität, Übergangszustände und neue Verbindungen.
+        </p>
+        <div class="artist-links">
+          <a href="https://thomasfankhauser.ch" target="_blank" rel="noopener">thomasfankhauser.ch</a>
+          <a href="https://www.linkedin.com/in/thomasfankhauser/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://instagram.com/edition_einohm" target="_blank" rel="noopener">@edition_einohm</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOGOS -->
+  <section class="logos">
+    <a class="logo-item" href="https://www.verbierultra.com/" target="_blank" rel="noopener">
+      <img src="logo-verbier.png" alt="Verbier Ultra logo">
+      <div class="logo-caption">
+        <span>verbierultra.com</span>
+        <span>@verbierultra</span>
+      </div>
+    </a>
+    <a class="logo-item" href="https://www.x-bionic.com/" target="_blank" rel="noopener">
+      <img src="logo-xbionic.png" alt="X-Bionic logo">
+      <div class="logo-caption">
+        <span>x-bionic.com</span>
+        <span>@xbionic</span>
+      </div>
+    </a>
+  </section>
+
+  <footer>
+    <span>EinOhm · Thomas Fankhauser</span>
+    <span>Second Skin · Second Chance</span>
+  </footer>
+
+<script>
+(function () {
+  var sizesMen = ['S', 'M', 'L', 'XL'];
+  var sizesWomen = ['S', 'M', 'L'];
+  var LIMITS = { men: 100, women: 50 };
+  var BASE = { men: 18, women: 0 };
+  var TICKER_KEY = 'secondskin_ticker';
+  var REG_KEY = 'secondskin_registrations';
+
+  var btnDe = document.getElementById('btn-de');
+  var btnEn = document.getElementById('btn-en');
+  var currentLang = 'de';
+
+  function setLang(lang) {
+    currentLang = lang;
+    document.querySelectorAll('[data-de]').forEach(function (el) {
+      var html = lang === 'de' ? el.getAttribute('data-de') : el.getAttribute('data-en');
+      if (html == null) return;
+      if (html.indexOf('<') !== -1) el.innerHTML = html;
+      else el.textContent = html;
+    });
+    btnDe.classList.toggle('active', lang === 'de');
+    btnEn.classList.toggle('active', lang === 'en');
+    document.documentElement.lang = lang;
+
+    var size = document.getElementById('size');
+    if (size && size.options[0] && !size.options[0].value) {
+      if (size.disabled) {
+        size.options[0].textContent = lang === 'de' ? 'Zuerst Schnitt wählen' : 'Choose fit first';
+      } else {
+        size.options[0].textContent = lang === 'de' ? 'Grösse wählen' : 'Select size';
+      }
+    }
+
+    var err = document.getElementById('form-error');
+    if (err && !err.classList.contains('show')) {
+      err.textContent = lang === 'de'
+        ? err.getAttribute('data-de')
+        : err.getAttribute('data-en');
+    }
+  }
+
+  btnDe.addEventListener('click', function () { setLang('de'); });
+  btnEn.addEventListener('click', function () { setLang('en'); });
+
+  function loadTicker() {
+    try {
+      var raw = JSON.parse(localStorage.getItem(TICKER_KEY) || 'null');
+      if (raw && typeof raw.men === 'number' && typeof raw.women === 'number') {
+        return {
+          men: Math.max(BASE.men, Math.floor(raw.men)),
+          women: Math.max(BASE.women, Math.floor(raw.women))
+        };
+      }
+    } catch (err) {}
+    return { men: BASE.men, women: BASE.women };
+  }
+
+  function saveTicker(state) {
+    try { localStorage.setItem(TICKER_KEY, JSON.stringify(state)); } catch (err) {}
+  }
+
+  function renderTicker(state) {
+    document.querySelectorAll('[data-count="men"]').forEach(function (el) {
+      el.textContent = String(state.men);
+      el.parentElement.classList.toggle('is-over', state.men > LIMITS.men);
+    });
+    document.querySelectorAll('[data-count="women"]').forEach(function (el) {
+      el.textContent = String(state.women);
+      el.parentElement.classList.toggle('is-over', state.women > LIMITS.women);
+    });
+    var barMen = document.getElementById('bar-men');
+    var barWomen = document.getElementById('bar-women');
+    if (barMen) {
+      barMen.style.width = Math.min(100, (state.men / LIMITS.men) * 100) + '%';
+      barMen.classList.toggle('is-over', state.men > LIMITS.men);
+    }
+    if (barWomen) {
+      barWomen.style.width = Math.min(100, (state.women / LIMITS.women) * 100) + '%';
+      barWomen.classList.toggle('is-over', state.women > LIMITS.women);
+    }
+  }
+
+  var ticker = loadTicker();
+  renderTicker(ticker);
+
+  var sizeSelect = document.getElementById('size');
+  document.querySelectorAll('input[name="gender"]').forEach(function (radio) {
+    radio.addEventListener('change', function () {
+      var list = radio.value === 'women' ? sizesWomen : sizesMen;
+      sizeSelect.innerHTML = '';
+      var placeholder = document.createElement('option');
+      placeholder.value = '';
+      placeholder.setAttribute('data-de', 'Grösse wählen');
+      placeholder.setAttribute('data-en', 'Select size');
+      placeholder.textContent = currentLang === 'de' ? 'Grösse wählen' : 'Select size';
+      sizeSelect.appendChild(placeholder);
+      list.forEach(function (s) {
+        var opt = document.createElement('option');
+        opt.value = s;
+        opt.textContent = s;
+        sizeSelect.appendChild(opt);
+      });
+      sizeSelect.disabled = false;
+    });
+  });
+
+  var form = document.getElementById('reg-form');
+  var formError = document.getElementById('form-error');
+  var formSuccess = document.getElementById('form-success');
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    formError.classList.remove('show');
+    var firstname = form.firstname.value.trim();
+    var lastname = form.lastname.value.trim();
+    var email = form.email.value.trim();
+    var genderEl = form.querySelector('input[name="gender"]:checked');
+    var size = form.size.value;
+    var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    if (!firstname || !lastname || !emailOk || !genderEl || !size) {
+      formError.textContent = currentLang === 'de'
+        ? formError.getAttribute('data-de')
+        : formError.getAttribute('data-en');
+      formError.classList.add('show');
+      return;
+    }
+
+    var fit = genderEl.value;
+    ticker[fit] += 1;
+    saveTicker(ticker);
+    renderTicker(ticker);
+
+    try {
+      var existing = JSON.parse(localStorage.getItem(REG_KEY) || '[]');
+      existing.push({
+        firstname: firstname,
+        lastname: lastname,
+        email: email,
+        fit: fit,
+        size: size,
+        at: new Date().toISOString()
+      });
+      localStorage.setItem(REG_KEY, JSON.stringify(existing));
+    } catch (err) {}
+
+    form.style.display = 'none';
+    formSuccess.classList.add('show');
+
+    if (typeof fbq === 'function' && window.META_PIXEL_ID) {
+      fbq('track', 'CompleteRegistration', {
+        content_name: 'Second Skin Pre-Release',
+        status: true,
+        fit: fit,
+        size: size
+      });
+      fbq('trackCustom', 'PreReleaseSignup', {
+        fit: fit,
+        size: size
+      });
+    }
+
+    var limited = document.getElementById('limited');
+    if (limited) {
+      limited.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  });
+
+  // Verbier Ultra external registration tracking
+  var verbierBtn = document.getElementById('verbier-register-btn');
+  if (verbierBtn) {
+    verbierBtn.addEventListener('click', function () {
+      if (typeof fbq === 'function') {
+        fbq('track', 'Lead', {
+          content_name: 'Verbier Ultra 2026 Registration',
+          content_category: 'External Registration'
+        });
+        fbq('trackCustom', 'VerbierUltraClick', {
+          destination: 'datasport'
+        });
+      }
+    });
+  }
+})();
+</script>
+</body>
+</html>

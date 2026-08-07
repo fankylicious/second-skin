@@ -1,0 +1,17 @@
+# Duplicates / source backups
+orig-asset-*.png
+second-skin-original.html
+secondskin.html
+product-original.png
+prototype-teal.png
+prototype-teal-transparent.png
+verbier-ultra.png
+verbier-edition.png
+xbionic-logo.png
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.log
+.vscode/
+.idea/
