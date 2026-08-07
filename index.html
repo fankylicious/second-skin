@@ -122,7 +122,16 @@
       linear-gradient(115deg, transparent 46%, rgba(62,168,155,0.18) 47%, rgba(95,232,211,0.35) 48%, transparent 49%),
       linear-gradient(115deg, transparent 60%, rgba(62,168,155,0.10) 61%, transparent 62%);
     filter:blur(.3px);
-    opacity:.9;
+    transform-origin:right center;
+    opacity:0;
+    transform:scale(0.97);
+    animation:skinGrow 2.4s cubic-bezier(0.22, 1, 0.36, 1) 0.3s forwards;
+  }
+  @keyframes skinGrow{
+    to{
+      opacity:.9;
+      transform:scale(1);
+    }
   }
   .hero-inner{ position:relative; z-index:2; max-width:920px;}
   .hero .eyebrow{ display:block; margin-bottom:1.8rem;}
@@ -135,7 +144,11 @@
   }
   .hero h1 span{
     color:transparent;
-    -webkit-text-stroke:1.5px var(--teal-bright);
+    -webkit-text-stroke:1.5px transparent;
+    animation:strokeAppear 1.8s ease 0.9s forwards;
+  }
+  @keyframes strokeAppear{
+    to{ -webkit-text-stroke-color:var(--teal-bright); }
   }
   .hero .tagline{
     margin-top:1.6rem;
@@ -866,7 +879,7 @@
       max-width:85%;
       line-height:1.5;
     }
-    .hero h1 span{ -webkit-text-stroke:1.2px var(--teal-bright); }
+    .hero h1 span{ -webkit-text-stroke-width:1.2px; }
     .hero .meta{
       gap:.85rem 1.4rem;
       font-size:.7rem;
@@ -933,7 +946,17 @@
 
   @media (prefers-reduced-motion: reduce){
     html{ scroll-behavior:auto; }
-    .gallery-item img{ transition:none; }
+    .gallery-item img,
+    .btn{ transition:none; }
+    .hero .crack{
+      animation:none;
+      opacity:.9;
+      transform:scale(1);
+    }
+    .hero h1 span{
+      animation:none;
+      -webkit-text-stroke-color:var(--teal-bright);
+    }
   }
 </style>
 </head>
@@ -982,17 +1005,13 @@ alt=""
       <h2 data-de="Design Konzept" data-en="Design Concept">Design Konzept</h2>
     </div>
     <div class="gallery-intro">
-      <p data-de="Inspiriert vom Häutungsprozess der Schlange: Die alte Haut fällt ab, darunter wächst etwas Stärkeres — und genau in diesem Zwischenraum entsteht die Second Skin."
-         data-en="Inspired by the snake’s shedding process: the old skin falls away, something stronger grows beneath — and in that in-between, the Second Skin is born.">
-        Inspiriert vom Häutungsprozess der Schlange: Die alte Haut fällt ab, darunter wächst etwas Stärkeres — und genau in diesem Zwischenraum entsteht die Second Skin.
+      <p data-de="Inspiriert vom Häutungsprozess der Schlange. Die alte Haut fällt ab, darunter wächst etwas Stärkeres. Genau dazwischen entsteht die Second Skin."
+         data-en="Inspired by the snake shedding its skin. The old skin falls away, something stronger grows beneath. Right there, the Second Skin is born.">
+        Inspiriert vom Häutungsprozess der Schlange. Die alte Haut fällt ab, darunter wächst etwas Stärkeres. Genau dazwischen entsteht die Second Skin.
       </p>
-      <p data-de="Das Textil fühlt sich wie eine zweite Haut an und wirkt auch so: nah am Körper, reduziert, teal auf schwarz — für den Moment, in dem Verletzlichkeit und Erneuerung zusammenfallen."
-         data-en="The textile feels like a second skin — and looks like one too: close to the body, reduced, teal on black — for the moment when vulnerability and renewal meet.">
-        Das Textil fühlt sich wie eine zweite Haut an und wirkt auch so: nah am Körper, reduziert, teal auf schwarz — für den Moment, in dem Verletzlichkeit und Erneuerung zusammenfallen.
-      </p>
-      <p data-de="Diese psychologische Ebene und die Farbpsychologie sind aus der Verbindung verschiedener Disziplinen entstanden — einfach gedacht, nah am Körper, nicht abgehoben."
-         data-en="This psychological layer and the color psychology grew out of connecting different disciplines — kept simple, close to the body, not abstract.">
-        Diese psychologische Ebene und die Farbpsychologie sind aus der Verbindung verschiedener Disziplinen entstanden — einfach gedacht, nah am Körper, nicht abgehoben.
+      <p data-de="Das Textil fühlt sich wie eine zweite Haut an und sieht auch so aus: nah am Körper, reduziert, teal auf schwarz. Für den Moment, in dem Verletzlichkeit und Erneuerung zusammentreffen."
+         data-en="The textile feels like a second skin and looks like one too: close to the body, reduced, teal on black. For the moment when vulnerability and renewal meet.">
+        Das Textil fühlt sich wie eine zweite Haut an und sieht auch so aus: nah am Körper, reduziert, teal auf schwarz. Für den Moment, in dem Verletzlichkeit und Erneuerung zusammentreffen.
       </p>
     </div>
     <div class="gallery-grid">
@@ -1079,13 +1098,13 @@ alt=""
          data-en="Between letting go and arriving lies an empty space.">
         Zwischen dem Ablegen und dem Ankommen liegt ein leerer Raum.
       </p>
-      <p data-de="Aus dem Zwischenraum wächst nicht sofort Stärke — zuerst wächst Angst. Was kommt, hat noch keinen Namen. Die alte Form ist weg. Die neue hat keine Kontur, keinen Halt. Angst vor dem Unbekannten, vor dem Verlust von Kontrolle, vor dem Moment, in dem nichts mehr trägt und noch nichts Neues hält."
-         data-en="From the in-between, strength does not arrive first — fear does. What comes next has no name yet. The old form is gone. The new one has no contour, no hold. Fear of the unknown, of losing control, of the moment when nothing carries you anymore and nothing new is holding you yet.">
-        Aus dem Zwischenraum wächst nicht sofort Stärke — zuerst wächst Angst. Was kommt, hat noch keinen Namen. Die alte Form ist weg. Die neue hat keine Kontur, keinen Halt. Angst vor dem Unbekannten, vor dem Verlust von Kontrolle, vor dem Moment, in dem nichts mehr trägt und noch nichts Neues hält.
+      <p data-de="Aus dem Zwischenraum wächst nicht sofort Stärke. Zuerst wächst Angst. Die alte Form ist weg. Die neue hat keine Kontur, keinen Halt. Angst vor dem Unbekannten, vor dem Verlust von Kontrolle."
+         data-en="From the in-between, strength does not arrive first. Fear does. The old form is gone. The new one has no contour, no hold. Fear of the unknown, of losing control.">
+        Aus dem Zwischenraum wächst nicht sofort Stärke. Zuerst wächst Angst. Die alte Form ist weg. Die neue hat keine Kontur, keinen Halt. Angst vor dem Unbekannten, vor dem Verlust von Kontrolle.
       </p>
-      <p data-de="Diese Angst ist kein Feind. Sie ist das Signal, dass gerade Erneuerung stattfindet. Wer lernt, sie anzunehmen statt vor ihr zu fliehen, beginnt den leeren Raum nicht als Mangel zu lesen, sondern als Möglichkeit. Die Angst wird integriert, gehalten, durchquert — und verwandelt sich in neue Kraft."
-         data-en="This fear is not an enemy. It is the signal that renewal is happening. Whoever learns to accept it instead of fleeing it begins to read the empty space not as lack, but as possibility. The fear is integrated, held, crossed — and transforms into new strength.">
-        Diese Angst ist kein Feind. Sie ist das Signal, dass gerade Erneuerung stattfindet. Wer lernt, sie anzunehmen statt vor ihr zu fliehen, beginnt den leeren Raum nicht als Mangel zu lesen, sondern als Möglichkeit. Die Angst wird integriert, gehalten, durchquert — und verwandelt sich in neue Kraft.
+      <p data-de="Diese Angst ist kein Feind. Sie ist das Signal, dass gerade Erneuerung stattfindet. Wer lernt, sie anzunehmen statt vor ihr zu fliehen, beginnt den leeren Raum nicht als Mangel zu lesen, sondern als Möglichkeit. Die Angst wird integriert, gehalten, durchquert und verwandelt sich in neue Kraft."
+         data-en="This fear is not an enemy. It is the signal that renewal is happening. Whoever learns to accept it instead of fleeing it begins to read the empty space not as lack, but as possibility. The fear is integrated, held, crossed and transforms into new strength.">
+        Diese Angst ist kein Feind. Sie ist das Signal, dass gerade Erneuerung stattfindet. Wer lernt, sie anzunehmen statt vor ihr zu fliehen, beginnt den leeren Raum nicht als Mangel zu lesen, sondern als Möglichkeit. Die Angst wird integriert, gehalten, durchquert und verwandelt sich in neue Kraft.
       </p>
       <p class="closing"
          data-de="Erneuerung heisst nicht, das Alte zu verwerfen. Es heisst, die Angst auszuhalten, bis daraus die stärkere Version wächst."
@@ -1104,9 +1123,9 @@ alt=""
     <div class="color-grid">
       <div class="swatch"></div>
       <div>
-        <p data-de="Das Teal im Schwarz ist keine Dekoration. Die Farbpsychologie verbindet Blau-Grün-Töne mit reduzierter physiologischer Erregung, geringerer Schmerzwahrnehmung und klarerem Denken unter Stress. Teal liegt genau in dieser Schnittmenge. Weniger empfundener Schmerz. Mehr Fokus. Mehr Ausdauer. Es ist der Fokus-Blitz der Ruhe, der genau dann erscheint, wenn der Körper aufhört zu diskutieren."
-           data-en="The teal in the black is not decoration. Color psychology research links blue-green hues to reduced physiological arousal, lower pain perception, and greater mental clarity under stress. Teal sits exactly at that intersection. Less perceived pain. More focus. More endurance. It is the calm that flashes through the moment the body stops arguing.">
-          Das Teal im Schwarz ist keine Dekoration. Die Farbpsychologie verbindet Blau-Grün-Töne mit reduzierter physiologischer Erregung, geringerer Schmerzwahrnehmung und klarerem Denken unter Stress. Teal liegt genau in dieser Schnittmenge. Weniger empfundener Schmerz. Mehr Fokus. Mehr Ausdauer. Es ist der Fokus-Blitz der Ruhe, der genau dann erscheint, wenn der Körper aufhört zu diskutieren.
+        <p data-de="Das Teal im Schwarz ist keine Dekoration. Die Farbpsychologie verbindet Blau-Grün-Töne mit weniger Stress, geringerer Schmerzwahrnehmung und klarerem Denken. Teal liegt genau dort. Weniger empfundener Schmerz. Mehr Fokus. Die Ruhe, die aufblitzt, wenn der Körper aufhört zu diskutieren."
+           data-en="The teal in the black is not decoration. Color psychology links blue-green hues to less stress, lower pain perception, and clearer thinking. Teal sits right there. Less perceived pain. More focus. The calm that flashes through when the body stops arguing.">
+          Das Teal im Schwarz ist keine Dekoration. Die Farbpsychologie verbindet Blau-Grün-Töne mit weniger Stress, geringerer Schmerzwahrnehmung und klarerem Denken. Teal liegt genau dort. Weniger empfundener Schmerz. Mehr Fokus. Die Ruhe, die aufblitzt, wenn der Körper aufhört zu diskutieren.
         </p>
         <p data-de="Less Pain. More Endurance."
            data-en="Less Pain. More Endurance.">
@@ -1116,78 +1135,16 @@ alt=""
     </div>
   </section>
 
-  <!-- VERBIER ULTRA 2026 -->
-  <section class="verbier" id="verbier">
-    <div class="section-head">
-      <span class="num">05</span>
-      <h2 data-de="Verbier Ultra 2026" data-en="Verbier Ultra 2026">Verbier Ultra 2026</h2>
-    </div>
-    <p class="lead"
-       data-de="Am Verbier Ultra wird die Second Skin nicht nur getragen – sie wird geteilt. <strong>Alle Runner und der gesamte Staff</strong> tragen dieselbe X-Bionic Special Edition. Ein gemeinsames Stück für den Moment, in dem die alte Haut abfällt — für die, die die Strecke laufen, und für die, die sie möglich machen."
-       data-en="At Verbier Ultra, the Second Skin is not only worn — it is shared. <strong>Every runner and the entire staff</strong> wear the same X-Bionic Special Edition. One shared piece for the moment the old skin falls away — for those who run the course, and for those who make it possible.">
-      Am Verbier Ultra wird die Second Skin nicht nur getragen – sie wird geteilt. <strong>Alle Runner und der gesamte Staff</strong> tragen dieselbe X-Bionic Special Edition. Ein gemeinsames Stück für den Moment, in dem die alte Haut abfällt — für die, die die Strecke laufen, und für die, die sie möglich machen.
-    </p>
-
-    <div class="values-banner">
-      <div class="event">Édition 2026 · Bagnes Traverse · 11–13 September · 102 km · +/− 8000 m D+</div>
-    </div>
-
-    <blockquote class="community-quote">
-      <p data-de="Die Community der Ultra-Traileurs ist eine grosse Familie: schlammige Schnürsenkel als Erinnerungen an Kilometer, Uhrenbräune als Messwerte der eigenen Ausdauer, Verpflegungspunkte als temporäre Labore mitten im Nirgendwo. Am Ende ist es kein Race allein — es ist ein kollektives Abenteuer, in dem jede:r anfeuert, stützt und Geschichten tauscht, so wild wie die Trails."
-         data-en="The ultra-trail community is a large family: muddy laces as memories of kilometres, watch tans as measurements of one’s own endurance, aid stations as temporary laboratories in the middle of nowhere. In the end it is not a race alone — it is a collective adventure in which everyone cheers, supports and exchanges stories as wild as the trails themselves.">
-        Die Community der Ultra-Traileurs ist eine grosse Familie: schlammige Schnürsenkel als Erinnerungen an Kilometer, Uhrenbräune als Messwerte der eigenen Ausdauer, Verpflegungspunkte als temporäre Labore mitten im Nirgendwo. Am Ende ist es kein Race allein — es ist ein kollektives Abenteuer, in dem jede:r anfeuert, stützt und Geschichten tauscht, so wild wie die Trails.
-      </p>
-      <cite>
-        <a href="https://www.verbierultra.com/" target="_blank" rel="noopener">verbierultra.com · Communauté</a>
-      </cite>
-      <a class="values-link" href="https://www.verbierultra.com/" target="_blank" rel="noopener">Pur. Brut. Essentiel.</a>
-    </blockquote>
-
-    <hr class="section-divider">
-
-    <p class="lead" style="margin-bottom:2rem"
-       data-de="Organisiert von der Non-Profit-Association <strong>Les Coureurs UltraSolidaires</strong> seit 2023: zurück zum Wesentlichen, roh und authentisch im Val de Bagnes."
-       data-en="Organised by the non-profit association <strong>Les Coureurs UltraSolidaires</strong> since 2023: back to the essentials, raw and authentic in Val de Bagnes.">
-      Organisiert von der Non-Profit-Association <strong>Les Coureurs UltraSolidaires</strong> seit 2023: zurück zum Wesentlichen, roh und authentisch im Val de Bagnes.
-    </p>
-
-    <div class="edition-visual">
-      <div class="img-wrap">
-        <img src="gallery-verbier.png" alt="X-Bionic Verbier Ultra Special Edition — front and back">
-      </div>
-      <div class="edition-caption">
-        <strong>Verbier Ultra Edition</strong>
-        <span data-de=" · Corefusion Run Shirt · für Runner und Staff · Swiss Engineered"
-              data-en=" · Corefusion Run Shirt · for runners and staff · Swiss Engineered"> · Corefusion Run Shirt · für Runner und Staff · Swiss Engineered</span>
-      </div>
-    </div>
-
-    <div class="verbier-cta">
-      <a class="btn-register"
-         href="https://onreg.datasport.com/de/verbier-ultra-2026"
-         target="_blank"
-         rel="noopener"
-         id="verbier-register-btn"
-         data-de="Register now"
-         data-en="Register now">Register now</a>
-      <span class="verbier-cta-note"
-            data-de="Mit der Anmeldung erhältst du das X-Bionic Verbier Ultra Shirt"
-            data-en="With registration you receive the X-Bionic Verbier Ultra shirt">
-        Mit der Anmeldung erhältst du das X-Bionic Verbier Ultra Shirt
-      </span>
-    </div>
-  </section>
-
   <!-- LIMITED / IDEA -->
   <section class="idea" id="limited">
     <div class="section-head">
-      <span class="num">06</span>
+      <span class="num">05</span>
       <h2 data-de="Special Edition · X-Bionic Exclusive" data-en="Special Edition · X-Bionic Exclusive">Special Edition · X-Bionic Exclusive</h2>
     </div>
     <p class="lead"
-       data-de="Wir häuten nicht mehr, als nötig ist. Wir legen Wert auf nachhaltige Produktion und stellen nur zum nachgefragten Bedarf her — ohne Überproduktion. Darüber hinaus trägt die Qualität von X-Bionic für viele Jahre. Beispiel: Verbier Ultra Edition 2026, 175 bestellt. Second Skin folgt demselben Prinzip als Special Edition · X-Bionic Exclusive, Release voraussichtlich Februar / März 2027."
-       data-en="We don’t shed more than necessary. We value sustainable production and make only what is demanded — without overproduction. Beyond that, X-Bionic quality lasts for years. Example: Verbier Ultra Edition 2026, 175 ordered. Second Skin follows the same principle as Special Edition · X-Bionic Exclusive, release expected Feb / Mar 2027.">
-      Wir häuten nicht mehr, als nötig ist. Wir legen Wert auf nachhaltige Produktion und stellen nur zum nachgefragten Bedarf her — ohne Überproduktion. Darüber hinaus trägt die Qualität von X-Bionic für viele Jahre. Beispiel: Verbier Ultra Edition 2026, 175 bestellt. Second Skin folgt demselben Prinzip als Special Edition · X-Bionic Exclusive, Release voraussichtlich Februar / März 2027.
+       data-de="Es wird nur so viel produziert, wie nachgefragt wird. Ohne Überproduktion. X-Bionic Qualität hält Jahre. Beispiel: Verbier Ultra Edition 2026, 175 bestellt. Second Skin folgt demselben Prinzip. Release voraussichtlich Februar / März 2027."
+       data-en="We produce only as much as is demanded. No overproduction. X-Bionic quality lasts for years. Example: Verbier Ultra Edition 2026, 175 ordered. Second Skin follows the same principle. Release expected Feb / Mar 2027.">
+      Es wird nur so viel produziert, wie nachgefragt wird. Ohne Überproduktion. X-Bionic Qualität hält Jahre. Beispiel: Verbier Ultra Edition 2026, 175 bestellt. Second Skin folgt demselben Prinzip. Release voraussichtlich Februar / März 2027.
     </p>
 
     <div class="counter" id="edition-ticker" aria-live="polite">
@@ -1216,13 +1173,13 @@ alt=""
   <!-- REGISTER -->
   <section class="register" id="register">
     <div class="section-head">
-      <span class="num">07</span>
-      <h2 data-de="Pre-Release Liste" data-en="Pre-release list">Pre-Release Liste</h2>
+      <span class="num">06</span>
+      <h2 data-de="Vormerken" data-en="Save your spot">Vormerken</h2>
     </div>
     <p class="lead"
-       data-de="Trag dich ein mit Vorname, Name, E-Mail und Grösse. Deine Registrierung zählt zum Demand — so produzieren wir die richtige Stückzahl. Mit der Eintragung sicherst du dir ein <strong>Vorkaufsrecht</strong> vor dem öffentlichen Release. Wir informieren dich vor dem Launch (voraussichtlich Februar / März 2027)."
-       data-en="Enter your first name, last name, email and size. Your registration counts toward demand — so we produce the right quantity. By signing up you secure <strong>priority purchase rights</strong> ahead of the public release. We'll notify you before launch (expected Feb / Mar 2027).">
-      Trag dich ein mit Vorname, Name, E-Mail und Grösse. Deine Registrierung zählt zum Demand — so produzieren wir die richtige Stückzahl. Mit der Eintragung sicherst du dir ein <strong>Vorkaufsrecht</strong> vor dem öffentlichen Release. Wir informieren dich vor dem Launch (voraussichtlich Februar / März 2027).
+       data-de="Falls dir das Design gefällt, merken wir uns das gerne vor und melden uns bei dir zum Release."
+       data-en="If you like the design, we're happy to remember that and get in touch when it releases.">
+      Falls dir das Design gefällt, merken wir uns das gerne vor und melden uns bei dir zum Release.
     </p>
 
     <form id="reg-form" novalidate>
@@ -1281,10 +1238,72 @@ alt=""
 
     <div class="form-success" id="form-success" aria-live="polite">
       <h3 data-de="Du bist drauf." data-en="You're on the list.">Du bist drauf.</h3>
-      <p data-de="Danke für dein Interesse am Second Skin Shirt. Dein Platz zählt im Demand-Ticker. Wir melden uns vor dem Release."
-         data-en="Thanks for your interest in the Second Skin shirt. Your spot counts in the demand ticker. We'll be in touch before release.">
-        Danke für dein Interesse am Second Skin Shirt. Dein Platz zählt im Demand-Ticker. Wir melden uns vor dem Release.
+      <p data-de="Danke. Wir melden uns vor dem Release."
+         data-en="Thanks. We'll be in touch before release.">
+        Danke. Wir melden uns vor dem Release.
       </p>
+    </div>
+  </section>
+
+  <!-- VERBIER ULTRA 2026 -->
+  <section class="verbier" id="verbier">
+    <div class="section-head">
+      <span class="num">07</span>
+      <h2 data-de="Verbier Ultra 2026" data-en="Verbier Ultra 2026">Verbier Ultra 2026</h2>
+    </div>
+    <p class="lead"
+       data-de="Dieses Design kommt dieses Jahr am Verbier Ultra zum Einsatz. Getragen von allen Runnern und dem gesamten Staff."
+       data-en="This design will be worn at this year’s Verbier Ultra. By every runner and the entire staff.">
+      Dieses Design kommt dieses Jahr am Verbier Ultra zum Einsatz. Getragen von allen Runnern und dem gesamten Staff.
+    </p>
+
+    <div class="values-banner">
+      <div class="event">Édition 2026 · Bagnes Traverse · 11–13 September · 102 km · +/− 8000 m D+</div>
+    </div>
+
+    <blockquote class="community-quote">
+      <p data-de="Die Community der Ultra-Traileurs ist eine grosse Familie: schlammige Schnürsenkel als Erinnerungen an Kilometer, Uhrenbräune als Messwerte der eigenen Ausdauer, Verpflegungspunkte als temporäre Labore mitten im Nirgendwo. Am Ende ist es kein Race allein. Es ist ein kollektives Abenteuer, in dem jede:r anfeuert, stützt und Geschichten tauscht, so wild wie die Trails."
+         data-en="The ultra-trail community is a large family: muddy laces as memories of kilometres, watch tans as measurements of one’s own endurance, aid stations as temporary laboratories in the middle of nowhere. In the end it is not a race alone. It is a collective adventure in which everyone cheers, supports and exchanges stories as wild as the trails themselves.">
+        Die Community der Ultra-Traileurs ist eine grosse Familie: schlammige Schnürsenkel als Erinnerungen an Kilometer, Uhrenbräune als Messwerte der eigenen Ausdauer, Verpflegungspunkte als temporäre Labore mitten im Nirgendwo. Am Ende ist es kein Race allein. Es ist ein kollektives Abenteuer, in dem jede:r anfeuert, stützt und Geschichten tauscht, so wild wie die Trails.
+      </p>
+      <cite>
+        <a href="https://www.verbierultra.com/" target="_blank" rel="noopener">verbierultra.com · Communauté</a>
+      </cite>
+      <a class="values-link" href="https://www.verbierultra.com/" target="_blank" rel="noopener">Pur. Brut. Essentiel.</a>
+    </blockquote>
+
+    <hr class="section-divider">
+
+    <p class="lead" style="margin-bottom:2rem"
+       data-de="Organisiert von der Non-Profit-Association <strong>Les Coureurs UltraSolidaires</strong> seit 2023: zurück zum Wesentlichen, roh und authentisch im Val de Bagnes."
+       data-en="Organised by the non-profit association <strong>Les Coureurs UltraSolidaires</strong> since 2023: back to the essentials, raw and authentic in Val de Bagnes.">
+      Organisiert von der Non-Profit-Association <strong>Les Coureurs UltraSolidaires</strong> seit 2023: zurück zum Wesentlichen, roh und authentisch im Val de Bagnes.
+    </p>
+
+    <div class="edition-visual">
+      <div class="img-wrap">
+        <img src="gallery-verbier.png" alt="X-Bionic Verbier Ultra Special Edition, front and back">
+      </div>
+      <div class="edition-caption">
+        <strong>Verbier Ultra Edition</strong>
+        <span data-de=" · Corefusion Run Shirt · für Runner und Staff · Swiss Engineered"
+              data-en=" · Corefusion Run Shirt · for runners and staff · Swiss Engineered"> · Corefusion Run Shirt · für Runner und Staff · Swiss Engineered</span>
+      </div>
+    </div>
+
+    <div class="verbier-cta">
+      <a class="btn-register"
+         href="https://onreg.datasport.com/de/verbier-ultra-2026"
+         target="_blank"
+         rel="noopener"
+         id="verbier-register-btn"
+         data-de="Register now"
+         data-en="Register now">Register now</a>
+      <span class="verbier-cta-note"
+            data-de="Mit der Anmeldung erhältst du das X-Bionic Verbier Ultra Shirt"
+            data-en="With registration you receive the X-Bionic Verbier Ultra shirt">
+        Mit der Anmeldung erhältst du das X-Bionic Verbier Ultra Shirt
+      </span>
     </div>
   </section>
 
@@ -1300,9 +1319,9 @@ alt=""
         <div class="artist-alias">EinOhm</div>
       </div>
       <div class="artist-bio">
-        <p data-de="Data &amp; Systems Architect bei X-Bionic und Visual Artist. Arbeitet an der Schnittstelle zwischen technischen und kreativen Disziplinen. Er sucht bewusst in den Grenzbereichen von scheinbar Unverbindbarem – Natur und Technologie, Kunst und Sport – und findet dort Übergangszustände, neue Verbindungen und Innovation."
-           data-en="Data &amp; Systems Architect at X-Bionic and visual artist. Working at the interface between technical and creative disciplines. He deliberately seeks the border zones of what seems incompatible — nature and technology, art and sport — and finds transitional states, new connections, and innovation there.">
-          Data &amp; Systems Architect bei X-Bionic und Visual Artist. Arbeitet an der Schnittstelle zwischen technischen und kreativen Disziplinen. Er sucht bewusst in den Grenzbereichen von scheinbar Unverbindbarem – Natur und Technologie, Kunst und Sport – und findet dort Übergangszustände, neue Verbindungen und Innovation.
+        <p data-de="Data &amp; Systems Architect bei X-Bionic und Visual Artist. Arbeitet an der Schnittstelle zwischen technischen und kreativen Disziplinen. Er sucht bewusst in den Grenzbereichen von scheinbar Unverbindbarem: Natur und Technologie, Kunst und Sport. Dort findet er Übergangszustände, neue Verbindungen und Innovation."
+           data-en="Data &amp; Systems Architect at X-Bionic and visual artist. Working at the interface between technical and creative disciplines. He deliberately seeks the border zones of what seems incompatible: nature and technology, art and sport. There he finds transitional states, new connections, and innovation.">
+          Data &amp; Systems Architect bei X-Bionic und Visual Artist. Arbeitet an der Schnittstelle zwischen technischen und kreativen Disziplinen. Er sucht bewusst in den Grenzbereichen von scheinbar Unverbindbarem: Natur und Technologie, Kunst und Sport. Dort findet er Übergangszustände, neue Verbindungen und Innovation.
         </p>
         <div class="artist-links">
           <a href="https://thomasfankhauser.ch" target="_blank" rel="noopener">thomasfankhauser.ch</a>
