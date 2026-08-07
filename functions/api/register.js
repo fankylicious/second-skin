@@ -3,7 +3,7 @@
  * Env secrets (Pages → Settings → Environment variables):
  *   RESEND_API_KEY  - from resend.com
  *   NOTIFY_EMAIL    - where signup alerts go (e.g. your inbox)
- *   FROM_EMAIL      - optional, default: Second Skin <noreply@secondskin.run>
+ *   FROM_EMAIL      - optional, default: Second Skin <registration@secondskin.run>
  */
 
 export async function onRequestPost(context) {
@@ -37,7 +37,7 @@ export async function onRequestPost(context) {
     return json({ ok: false, error: 'Missing fields' }, 400);
   }
 
-  const from = env.FROM_EMAIL || 'Second Skin <noreply@secondskin.run>';
+  const from = env.FROM_EMAIL || 'Second Skin <registration@secondskin.run>';
   const subjectNotify = `Second Skin signup: ${firstname} ${lastname} (${fit}/${size})`;
   const textNotify = [
     'New Second Skin pre-release registration',
