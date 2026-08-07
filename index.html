@@ -206,6 +206,15 @@
 
   /* GALLERY */
   .gallery{ background:var(--black); padding-top:3.5rem; padding-bottom:3.5rem; }
+  .gallery-intro{
+    max-width:680px;
+    margin:-1.2rem 0 2.2rem;
+    font-size:1.05rem;
+    line-height:1.7;
+    color:var(--muted);
+  }
+  .gallery-intro p{ margin:0 0 .85rem; }
+  .gallery-intro p:last-child{ margin-bottom:0; }
   .gallery-grid{
     display:grid;
     grid-template-columns:1fr;
@@ -841,12 +850,11 @@
 
   footer{
     padding:3rem 8vw;
-    display:flex; justify-content:space-between; align-items:center;
+    display:flex; justify-content:center; align-items:center;
     font-family:'JetBrains Mono',monospace;
     font-size:.72rem;
     color:var(--muted);
     letter-spacing:.05em;
-    gap:1rem; flex-wrap:wrap;
   }
 
   @media (max-width:820px){
@@ -950,28 +958,42 @@ alt=""
       <h1>SECOND <span>SKIN</span></h1>
       <div class="tagline">Less Pain. More Endurance.</div>
       <div class="meta">
-        <span><strong data-de="Auslöser:" data-en="Trigger:">Auslöser:</strong> <span data-de="Schlangenhäutung" data-en="Snake shedding">Schlangenhäutung</span></span>
+        <span><strong data-de="Inspiriert von:" data-en="Inspired by:">Inspiriert von:</strong> <span data-de="Schlangenhäutung" data-en="snake shedding">Schlangenhäutung</span></span>
         <span><strong data-de="Colorway:" data-en="Colorway:">Colorway:</strong> <span data-de="Teal auf Schwarz" data-en="teal on black">Teal auf Schwarz</span></span>
-        <span><strong data-de="Produkt:" data-en="Product:">Produkt:</strong> <span data-de="Corefusion Run Shirt, Shortsleeve · Women Crop Top"
-             data-en="Corefusion Run Shirt, Shortsleeve · Women Crop Top">Corefusion Run Shirt, Shortsleeve · Women Crop Top</span></span>
+        <span><strong data-de="Produkt:" data-en="Product:">Produkt:</strong> <span data-de="Corefusion Run Shirt · Shortsleeve"
+             data-en="Corefusion Run Shirt · Shortsleeve">Corefusion Run Shirt · Shortsleeve</span></span>
         <span><strong data-de="Release:" data-en="Release:">Release:</strong> <span data-de="Februar / März 2027" data-en="Feb / Mar 2027">Februar / März 2027</span></span>
       </div>
       <div class="hero-cta">
         <a class="btn btn-primary" href="#register"
            data-de="Registrieren"
            data-en="Register">Registrieren</a>
-        <a class="btn btn-ghost" href="#concept"
+        <a class="btn btn-ghost" href="#design"
            data-de="Design Concept"
            data-en="Design Concept">Design Concept</a>
       </div>
     </div>
   </div>
 
-  <!-- GALLERY -->
+  <!-- GALLERY / DESIGN CONCEPT -->
   <section class="gallery" id="design">
     <div class="section-head">
       <span class="num">00</span>
-      <h2 data-de="Das Design" data-en="The design">Das Design</h2>
+      <h2 data-de="Design Konzept" data-en="Design Concept">Design Konzept</h2>
+    </div>
+    <div class="gallery-intro">
+      <p data-de="Inspiriert vom Häutungsprozess der Schlange: Die alte Haut fällt ab, darunter wächst etwas Stärkeres — und genau in diesem Zwischenraum entsteht die Second Skin."
+         data-en="Inspired by the snake’s shedding process: the old skin falls away, something stronger grows beneath — and in that in-between, the Second Skin is born.">
+        Inspiriert vom Häutungsprozess der Schlange: Die alte Haut fällt ab, darunter wächst etwas Stärkeres — und genau in diesem Zwischenraum entsteht die Second Skin.
+      </p>
+      <p data-de="Das Textil fühlt sich wie eine zweite Haut an und wirkt auch so: nah am Körper, reduziert, teal auf schwarz — für den Moment, in dem Verletzlichkeit und Erneuerung zusammenfallen."
+         data-en="The textile feels like a second skin — and looks like one too: close to the body, reduced, teal on black — for the moment when vulnerability and renewal meet.">
+        Das Textil fühlt sich wie eine zweite Haut an und wirkt auch so: nah am Körper, reduziert, teal auf schwarz — für den Moment, in dem Verletzlichkeit und Erneuerung zusammenfallen.
+      </p>
+      <p data-de="Diese psychologische Ebene und die Farbpsychologie sind aus der Verbindung verschiedener Disziplinen entstanden — einfach gedacht, nah am Körper, nicht abgehoben."
+         data-en="This psychological layer and the color psychology grew out of connecting different disciplines — kept simple, close to the body, not abstract.">
+        Diese psychologische Ebene und die Farbpsychologie sind aus der Verbindung verschiedener Disziplinen entstanden — einfach gedacht, nah am Körper, nicht abgehoben.
+      </p>
     </div>
     <div class="gallery-grid">
       <figure class="gallery-item">
@@ -997,13 +1019,13 @@ alt=""
          data-en="When the old skin tears, what lies underneath is not instantly the new one. It is bare, sensitive skin. Thin. Permeable. Every point of friction becomes noticeable. Every gust of wind. Every unevenness of the trail.">
         Wenn die alte Haut reisst, liegt darunter nicht sofort die neue. Es liegt nackte, empfindliche Haut. Dünn. Durchlässig. Jeder Reibungspunkt wird spürbar. Jeder Windzug. Jede Unebenheit des Trails.
       </p>
-      <p data-de="Genau in diesem Zwischenraum – weder geschützt noch schon neu gerüstet – geschieht das Wesentliche. Der Körper gibt auf, was er bisher war. Die mentale Struktur, die bis eben noch getragen hat, wird dünn. Und in diesem Moment entscheidet sich, ob etwas Neues entsteht oder ob man zurück in die alte, eng gewordene Haut kriecht."
-         data-en="Exactly in this in-between — neither protected nor newly armored — the essential happens. The body lets go of what it was. The mental structure that carried you until a moment ago grows thin. And in that moment it is decided whether something new emerges, or whether you crawl back into the old skin that has grown too tight.">
-        Genau in diesem Zwischenraum – weder geschützt noch schon neu gerüstet – geschieht das Wesentliche. Der Körper gibt auf, was er bisher war. Die mentale Struktur, die bis eben noch getragen hat, wird dünn. Und in diesem Moment entscheidet sich, ob etwas Neues entsteht oder ob man zurück in die alte, eng gewordene Haut kriecht.
+      <p data-de="Genau in diesem Zwischenraum – weder geschützt noch schon neu gerüstet – geschieht das Wesentliche. Der Körper gibt auf, was er bisher war. Was getragen hat, wird dünn. Und in diesem Moment entscheidet sich, ob etwas Neues entsteht oder ob man zurück in die alte, eng gewordene Haut kriecht."
+         data-en="Exactly in this in-between — neither protected nor newly armored — the essential happens. The body lets go of what it was. What carried you grows thin. And in that moment it is decided whether something new emerges, or whether you crawl back into the old skin that has grown too tight.">
+        Genau in diesem Zwischenraum – weder geschützt noch schon neu gerüstet – geschieht das Wesentliche. Der Körper gibt auf, was er bisher war. Was getragen hat, wird dünn. Und in diesem Moment entscheidet sich, ob etwas Neues entsteht oder ob man zurück in die alte, eng gewordene Haut kriecht.
       </p>
-      <p data-de="Für den Runner ist das der Punkt, an dem die Beine nicht mehr wollen, der Kopf zu laut wird und der Wille allein nicht mehr reicht. Dann muss etwas anderes tragen: eine Form, die nah genug am Körper ist, um die Verletzlichkeit nicht zu verstecken, sondern sie zu halten, während darunter schon die stärkere Version wächst."
-         data-en="For the runner, this is the point where the legs no longer want to, the mind grows too loud, and willpower alone is no longer enough. Then something else has to carry you: a form close enough to the body not to hide the vulnerability, but to hold it — while underneath, the stronger version is already growing.">
-        Für den Runner ist das der Punkt, an dem die Beine nicht mehr wollen, der Kopf zu laut wird und der Wille allein nicht mehr reicht. Dann muss etwas anderes tragen: eine Form, die nah genug am Körper ist, um die Verletzlichkeit nicht zu verstecken, sondern sie zu halten, während darunter schon die stärkere Version wächst.
+      <p data-de="Für den Runner ist das der Punkt, an dem die Beine nicht mehr wollen und der Wille allein nicht mehr reicht. Dann muss etwas anderes tragen: eine Form, die nah genug am Körper ist, um die Verletzlichkeit nicht zu verstecken, sondern sie zu halten, während darunter schon die stärkere Version wächst."
+         data-en="For the runner, this is the point where the legs no longer want to and willpower alone is no longer enough. Then something else has to carry you: a form close enough to the body not to hide the vulnerability, but to hold it — while underneath, the stronger version is already growing.">
+        Für den Runner ist das der Punkt, an dem die Beine nicht mehr wollen und der Wille allein nicht mehr reicht. Dann muss etwas anderes tragen: eine Form, die nah genug am Körper ist, um die Verletzlichkeit nicht zu verstecken, sondern sie zu halten, während darunter schon die stärkere Version wächst.
       </p>
       <p class="closing"
          data-de="Die Verletzlichkeit ist kein Zustand, den man überwinden muss. Sie ist der Übergang selbst. Der einzige Ort, an dem echte Erneuerung stattfinden kann."
@@ -1049,7 +1071,7 @@ alt=""
   <section class="concept" id="renewal">
     <div class="section-head">
       <span class="num">03</span>
-      <h2 data-de="Angst &amp; Erneuerung" data-en="Fears &amp; Renewal">Angst &amp; Erneuerung</h2>
+      <h2 data-de="Angst &amp; Erneuerung" data-en="Fear &amp; Renewal">Angst &amp; Erneuerung</h2>
     </div>
     <div class="concept-body">
       <p class="lead-line"
@@ -1057,18 +1079,18 @@ alt=""
          data-en="Between letting go and arriving lies an empty space.">
         Zwischen dem Ablegen und dem Ankommen liegt ein leerer Raum.
       </p>
-      <p data-de="Noch weiss man nicht, was das Neue ist. Die alte Form ist weg. Die neue hat noch keinen Namen, keine Kontur, keinen Halt. In diesem Zwischenraum entsteht Angst: Angst vor dem Unbekannten, vor dem Verlust von Kontrolle, vor dem Moment, in dem nichts mehr trägt und noch nichts Neues hält."
-         data-en="You do not yet know what the new is. The old form is gone. The new one has no name yet, no contour, no hold. In this in-between, fear arises: fear of the unknown, of losing control, of the moment when nothing carries you anymore and nothing new is holding you yet.">
-        Noch weiss man nicht, was das Neue ist. Die alte Form ist weg. Die neue hat noch keinen Namen, keine Kontur, keinen Halt. In diesem Zwischenraum entsteht Angst: Angst vor dem Unbekannten, vor dem Verlust von Kontrolle, vor dem Moment, in dem nichts mehr trägt und noch nichts Neues hält.
+      <p data-de="Aus dem Zwischenraum wächst nicht sofort Stärke — zuerst wächst Angst. Was kommt, hat noch keinen Namen. Die alte Form ist weg. Die neue hat keine Kontur, keinen Halt. Angst vor dem Unbekannten, vor dem Verlust von Kontrolle, vor dem Moment, in dem nichts mehr trägt und noch nichts Neues hält."
+         data-en="From the in-between, strength does not arrive first — fear does. What comes next has no name yet. The old form is gone. The new one has no contour, no hold. Fear of the unknown, of losing control, of the moment when nothing carries you anymore and nothing new is holding you yet.">
+        Aus dem Zwischenraum wächst nicht sofort Stärke — zuerst wächst Angst. Was kommt, hat noch keinen Namen. Die alte Form ist weg. Die neue hat keine Kontur, keinen Halt. Angst vor dem Unbekannten, vor dem Verlust von Kontrolle, vor dem Moment, in dem nichts mehr trägt und noch nichts Neues hält.
       </p>
-      <p data-de="Diese Angst ist kein Feind. Sie ist der Hinweis, dass gerade Erneuerung stattfindet. Wer lernt, sie anzunehmen statt sie zu fliehen, beginnt den leeren Raum nicht als Mangel zu lesen, sondern als Möglichkeit. Die Angst wird integriert, gehalten, durchquert und verwandelt sich in neue Kraft."
+      <p data-de="Diese Angst ist kein Feind. Sie ist das Signal, dass gerade Erneuerung stattfindet. Wer lernt, sie anzunehmen statt vor ihr zu fliehen, beginnt den leeren Raum nicht als Mangel zu lesen, sondern als Möglichkeit. Die Angst wird integriert, gehalten, durchquert — und verwandelt sich in neue Kraft."
          data-en="This fear is not an enemy. It is the signal that renewal is happening. Whoever learns to accept it instead of fleeing it begins to read the empty space not as lack, but as possibility. The fear is integrated, held, crossed — and transforms into new strength.">
-        Diese Angst ist kein Feind. Sie ist der Hinweis, dass gerade Erneuerung stattfindet. Wer lernt, sie anzunehmen statt sie zu fliehen, beginnt den leeren Raum nicht als Mangel zu lesen, sondern als Möglichkeit. Die Angst wird integriert, gehalten, durchquert und verwandelt sich in neue Kraft.
+        Diese Angst ist kein Feind. Sie ist das Signal, dass gerade Erneuerung stattfindet. Wer lernt, sie anzunehmen statt vor ihr zu fliehen, beginnt den leeren Raum nicht als Mangel zu lesen, sondern als Möglichkeit. Die Angst wird integriert, gehalten, durchquert — und verwandelt sich in neue Kraft.
       </p>
       <p class="closing"
-         data-de="Erneuerung heisst nicht, das Alte zu verwerfen. Es heisst, den Zwischenraum auszuhalten, bis daraus die stärkere Version wächst."
-         data-en="Renewal does not mean discarding the old. It means enduring the in-between until the stronger version grows from it.">
-        Erneuerung heisst nicht, das Alte zu verwerfen. Es heisst, den Zwischenraum auszuhalten, bis daraus die stärkere Version wächst.
+         data-de="Erneuerung heisst nicht, das Alte zu verwerfen. Es heisst, die Angst auszuhalten, bis daraus die stärkere Version wächst."
+         data-en="Renewal does not mean discarding the old. It means enduring the fear until the stronger version grows from it.">
+        Erneuerung heisst nicht, das Alte zu verwerfen. Es heisst, die Angst auszuhalten, bis daraus die stärkere Version wächst.
       </p>
     </div>
   </section>
@@ -1083,7 +1105,7 @@ alt=""
       <div class="swatch"></div>
       <div>
         <p data-de="Das Teal im Schwarz ist keine Dekoration. Die Farbpsychologie verbindet Blau-Grün-Töne mit reduzierter physiologischer Erregung, geringerer Schmerzwahrnehmung und klarerem Denken unter Stress. Teal liegt genau in dieser Schnittmenge. Weniger empfundener Schmerz. Mehr Fokus. Mehr Ausdauer. Es ist der Fokus-Blitz der Ruhe, der genau dann erscheint, wenn der Körper aufhört zu diskutieren."
-           data-en="The teal in the black is not decoration. Color psychology research links blue-green hues to reduced physiological arousal, lower pain perception, and greater mental clarity under stress. Teal sits exactly at that intersection. Less perceived pain. More focus. More endurance. It is the flash of calm that appears exactly when the body stops arguing.">
+           data-en="The teal in the black is not decoration. Color psychology research links blue-green hues to reduced physiological arousal, lower pain perception, and greater mental clarity under stress. Teal sits exactly at that intersection. Less perceived pain. More focus. More endurance. It is the calm that flashes through the moment the body stops arguing.">
           Das Teal im Schwarz ist keine Dekoration. Die Farbpsychologie verbindet Blau-Grün-Töne mit reduzierter physiologischer Erregung, geringerer Schmerzwahrnehmung und klarerem Denken unter Stress. Teal liegt genau in dieser Schnittmenge. Weniger empfundener Schmerz. Mehr Fokus. Mehr Ausdauer. Es ist der Fokus-Blitz der Ruhe, der genau dann erscheint, wenn der Körper aufhört zu diskutieren.
         </p>
         <p data-de="Less Pain. More Endurance."
@@ -1101,9 +1123,9 @@ alt=""
       <h2 data-de="Verbier Ultra 2026" data-en="Verbier Ultra 2026">Verbier Ultra 2026</h2>
     </div>
     <p class="lead"
-       data-de="Am Verbier Ultra 2026 werden <strong>alle Runner und der gesamte Staff</strong> mit einer X-Bionic Special Edition ausgerüstet. Ein gemeinsames Stück für die, die die Strecke laufen — und für die, die sie möglich machen."
-       data-en="At Verbier Ultra 2026, <strong>every runner and the entire staff</strong> will be equipped with an X-Bionic Special Edition. One shared piece for those who run the course — and for those who make it possible.">
-      Am Verbier Ultra 2026 werden <strong>alle Runner und der gesamte Staff</strong> mit einer X-Bionic Special Edition ausgerüstet. Ein gemeinsames Stück für die, die die Strecke laufen — und für die, die sie möglich machen.
+       data-de="Am Verbier Ultra wird die Second Skin nicht nur getragen – sie wird geteilt. <strong>Alle Runner und der gesamte Staff</strong> tragen dieselbe X-Bionic Special Edition. Ein gemeinsames Stück für den Moment, in dem die alte Haut abfällt — für die, die die Strecke laufen, und für die, die sie möglich machen."
+       data-en="At Verbier Ultra, the Second Skin is not only worn — it is shared. <strong>Every runner and the entire staff</strong> wear the same X-Bionic Special Edition. One shared piece for the moment the old skin falls away — for those who run the course, and for those who make it possible.">
+      Am Verbier Ultra wird die Second Skin nicht nur getragen – sie wird geteilt. <strong>Alle Runner und der gesamte Staff</strong> tragen dieselbe X-Bionic Special Edition. Ein gemeinsames Stück für den Moment, in dem die alte Haut abfällt — für die, die die Strecke laufen, und für die, die sie möglich machen.
     </p>
 
     <div class="values-banner">
@@ -1163,22 +1185,22 @@ alt=""
       <h2 data-de="Special Edition · X-Bionic Exclusive" data-en="Special Edition · X-Bionic Exclusive">Special Edition · X-Bionic Exclusive</h2>
     </div>
     <p class="lead"
-       data-de="Wir legen Wert auf nachhaltige Produktion. Wir sammeln den Demand, damit wir die genaue Stückzahl produzieren können, ohne Überproduktion. Beispiel: Verbier Ultra Edition 2026, 175 bestellt. Second Skin folgt demselben Prinzip als Special Edition · X-Bionic Exclusive, Release voraussichtlich Februar / März 2027."
-       data-en="We care about sustainable production. We collect demand so we can produce the exact quantity, without overproduction. Example: Verbier Ultra Edition 2026, 175 ordered. Second Skin follows the same principle as Special Edition · X-Bionic Exclusive, release expected Feb / Mar 2027.">
-      Wir legen Wert auf nachhaltige Produktion. Wir sammeln den Demand, damit wir die genaue Stückzahl produzieren können, ohne Überproduktion. Beispiel: Verbier Ultra Edition 2026, 175 bestellt. Second Skin folgt demselben Prinzip als Special Edition · X-Bionic Exclusive, Release voraussichtlich Februar / März 2027.
+       data-de="Wir häuten nicht mehr, als nötig ist. Wir legen Wert auf nachhaltige Produktion und stellen nur zum nachgefragten Bedarf her — ohne Überproduktion. Darüber hinaus trägt die Qualität von X-Bionic für viele Jahre. Beispiel: Verbier Ultra Edition 2026, 175 bestellt. Second Skin folgt demselben Prinzip als Special Edition · X-Bionic Exclusive, Release voraussichtlich Februar / März 2027."
+       data-en="We don’t shed more than necessary. We value sustainable production and make only what is demanded — without overproduction. Beyond that, X-Bionic quality lasts for years. Example: Verbier Ultra Edition 2026, 175 ordered. Second Skin follows the same principle as Special Edition · X-Bionic Exclusive, release expected Feb / Mar 2027.">
+      Wir häuten nicht mehr, als nötig ist. Wir legen Wert auf nachhaltige Produktion und stellen nur zum nachgefragten Bedarf her — ohne Überproduktion. Darüber hinaus trägt die Qualität von X-Bionic für viele Jahre. Beispiel: Verbier Ultra Edition 2026, 175 bestellt. Second Skin folgt demselben Prinzip als Special Edition · X-Bionic Exclusive, Release voraussichtlich Februar / März 2027.
     </p>
 
     <div class="counter" id="edition-ticker" aria-live="polite">
       <div class="counter-block" data-fit="men">
         <div class="counter-row">
-          <span>Men</span>
+          <span data-de="Männer" data-en="Men">Männer</span>
           <strong class="count-live"><span data-count="men">18</span> / 100</strong>
         </div>
         <div class="bar"><div class="bar-fill" id="bar-men" style="width:18%"></div></div>
       </div>
       <div class="counter-block" data-fit="women">
         <div class="counter-row">
-          <span>Women</span>
+          <span data-de="Frauen" data-en="Women">Frauen</span>
           <strong class="count-live"><span data-count="women">0</span> / 50</strong>
         </div>
         <div class="bar"><div class="bar-fill" id="bar-women" style="width:0%"></div></div>
@@ -1278,9 +1300,9 @@ alt=""
         <div class="artist-alias">EinOhm</div>
       </div>
       <div class="artist-bio">
-        <p data-de="Data &amp; Systems Architect bei X-Bionic und Visual Artist. Arbeitet an der Schnittstelle zwischen technischen und kreativen Disziplinen. Er sucht bewusst in den Grenzbereichen von scheinbar Unverbindbarem – Sport und Kunst, Technologie und Natur – und findet dort Liminalität, Übergangszustände und neue Verbindungen."
-           data-en="Data &amp; Systems Architect at X-Bionic and visual artist. Working at the interface between technical and creative disciplines. He deliberately seeks the border zones of what seems incompatible — sport and art, technology and nature — and finds liminality, transitional states, and new connections there.">
-          Data &amp; Systems Architect bei X-Bionic und Visual Artist. Arbeitet an der Schnittstelle zwischen technischen und kreativen Disziplinen. Er sucht bewusst in den Grenzbereichen von scheinbar Unverbindbarem – Sport und Kunst, Technologie und Natur – und findet dort Liminalität, Übergangszustände und neue Verbindungen.
+        <p data-de="Data &amp; Systems Architect bei X-Bionic und Visual Artist. Arbeitet an der Schnittstelle zwischen technischen und kreativen Disziplinen. Er sucht bewusst in den Grenzbereichen von scheinbar Unverbindbarem – Natur und Technologie, Kunst und Sport – und findet dort Übergangszustände, neue Verbindungen und Innovation."
+           data-en="Data &amp; Systems Architect at X-Bionic and visual artist. Working at the interface between technical and creative disciplines. He deliberately seeks the border zones of what seems incompatible — nature and technology, art and sport — and finds transitional states, new connections, and innovation there.">
+          Data &amp; Systems Architect bei X-Bionic und Visual Artist. Arbeitet an der Schnittstelle zwischen technischen und kreativen Disziplinen. Er sucht bewusst in den Grenzbereichen von scheinbar Unverbindbarem – Natur und Technologie, Kunst und Sport – und findet dort Übergangszustände, neue Verbindungen und Innovation.
         </p>
         <div class="artist-links">
           <a href="https://thomasfankhauser.ch" target="_blank" rel="noopener">thomasfankhauser.ch</a>
@@ -1310,7 +1332,6 @@ alt=""
   </section>
 
   <footer>
-    <span>EinOhm · Thomas Fankhauser</span>
     <span>Second Skin · Second Chance</span>
   </footer>
 
@@ -1326,6 +1347,7 @@ alt=""
   var btnDe = document.getElementById('btn-de');
   var btnEn = document.getElementById('btn-en');
   var currentLang = 'de';
+  var ticker = { men: BASE.men, women: BASE.women };
 
   function setLang(lang) {
     currentLang = lang;
@@ -1354,19 +1376,26 @@ alt=""
         ? err.getAttribute('data-de')
         : err.getAttribute('data-en');
     }
+
+    // Keep numeric counters intact after language swap
+    renderTicker(ticker);
   }
 
   btnDe.addEventListener('click', function () { setLang('de'); });
   btnEn.addEventListener('click', function () { setLang('en'); });
 
-  function loadTicker() {
+  function normalizeCounts(raw) {
+    return {
+      men: Math.max(BASE.men, Math.floor(Number(raw && raw.men) || BASE.men)),
+      women: Math.max(BASE.women, Math.floor(Number(raw && raw.women) || BASE.women))
+    };
+  }
+
+  function loadCachedTicker() {
     try {
       var raw = JSON.parse(localStorage.getItem(TICKER_KEY) || 'null');
       if (raw && typeof raw.men === 'number' && typeof raw.women === 'number') {
-        return {
-          men: Math.max(BASE.men, Math.floor(raw.men)),
-          women: Math.max(BASE.women, Math.floor(raw.women))
-        };
+        return normalizeCounts(raw);
       }
     } catch (err) {}
     return { men: BASE.men, women: BASE.women };
@@ -1377,28 +1406,52 @@ alt=""
   }
 
   function renderTicker(state) {
+    ticker = normalizeCounts(state);
     document.querySelectorAll('[data-count="men"]').forEach(function (el) {
-      el.textContent = String(state.men);
-      el.parentElement.classList.toggle('is-over', state.men > LIMITS.men);
+      el.textContent = String(ticker.men);
+      if (el.parentElement) {
+        el.parentElement.classList.toggle('is-over', ticker.men > LIMITS.men);
+      }
     });
     document.querySelectorAll('[data-count="women"]').forEach(function (el) {
-      el.textContent = String(state.women);
-      el.parentElement.classList.toggle('is-over', state.women > LIMITS.women);
+      el.textContent = String(ticker.women);
+      if (el.parentElement) {
+        el.parentElement.classList.toggle('is-over', ticker.women > LIMITS.women);
+      }
     });
     var barMen = document.getElementById('bar-men');
     var barWomen = document.getElementById('bar-women');
     if (barMen) {
-      barMen.style.width = Math.min(100, (state.men / LIMITS.men) * 100) + '%';
-      barMen.classList.toggle('is-over', state.men > LIMITS.men);
+      barMen.style.width = Math.min(100, (ticker.men / LIMITS.men) * 100) + '%';
+      barMen.classList.toggle('is-over', ticker.men > LIMITS.men);
     }
     if (barWomen) {
-      barWomen.style.width = Math.min(100, (state.women / LIMITS.women) * 100) + '%';
-      barWomen.classList.toggle('is-over', state.women > LIMITS.women);
+      barWomen.style.width = Math.min(100, (ticker.women / LIMITS.women) * 100) + '%';
+      barWomen.classList.toggle('is-over', ticker.women > LIMITS.women);
     }
   }
 
-  var ticker = loadTicker();
-  renderTicker(ticker);
+  async function refreshTickerFromServer() {
+    try {
+      var res = await fetch('/api/ticker', { method: 'GET', cache: 'no-store' });
+      if (!res.ok) return false;
+      var data = await res.json();
+      if (!data || !data.ok || !data.counts) return false;
+      if (data.limits) {
+        if (typeof data.limits.men === 'number') LIMITS.men = data.limits.men;
+        if (typeof data.limits.women === 'number') LIMITS.women = data.limits.women;
+      }
+      renderTicker(data.counts);
+      saveTicker(ticker);
+      return true;
+    } catch (err) {
+      return false;
+    }
+  }
+
+  // Show cached values immediately, then sync from server
+  renderTicker(loadCachedTicker());
+  refreshTickerFromServer();
 
   var sizeSelect = document.getElementById('size');
   document.querySelectorAll('input[name="gender"]').forEach(function (radio) {
@@ -1426,6 +1479,11 @@ alt=""
   var formSuccess = document.getElementById('form-success');
   var regSubmit = document.getElementById('reg-submit');
 
+  function showFormError(message) {
+    formError.textContent = message;
+    formError.classList.add('show');
+  }
+
   form.addEventListener('submit', async function (e) {
     e.preventDefault();
     formError.classList.remove('show');
@@ -1437,14 +1495,13 @@ alt=""
     var website = (document.getElementById('reg-website') || {}).value || '';
     var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
     if (!firstname || !lastname || !emailOk || !genderEl || !size) {
-      formError.textContent = currentLang === 'de'
+      showFormError(currentLang === 'de'
         ? formError.getAttribute('data-de')
-        : formError.getAttribute('data-en');
-      formError.classList.add('show');
+        : formError.getAttribute('data-en'));
       return;
     }
 
-    var fit = genderEl.value;
+    var fit = genderEl.value === 'women' ? 'women' : 'men';
     if (regSubmit) {
       regSubmit.disabled = true;
       regSubmit.textContent = currentLang === 'de' ? 'Wird gesendet…' : 'Sending…';
@@ -1461,23 +1518,38 @@ alt=""
     };
 
     var mailOk = false;
+    var responseCounts = null;
     try {
       var res = await fetch('/api/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
       });
-      if (res.ok) {
-        var data = await res.json();
-        mailOk = !!(data && data.ok);
-      }
+      var data = null;
+      try { data = await res.json(); } catch (err) { data = null; }
+      mailOk = !!(res.ok && data && data.ok);
+      if (mailOk && data.counts) responseCounts = data.counts;
     } catch (err) {
       mailOk = false;
     }
 
-    ticker[fit] += 1;
-    saveTicker(ticker);
-    renderTicker(ticker);
+    if (!mailOk) {
+      if (regSubmit) {
+        regSubmit.disabled = false;
+        regSubmit.textContent = currentLang === 'de' ? 'Registrieren' : 'Register';
+      }
+      showFormError(currentLang === 'de'
+        ? 'Registrierung fehlgeschlagen. Bitte später erneut versuchen.'
+        : 'Registration failed. Please try again later.');
+      return;
+    }
+
+    if (responseCounts) {
+      renderTicker(responseCounts);
+      saveTicker(ticker);
+    } else {
+      await refreshTickerFromServer();
+    }
 
     try {
       var existing = JSON.parse(localStorage.getItem(REG_KEY) || '[]');
@@ -1487,7 +1559,7 @@ alt=""
         email: email,
         fit: fit,
         size: size,
-        mailOk: mailOk,
+        mailOk: true,
         at: new Date().toISOString()
       });
       localStorage.setItem(REG_KEY, JSON.stringify(existing));
