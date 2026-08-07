@@ -440,14 +440,14 @@
   }
   .mission-item p{ color:#cfd8d5; font-size:.98rem; }
   .edition-visual{
-    max-width:1200px;
+    max-width:640px;
     background:#000;
-    padding:1.5rem 1rem 1.2rem;
+    padding:1rem .85rem .9rem;
     border:1px solid var(--line);
-    margin-bottom:2rem;
+    margin-bottom:1.6rem;
   }
   .edition-visual .img-wrap{
-    height:min(420px, 55vw);
+    height:min(260px, 42vw);
     overflow:hidden;
   }
   .edition-visual img{
@@ -457,11 +457,11 @@
     object-fit:contain;
     transition:transform .5s cubic-bezier(.2,.8,.2,1);
   }
-  .edition-visual:hover img{ transform:scale(1.06); }
+  .edition-visual:hover img{ transform:scale(1.04); }
   .edition-caption{
-    margin-top:1rem;
+    margin-top:.7rem;
     font-family:'JetBrains Mono',monospace;
-    font-size:.72rem;
+    font-size:.68rem;
     letter-spacing:.05em;
     color:var(--muted);
   }
@@ -725,8 +725,10 @@
   .form-success{
     display:none;
     max-width:560px;
-    border-top:1px solid var(--line);
-    padding-top:1.5rem;
+    border:1px solid var(--teal);
+    background:rgba(95,232,211,.06);
+    padding:1.5rem 1.25rem;
+    margin-top:1rem;
   }
   .form-success.show{ display:block; }
   .form-success h3{
@@ -737,6 +739,14 @@
     margin-bottom:.4rem;
   }
   .form-success p{ color:var(--muted); }
+  .hp-field{
+    position:absolute !important;
+    left:-9999px !important;
+    width:1px !important;
+    height:1px !important;
+    opacity:0 !important;
+    pointer-events:none !important;
+  }
 
   /* ARTIST */
   .artist{ background:var(--panel); border-top:1px solid var(--line);}
@@ -858,7 +868,7 @@
     }
     .btn-register{ justify-content:center; width:100%; }
     .verbier-cta-note{ max-width:none; }
-    .edition-visual .img-wrap{ height:min(280px, 58vw); }
+    .edition-visual .img-wrap{ height:min(200px, 48vw); }
     .gallery-item figcaption{
       font-size:.65rem;
       line-height:1.5;
@@ -918,16 +928,16 @@ alt=""
       <h1>SECOND <span>SKIN</span></h1>
       <div class="tagline">Less Pain. More Endurance.</div>
       <div class="meta">
-        <span><strong data-de="Trigger:" data-en="Trigger:">Trigger:</strong> <span data-de="Schlangenhäutung" data-en="snake shedding its skin">Schlangenhäutung</span></span>
-        <span><strong data-de="Colorway:" data-en="Colorway:">Colorway:</strong> teal on black</span>
-        <span><strong data-de="Product:" data-en="Product:">Product:</strong> <span data-de="Corefusion Run Shirt, Shortsleeve · Women Crop Top"
+        <span><strong data-de="Auslöser:" data-en="Trigger:">Auslöser:</strong> <span data-de="Schlangenhäutung" data-en="Snake shedding">Schlangenhäutung</span></span>
+        <span><strong data-de="Colorway:" data-en="Colorway:">Colorway:</strong> <span data-de="Teal auf Schwarz" data-en="teal on black">Teal auf Schwarz</span></span>
+        <span><strong data-de="Produkt:" data-en="Product:">Produkt:</strong> <span data-de="Corefusion Run Shirt, Shortsleeve · Women Crop Top"
              data-en="Corefusion Run Shirt, Shortsleeve · Women Crop Top">Corefusion Run Shirt, Shortsleeve · Women Crop Top</span></span>
         <span><strong data-de="Release:" data-en="Release:">Release:</strong> Feb / Mär 2027</span>
       </div>
       <div class="hero-cta">
         <a class="btn btn-primary" href="#register"
-           data-de="Registrierung"
-           data-en="Register">Registrierung</a>
+           data-de="Registrieren"
+           data-en="Register">Registrieren</a>
         <a class="btn btn-ghost" href="#concept"
            data-de="Design Concept"
            data-en="Design Concept">Design Concept</a>
@@ -1213,22 +1223,23 @@ alt=""
       </div>
 
       <div class="form-actions">
-        <button type="submit" class="btn btn-primary"
-                data-de="Auf die Liste"
-                data-en="Join the list">Auf die Liste</button>
+        <button type="submit" class="btn btn-primary" id="reg-submit"
+                data-de="Registrieren"
+                data-en="Register">Registrieren</button>
         <p class="form-error" id="form-error"
            data-de="Bitte alle Felder korrekt ausfüllen."
            data-en="Please fill in all fields correctly.">
           Bitte alle Felder korrekt ausfüllen.
         </p>
       </div>
+      <input type="text" name="website" id="reg-website" autocomplete="off" tabindex="-1" aria-hidden="true" class="hp-field">
     </form>
 
-    <div class="form-success" id="form-success">
+    <div class="form-success" id="form-success" aria-live="polite">
       <h3 data-de="Du bist drauf." data-en="You're on the list.">Du bist drauf.</h3>
-      <p data-de="Dein Platz zählt im Live-Ticker oben. Wir melden uns vor dem Release."
-         data-en="Your spot now counts in the live ticker above. We'll be in touch before release.">
-        Dein Platz zählt im Live-Ticker oben. Wir melden uns vor dem Release.
+      <p data-de="Danke für dein Interesse am Second Skin Shirt. Dein Platz zählt im Demand-Ticker. Wir melden uns vor dem Release."
+         data-en="Thanks for your interest in the Second Skin shirt. Your spot counts in the demand ticker. We'll be in touch before release.">
+        Danke für dein Interesse am Second Skin Shirt. Dein Platz zählt im Demand-Ticker. Wir melden uns vor dem Release.
       </p>
     </div>
   </section>
@@ -1391,8 +1402,9 @@ alt=""
   var form = document.getElementById('reg-form');
   var formError = document.getElementById('form-error');
   var formSuccess = document.getElementById('form-success');
+  var regSubmit = document.getElementById('reg-submit');
 
-  form.addEventListener('submit', function (e) {
+  form.addEventListener('submit', async function (e) {
     e.preventDefault();
     formError.classList.remove('show');
     var firstname = form.firstname.value.trim();
@@ -1400,6 +1412,7 @@ alt=""
     var email = form.email.value.trim();
     var genderEl = form.querySelector('input[name="gender"]:checked');
     var size = form.size.value;
+    var website = (document.getElementById('reg-website') || {}).value || '';
     var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
     if (!firstname || !lastname || !emailOk || !genderEl || !size) {
       formError.textContent = currentLang === 'de'
@@ -1410,6 +1423,36 @@ alt=""
     }
 
     var fit = genderEl.value;
+    if (regSubmit) {
+      regSubmit.disabled = true;
+      regSubmit.textContent = currentLang === 'de' ? 'Wird gesendet…' : 'Sending…';
+    }
+
+    var payload = {
+      firstname: firstname,
+      lastname: lastname,
+      email: email,
+      fit: fit,
+      size: size,
+      lang: currentLang,
+      website: website
+    };
+
+    var mailOk = false;
+    try {
+      var res = await fetch('/api/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      if (res.ok) {
+        var data = await res.json();
+        mailOk = !!(data && data.ok);
+      }
+    } catch (err) {
+      mailOk = false;
+    }
+
     ticker[fit] += 1;
     saveTicker(ticker);
     renderTicker(ticker);
@@ -1422,6 +1465,7 @@ alt=""
         email: email,
         fit: fit,
         size: size,
+        mailOk: mailOk,
         at: new Date().toISOString()
       });
       localStorage.setItem(REG_KEY, JSON.stringify(existing));
@@ -1429,6 +1473,8 @@ alt=""
 
     form.style.display = 'none';
     formSuccess.classList.add('show');
+    setLang(currentLang);
+    formSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
     if (typeof fbq === 'function' && window.META_PIXEL_ID) {
       fbq('track', 'CompleteRegistration', {
@@ -1441,11 +1487,6 @@ alt=""
         fit: fit,
         size: size
       });
-    }
-
-    var limited = document.getElementById('limited');
-    if (limited) {
-      limited.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
   });
 
