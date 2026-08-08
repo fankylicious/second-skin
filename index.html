@@ -930,6 +930,12 @@
     object-fit:contain;
     object-position:center top;
     background:transparent;
+    transition:transform .35s cubic-bezier(.2,.8,.2,1);
+    will-change:transform;
+  }
+  .artist-portrait:hover img{
+    transform:translateY(-10px);
+  }
   }
 
   /* X-BIONIC — teaser + expand */
@@ -1129,7 +1135,9 @@
   @media (prefers-reduced-motion: reduce){
     html{ scroll-behavior:auto; }
     .gallery-item img,
+    .artist-portrait img,
     .btn{ transition:none; }
+    .artist-portrait:hover img{ transform:none; }
   }
 </style>
 </head>
