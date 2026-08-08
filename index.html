@@ -953,10 +953,10 @@
     border-top:1px solid var(--line);
   }
   .xbionic .lead{ margin-bottom:1.4rem; }
-  .xbionic-more{
+  .expand-more{
     max-width:var(--measure);
   }
-  .xbionic-more summary{
+  .expand-more summary{
     display:inline-flex;
     align-items:center;
     gap:.55rem;
@@ -971,29 +971,29 @@
     padding-bottom:.2rem;
     transition:color .25s ease, border-color .25s ease;
   }
-  .xbionic-more summary::-webkit-details-marker{ display:none; }
-  .xbionic-more summary::after{
+  .expand-more summary::-webkit-details-marker{ display:none; }
+  .expand-more summary::after{
     content:"→";
     opacity:.75;
     transition:transform .25s ease;
   }
-  .xbionic-more[open] summary::after{
+  .expand-more[open] summary::after{
     content:"↑";
   }
-  .xbionic-more summary:hover{
+  .expand-more summary:hover{
     color:#8ff0e0;
     border-color:rgba(143,240,224,.7);
   }
-  .xbionic-body{
+  .expand-body{
     margin-top:1.6rem;
     display:grid;
     gap:1.15rem;
   }
-  .xbionic-body p{
+  .expand-body p{
     color:#cfd8d5;
     font-size:1.02rem;
   }
-  .xbionic-body a{
+  .expand-body a.expand-link{
     justify-self:start;
     font-family:'JetBrains Mono',monospace;
     font-size:.78rem;
@@ -1003,7 +1003,11 @@
     border-bottom:1px solid var(--teal);
     padding-bottom:2px;
   }
-  .xbionic-body a:hover{ color:var(--text); border-color:var(--text); }
+  .expand-body a.expand-link:hover{ color:var(--text); border-color:var(--text); }
+  .verbier .verbier-cta{ margin:1.6rem 0 1.8rem; }
+  .verbier .expand-more .community-quote{ margin-bottom:0; }
+  .verbier .expand-more .section-divider{ margin:1.4rem 0; }
+  .verbier .expand-more .edition-visual{ margin-bottom:0; }
 
   /* LOGOS */
   .logos{
@@ -1157,7 +1161,9 @@ alt=""
     <div class="hero-inner">
       <span class="eyebrow">Limited Edition · X-Bionic Exclusive by EinOhm</span>
       <h1>SECOND <span>SKIN</span></h1>
-      <div class="tagline">Less Pain. More Endurance.</div>
+      <div class="tagline"
+           data-de="Weniger Schmerz. Mehr Ausdauer."
+           data-en="Less Pain. More Endurance.">Weniger Schmerz. Mehr Ausdauer.</div>
       <div class="meta">
         <span><strong data-de="Inspiriert von:" data-en="Inspired by:">Inspiriert von:</strong> <span data-de="Schlangenhäutung" data-en="snake shedding">Schlangenhäutung</span></span>
         <span><strong data-de="Colorway:" data-en="Colorway:">Colorway:</strong> <span data-de="Teal auf Schwarz" data-en="teal on black">Teal auf Schwarz</span></span>
@@ -1170,8 +1176,8 @@ alt=""
            data-de="Interessiert?"
            data-en="Interested?">Interessiert?</a>
         <a class="btn btn-ghost" href="#design"
-           data-de="Concept Design"
-           data-en="Concept Design">Concept Design</a>
+           data-de="Konzept Design"
+           data-en="Concept Design">Konzept Design</a>
       </div>
     </div>
   </div>
@@ -1180,15 +1186,15 @@ alt=""
   <section class="gallery" id="design">
     <div class="section-head">
       <span class="num">00</span>
-      <h2 data-de="Concept Design" data-en="Concept Design">Concept Design</h2>
+      <h2 data-de="Konzept Design" data-en="Concept Design">Konzept Design</h2>
     </div>
     <div class="gallery-intro">
-      <p data-de="Inspiriert vom Häutungsprozess der Schlange: Die alte Haut fällt ab. Darunter wächst etwas Stärkeres. Genau in diesem Loslassen entsteht die Second Skin."
-         data-en="Inspired by the snake’s shedding process: the old skin falls away. Something stronger grows beneath. Exactly in this letting go, the Second Skin is born.">
-        Inspiriert vom Häutungsprozess der Schlange: Die alte Haut fällt ab. Darunter wächst etwas Stärkeres. Genau in diesem Loslassen entsteht die Second Skin.
+      <p data-de="Wie eine Schlange, die sich häutet: Die alte Haut fällt ab. Darunter wächst etwas Stärkeres. Genau in diesem Loslassen entsteht die Second Skin."
+         data-en="Like a snake shedding its skin: The old skin falls away. Something stronger grows beneath it. It's in this letting go that the Second Skin emerges.">
+        Wie eine Schlange, die sich häutet: Die alte Haut fällt ab. Darunter wächst etwas Stärkeres. Genau in diesem Loslassen entsteht die Second Skin.
       </p>
       <p data-de="Das Textil liegt nah am Körper – reduziert, teal auf schwarz. Ein Limited Edition Shirt für Trail Running und Ultra: für den Moment, in dem man das Alte abstreift und dem Neuen vertraut."
-         data-en="The textile sits close to the body – reduced, teal on black. A Limited Edition Shirt for trail running and ultra: for the moment you shed the old and trust what comes next.">
+         data-en="The fabric sits close to the body – stripped back, teal on black. A limited edition shirt for trail running and ultra: for the moment you shed the old and trust the new.">
         Das Textil liegt nah am Körper – reduziert, teal auf schwarz. Ein Limited Edition Shirt für Trail Running und Ultra: für den Moment, in dem man das Alte abstreift und dem Neuen vertraut.
       </p>
     </div>
@@ -1305,9 +1311,9 @@ alt=""
            data-en="The teal in the black is not decoration. Color psychology links blue-green hues to less stress, lower pain perception, and clearer thinking. Teal sits right there. Less perceived pain. More focus. The calm that flashes through when the body stops arguing.">
           Das Teal im Schwarz ist keine Dekoration. Die Farbpsychologie verbindet Blau-Grün-Töne mit weniger Stress, geringerer Schmerzwahrnehmung und klarerem Denken. Teal liegt genau dort. Weniger empfundener Schmerz. Mehr Fokus. Die Ruhe, die aufblitzt, wenn der Körper aufhört zu diskutieren.
         </p>
-        <p data-de="Less Pain. More Endurance."
+        <p data-de="Weniger Schmerz. Mehr Ausdauer."
            data-en="Less Pain. More Endurance.">
-          Less Pain. More Endurance.
+          Weniger Schmerz. Mehr Ausdauer.
         </p>
       </div>
     </div>
@@ -1325,9 +1331,9 @@ alt=""
       Bei X-Bionic legen wir Wert auf nachhaltige Produktion. Wir ermitteln zuerst den Bedarf — und produzieren nur so viel, wie wirklich gewünscht wird. Second Skin erscheint Anfang 2027.
     </p>
     <p class="lead"
-       data-de="Gefällt dir das Konzept? Melde kurz dein Interesse — mit Schnitt und Grösse als Präferenz. Keine Bestellung, kein Commitment. Wir melden uns vor dem Release."
+       data-de="Gefällt dir das Konzept? Melde kurz dein Interesse — mit Schnitt und Grösse als Präferenz. Keine Bestellung, keine Verpflichtung. Wir melden uns vor dem Release."
        data-en="Like the concept? Share your interest — with fit and size as a preference. No order, no commitment. We'll get in touch before release.">
-      Gefällt dir das Konzept? Melde kurz dein Interesse — mit Schnitt und Grösse als Präferenz. Keine Bestellung, kein Commitment. Wir melden uns vor dem Release.
+      Gefällt dir das Konzept? Melde kurz dein Interesse — mit Schnitt und Grösse als Präferenz. Keine Bestellung, keine Verpflichtung. Wir melden uns vor dem Release.
     </p>
 
     <form id="reg-form" novalidate>
@@ -1462,7 +1468,7 @@ alt=""
   <section class="artist" id="artist" aria-labelledby="artist-heading">
     <div class="section-head">
       <span class="num">07</span>
-      <h2 id="artist-heading" data-de="Über den Artist" data-en="About the artist">Über den Artist</h2>
+      <h2 id="artist-heading" data-de="Über den Künstler" data-en="About the artist">Über den Künstler</h2>
     </div>
     <div class="artist-grid">
       <div class="artist-copy">
