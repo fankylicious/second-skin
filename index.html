@@ -401,20 +401,6 @@
     line-height:1.45;
     max-width:28ch;
   }
-  .color-meta{
-    margin:0 0 1.15rem;
-    font-family:'JetBrains Mono',monospace;
-    font-size:.72rem;
-    letter-spacing:.06em;
-    line-height:1.55;
-    color:var(--muted);
-  }
-  .color-meta-title{
-    display:block;
-    color:var(--teal-bright);
-    text-transform:uppercase;
-    letter-spacing:.08em;
-  }
   .color .expand-more{ margin-top:1.4rem; }
   .color .expand-body p{
     font-size:.95rem;
@@ -522,30 +508,35 @@
     border-top:1px solid var(--line);
   }
   .thought-bubble{
-    max-width:min(var(--measure), 36rem);
-    margin:0 0 2.6rem;
+    --bubble:#ffffff;
+    --bubble-ink:#0a1210;
+    --bubble-stroke:#0a1210;
+    max-width:min(var(--measure), 34rem);
+    margin:0 0 2.8rem;
     border:none;
+    filter:drop-shadow(0 10px 18px rgba(0,0,0,.28));
   }
   .thought-bubble__body{
     position:relative;
-    padding:1.25rem 1.4rem 1.35rem;
-    background:rgba(12,21,18,.72);
-    border:1px solid rgba(62,168,155,.35);
-    border-radius:1.6rem 1.6rem 1.6rem 1.1rem;
-    box-shadow:0 10px 28px rgba(0,0,0,.22);
+    z-index:1;
+    padding:1.35rem 1.55rem 1.45rem;
+    background:var(--bubble);
+    border:3px solid var(--bubble-stroke);
+    border-radius:2.4rem;
   }
   .thought-bubble__body p{
     margin:0;
     font-size:1.05rem;
-    line-height:1.65;
-    color:#c5d0cc;
-    font-style:italic;
+    line-height:1.55;
+    color:var(--bubble-ink);
+    font-style:normal;
+    font-weight:600;
   }
   .thought-bubble__tail{
     display:block;
-    width:52px;
-    height:34px;
-    margin:.15rem 0 0 1.4rem;
+    width:56px;
+    height:36px;
+    margin:-3px 0 0 2.2rem;
     overflow:visible;
   }
   .color-grid{
@@ -569,55 +560,12 @@
     background:repeating-linear-gradient(135deg, var(--teal) 0 6px, #0c1512 6px 12px);
     position:relative;
     overflow:hidden;
-    cursor:help;
-    color:inherit;
   }
   .swatch::after{
     content:"";
     position:absolute; inset:0;
     background:radial-gradient(circle at 30% 20%, rgba(95,232,211,.5), transparent 60%);
     mix-blend-mode:screen;
-  }
-  .swatch-hint{
-    position:absolute;
-    z-index:1;
-    left:.7rem;
-    bottom:.7rem;
-    font-family:'JetBrains Mono',monospace;
-    font-size:.62rem;
-    letter-spacing:.12em;
-    text-transform:uppercase;
-    color:#041210;
-    background:rgba(143,240,224,.88);
-    padding:.35rem .5rem;
-    pointer-events:none;
-  }
-  .swatch-tip{
-    position:absolute;
-    left:calc(100% + .75rem);
-    top:50%;
-    width:min(300px, 42vw);
-    z-index:6;
-    padding:.85rem .95rem;
-    background:#0c1512;
-    border:1px solid rgba(62,168,155,.45);
-    color:#dbe4e1;
-    font-size:.82rem;
-    line-height:1.45;
-    box-shadow:0 12px 28px rgba(0,0,0,.35);
-    opacity:0;
-    visibility:hidden;
-    transform:translateY(-45%);
-    transition:opacity .2s ease, transform .2s ease, visibility .2s ease;
-    pointer-events:none;
-  }
-  .swatch-wrap:hover .swatch-tip,
-  .swatch-wrap:focus-within .swatch-tip,
-  .swatch-wrap.is-open .swatch-tip{
-    opacity:1;
-    visibility:visible;
-    transform:translateY(-50%);
-    pointer-events:auto;
   }
   .color p{ color:#cfd8d5; max-width:none; font-size:1.02rem;}
   .color p + p{ margin-top:1rem;}
@@ -1288,38 +1236,6 @@
       margin-bottom:.2rem;
     }
     .swatch{ height:160px; }
-    /* Mobile: tip sits under the swatch in normal flow — no overlap with body copy */
-    .swatch-tip{
-      position:static;
-      left:auto;
-      top:auto;
-      width:100%;
-      max-width:none;
-      margin-top:0;
-      padding:0 1.05rem;
-      border-width:0;
-      font-size:.88rem;
-      line-height:1.55;
-      box-shadow:none;
-      opacity:0;
-      visibility:hidden;
-      max-height:0;
-      overflow:hidden;
-      transform:none;
-      transition:opacity .22s ease, max-height .28s ease, margin .22s ease, padding .22s ease, visibility .22s ease;
-    }
-    .swatch-wrap:hover .swatch-tip,
-    .swatch-wrap:focus-within .swatch-tip,
-    .swatch-wrap.is-open .swatch-tip{
-      opacity:1;
-      visibility:visible;
-      max-height:22rem;
-      margin-top:1rem;
-      padding:1.05rem 1.1rem;
-      border-width:1px;
-      transform:none;
-      pointer-events:auto;
-    }
     .artist-grid{ grid-template-columns:1fr; }
     .artist-portrait{
       justify-self:start;
@@ -1608,19 +1524,17 @@ alt=""
   <!-- COLOR -->
   <section class="color" id="color">
     <figure class="thought-bubble"
-            data-de-label="Gedanke"
-            data-en-label="Thought"
-            aria-label="Gedanke">
+            data-de-label="Sprechblase"
+            data-en-label="Speech bubble"
+            aria-label="Sprechblase">
       <div class="thought-bubble__body">
         <p data-de="Im Zwischenraum braucht der Körper keine Lautstärke. Er braucht Ruhe, und eine Farbe, die sie hält."
            data-en="In the in-between, the body doesn’t need volume. It needs calm, and a color that can hold it.">
           Im Zwischenraum braucht der Körper keine Lautstärke. Er braucht Ruhe, und eine Farbe, die sie hält.
         </p>
       </div>
-      <svg class="thought-bubble__tail" viewBox="0 0 52 34" aria-hidden="true" focusable="false">
-        <circle cx="14" cy="8" r="5.5" fill="rgba(12,21,18,.72)" stroke="rgba(62,168,155,.4)" stroke-width="1"/>
-        <circle cx="28" cy="18" r="3.6" fill="rgba(12,21,18,.72)" stroke="rgba(62,168,155,.35)" stroke-width="1"/>
-        <circle cx="40" cy="27" r="2.2" fill="rgba(12,21,18,.72)" stroke="rgba(62,168,155,.3)" stroke-width="1"/>
+      <svg class="thought-bubble__tail" viewBox="0 0 56 36" aria-hidden="true" focusable="false">
+        <path d="M8 2 L38 2 L14 34 Z" fill="#ffffff" stroke="#0a1210" stroke-width="3" stroke-linejoin="round"/>
       </svg>
     </figure>
     <div class="section-head">
@@ -1628,40 +1542,18 @@ alt=""
       <h2 data-de="Warum Teal" data-en="Why teal">Warum Teal</h2>
     </div>
     <div class="color-grid">
-      <div class="swatch-wrap" id="teal-swatch-wrap">
-        <button type="button"
-                class="swatch"
-                id="teal-swatch"
-                aria-describedby="teal-evidence"
-                aria-expanded="false"
-                data-de-label="Second Skin Teal · Farbpsychologie · X-Bionic Corefusion by EinOhm"
-                data-en-label="Second Skin Teal · color psychology · X-Bionic Corefusion by EinOhm"
-                aria-label="Second Skin Teal · Farbpsychologie · X-Bionic Corefusion by EinOhm"
-                title="Second Skin Teal · X-Bionic Corefusion by EinOhm · secondskin.run">
-          <span class="swatch-hint" data-de="Evidenz" data-en="Evidence">Evidenz</span>
-        </button>
+      <div class="swatch-wrap">
+        <div class="swatch" role="img" aria-label="Second Skin Teal"></div>
         <p class="swatch-caption"
            data-de="Second Skin Teal · X-Bionic Corefusion by EinOhm<br>Farbkonzept · secondskin.run"
            data-en="Second Skin Teal · X-Bionic Corefusion by EinOhm<br>Color concept · secondskin.run">
           Second Skin Teal · X-Bionic Corefusion by EinOhm<br>Farbkonzept · secondskin.run
         </p>
-        <div class="swatch-tip" id="teal-evidence" role="tooltip"
-             data-de="Kühle Farbtöne (Blau/Grün) werden mit niedrigerer physiologischer Erregung assoziiert, warme (Rot) mit höherer (Elliot &amp; Maier, 2014). Teal liegt als Blau-Grün-Ton in diesem kühlen Spektrum."
-             data-en="Cool hues (blue/green) are associated with lower physiological arousal; warm hues (red) with higher arousal (Elliot &amp; Maier, 2014). As a blue-green tone, teal sits in that cool spectrum.">
-          Kühle Farbtöne (Blau/Grün) werden mit niedrigerer physiologischer Erregung assoziiert, warme (Rot) mit höherer (Elliot &amp; Maier, 2014). Teal liegt als Blau-Grün-Ton in diesem kühlen Spektrum.
-        </div>
       </div>
       <div>
-        <p class="color-meta">
-          <span class="color-meta-title"
-                data-de="Second Skin Teal · X-Bionic Corefusion by EinOhm"
-                data-en="Second Skin Teal · X-Bionic Corefusion by EinOhm">Second Skin Teal · X-Bionic Corefusion by EinOhm</span>
-          <span data-de="Farbkonzept · secondskin.run"
-                data-en="Color concept · secondskin.run">Farbkonzept · secondskin.run</span>
-        </p>
-        <p data-de="In der Farbpsychologie gilt als gesichert: Kühle, kurzwellige Farbtöne wie Blau und Grün werden mit niedrigerer physiologischer Erregung und beruhigender Wirkung assoziiert, warme Farbtöne wie Rot mit höherer Erregung und stärkerer Reizintensität (Elliot &amp; Maier, 2014). Teal liegt als Blau-Grün-Ton genau in diesem kühlen, arousal-senkenden Spektrum."
-           data-en="In color psychology, it's well established that cool, short-wavelength hues like blue and green are associated with lower physiological arousal and a calming effect, while warm hues like red are linked to higher arousal and stronger perceived intensity (Elliot &amp; Maier, 2014). As a blue-green tone, teal sits squarely within this cool, arousal-lowering spectrum.">
-          In der Farbpsychologie gilt als gesichert: Kühle, kurzwellige Farbtöne wie Blau und Grün werden mit niedrigerer physiologischer Erregung und beruhigender Wirkung assoziiert, warme Farbtöne wie Rot mit höherer Erregung und stärkerer Reizintensität (Elliot &amp; Maier, 2014). Teal liegt als Blau-Grün-Ton genau in diesem kühlen, arousal-senkenden Spektrum.
+        <p data-de="In der Farbpsychologie gilt als gesichert: Kühle Farbtöne (Blau/Grün) werden mit niedrigerer physiologischer Erregung und beruhigender Wirkung assoziiert, warme Farbtöne (Rot) mit höherer Erregung (Elliot &amp; Maier, 2014). Teal liegt als Blau-Grün-Ton genau in diesem kühlen Spektrum."
+           data-en="In color psychology it is well established that cool hues (blue/green) are associated with lower physiological arousal and a calming effect, while warm hues (red) are linked to higher arousal (Elliot &amp; Maier, 2014). As a blue-green tone, teal sits squarely in this cool spectrum.">
+          In der Farbpsychologie gilt als gesichert: Kühle Farbtöne (Blau/Grün) werden mit niedrigerer physiologischer Erregung und beruhigender Wirkung assoziiert, warme Farbtöne (Rot) mit höherer Erregung (Elliot &amp; Maier, 2014). Teal liegt als Blau-Grün-Ton genau in diesem kühlen Spektrum.
         </p>
         <p class="color-claim"
            data-de="Weniger Reiz. Mehr Fokus."
@@ -1702,11 +1594,6 @@ alt=""
          data-en="Second Skin is the first limited edition in that series. Teal on black. Shortsleeve. The opening chapter — not the exception.">
         Second Skin ist die erste Limited Edition innerhalb dieser Serie. Teal auf Schwarz. Shortsleeve. Der Auftakt — nicht die Ausnahme.
       </p>
-      <p class="closing"
-         data-de="Mit Verbier Ultra 2026 ist Corefusion bereits unterwegs: eine Version des Designs, getragen von allen Runnern und dem gesamten Staff. Die Serie beginnt nicht auf dem Papier — sie beginnt auf dem Trail."
-         data-en="With Verbier Ultra 2026, Corefusion is already on the trail: a version of the design, worn by every runner and the entire staff. The series doesn’t begin on the page — it begins out there.">
-        Mit Verbier Ultra 2026 ist Corefusion bereits unterwegs: eine Version des Designs, getragen von allen Runnern und dem gesamten Staff. Die Serie beginnt nicht auf dem Papier — sie beginnt auf dem Trail.
-      </p>
     </div>
   </section>
 
@@ -1721,8 +1608,8 @@ alt=""
         <li>
           <strong data-de="Männer" data-en="Men">Männer</strong>
           <span class="product-line"
-                data-de="Corefusion Run Shirt · Shortsleeve · aktuell geplant auf 100 Stück"
-                data-en="Corefusion Run Shirt · Shortsleeve · currently planned at 100 pieces">Corefusion Run Shirt · Shortsleeve · aktuell geplant auf 100 Stück</span>
+                data-de="Corefusion Run Shirt · Shortsleeve"
+                data-en="Corefusion Run Shirt · Shortsleeve">Corefusion Run Shirt · Shortsleeve</span>
           <a class="product-link"
              href="https://www.x-bionic.com/products/x-bionic-corefusion-run-shirt-ss-men-1"
              target="_blank"
@@ -1733,14 +1620,20 @@ alt=""
         <li>
           <strong data-de="Frauen" data-en="Women">Frauen</strong>
           <span class="product-line"
-                data-de="Corefusion Run Crop Top · eigener Schnitt · aktuell geplant auf 50 Stück"
-                data-en="Corefusion Run Crop Top · dedicated cut · currently planned at 50 pieces">Corefusion Run Crop Top · eigener Schnitt · aktuell geplant auf 50 Stück</span>
+                data-de="Corefusion Run Crop Top · eigener Schnitt"
+                data-en="Corefusion Run Crop Top · dedicated cut">Corefusion Run Crop Top · eigener Schnitt</span>
+          <a class="product-link"
+             href="https://www.x-bionic.com/de-ch/products/x-bionic-energizer-4-0-fitness-crop-top-wmn-1?variant=45404771680539"
+             target="_blank"
+             rel="noopener"
+             data-de="Produkt ansehen"
+             data-en="View product">Produkt ansehen</a>
         </li>
       </ul>
       <p class="note"
-         data-de="Beide tragen dasselbe Second Skin Design — Teal auf Schwarz, nah am Körper. 100 (Männer) und 50 (Frauen) sind aktuelle Planungszahlen: bewusst begrenzt, am tatsächlichen Bedarf orientiert — und bis zum Release noch anpassbar."
-         data-en="Both carry the same Second Skin design — teal on black, close to the body. 100 (men) and 50 (women) are current planning numbers: intentionally limited, guided by actual demand — and still adjustable before release.">
-        Beide tragen dasselbe Second Skin Design — Teal auf Schwarz, nah am Körper. 100 (Männer) und 50 (Frauen) sind aktuelle Planungszahlen: bewusst begrenzt, am tatsächlichen Bedarf orientiert — und bis zum Release noch anpassbar.
+         data-de="Beide Modelle tragen dasselbe Second Skin Design — Teal auf Schwarz, nah am Körper. Das Design ist für eine zukünftige Limited Edition gedacht und wird voraussichtlich Anfang 2027 als eigenes Produkt erscheinen."
+         data-en="Both models carry the same Second Skin design — teal on black, close to the body. The design is intended for a future limited edition and is expected to appear as its own product in early 2027.">
+        Beide Modelle tragen dasselbe Second Skin Design — Teal auf Schwarz, nah am Körper. Das Design ist für eine zukünftige Limited Edition gedacht und wird voraussichtlich Anfang 2027 als eigenes Produkt erscheinen.
       </p>
     </div>
   </section>
@@ -2064,25 +1957,6 @@ alt=""
 
   btnDe.addEventListener('click', function () { setLang('de'); });
   btnEn.addEventListener('click', function () { setLang('en'); });
-
-  var tealWrap = document.getElementById('teal-swatch-wrap');
-  var tealSwatch = document.getElementById('teal-swatch');
-  if (tealWrap && tealSwatch) {
-    function setTealTipOpen(open) {
-      tealWrap.classList.toggle('is-open', open);
-      tealSwatch.setAttribute('aria-expanded', open ? 'true' : 'false');
-    }
-    tealSwatch.addEventListener('click', function (e) {
-      e.preventDefault();
-      setTealTipOpen(!tealWrap.classList.contains('is-open'));
-    });
-    document.addEventListener('click', function (e) {
-      if (!tealWrap.contains(e.target)) setTealTipOpen(false);
-    });
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape') setTealTipOpen(false);
-    });
-  }
 
   function normalizeCounts(raw) {
     return {
