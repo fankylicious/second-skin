@@ -422,7 +422,7 @@
   /* GALLERY */
   .gallery{ background:var(--black); padding-top:3.5rem; padding-bottom:3.5rem; }
   .gallery-intro{
-    max-width:var(--content);
+    max-width:var(--measure);
     margin:-1.2rem 0 2.2rem;
     font-size:1.05rem;
     line-height:1.7;
@@ -696,13 +696,10 @@
     color:var(--teal-bright);
   }
   .concept-layout{
-    display:grid;
-    grid-template-columns:minmax(0,1fr) auto;
-    gap:clamp(1.5rem, 4vw, 3.5rem);
-    align-items:center;
-    max-width:var(--content);
+    display:block;
+    max-width:var(--measure);
   }
-  .concept-layout .concept-body{ max-width:min(78ch, 100%); }
+  .concept-layout .concept-body{ max-width:none; }
   .concept-body .nobreak{ white-space:nowrap; }
   @media (max-width:520px){
     .concept-body .nobreak{ white-space:normal; }
@@ -713,13 +710,14 @@
     position:relative;
     display:flex;
     align-items:center;
-    justify-content:flex-end;
-    min-height:200px;
+    justify-content:flex-start;
+    margin-top:1.75rem;
+    min-height:auto;
     pointer-events:none;
   }
   .statement-canvas{
-    width:min(600px, 92vw);
-    height:168px;
+    width:min(100%, 36rem);
+    height:148px;
     position:relative;
   }
   .statement-canvas canvas{
@@ -728,12 +726,7 @@
     height:100% !important;
   }
   @media (max-width:900px){
-    .concept-layout{ grid-template-columns:1fr; }
-    .statement-side{
-      justify-content:flex-start;
-      margin-top:.6rem;
-      min-height:auto;
-    }
+    .statement-side{ margin-top:1.35rem; }
     .statement-canvas{ height:128px; }
   }
 
@@ -2010,9 +2003,9 @@ alt=""
         Stell dir vor, du hattest einen schweren Tag. Du kommst nach Hause, ziehst das Shirt an. Zweite Chance.
       </p>
       <p class="gallery-intro__moment"
-         data-de="Du gehst raus, läufst. Und streifst die Lasten ab wie eine alte Haut, die nicht mehr dient. So erneuert Second Skin, was du abgelegt hast."
-         data-en="You go outside, you run. And you shed the burdens like an old skin that no longer serves. This is how Second Skin renews what you leave behind.">
-        Du gehst raus, läufst. Und streifst die Lasten ab wie eine alte Haut, die nicht mehr dient. So erneuert Second Skin, was du abgelegt hast.
+         data-de="Du gehst raus, läufst. Und streifst die Lasten ab wie eine alte Haut, die nicht mehr dient."
+         data-en="You go outside, you run. And you shed the burdens like an old skin that no longer serves.">
+        Du gehst raus, läufst. Und streifst die Lasten ab wie eine alte Haut, die nicht mehr dient.
       </p>
     </div>
     <div class="gallery-grid">
@@ -2059,9 +2052,9 @@ alt=""
            data-en="Letting go isn’t a loss. It’s the step into the open, and the need for something to carry you until you can carry yourself again.">
           Loslassen ist kein Verlust. Es ist der Schritt ins Offene, und der Bedarf nach etwas, das trägt, bevor du wieder selbst trägst.
         </p>
-      </div>
-      <div class="statement-side" aria-hidden="true">
-        <div class="statement-canvas" id="canvas-let-it-go" data-statement="let-it-go"></div>
+        <div class="statement-side" aria-hidden="true">
+          <div class="statement-canvas" id="canvas-let-it-go" data-statement="let-it-go"></div>
+        </div>
       </div>
     </div>
   </section>
