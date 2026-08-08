@@ -433,18 +433,83 @@
     gap:clamp(1.4rem, 3vw, 3rem);
     align-items:center;
   }
+  .swatch-wrap{
+    position:relative;
+    width:100%;
+    max-width:220px;
+  }
   .swatch{
+    display:block;
+    width:100%;
     height:220px;
+    border:none;
     border-radius:2px;
+    padding:0;
     background:repeating-linear-gradient(135deg, var(--teal) 0 6px, #0c1512 6px 12px);
     position:relative;
     overflow:hidden;
+    cursor:help;
+    color:inherit;
   }
   .swatch::after{
     content:"";
     position:absolute; inset:0;
     background:radial-gradient(circle at 30% 20%, rgba(95,232,211,.5), transparent 60%);
     mix-blend-mode:screen;
+  }
+  .swatch-hint{
+    position:absolute;
+    z-index:1;
+    left:.7rem;
+    bottom:.7rem;
+    font-family:'JetBrains Mono',monospace;
+    font-size:.62rem;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:#041210;
+    background:rgba(143,240,224,.88);
+    padding:.35rem .5rem;
+    pointer-events:none;
+  }
+  .swatch-tip{
+    position:absolute;
+    left:calc(100% + .75rem);
+    top:50%;
+    width:min(300px, 42vw);
+    z-index:6;
+    padding:.85rem .95rem;
+    background:#0c1512;
+    border:1px solid rgba(62,168,155,.45);
+    color:#dbe4e1;
+    font-size:.82rem;
+    line-height:1.45;
+    box-shadow:0 12px 28px rgba(0,0,0,.35);
+    opacity:0;
+    visibility:hidden;
+    transform:translateY(-45%);
+    transition:opacity .2s ease, transform .2s ease, visibility .2s ease;
+    pointer-events:none;
+  }
+  .swatch-wrap:hover .swatch-tip,
+  .swatch-wrap:focus-within .swatch-tip,
+  .swatch-wrap.is-open .swatch-tip{
+    opacity:1;
+    visibility:visible;
+    transform:translateY(-50%);
+    pointer-events:auto;
+  }
+  @media (max-width:960px){
+    .swatch-tip{
+      left:0;
+      top:calc(100% + .65rem);
+      width:min(100%, 86vw);
+      transform:translateY(.25rem);
+    }
+    .swatch-wrap:hover .swatch-tip,
+    .swatch-wrap:focus-within .swatch-tip,
+    .swatch-wrap.is-open .swatch-tip{
+      transform:translateY(0);
+    }
   }
   .color p{ color:#cfd8d5; max-width:none; font-size:1.02rem;}
   .color p + p{ margin-top:1rem;}
@@ -1097,7 +1162,8 @@
     .story-grid,
     .color-grid,
     .mission-grid{ grid-template-columns:1fr; }
-    .swatch{ height:160px; max-width:280px; }
+    .swatch-wrap{ max-width:280px; }
+    .swatch{ height:160px; }
     .artist-grid{ grid-template-columns:1fr; }
     .artist-portrait{
       justify-self:start;
@@ -1219,7 +1285,7 @@ alt=""
            data-de="Weniger Schmerz. Mehr Ausdauer."
            data-en="Less Pain. More Endurance.">Weniger Schmerz. Mehr Ausdauer.</div>
       <div class="meta">
-        <span><strong data-de="Inspiriert von:" data-en="Inspired by:">Inspiriert von:</strong> <span data-de="Schlangenhäutung" data-en="snake shedding">Schlangenhäutung</span></span>
+        <span><strong data-de="Inspiriert von:" data-en="Inspired by:">Inspiriert von:</strong> <span data-de="Häutung" data-en="shedding">Häutung</span></span>
         <span><strong data-de="Colorway:" data-en="Colorway:">Colorway:</strong> <span data-de="Teal auf Schwarz" data-en="teal on black">Teal auf Schwarz</span></span>
         <span><strong data-de="Produkt:" data-en="Product:">Produkt:</strong> <span data-de="Corefusion Run Shirt · Shortsleeve"
              data-en="Corefusion Run Shirt · Shortsleeve">Corefusion Run Shirt · Shortsleeve</span></span>
@@ -1243,13 +1309,9 @@ alt=""
       <h2 data-de="Konzept Design" data-en="Concept Design">Konzept Design</h2>
     </div>
     <div class="gallery-intro">
-      <p data-de="Wie eine Schlange, die sich häutet: Die alte Haut fällt ab. Darunter wächst etwas Stärkeres. Genau in diesem Loslassen entsteht die Second Skin."
-         data-en="Like a snake shedding its skin: The old skin falls away. Something stronger grows beneath it. It's in this letting go that the Second Skin emerges.">
-        Wie eine Schlange, die sich häutet: Die alte Haut fällt ab. Darunter wächst etwas Stärkeres. Genau in diesem Loslassen entsteht die Second Skin.
-      </p>
-      <p data-de="Das Textil liegt nah am Körper – reduziert, teal auf schwarz. Ein Limited Edition Shirt für Trail Running und Ultra: für den Moment, in dem man das Alte abstreift und dem Neuen vertraut."
-         data-en="The fabric sits close to the body – stripped back, teal on black. A limited edition shirt for trail running and ultra: for the moment you shed the old and trust the new.">
-        Das Textil liegt nah am Körper – reduziert, teal auf schwarz. Ein Limited Edition Shirt für Trail Running und Ultra: für den Moment, in dem man das Alte abstreift und dem Neuen vertraut.
+      <p data-de="Das Textil liegt nah am Körper – reduziert, teal auf schwarz. Wie eine Haut, die eng anliegt. Ein Limited Edition Shirt für Trail Running und Ultra."
+         data-en="The fabric sits close to the body – stripped back, teal on black. Like a skin held close. A limited edition shirt for trail running and ultra.">
+        Das Textil liegt nah am Körper – reduziert, teal auf schwarz. Wie eine Haut, die eng anliegt. Ein Limited Edition Shirt für Trail Running und Ultra.
       </p>
     </div>
     <div class="gallery-grid">
@@ -1273,26 +1335,26 @@ alt=""
   <section class="concept" id="concept">
     <div class="section-head">
       <span class="num">01</span>
-      <h2 data-de="Loslassen & Vertrauen" data-en="Letting go & Trust">Loslassen & Vertrauen</h2>
+      <h2 data-de="Loslassen & Vertrauen" data-en="Letting Go & Trust">Loslassen & Vertrauen</h2>
     </div>
     <div class="concept-body">
       <p class="lead-line"
          data-de="Wachstum beginnt nicht mit dem Neuen. Es beginnt damit, das Alte loszulassen."
-         data-en="Growth does not begin with the new. It begins with letting go of the old.">
+         data-en="Growth doesn’t begin with the new — it begins with letting go of the old.">
         Wachstum beginnt nicht mit dem Neuen. Es beginnt damit, das Alte loszulassen.
       </p>
-      <p data-de="Die alte Haut schützt nicht mehr. Sie engt ein. Wer weiterlaufen will, muss sie abstreifen – noch bevor klar ist, was darunter kommt."
-         data-en="The old skin no longer protects. It constrains. To keep moving, you have to shed it — before you know what lies underneath.">
-        Die alte Haut schützt nicht mehr. Sie engt ein. Wer weiterlaufen will, muss sie abstreifen – noch bevor klar ist, was darunter kommt.
+      <p data-de="Das Alte schützt nicht mehr. Es engt ein. Wer weiterlaufen will, muss es abstreifen – und für einen Moment nicht wissen, was darunter kommt."
+         data-en="The old no longer protects; it constrains. To keep going, you cast it off — and for a moment don’t know what waits underneath.">
+        Das Alte schützt nicht mehr. Es engt ein. Wer weiterlaufen will, muss es abstreifen – und für einen Moment nicht wissen, was darunter kommt.
       </p>
-      <p data-de="Jede:r Ultra-Runner:in kennt den Moment: Die Beine wollen nicht mehr. Wille allein trägt nicht mehr. Zwischen «ich kann nicht» und «ich gehe weiter» liegt ein leerer Raum. Genau dort braucht es etwas, das nah genug am Körper ist, um den Übergang zu halten — während darunter schon die stärkere Version wächst."
-         data-en="Every ultra runner knows the moment: the legs no longer want to. Willpower alone is no longer enough. There is an empty space between “I can’t” and “I keep going.” In that space you need something close enough to the body to hold the transition — while underneath, the stronger version is already growing.">
-        Jede:r Ultra-Runner:in kennt den Moment: Die Beine wollen nicht mehr. Wille allein trägt nicht mehr. Zwischen «ich kann nicht» und «ich gehe weiter» liegt ein leerer Raum. Genau dort braucht es etwas, das nah genug am Körper ist, um den Übergang zu halten — während darunter schon die stärkere Version wächst.
+      <p data-de="Jede:r Ultra-Runner:in kennt den Moment: Die Beine wollen nicht mehr. Wille allein trägt nicht mehr. Zwischen «ich kann nicht» und «ich gehe weiter» liegt ein Nichtwissen. Genau dort braucht es Nähe – etwas, das nah genug ist, um den Übergang zu halten."
+         data-en="Every ultra runner knows the moment: the legs refuse. Willpower alone isn’t enough. Between “I can’t” and “I keep going” sits a not-knowing. That’s where closeness matters — something near enough to hold the transition.">
+        Jede:r Ultra-Runner:in kennt den Moment: Die Beine wollen nicht mehr. Wille allein trägt nicht mehr. Zwischen «ich kann nicht» und «ich gehe weiter» liegt ein Nichtwissen. Genau dort braucht es Nähe – etwas, das nah genug ist, um den Übergang zu halten.
       </p>
       <p class="closing"
-         data-de="Loslassen ist kein Verlust. Es ist die Voraussetzung dafür, dass etwas Neues tragen kann."
-         data-en="Letting go is not a loss. It is the condition for something new to carry you.">
-        Loslassen ist kein Verlust. Es ist die Voraussetzung dafür, dass etwas Neues tragen kann.
+         data-de="Loslassen ist kein Verlust. Es ist der Schritt ins Offene – und der Bedarf nach etwas, das trägt, bevor du wieder selbst trägst."
+         data-en="Letting go isn’t a loss. It’s the step into the open — and the need for something to carry you until you can carry yourself again.">
+        Loslassen ist kein Verlust. Es ist der Schritt ins Offene – und der Bedarf nach etwas, das trägt, bevor du wieder selbst trägst.
       </p>
     </div>
   </section>
@@ -1301,28 +1363,28 @@ alt=""
   <section class="story" id="story">
     <div class="section-head">
       <span class="num">02</span>
-      <h2 data-de="Die Story hinter dem Design" data-en="Story behind the design">Die Story hinter dem Design</h2>
+      <h2 data-de="Die Story hinter dem Design" data-en="The Story Behind the Design">Die Story hinter dem Design</h2>
     </div>
     <div class="story-grid">
       <div>
         <p data-de="Eine Schlange häutet sich nicht, weil sie anders aussehen will. Sie häutet sich, weil die alte Haut nicht mehr mitwächst. Wachstum macht das Alte obsolet – noch bevor das Neue sichtbar wird."
-           data-en="A snake doesn’t shed because it wants to look different. It sheds because the old skin can no longer grow with it. Growth makes the old obsolete — before the new is even visible.">
+           data-en="A snake doesn’t shed to look different. It sheds because the old skin can no longer grow with it. Growth makes the old obsolete — before the new is even visible.">
           Eine Schlange häutet sich nicht, weil sie anders aussehen will. Sie häutet sich, weil die alte Haut nicht mehr mitwächst. Wachstum macht das Alte obsolet – noch bevor das Neue sichtbar wird.
         </p>
-        <p data-de="Zwischen beiden liegt der Moment, den jede:r Runner:in kennt: der Körper gibt nichts mehr, und etwas anderes muss dich weitertragen."
-           data-en="Between the two lies the moment every runner knows: the body has nothing left to give, and something else has to carry you forward.">
-          Zwischen beiden liegt der Moment, den jede:r Runner:in kennt: der Körper gibt nichts mehr, und etwas anderes muss dich weitertragen.
+        <p data-de="Second Skin erzählt genau diesen Übergang: nicht laut, nicht dekorativ – sondern als Form, die den Wechsel mitträgt."
+           data-en="Second Skin tells exactly that transition: not loud, not decorative — but as a form that carries the change with you.">
+          Second Skin erzählt genau diesen Übergang: nicht laut, nicht dekorativ – sondern als Form, die den Wechsel mitträgt.
         </p>
       </div>
       <div class="pullquote">
-        <span data-de="„Du trägst nicht nur ein Shirt nah am Körper. Du trägst die Erinnerung, dass das, was darunter freigelegt wird, stärker und ehrlicher ist als das, was abgelegt wurde.“"
-              data-en="“You're not just wearing a shirt close to your body. You're wearing the reminder that what is revealed underneath is stronger and more honest than what was shed.”">
-          „Du trägst nicht nur ein Shirt nah am Körper. Du trägst die Erinnerung, dass das, was darunter freigelegt wird, stärker und ehrlicher ist als das, was abgelegt wurde.“
+        <span data-de="„Du trägst nicht nur ein Shirt. Du trägst die Erinnerung, dass das, was darunter freigelegt wird, stärker und ehrlicher ist als das, was abgelegt wurde.“"
+              data-en="“You’re not just wearing a shirt. You’re wearing the reminder that what’s revealed underneath is stronger — and more honest — than what was left behind.”">
+          „Du trägst nicht nur ein Shirt. Du trägst die Erinnerung, dass das, was darunter freigelegt wird, stärker und ehrlicher ist als das, was abgelegt wurde.“
         </span>
-        <small data-de="Die Idee in einem Satz" data-en="The idea in one line">Die Idee in einem Satz</small>
+        <small data-de="Die Idee in einem Satz" data-en="The idea, in one line">Die Idee in einem Satz</small>
         <p class="idea-line"
            data-de="Das Shirt ist wie eine zweite Haut — nah am Körper, genau dort, wo die erste abfällt."
-           data-en="The shirt is like a second skin — close to the body, right where the first one falls away.">
+           data-en="The shirt is a second skin — close to the body, right where the first one falls away.">
           Das Shirt ist wie eine zweite Haut — nah am Körper, genau dort, wo die erste abfällt.
         </p>
       </div>
@@ -1338,17 +1400,17 @@ alt=""
     <div class="concept-body">
       <p class="lead-line"
          data-de="Zwischen dem Ablegen und dem Ankommen liegt ein leerer Raum."
-         data-en="Between letting go and arriving lies an empty space.">
+         data-en="Between casting off and arriving lies an empty space.">
         Zwischen dem Ablegen und dem Ankommen liegt ein leerer Raum.
       </p>
-      <p data-de="Zuerst wächst nicht Stärke – zuerst wächst Unsicherheit. Die alte Form ist weg. Die neue hat noch keine Kontur. Genau hier entscheidet sich, ob man zurückkriecht oder dem Neuen vertraut."
-         data-en="Strength does not arrive first — uncertainty does. The old form is gone. The new one has no contour yet. This is where you decide whether to crawl back or trust what comes next.">
-        Zuerst wächst nicht Stärke – zuerst wächst Unsicherheit. Die alte Form ist weg. Die neue hat noch keine Kontur. Genau hier entscheidet sich, ob man zurückkriecht oder dem Neuen vertraut.
+      <p data-de="In diesem Zwischenraum ist zuerst nichts Fertiges. Keine neue Form, keine Sicherheit – nur die Unruhe, dass etwas fehlt und noch keinen Namen hat. Die Angst sitzt nicht im Ablegen. Sie sitzt im Warten."
+         data-en="In that in-between, nothing finished comes first. No new form, no certainty — only the unease of something missing, still without a name. The fear isn’t in the casting off. It’s in the waiting.">
+        In diesem Zwischenraum ist zuerst nichts Fertiges. Keine neue Form, keine Sicherheit – nur die Unruhe, dass etwas fehlt und noch keinen Namen hat. Die Angst sitzt nicht im Ablegen. Sie sitzt im Warten.
       </p>
       <p class="closing"
-         data-de="Erneuerung heisst nicht, das Alte zu verwerfen. Es heisst, dem Zwischenraum zu vertrauen, bis daraus die stärkere Version wächst."
-         data-en="Renewal does not mean discarding the old. It means trusting the in-between until the stronger version grows from it.">
-        Erneuerung heisst nicht, das Alte zu verwerfen. Es heisst, dem Zwischenraum zu vertrauen, bis daraus die stärkere Version wächst.
+         data-de="Erneuerung heisst nicht, das Alte zu verwerfen. Es heisst, den Zwischenraum auszuhalten – auch wenn er noch keine Antwort gibt."
+         data-en="Renewal isn’t discarding the old. It’s staying with the in-between — even when it has no answer yet.">
+        Erneuerung heisst nicht, das Alte zu verwerfen. Es heisst, den Zwischenraum auszuhalten – auch wenn er noch keine Antwort gibt.
       </p>
     </div>
   </section>
@@ -1360,11 +1422,27 @@ alt=""
       <h2 data-de="Warum Teal" data-en="Why teal">Warum Teal</h2>
     </div>
     <div class="color-grid">
-      <div class="swatch"></div>
+      <div class="swatch-wrap" id="teal-swatch-wrap">
+        <button type="button"
+                class="swatch"
+                id="teal-swatch"
+                aria-describedby="teal-evidence"
+                aria-expanded="false"
+                data-de-label="Teal — Evidenz zur Farbwirkung anzeigen"
+                data-en-label="Teal — show evidence on color effects"
+                aria-label="Teal — Evidenz zur Farbwirkung anzeigen">
+          <span class="swatch-hint" data-de="Evidenz" data-en="Evidence">Evidenz</span>
+        </button>
+        <div class="swatch-tip" id="teal-evidence" role="tooltip"
+             data-de="Grüne und blaue Lichtreize zeigen in mehreren Studien (u. a. Ibrahim et al., Burstein/Harvard, experimentelle Schmerzmodelle) reduzierte Schmerzintensität und Stressmarker. Rot wirkt eher hyperalgesisch. Teal (Blau-Grün) sitzt genau in dem Spektrum, das mit niedriger Arousal und positiver Valenz assoziiert wird."
+             data-en="Green and blue light stimuli have been linked in several studies (including Ibrahim et al., Burstein/Harvard, experimental pain models) to reduced pain intensity and stress markers. Red tends to be hyperalgesic. Teal (blue-green) sits in the spectrum associated with lower arousal and positive valence.">
+          Grüne und blaue Lichtreize zeigen in mehreren Studien (u. a. Ibrahim et al., Burstein/Harvard, experimentelle Schmerzmodelle) reduzierte Schmerzintensität und Stressmarker. Rot wirkt eher hyperalgesisch. Teal (Blau-Grün) sitzt genau in dem Spektrum, das mit niedriger Arousal und positiver Valenz assoziiert wird.
+        </div>
+      </div>
       <div>
-        <p data-de="Das Teal im Schwarz ist keine Dekoration. Die Farbpsychologie verbindet Blau-Grün-Töne mit weniger Stress, geringerer Schmerzwahrnehmung und klarerem Denken. Teal liegt genau dort. Weniger empfundener Schmerz. Mehr Fokus. Die Ruhe, die aufblitzt, wenn der Körper aufhört zu diskutieren."
-           data-en="The teal in the black is not decoration. Color psychology links blue-green hues to less stress, lower pain perception, and clearer thinking. Teal sits right there. Less perceived pain. More focus. The calm that flashes through when the body stops arguing.">
-          Das Teal im Schwarz ist keine Dekoration. Die Farbpsychologie verbindet Blau-Grün-Töne mit weniger Stress, geringerer Schmerzwahrnehmung und klarerem Denken. Teal liegt genau dort. Weniger empfundener Schmerz. Mehr Fokus. Die Ruhe, die aufblitzt, wenn der Körper aufhört zu diskutieren.
+        <p data-de="Das Teal im Schwarz ist keine Dekoration. Studien zeigen, dass Blau- und Grüntöne – und damit auch Teal – mit geringerer Schmerzwahrnehmung und reduziertem Stress in Verbindung gebracht werden. In experimentellen Settings und klinischen Kontexten (u. a. bei Migräne und akuten Eingriffen) führten grüne und blaue Lichtreize zu messbar niedrigeren Schmerz- und Stresswerten. Teal liegt genau in diesem Spektrum: weniger empfundener Schmerz, mehr Fokus. Die Ruhe, die aufblitzt, wenn der Körper aufhört zu diskutieren."
+           data-en="The teal in the black is not decoration. Studies link blue and green hues — and with them teal — to lower pain perception and reduced stress. In experimental settings and clinical contexts (including migraine and acute procedures), green and blue light stimuli have led to measurably lower pain and stress scores. Teal sits right in that spectrum: less perceived pain, more focus. The calm that flashes through when the body stops arguing.">
+          Das Teal im Schwarz ist keine Dekoration. Studien zeigen, dass Blau- und Grüntöne – und damit auch Teal – mit geringerer Schmerzwahrnehmung und reduziertem Stress in Verbindung gebracht werden. In experimentellen Settings und klinischen Kontexten (u. a. bei Migräne und akuten Eingriffen) führten grüne und blaue Lichtreize zu messbar niedrigeren Schmerz- und Stresswerten. Teal liegt genau in diesem Spektrum: weniger empfundener Schmerz, mehr Fokus. Die Ruhe, die aufblitzt, wenn der Körper aufhört zu diskutieren.
         </p>
         <p data-de="Weniger Schmerz. Mehr Ausdauer."
            data-en="Less Pain. More Endurance.">
@@ -1396,7 +1474,7 @@ alt=""
       </p>
       <p class="closing"
          data-de="Eine Version dieses Designs ist bereits am Verbier Ultra 2026 im Einsatz — getragen von allen Runnern und dem gesamten Staff. Lebendiger Beweis, dass das Konzept nicht auf der Seite bleibt."
-         data-en="A version of this design is already in use at the Verbier Ultra 2026 — worn by every runner and the entire staff. Living proof that the concept does not stay on the page.">
+         data-en="A version of this design is already in use at the Verbier Ultra 2026 — worn by every runner and the entire staff. Living proof the concept doesn’t stay on the page.">
         Eine Version dieses Designs ist bereits am Verbier Ultra 2026 im Einsatz — getragen von allen Runnern und dem gesamten Staff. Lebendiger Beweis, dass das Konzept nicht auf der Seite bleibt.
       </p>
     </div>
@@ -1430,9 +1508,9 @@ alt=""
         </li>
       </ul>
       <p class="note"
-         data-de="Beide tragen dasselbe Second Skin Design — Teal auf Schwarz, nah am Körper. Stückzahlen sind aktuelle Planung und können sich noch ändern."
-         data-en="Both carry the same Second Skin design — teal on black, close to the body. Piece counts are current planning and may still change.">
-        Beide tragen dasselbe Second Skin Design — Teal auf Schwarz, nah am Körper. Stückzahlen sind aktuelle Planung und können sich noch ändern.
+         data-de="Beide tragen dasselbe Second Skin Design — Teal auf Schwarz, nah am Körper. Die Stückzahlen sind bewusst begrenzt und orientieren sich am tatsächlichen Bedarf."
+         data-en="Both carry the same Second Skin design — teal on black, close to the body. Piece counts are kept intentionally limited and follow actual demand.">
+        Beide tragen dasselbe Second Skin Design — Teal auf Schwarz, nah am Körper. Die Stückzahlen sind bewusst begrenzt und orientieren sich am tatsächlichen Bedarf.
       </p>
     </div>
   </section>
@@ -1706,6 +1784,10 @@ alt=""
       if (html.indexOf('<') !== -1) el.innerHTML = html;
       else el.textContent = html;
     });
+    document.querySelectorAll('[data-de-label]').forEach(function (el) {
+      var label = lang === 'de' ? el.getAttribute('data-de-label') : el.getAttribute('data-en-label');
+      if (label) el.setAttribute('aria-label', label);
+    });
     btnDe.classList.toggle('active', lang === 'de');
     btnEn.classList.toggle('active', lang === 'en');
     document.documentElement.lang = lang;
@@ -1732,6 +1814,25 @@ alt=""
 
   btnDe.addEventListener('click', function () { setLang('de'); });
   btnEn.addEventListener('click', function () { setLang('en'); });
+
+  var tealWrap = document.getElementById('teal-swatch-wrap');
+  var tealSwatch = document.getElementById('teal-swatch');
+  if (tealWrap && tealSwatch) {
+    function setTealTipOpen(open) {
+      tealWrap.classList.toggle('is-open', open);
+      tealSwatch.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+    tealSwatch.addEventListener('click', function (e) {
+      e.preventDefault();
+      setTealTipOpen(!tealWrap.classList.contains('is-open'));
+    });
+    document.addEventListener('click', function (e) {
+      if (!tealWrap.contains(e.target)) setTealTipOpen(false);
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') setTealTipOpen(false);
+    });
+  }
 
   function normalizeCounts(raw) {
     return {
