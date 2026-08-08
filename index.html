@@ -867,13 +867,16 @@
     pointer-events:none !important;
   }
 
-  /* ARTIST — name, bio, portrait, then links */
+  /* ARTIST — text + quote left, portrait right when space */
   .artist{ background:var(--panel); border-top:1px solid var(--line);}
   .artist-grid{
-    display:block;
-    max-width:var(--measure);
+    display:grid;
+    grid-template-columns:minmax(0,1fr) auto;
+    gap:clamp(1.4rem, 3.5vw, 2.8rem);
+    align-items:start;
+    max-width:var(--content);
   }
-  .artist-copy{ min-width:0; }
+  .artist-copy{ min-width:0; max-width:var(--measure); }
   .artist-title{
     font-family:'Bebas Neue',sans-serif;
     font-size:clamp(2rem, 4vw, 2.4rem);
@@ -893,13 +896,11 @@
     color:#cfd8d5;
     font-size:1.02rem;
     margin-bottom:1.4rem;
-    max-width:var(--measure);
   }
   .artist-quote{
     margin:0 0 1.6rem;
     padding:0 0 0 1.2rem;
     border-left:2px solid var(--teal-bright);
-    max-width:var(--measure);
   }
   .artist-quote p{
     margin:0;
@@ -922,7 +923,7 @@
     display:flex;
     gap:1.6rem;
     flex-wrap:wrap;
-    margin-top:1.5rem;
+    margin-top:.2rem;
   }
   .artist-links a{
     font-family:'JetBrains Mono',monospace;
@@ -935,8 +936,10 @@
   }
   .artist-links a:hover{ color:var(--text); border-color:var(--text);}
   .artist-portrait{
-    margin:0 0 0;
-    width:clamp(140px, 18vw, 200px);
+    margin:0;
+    justify-self:end;
+    width:clamp(150px, 20vw, 220px);
+    background:transparent;
   }
   .artist-portrait img{
     display:block;
@@ -1052,7 +1055,13 @@
     .color-grid,
     .mission-grid{ grid-template-columns:1fr; }
     .swatch{ height:160px; max-width:280px; }
-    .artist-portrait{ width:min(170px, 40vw); }
+    .artist-grid{ grid-template-columns:1fr; }
+    .artist-portrait{
+      justify-self:start;
+      width:min(180px, 42vw);
+      order:2;
+    }
+    .artist-copy{ order:1; max-width:none; }
     .artist-alias{ margin-bottom:1rem; }
   }
 
@@ -1488,18 +1497,6 @@ alt=""
             </p>
             <cite>EinOhm</cite>
           </blockquote>
-          <figure class="artist-portrait">
-            <img src="author-fankhauser-einohm.png"
-                 width="440"
-                 height="660"
-                 loading="lazy"
-                 decoding="async"
-                 fetchpriority="low"
-                 title="Thomas Fankhauser · EinOhm · Second Skin Second Chance"
-                 data-de="Thomas Fankhauser (EinOhm) — Data &amp; Systems Architect bei X-Bionic und Visual Artist, Illustration für Second Skin Second Chance"
-                 data-en="Thomas Fankhauser (EinOhm) — Data &amp; Systems Architect at X-Bionic and visual artist, illustration for Second Skin Second Chance"
-                 alt="Thomas Fankhauser (EinOhm) — Data &amp; Systems Architect bei X-Bionic und Visual Artist, Illustration für Second Skin Second Chance">
-          </figure>
           <div class="artist-links">
             <a href="https://thomasfankhauser.ch" target="_blank" rel="noopener">thomasfankhauser.ch</a>
             <a href="https://www.linkedin.com/in/thomasfankhauser/" target="_blank" rel="noopener">LinkedIn</a>
@@ -1507,6 +1504,18 @@ alt=""
           </div>
         </div>
       </div>
+      <figure class="artist-portrait">
+        <img src="author-fankhauser-einohm.png"
+             width="576"
+             height="1024"
+             loading="lazy"
+             decoding="async"
+             fetchpriority="low"
+             title="Thomas Fankhauser · EinOhm · Second Skin Second Chance"
+             data-de="Thomas Fankhauser (EinOhm) — Data &amp; Systems Architect bei X-Bionic und Visual Artist, Illustration für Second Skin Second Chance"
+             data-en="Thomas Fankhauser (EinOhm) — Data &amp; Systems Architect at X-Bionic and visual artist, illustration for Second Skin Second Chance"
+             alt="Thomas Fankhauser (EinOhm) — Data &amp; Systems Architect bei X-Bionic und Visual Artist, Illustration für Second Skin Second Chance">
+      </figure>
     </div>
   </section>
 
