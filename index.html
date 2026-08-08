@@ -924,6 +924,64 @@
     background:transparent;
   }
 
+  /* X-BIONIC — teaser + expand */
+  .xbionic{
+    background:var(--black);
+    border-top:1px solid var(--line);
+  }
+  .xbionic .lead{ margin-bottom:1.4rem; }
+  .xbionic-more{
+    max-width:var(--measure);
+  }
+  .xbionic-more summary{
+    display:inline-flex;
+    align-items:center;
+    gap:.55rem;
+    list-style:none;
+    cursor:pointer;
+    font-family:'JetBrains Mono',monospace;
+    font-size:.72rem;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:var(--teal-bright);
+    border-bottom:1px solid rgba(95,232,211,.35);
+    padding-bottom:.2rem;
+    transition:color .25s ease, border-color .25s ease;
+  }
+  .xbionic-more summary::-webkit-details-marker{ display:none; }
+  .xbionic-more summary::after{
+    content:"→";
+    opacity:.75;
+    transition:transform .25s ease;
+  }
+  .xbionic-more[open] summary::after{
+    content:"↑";
+  }
+  .xbionic-more summary:hover{
+    color:#8ff0e0;
+    border-color:rgba(143,240,224,.7);
+  }
+  .xbionic-body{
+    margin-top:1.6rem;
+    display:grid;
+    gap:1.15rem;
+  }
+  .xbionic-body p{
+    color:#cfd8d5;
+    font-size:1.02rem;
+  }
+  .xbionic-body a{
+    justify-self:start;
+    font-family:'JetBrains Mono',monospace;
+    font-size:.78rem;
+    letter-spacing:.06em;
+    color:var(--teal-bright);
+    text-decoration:none;
+    border-bottom:1px solid var(--teal);
+    padding-bottom:2px;
+  }
+  .xbionic-body a:hover{ color:var(--text); border-color:var(--text); }
+
   /* LOGOS */
   .logos{
     background:var(--black);
@@ -1416,6 +1474,41 @@ alt=""
     </div>
   </section>
 
+  <!-- X-BIONIC -->
+  <section class="xbionic" id="xbionic" aria-labelledby="xbionic-heading">
+    <div class="section-head">
+      <span class="num">08</span>
+      <h2 id="xbionic-heading">X-Bionic</h2>
+    </div>
+    <p class="lead"
+       data-de="Eine Schweizer Multisport-Marke mit über 800 Patenten. Die Kleidung wärmt, kühlt und stützt den Körper – je nachdem, was er gerade braucht. Entwickelt für hohe Anforderungen, aber genauso für alle, die einfach gern draussen aktiv sind."
+       data-en="A Swiss multisport brand with over 800 patents. Their clothing warms, cools and supports the body – depending on what it needs at the moment. Developed for high demands, but just as much for anyone who simply enjoys being active outdoors.">
+      Eine Schweizer Multisport-Marke mit über 800 Patenten. Die Kleidung wärmt, kühlt und stützt den Körper – je nachdem, was er gerade braucht. Entwickelt für hohe Anforderungen, aber genauso für alle, die einfach gern draussen aktiv sind.
+    </p>
+    <details class="xbionic-more">
+      <summary data-de="Mehr erfahren" data-en="Read more">Mehr erfahren</summary>
+      <div class="xbionic-body">
+        <p data-de="Bei X-Bionic dreht sich viel um Innovation. Seit über 25 Jahren steckt die Marke Energie in Technik, die den Körper besser unterstützt: Thermoregulation, Kompression und intelligentes Feuchtigkeitsmanagement. Jedes Detail soll einen klaren Zweck haben, damit man sich beim Sport weniger mit der Ausrüstung beschäftigen muss und mehr mit dem, was man gerade macht."
+           data-en="At X-Bionic, a lot revolves around innovation. For more than 25 years the brand has invested energy in technology that better supports the body: thermoregulation, compression and intelligent moisture management. Every detail is meant to serve a clear purpose, so you can focus less on the gear and more on what you are doing.">
+          Bei X-Bionic dreht sich viel um Innovation. Seit über 25 Jahren steckt die Marke Energie in Technik, die den Körper besser unterstützt: Thermoregulation, Kompression und intelligentes Feuchtigkeitsmanagement. Jedes Detail soll einen klaren Zweck haben, damit man sich beim Sport weniger mit der Ausrüstung beschäftigen muss und mehr mit dem, was man gerade macht.
+        </p>
+        <p data-de="Dazu kommt eine typisch schweizerische Sorgfalt im Design. Funktion und Form werden gleich ernst genommen: Die Produkte sollen nicht nur technisch überzeugen, sondern auch in Passform und Erscheinungsbild präzise und durchdacht wirken."
+           data-en="This is combined with a typically Swiss care for design. Function and form are taken equally seriously: the products should not only perform technically, but also feel and look precise and well thought-out in fit and appearance.">
+          Dazu kommt eine typisch schweizerische Sorgfalt im Design. Funktion und Form werden gleich ernst genommen: Die Produkte sollen nicht nur technisch überzeugen, sondern auch in Passform und Erscheinungsbild präzise und durchdacht wirken.
+        </p>
+        <p data-de="Ein gutes Beispiel für die technische Seite ist der Trailrunning-Schuh TerraSkin®. Zwei Jahre Entwicklung, damit Schuh und Socke als ein System funktionieren statt als zwei getrennte Teile. Beim Aufsetzen dämpft er, hält den Fuss aber trotzdem stabil – fast wie eine kleine Federung. Die Sohle ist vom Muster eines Spinnennetzes inspiriert und soll dadurch besseren Grip haben. Laut Hersteller bis zu 27 % mehr Bodenkontakt als bei anderen Marken. Im Topmodell steckt zusätzlich eine Carbonplatte für mehr Reaktionsfähigkeit auf unebenem Gelände."
+           data-en="A good example of the technical side is the TerraSkin® trail running shoe. Two years of development so that shoe and sock work as one system rather than two separate parts. It cushions on landing while still keeping the foot stable – almost like a small suspension. The outsole is inspired by the pattern of a spider’s web and is designed to provide better grip. According to the manufacturer, up to 27 % more ground contact than competing products. The top model also includes a carbon plate for more reactivity on uneven terrain.">
+          Ein gutes Beispiel für die technische Seite ist der Trailrunning-Schuh TerraSkin®. Zwei Jahre Entwicklung, damit Schuh und Socke als ein System funktionieren statt als zwei getrennte Teile. Beim Aufsetzen dämpft er, hält den Fuss aber trotzdem stabil – fast wie eine kleine Federung. Die Sohle ist vom Muster eines Spinnennetzes inspiriert und soll dadurch besseren Grip haben. Laut Hersteller bis zu 27 % mehr Bodenkontakt als bei anderen Marken. Im Topmodell steckt zusätzlich eine Carbonplatte für mehr Reaktionsfähigkeit auf unebenem Gelände.
+        </p>
+        <p data-de="Am Ende geht es bei den Produkten darum, Menschen zu motivieren, sich zu bewegen und in die Natur zu gehen – ob gemeinsam mit anderen oder in den intensiven Momenten, in denen man ganz bei sich ist. Weniger Ablenkung durch die Ausrüstung, mehr Lebensqualität durch Bewegung."
+           data-en="In the end, the products are about motivating people to move and go into nature – whether together with others or in those intense moments when you are fully present with yourself. Less distraction from the equipment, more quality of life through movement.">
+          Am Ende geht es bei den Produkten darum, Menschen zu motivieren, sich zu bewegen und in die Natur zu gehen – ob gemeinsam mit anderen oder in den intensiven Momenten, in denen man ganz bei sich ist. Weniger Ablenkung durch die Ausrüstung, mehr Lebensqualität durch Bewegung.
+        </p>
+        <a href="https://www.x-bionic.com/" target="_blank" rel="noopener">x-bionic.com</a>
+      </div>
+    </details>
+  </section>
+
   <!-- LOGOS -->
   <section class="logos">
     <a class="logo-item" href="https://www.verbierultra.com/" target="_blank" rel="noopener">
@@ -1717,6 +1810,25 @@ alt=""
       if (document.querySelector('[data-protect]:hover')) e.preventDefault();
     }
   });
+
+  // X-Bionic expand label
+  var xbionicMore = document.querySelector('.xbionic-more');
+  if (xbionicMore) {
+    xbionicMore.addEventListener('toggle', function () {
+      var summary = xbionicMore.querySelector('summary');
+      if (!summary) return;
+      if (xbionicMore.open) {
+        summary.setAttribute('data-de', 'Weniger anzeigen');
+        summary.setAttribute('data-en', 'Show less');
+      } else {
+        summary.setAttribute('data-de', 'Mehr erfahren');
+        summary.setAttribute('data-en', 'Read more');
+      }
+      summary.textContent = currentLang === 'de'
+        ? summary.getAttribute('data-de')
+        : summary.getAttribute('data-en');
+    });
+  }
 })();
 </script>
 </body>
