@@ -64,9 +64,9 @@ export async function onRequestPost(context) {
   const replyTo = env.REPLY_TO_EMAIL || extractAddress(from) || 'registration@secondskin.run';
   const copy = userCopy(lang, firstname, fit, size);
 
-  const subjectNotify = `Second Skin signup: ${firstname} ${lastname} (${fit}/${size})`;
+  const subjectNotify = `Second Skin interest: ${firstname} ${lastname} (${fit}/${size})`;
   const textNotify = [
-    'New Second Skin pre-release registration',
+    'New Second Skin interest signup',
     '',
     `Name: ${firstname} ${lastname}`,
     `Email: ${email}`,
@@ -127,14 +127,14 @@ function userCopy(lang, firstname, fit, size) {
   const safeSize = escapeHtml(size);
 
   if (lang === 'de') {
-    const subject = 'Second Skin - Vielen Dank für deine Registrierung';
+    const subject = 'Second Skin — danke für dein Interesse';
     const greeting = `Hallo ${firstname},`;
-    const thanks = 'vielen Dank für deine Registrierung.';
+    const thanks = 'vielen Dank für dein Interesse am Second Skin Konzept.';
     const body =
-      'Du bist auf der Pre-Release-Liste. Wir melden uns vor dem Launch (voraussichtlich Februar / März 2027) mit deinem Vorkaufsrecht.';
-    const fitLabel = 'Schnitt';
-    const sizeLabel = 'Grösse';
-    const preheader = 'Deine Registrierung ist eingegangen.';
+      'Wir haben deine Meldung erhalten. Das ist noch keine Bestellung — wir melden uns vor dem Launch (voraussichtlich Februar / März 2027).';
+    const fitLabel = 'Schnitt (Präferenz)';
+    const sizeLabel = 'Grösse (Präferenz)';
+    const preheader = 'Danke für dein Interesse an Second Skin.';
     return {
       subject,
       text: plainText({ greeting, thanks, body, fitLabel, sizeLabel, fit, size }),
@@ -152,15 +152,14 @@ function userCopy(lang, firstname, fit, size) {
     };
   }
 
-  const subject = 'Second Skin - Thank you for your registration';
+  const subject = 'Second Skin — thanks for your interest';
   const greeting = `Hi ${firstname},`;
-  const thanks = 'thank you for your registration.';
+  const thanks = 'thank you for your interest in the Second Skin concept.';
   const body =
-    'You are on the pre-release list. We will contact you before launch (expected Feb / Mar 2027) with your priority purchase rights.';
-  const fitLabel = 'Fit';
-  const sizeLabel = 'Size';
-  const preheader = 'Your registration has been received.';
-  return {
+    'We received your note. This is not an order — we will get in touch before launch (expected Feb / Mar 2027).';
+  const fitLabel = 'Fit (preference)';
+  const sizeLabel = 'Size (preference)';
+  const preheader = 'Thanks for your interest in Second Skin.';  return {
     subject,
     text: plainText({ greeting, thanks, body, fitLabel, sizeLabel, fit, size }),
     html: buildHtml({

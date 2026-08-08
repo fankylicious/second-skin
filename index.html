@@ -250,8 +250,55 @@
   }
   .gallery-item figcaption strong{ color:var(--teal-bright); font-weight:600;}
 
+  /* Protected design images (download soft-block; blur only with --blur) */
+  .img-protect{
+    position:relative;
+    user-select:none;
+    -webkit-user-select:none;
+  }
+  .img-protect img{
+    pointer-events:none;
+    -webkit-user-drag:none;
+    user-select:none;
+  }
+  .img-protect--blur img{
+    filter:blur(14px) saturate(1.05) brightness(.92);
+    transform:scale(1.06);
+  }
+  .gallery-item:hover .img-protect--blur img{
+    transform:scale(1.1);
+    filter:blur(12px) saturate(1.08) brightness(.95);
+  }
+  .img-protect--blur::after{
+    content:'';
+    position:absolute;
+    inset:0;
+    background:
+      radial-gradient(ellipse at 50% 45%, transparent 20%, rgba(8,11,10,.45) 75%),
+      linear-gradient(180deg, rgba(8,11,10,.15), rgba(8,11,10,.55));
+    pointer-events:none;
+  }
+  .img-protect-badge{
+    position:absolute;
+    z-index:2;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+    font-family:'JetBrains Mono',monospace;
+    font-size:.72rem;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--teal-bright);
+    background:rgba(8,11,10,.72);
+    border:1px solid rgba(62,168,155,.45);
+    padding:.65rem 1rem;
+    white-space:nowrap;
+    pointer-events:none;
+  }
+
   @media (max-width:600px){
     .gallery-item .img-wrap{ height:240px;}
+    .img-protect-badge{ font-size:.62rem; letter-spacing:.1em; padding:.55rem .75rem; }
   }
 
   /* STORY */
@@ -969,8 +1016,8 @@ alt=""
       </div>
       <div class="hero-cta">
         <a class="btn btn-primary" href="#register"
-           data-de="Registrieren"
-           data-en="Register">Registrieren</a>
+           data-de="Interesse anmelden"
+           data-en="Show interest">Interesse anmelden</a>
         <a class="btn btn-ghost" href="#design"
            data-de="Design Concept"
            data-en="Design Concept">Design Concept</a>
@@ -996,7 +1043,15 @@ alt=""
     </div>
     <div class="gallery-grid">
       <figure class="gallery-item">
-        <div class="img-wrap"><img src="gallery-artseries.png" alt="X-Bionic Second Skin Trail Running Shirt Teal"></div>
+        <div class="img-wrap img-protect img-protect--blur" data-protect>
+          <img src="gallery-artseries.png"
+               alt="X-Bionic Second Skin Trail Running Shirt Teal — Konzeptvorschau"
+               draggable="false"
+               loading="lazy">
+          <span class="img-protect-badge"
+                data-de="Konzeptvorschau"
+                data-en="Concept preview">Konzeptvorschau</span>
+        </div>
         <figcaption><strong>Special Edition</strong> · Long Sleeve · Prototype</figcaption>
       </figure>
     </div>
@@ -1114,30 +1169,13 @@ alt=""
       <h2 data-de="Special Edition · X-Bionic Exclusive" data-en="Special Edition · X-Bionic Exclusive">Special Edition · X-Bionic Exclusive</h2>
     </div>
     <p class="lead"
-       data-de="Es wird nur so viel produziert, wie nachgefragt wird. Ohne Überproduktion. X-Bionic Qualität hält Jahre. Beispiel: Verbier Ultra Edition 2026, 175 bestellt. Second Skin folgt demselben Prinzip. Release voraussichtlich Februar / März 2027."
-       data-en="We produce only as much as is demanded. No overproduction. X-Bionic quality lasts for years. Example: Verbier Ultra Edition 2026, 175 ordered. Second Skin follows the same principle. Release expected Feb / Mar 2027.">
-      Es wird nur so viel produziert, wie nachgefragt wird. Ohne Überproduktion. X-Bionic Qualität hält Jahre. Beispiel: Verbier Ultra Edition 2026, 175 bestellt. Second Skin folgt demselben Prinzip. Release voraussichtlich Februar / März 2027.
+       data-de="Second Skin entsteht als limitierte Special Edition — nur so viel, wie wirklich gewünscht wird. Ohne Überproduktion. X-Bionic Qualität hält Jahre. Release voraussichtlich Februar / März 2027."
+       data-en="Second Skin is made as a limited Special Edition — only as much as is truly wanted. No overproduction. X-Bionic quality lasts for years. Release expected Feb / Mar 2027.">
+      Second Skin entsteht als limitierte Special Edition — nur so viel, wie wirklich gewünscht wird. Ohne Überproduktion. X-Bionic Qualität hält Jahre. Release voraussichtlich Februar / März 2027.
     </p>
 
-    <div class="counter" id="edition-ticker" aria-live="polite">
-      <div class="counter-block" data-fit="men">
-        <div class="counter-row">
-          <span data-de="Männer" data-en="Men">Männer</span>
-          <strong class="count-live"><span data-count="men">18</span> / 100</strong>
-        </div>
-        <div class="bar"><div class="bar-fill" id="bar-men" style="width:18%"></div></div>
-      </div>
-      <div class="counter-block" data-fit="women">
-        <div class="counter-row">
-          <span data-de="Frauen" data-en="Women">Frauen</span>
-          <strong class="count-live"><span data-count="women">0</span> / 50</strong>
-        </div>
-        <div class="bar"><div class="bar-fill" id="bar-women" style="width:0%"></div></div>
-      </div>
-    </div>
-
     <a class="ticker-cta" href="#register">
-      <span data-de="Jetzt registrieren" data-en="Register now">Jetzt registrieren</span>
+      <span data-de="Interesse anmelden" data-en="Show interest">Interesse anmelden</span>
       <span class="arrow" aria-hidden="true">→</span>
     </a>
   </section>
@@ -1146,12 +1184,12 @@ alt=""
   <section class="register" id="register">
     <div class="section-head">
       <span class="num">06</span>
-      <h2 data-de="Vormerken" data-en="Save your spot">Vormerken</h2>
+      <h2 data-de="Interesse anmelden" data-en="Show interest">Interesse anmelden</h2>
     </div>
     <p class="lead"
-       data-de="Falls dir das Design gefällt, merken wir uns das gerne vor und melden uns bei dir zum Release."
-       data-en="If you like the design, we're happy to remember that and get in touch when it releases.">
-      Falls dir das Design gefällt, merken wir uns das gerne vor und melden uns bei dir zum Release.
+       data-de="Gefällt dir das Konzept? Melde kurz dein Interesse — mit Schnitt und Grösse als Präferenz, damit wir die Nachfrage besser einschätzen können. Keine Bestellung, kein Commitment. Wir melden uns vor dem Release."
+       data-en="Like the concept? Share your interest — with fit and size as a preference so we can sense demand. No order, no commitment. We'll get in touch before release.">
+      Gefällt dir das Konzept? Melde kurz dein Interesse — mit Schnitt und Grösse als Präferenz, damit wir die Nachfrage besser einschätzen können. Keine Bestellung, kein Commitment. Wir melden uns vor dem Release.
     </p>
 
     <form id="reg-form" novalidate>
@@ -1197,8 +1235,8 @@ alt=""
 
       <div class="form-actions">
         <button type="submit" class="btn btn-primary" id="reg-submit"
-                data-de="Registrieren"
-                data-en="Register">Registrieren</button>
+                data-de="Interesse melden"
+                data-en="Share interest">Interesse melden</button>
         <p class="form-error" id="form-error"
            data-de="Bitte alle Felder korrekt ausfüllen."
            data-en="Please fill in all fields correctly.">
@@ -1209,10 +1247,10 @@ alt=""
     </form>
 
     <div class="form-success" id="form-success" aria-live="polite">
-      <h3 data-de="Du bist drauf." data-en="You're on the list.">Du bist drauf.</h3>
-      <p data-de="Danke. Wir melden uns vor dem Release."
-         data-en="Thanks. We'll be in touch before release.">
-        Danke. Wir melden uns vor dem Release.
+      <h3 data-de="Danke für dein Interesse." data-en="Thanks for your interest.">Danke für dein Interesse.</h3>
+      <p data-de="Wir haben deine Meldung erhalten und melden uns vor dem Release."
+         data-en="We've received your note and will get in touch before release.">
+        Wir haben deine Meldung erhalten und melden uns vor dem Release.
       </p>
     </div>
   </section>
@@ -1253,8 +1291,11 @@ alt=""
     </p>
 
     <div class="edition-visual">
-      <div class="img-wrap">
-        <img src="gallery-verbier.png" alt="X-Bionic Verbier Ultra Special Edition Trail Running Shirt Teal">
+      <div class="img-wrap img-protect" data-protect>
+        <img src="gallery-verbier.png"
+             alt="X-Bionic Verbier Ultra Special Edition Trail Running Shirt Teal"
+             draggable="false"
+             loading="lazy">
       </div>
       <div class="edition-caption">
         <strong>Verbier Ultra Edition</strong>
@@ -1527,11 +1568,11 @@ alt=""
     if (!mailOk) {
       if (regSubmit) {
         regSubmit.disabled = false;
-        regSubmit.textContent = currentLang === 'de' ? 'Registrieren' : 'Register';
+        regSubmit.textContent = currentLang === 'de' ? 'Interesse melden' : 'Share interest';
       }
       showFormError(currentLang === 'de'
-        ? 'Registrierung fehlgeschlagen. Bitte später erneut versuchen.'
-        : 'Registration failed. Please try again later.');
+        ? 'Senden fehlgeschlagen. Bitte später erneut versuchen.'
+        : 'Sending failed. Please try again later.');
       return;
     }
 
@@ -1590,6 +1631,17 @@ alt=""
       }
     });
   }
+
+  // Soft protect: block casual save/drag on design previews (not absolute DRM)
+  document.querySelectorAll('[data-protect]').forEach(function (el) {
+    el.addEventListener('contextmenu', function (e) { e.preventDefault(); });
+    el.addEventListener('dragstart', function (e) { e.preventDefault(); });
+  });
+  document.addEventListener('keydown', function (e) {
+    if ((e.ctrlKey || e.metaKey) && (e.key === 's' || e.key === 'S')) {
+      if (document.querySelector('[data-protect]:hover')) e.preventDefault();
+    }
+  });
 })();
 </script>
 </body>
