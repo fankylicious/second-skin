@@ -743,12 +743,12 @@
   }
   .color-quote__rule{
     display:block;
-    width:100%;
+    width:min(42%, 11rem);
     height:1px;
-    margin:1.5rem 0 2.4rem;
+    margin:0 0 1.5rem;
     border:none;
-    background:linear-gradient(90deg, transparent, var(--teal) 18%, var(--teal-bright) 50%, var(--teal) 82%, transparent);
-    opacity:.55;
+    background:linear-gradient(90deg, var(--teal-bright), var(--teal));
+    opacity:.75;
   }
   #color .section-head{
     margin-top:6.5rem;
@@ -769,9 +769,9 @@
     border-top:1px solid var(--line);
   }
   .color-quote{
-    max-width:min(var(--measure), 36rem);
+    max-width:var(--measure);
     margin:0.75rem 0 0;
-    text-align:center;
+    text-align:left;
   }
   .color-quote .thought-bubble{
     margin-bottom:0.35rem;
@@ -1809,7 +1809,7 @@
     }
     #renewal.emotion-arc{ padding-bottom:2.75rem; }
     .color{ padding-top:2.25rem; }
-    .color-quote__rule{ margin:1.35rem 0 2rem; }
+    .color-quote__rule{ margin:0 0 1.35rem; }
     #breath-circle{ margin:2rem auto 1.85rem; }
     #color .section-head{ margin-top:5.25rem; }
     hr.arc-breath{ padding:.85rem 0 1rem; }
@@ -1865,7 +1865,7 @@
     }
     #renewal.emotion-arc{ padding-bottom:2.5rem; }
     .color{ padding-top:2rem; }
-    .color-quote__rule{ margin:1.25rem 0 1.75rem; }
+    .color-quote__rule{ margin:0 0 1.25rem; }
     #breath-circle{ margin:1.85rem auto 1.7rem; }
     #color .section-head{ margin-top:4.75rem; }
     .gallery-item .img-wrap{ height:min(240px, 70vw); }
@@ -2151,6 +2151,7 @@ alt=""
   <!-- COLOR — scale-accent / scale-line: optional (CSS-Block „SCALE ACCENTS“) -->
   <section class="color scale-accent" id="color">
     <div class="color-quote">
+      <hr class="color-quote__rule" aria-hidden="true">
       <figure class="thought-bubble"
               data-de-label="Zitat"
               data-en-label="Quote"
