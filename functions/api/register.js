@@ -131,7 +131,7 @@ function userCopy(lang, firstname, fit, size) {
     const greeting = `Hallo ${firstname},`;
     const thanks = 'vielen Dank für dein Interesse am Second Skin Konzept.';
     const body =
-      'Wir haben deine Meldung erhalten. Das ist noch keine Bestellung — wir melden uns vor dem Launch (voraussichtlich Februar / März 2027).';
+      'Wir haben deine Meldung erhalten. Das ist noch keine Bestellung — wir melden uns vor dem Launch. Second Skin erscheint Anfang 2027.';
     const fitLabel = 'Schnitt (Präferenz)';
     const sizeLabel = 'Grösse (Präferenz)';
     const preheader = 'Danke für dein Interesse an Second Skin.';
@@ -156,10 +156,11 @@ function userCopy(lang, firstname, fit, size) {
   const greeting = `Hi ${firstname},`;
   const thanks = 'thank you for your interest in the Second Skin concept.';
   const body =
-    'We received your note. This is not an order — we will get in touch before launch (expected Feb / Mar 2027).';
+    'We received your note. This is not an order — we will get in touch before launch. Second Skin will be released early 2027.';
   const fitLabel = 'Fit (preference)';
   const sizeLabel = 'Size (preference)';
-  const preheader = 'Thanks for your interest in Second Skin.';  return {
+  const preheader = 'Thanks for your interest in Second Skin.';
+  return {
     subject,
     text: plainText({ greeting, thanks, body, fitLabel, sizeLabel, fit, size }),
     html: buildHtml({
