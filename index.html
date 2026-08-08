@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Second Skin: Limited Edition · X-Bionic Exclusive by EinOhm</title>
 <meta name="description"
-      content="Second Skin: X-Bionic Limited Edition Shirt für Trail Running und Ultra. Weniger Schmerz. Mehr Ausdauer. Erscheint Anfang 2027."
-      data-de="Second Skin: X-Bionic Limited Edition Shirt für Trail Running und Ultra. Weniger Schmerz. Mehr Ausdauer. Erscheint Anfang 2027."
-      data-en="Second Skin: X-Bionic Limited Edition Shirt for Trail Running and Ultra. Less Pain. More Endurance. Will be released early 2027.">
+      content="Second Skin: X-Bionic Limited Edition Shirt für Trail Running und Ultra. Weniger Schmerz. Mehr Ausdauer. Voraussichtlich Anfang 2027."
+      data-de="Second Skin: X-Bionic Limited Edition Shirt für Trail Running und Ultra. Weniger Schmerz. Mehr Ausdauer. Voraussichtlich Anfang 2027."
+      data-en="Second Skin: X-Bionic Limited Edition Shirt for Trail Running and Ultra. Less Pain. More Endurance. Expected early 2027.">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" href="/favicon-32x32.png" type="image/png" sizes="32x32">
 <link rel="icon" href="/favicon-16x16.png" type="image/png" sizes="16x16">
@@ -20,9 +20,9 @@
 <meta property="og:url" content="https://secondskin.run/">
 <meta property="og:title" content="Second Skin: Limited Edition · X-Bionic Exclusive by EinOhm">
 <meta property="og:description"
-      content="Second Skin: X-Bionic Limited Edition Shirt für Trail Running und Ultra. Weniger Schmerz. Mehr Ausdauer. Erscheint Anfang 2027."
-      data-de="Second Skin: X-Bionic Limited Edition Shirt für Trail Running und Ultra. Weniger Schmerz. Mehr Ausdauer. Erscheint Anfang 2027."
-      data-en="Second Skin: X-Bionic Limited Edition Shirt for Trail Running and Ultra. Less Pain. More Endurance. Will be released early 2027.">
+      content="Second Skin: X-Bionic Limited Edition Shirt für Trail Running und Ultra. Weniger Schmerz. Mehr Ausdauer. Voraussichtlich Anfang 2027."
+      data-de="Second Skin: X-Bionic Limited Edition Shirt für Trail Running und Ultra. Weniger Schmerz. Mehr Ausdauer. Voraussichtlich Anfang 2027."
+      data-en="Second Skin: X-Bionic Limited Edition Shirt for Trail Running and Ultra. Less Pain. More Endurance. Expected early 2027.">
 <meta property="og:image" content="https://secondskin.run/gallery-artseries.png">
 <meta property="og:locale" content="de_CH" id="og-locale">
 <meta property="og:locale:alternate" content="en_US">
@@ -61,7 +61,7 @@
     "https://instagram.com/edition_einohm",
     "https://thomasfankhauser.ch"
   ],
-  "description": "Data & Systems Architect at X-Bionic. Opens new paths in visual art that flow into life, business, and products. Creator of Second Skin."
+  "description": "Data & Systems Architect at X-Bionic. Opens new paths in multimedia design that flow into life, business, and products. Creator of Second Skin."
 }
 </script>
 <!-- Meta Pixel Code -->
@@ -438,12 +438,7 @@
   }
   .gallery-intro__moment{
     color:#cfd8d5;
-    font-style:italic;
-  }
-  .gallery-intro__meta{
-    font-size:.92rem;
-    line-height:1.6;
-    color:var(--muted);
+    font-style:normal;
   }
   .gallery-grid{
     display:grid;
@@ -763,7 +758,7 @@
     opacity:.55;
   }
   #color .section-head{
-    margin-top:4rem;
+    margin-top:6.5rem;
   }
   .bridge-line{
     max-width:var(--measure);
@@ -972,9 +967,20 @@
     text-transform:uppercase;
   }
 
-  /* VERBIER */
-  .verbier{ background:var(--panel-2); border-top:1px solid var(--line); }
-  .verbier .community-quote{ margin:2rem 0 2.8rem; }
+  /* VERBIER — exact gold from Verbier Ultra logo (#bc9c68) */
+  .verbier{
+    --verbier-sand:#bc9c68;
+    --verbier-sand-bright:#c9ab78;
+    --verbier-sand-deep:#a88652;
+    background:var(--panel-2);
+    border-top:1px solid var(--line);
+  }
+  .verbier .section-head h2{ color:var(--verbier-sand); }
+  .verbier .section-head .num{ color:var(--verbier-sand); }
+  .verbier .community-quote{
+    margin:2rem 0 2.8rem;
+    border-left-color:var(--verbier-sand);
+  }
   .verbier .values-banner{ margin-bottom:0; }
   .verbier .lead{ margin-bottom:1.6rem; }
   .values-banner{
@@ -1087,7 +1093,7 @@
     letter-spacing:.01em;
     color:var(--text);
   }
-  .edition-caption strong{ color:var(--teal-bright); font-weight:600; }
+  .edition-caption strong{ color:var(--verbier-sand); font-weight:600; }
   .edition-caption span{ color:var(--text); }
 
   .verbier-cta{
@@ -1106,13 +1112,13 @@
     font-size:clamp(1.35rem, 3vw, 1.75rem);
     letter-spacing:.08em;
     text-decoration:none;
-    color:#041210;
-    background:linear-gradient(135deg, var(--teal-bright) 0%, var(--teal) 100%);
+    color:#1a1610;
+    background:linear-gradient(135deg, var(--verbier-sand-bright) 0%, var(--verbier-sand-deep) 100%);
     padding:1.05rem 1.7rem 0.95rem 1.55rem;
     border:none;
     box-shadow:
-      0 0 0 1px rgba(95,232,211,.35),
-      0 12px 40px rgba(62,168,155,.28);
+      0 0 0 1px rgba(188,156,104,.4),
+      0 12px 40px rgba(168,134,82,.28);
     transition:transform .25s ease, box-shadow .25s ease, filter .25s ease;
   }
   .btn-register::after{
@@ -1126,8 +1132,8 @@
     transform:translateY(-2px);
     filter:brightness(1.06);
     box-shadow:
-      0 0 0 1px rgba(95,232,211,.55),
-      0 18px 48px rgba(62,168,155,.4);
+      0 0 0 1px rgba(201,171,120,.55),
+      0 18px 48px rgba(168,134,82,.4);
   }
   .btn-register:active{ transform:translateY(0); }
   .verbier-cta-note{
@@ -1804,7 +1810,7 @@
     .color{ padding-top:0.35rem; }
     .color-quote__rule{ margin:1.35rem 0 2rem; }
     #breath-circle{ margin:2rem auto 1.85rem; }
-    #color .section-head{ margin-top:3.25rem; }
+    #color .section-head{ margin-top:5.25rem; }
     hr.arc-breath{ padding:.85rem 0 1rem; }
     .gallery{ padding-top:3.5rem; }
     .reserve-grid{ grid-template-columns:1fr;}
@@ -1860,7 +1866,7 @@
     .color{ padding-top:0.3rem; }
     .color-quote__rule{ margin:1.25rem 0 1.75rem; }
     #breath-circle{ margin:1.85rem auto 1.7rem; }
-    #color .section-head{ margin-top:3rem; }
+    #color .section-head{ margin-top:4.75rem; }
     .gallery-item .img-wrap{ height:min(240px, 70vw); }
     .btn-register{
       font-size:1.2rem;
@@ -1954,7 +1960,7 @@ alt=""
         <span><strong data-de="Colorway:" data-en="Colorway:">Colorway:</strong> <span data-de="Teal auf Schwarz" data-en="teal on black">Teal auf Schwarz</span></span>
         <span><strong data-de="Produkt:" data-en="Product:">Produkt:</strong> <span data-de="X-Bionic Corefusion Run Short Sleeve / Crop Top"
              data-en="X-Bionic Corefusion Run Short Sleeve / Crop Top">X-Bionic Corefusion Run Short Sleeve / Crop Top</span></span>
-        <span><strong data-de="Release:" data-en="Release:">Release:</strong> <span data-de="Anfang 2027" data-en="early 2027">Anfang 2027</span></span>
+        <span><strong data-de="Release:" data-en="Release:">Release:</strong> <span data-de="voraussichtlich Anfang 2027" data-en="expected early 2027">voraussichtlich Anfang 2027</span></span>
       </div>
       <div class="hero-cta">
         <a class="btn btn-primary" href="#register"
@@ -1984,26 +1990,21 @@ alt=""
          data-en="Imagine you’ve had a hard day. You come home and put the shirt on. Second Chance.">
         Stell dir vor, du hattest einen schweren Tag. Du kommst nach Hause, ziehst das Shirt an. Second Chance.
       </p>
-      <p class="gallery-intro__meta"
-         data-de="Konzept-Entwurf als Long Sleeve für Trail Running und Ultra (X-Bionic Corefusion Run). Die Release-Version 2027 kommt als Short Sleeve und Crop Top."
-         data-en="Concept draft as a long sleeve for trail running and ultra (X-Bionic Corefusion Run). The 2027 release version comes as short sleeve and crop top.">
-        Konzept-Entwurf als Long Sleeve für Trail Running und Ultra (X-Bionic Corefusion Run). Die Release-Version 2027 kommt als Short Sleeve und Crop Top.
-      </p>
     </div>
     <div class="gallery-grid">
       <figure class="gallery-item">
         <div class="img-wrap img-protect img-protect--blur" data-protect>
           <img src="gallery-artseries.png"
-               alt="Second Skin · EinOhm Artwork · Entwurf · X-Bionic Corefusion Run Long Sleeve · Teal on Black · secondskin.run"
-               title="Second Skin · EinOhm Artwork · Corefusion Run Long Sleeve (Prototype) 2027"
+               alt="Second Skin · Konzept Entwurf · X-Bionic Corefusion Run Long Sleeve · Teal on Black · secondskin.run"
+               title="Second Skin · Konzept Entwurf · Corefusion Run Long Sleeve 2027"
                draggable="false"
                loading="lazy">
           <span class="img-protect-badge"
                 data-de="Coming soon..."
                 data-en="Coming soon...">Coming soon...</span>
         </div>
-        <figcaption data-de="EinOhm Artwork · Entwurf · Corefusion Run Long Sleeve (Prototyp) 2027"
-                    data-en="EinOhm Artwork · Draft · Corefusion Run Long Sleeve (Prototype) 2027">EinOhm Artwork · Entwurf · Corefusion Run Long Sleeve (Prototyp) 2027</figcaption>
+        <figcaption data-de="Konzept Entwurf"
+                    data-en="Concept Draft">Konzept Entwurf</figcaption>
       </figure>
     </div>
   </section>
@@ -2128,7 +2129,6 @@ alt=""
 
   <!-- COLOR — scale-accent / scale-line: optional (CSS-Block „SCALE ACCENTS“) -->
   <section class="color scale-accent" id="color">
-    <hr class="color-quote__rule" aria-hidden="true">
     <div class="color-quote">
       <figure class="thought-bubble"
               data-de-label="Zitat"
@@ -2308,22 +2308,22 @@ alt=""
     <div class="live-ticker">
       <h3 class="live-ticker__title" data-de="Live Ticker" data-en="Live Ticker">Live Ticker</h3>
       <p class="lead"
-         data-de="Bei X-Bionic wird auf eine nachhaltige Produktion gelegt. Eine genaue Bedarfsplanung steuert die Produktion. Darüber hinaus bleibt die Produktqualität über Jahre gesichert. Second Skin erscheint Anfang 2027."
-         data-en="At X-Bionic, the focus is on sustainable production. Precise demand planning steers production. Beyond that, product quality is secured for years. Second Skin will be released in early 2027.">
-        Bei X-Bionic wird auf eine nachhaltige Produktion gelegt. Eine genaue Bedarfsplanung steuert die Produktion. Darüber hinaus bleibt die Produktqualität über Jahre gesichert. Second Skin erscheint Anfang 2027.
+         data-de="Bei X-Bionic wird auf eine nachhaltige Produktion Wert gelegt. Eine genaue Bedarfsplanung steuert die Produktion. Darüber hinaus bleibt die Produktqualität über Jahre gesichert. Second Skin erscheint voraussichtlich Anfang 2027."
+         data-en="At X-Bionic, the focus is on sustainable production. Precise demand planning steers production. Beyond that, product quality is secured for years. Second Skin is expected early 2027.">
+        Bei X-Bionic wird auf eine nachhaltige Produktion Wert gelegt. Eine genaue Bedarfsplanung steuert die Produktion. Darüber hinaus bleibt die Produktqualität über Jahre gesichert. Second Skin erscheint voraussichtlich Anfang 2027.
       </p>
 
       <div class="counter" id="edition-ticker" aria-live="polite">
         <div class="counter-block" data-fit="men">
           <div class="counter-row">
-            <span data-de="Männer · Short Sleeve · geplant" data-en="Men · Short Sleeve · planned">Männer · Short Sleeve · geplant</span>
+            <span data-de="Männer · Short Sleeve · voraussichtlich" data-en="Men · Short Sleeve · expected">Männer · Short Sleeve · voraussichtlich</span>
             <strong class="count-live"><span data-count="men">15</span> / 100</strong>
           </div>
           <div class="bar"><div class="bar-fill" id="bar-men" style="width:15%"></div></div>
         </div>
         <div class="counter-block" data-fit="women">
           <div class="counter-row">
-            <span data-de="Frauen · Crop Top · geplant" data-en="Women · Crop Top · planned">Frauen · Crop Top · geplant</span>
+            <span data-de="Frauen · Crop Top · voraussichtlich" data-en="Women · Crop Top · expected">Frauen · Crop Top · voraussichtlich</span>
             <strong class="count-live"><span data-count="women">3</span> / 50</strong>
           </div>
           <div class="bar"><div class="bar-fill" id="bar-women" style="width:6%"></div></div>
@@ -2453,9 +2453,9 @@ alt=""
       </div>
 
       <p class="artist-short">
-        <span data-de="Kunst als Ausgleich zur Informatik und umgekehrt."
-              data-en="Art as a counterbalance to computer science and vice versa.">
-          Kunst als Ausgleich zur Informatik und umgekehrt.
+        <span data-de="Multimediale Gestaltung als Ausgleich zur Informatik und umgekehrt."
+              data-en="Multimedia design as a counterbalance to computer science and vice versa.">
+          Multimediale Gestaltung als Ausgleich zur Informatik und umgekehrt.
         </span>
       </p>
 
@@ -2480,9 +2480,9 @@ alt=""
             </div>
 
             <div class="artist-bio">
-              <p data-de="Für ihn ist Kunst Ausgleich zur Informatik und umgekehrt. In der visuellen Kunst will er neue Pfade gehen und diese Impulse bewusst in Leben, Geschäft und Produkte einfliessen lassen. Kreativität ist für ihn keine Ergänzung zur Technik, sondern eine Zukunftskompetenz. An den Schwellen zwischen Natur und Technologie, Kunst und Sport entstehen Verbindungen, die tragen."
-                 data-en="For him, art is a counterbalance to computer science and vice versa. In visual art, he wants to open new paths and let those impulses flow into life, business, and products. For him, creativity is not an add-on to technology, but a future skill. At the thresholds between nature and technology, art and sport, connections emerge that carry.">
-                Für ihn ist Kunst Ausgleich zur Informatik und umgekehrt. In der visuellen Kunst will er neue Pfade gehen und diese Impulse bewusst in Leben, Geschäft und Produkte einfliessen lassen. Kreativität ist für ihn keine Ergänzung zur Technik, sondern eine Zukunftskompetenz. An den Schwellen zwischen Natur und Technologie, Kunst und Sport entstehen Verbindungen, die tragen.
+              <p data-de="Für ihn ist multimediale Gestaltung Ausgleich zur Informatik und umgekehrt. In der multimedialen Gestaltung will er neue Pfade gehen und diese Impulse bewusst in Leben, Geschäft und Produkte einfliessen lassen. Kreativität ist für ihn keine Ergänzung zur Technik, sondern eine Zukunftskompetenz. An den Schwellen zwischen Natur und Technologie, Gestaltung und Sport entstehen Verbindungen, die tragen."
+                 data-en="For him, multimedia design is a counterbalance to computer science and vice versa. In multimedia design, he wants to open new paths and let those impulses flow into life, business, and products. For him, creativity is not an add-on to technology, but a future skill. At the thresholds between nature and technology, design and sport, connections emerge that carry.">
+                Für ihn ist multimediale Gestaltung Ausgleich zur Informatik und umgekehrt. In der multimedialen Gestaltung will er neue Pfade gehen und diese Impulse bewusst in Leben, Geschäft und Produkte einfliessen lassen. Kreativität ist für ihn keine Ergänzung zur Technik, sondern eine Zukunftskompetenz. An den Schwellen zwischen Natur und Technologie, Gestaltung und Sport entstehen Verbindungen, die tragen.
               </p>
             </div>
 
