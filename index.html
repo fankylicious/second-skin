@@ -174,7 +174,6 @@
     font-size:.68rem;
     letter-spacing:.1em;
     padding:.35rem .55rem;
-    cursor:pointer;
     transition:all .25s ease;
   }
   .lang-bar button.active{
@@ -191,7 +190,6 @@
     border:1px solid var(--line);
     background:rgba(15,22,19,.65);
     color:var(--text);
-    cursor:pointer;
     border-radius:2px;
   }
   .nav-toggle:focus-visible{
@@ -365,7 +363,6 @@
     text-decoration:none;
     padding:.9rem 1.3rem;
     border:1px solid transparent;
-    cursor:pointer;
     transition:transform .25s ease, background .25s ease, color .25s ease, border-color .25s ease;
   }
   .btn:hover{ transform:translateY(-1px); }
@@ -417,7 +414,6 @@
   /* Wide / two-column containers */
   .gallery-grid,
   .story-grid,
-  .color-grid,
   .artist-grid,
   .verbier-cta,
   .logos{
@@ -501,13 +497,13 @@
   .img-protect--blur.is-peek img,
   .img-protect--blur:active img{
     transform:scale(1.04);
-    filter:blur(1.6px) saturate(1.1) brightness(1.01);
+    filter:blur(1.15px) saturate(1.1) brightness(1.02);
   }
   .gallery-item:hover .img-protect--blur::after,
   .gallery-item:focus-within .img-protect--blur::after,
   .img-protect--blur.is-peek::after,
   .img-protect--blur:active::after{
-    opacity:.38;
+    opacity:.30;
   }
   .img-protect-badge{
     position:absolute;
@@ -559,9 +555,15 @@
 
   /* STORY — two columns, equal width */
   .story{ background:var(--black); }
+  #story.emotion-arc{
+    padding-top:5.5rem;
+    padding-bottom:5rem;
+  }
   .story-visual{
     max-width:var(--content);
-    margin:0 0 2.6rem;
+    width:100%;
+    margin:0 0 1.6rem;
+    padding:clamp(0.45rem, 1.2vw, 0.85rem);
     background:#000;
     border:1px solid var(--line);
   }
@@ -582,7 +584,7 @@
   }
   .story-visual:hover img{ transform:scale(1.03); }
   .story-visual figcaption{
-    padding:.7rem 1rem .85rem;
+    padding:.65rem .1rem 0;
     font-family:'JetBrains Mono',monospace;
     font-size:.68rem;
     letter-spacing:.05em;
@@ -757,8 +759,10 @@
     width:clamp(240px, 46vw, 340px);
     height:clamp(240px, 46vw, 340px);
     margin:1.6rem auto 1.4rem;
-    cursor:pointer;
     touch-action:manipulation;
+    -webkit-touch-callout:none;
+    -webkit-user-select:none;
+    user-select:none;
     overflow:visible;
   }
   #breath-circle canvas{
@@ -802,25 +806,31 @@
     color:var(--text);
     font-style:normal;
   }
-  .color-grid{
-    display:grid;
-    grid-template-columns:minmax(160px,220px) minmax(0,1fr);
-    gap:clamp(1.4rem, 3vw, 3rem);
-    align-items:start;
+  .color-body{
+    max-width:var(--measure);
   }
+  .color-mid{
+    display:grid;
+    grid-template-columns:auto minmax(0,1fr);
+    gap:clamp(0.9rem, 2vw, 1.35rem);
+    align-items:start;
+    margin-top:1rem;
+  }
+  .color-mid > p{ margin:0; }
   .swatch-wrap{
     position:relative;
-    width:100%;
-    max-width:220px;
+    width:clamp(72px, 12vw, 96px);
+    flex:0 0 auto;
   }
   .swatch{
     display:block;
     width:100%;
-    height:220px;
+    aspect-ratio:1;
+    height:auto;
     border:none;
     border-radius:2px;
     padding:0;
-    background:repeating-linear-gradient(135deg, var(--teal) 0 6px, #0c1512 6px 12px);
+    background:repeating-linear-gradient(135deg, var(--teal) 0 5px, #0c1512 5px 10px);
     position:relative;
     overflow:hidden;
   }
@@ -838,10 +848,12 @@
      Zum Abschalten: diesen gesamten Block auskommentieren.
      ========================================================================== */
   body{
-    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 18 18'%3E%3Ccircle cx='9' cy='9' r='2.8' fill='%233ea89b' fill-opacity='0.85'/%3E%3Ccircle cx='9' cy='9' r='5.5' fill='none' stroke='%233ea89b' stroke-opacity='0.35' stroke-width='1'/%3E%3C/svg%3E") 9 9, auto;
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 18 18'%3E%3Ccircle cx='9' cy='9' r='2.8' fill='%23ffffff' fill-opacity='0.92'/%3E%3C/svg%3E") 9 9, auto;
   }
-  a, button, .btn, summary, .nav-toggle, .lang-bar button, .product-link, .artist-links a, .expand-link{
-    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Ccircle cx='10' cy='10' r='3.2' fill='%235fe8d3'/%3E%3Ccircle cx='10' cy='10' r='6.5' fill='none' stroke='%235fe8d3' stroke-opacity='0.4' stroke-width='1.2'/%3E%3C/svg%3E") 10 10, pointer;
+  a, button, .btn, summary, label, .nav-toggle, .lang-bar button,
+  .product-link, .artist-links a, .footer-links a, .expand-link,
+  .expand-more summary, .chip-wrap .opt span, #breath-circle, .logo-item{
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 18 18'%3E%3Ccircle cx='9' cy='9' r='3' fill='%23ffffff' fill-opacity='0.95'/%3E%3C/svg%3E") 9 9, none;
   }
   .scale-accent{
     position:relative;
@@ -1353,7 +1365,6 @@
     letter-spacing:.1em;
     text-transform:uppercase;
     color:var(--muted);
-    cursor:pointer;
     transition:border-color .25s ease, color .25s ease, background .25s ease;
   }
   .chip-wrap .opt input:checked + span{
@@ -1513,7 +1524,6 @@
     align-items:center;
     gap:.55rem;
     list-style:none;
-    cursor:pointer;
     font-family:'JetBrains Mono',monospace;
     font-size:.72rem;
     letter-spacing:.12em;
@@ -1622,17 +1632,12 @@
 
   @media (max-width:960px){
     .story-grid,
-    .color-grid,
     .mission-grid{ grid-template-columns:1fr; }
-    .color-grid{
-      align-items:stretch;
-      gap:1.6rem;
+    .color-mid{
+      grid-template-columns:auto minmax(0,1fr);
+      gap:0.9rem;
     }
-    .swatch-wrap{
-      max-width:min(320px, 100%);
-      margin-bottom:.2rem;
-    }
-    .swatch{ height:160px; }
+    .swatch-wrap{ width:72px; }
     .artist-portrait{ width:min(150px, 38vw); margin-top:2rem; }
     .artist-alias{ margin-bottom:1rem; }
     .artist-links{ gap:1.2rem; }
@@ -1670,6 +1675,10 @@
     .emotion-arc{
       padding-top:6rem;
       padding-bottom:6rem;
+    }
+    #story.emotion-arc{
+      padding-top:4rem;
+      padding-bottom:3.75rem;
     }
     #renewal.emotion-arc{ padding-bottom:2.75rem; }
     .color{ padding-top:1.5rem; }
@@ -1720,6 +1729,10 @@
     .emotion-arc{
       padding-top:5rem;
       padding-bottom:5rem;
+    }
+    #story.emotion-arc{
+      padding-top:3.5rem;
+      padding-bottom:3.25rem;
     }
     #renewal.emotion-arc{ padding-bottom:2.25rem; }
     .color{ padding-top:1.25rem; }
@@ -1836,9 +1849,9 @@ alt=""
       <h2 data-de="Konzept Design" data-en="Concept Design">Konzept Design</h2>
     </div>
     <div class="gallery-intro">
-      <p data-de="Reduziert, teal auf schwarz — das Textil wie eine zweite Haut. Konzept-Entwurf als Long Sleeve für Trail Running und Ultra (X-Bionic Corefusion Run). Die Release-Version 2027 kommt als Short Sleeve und Crop Top."
-         data-en="Stripped back, teal on black — the fabric like a second skin. Concept draft as a long sleeve for trail running and ultra (X-Bionic Corefusion Run). The 2027 release version comes as short sleeve and crop top.">
-        Reduziert, teal auf schwarz — das Textil wie eine zweite Haut. Konzept-Entwurf als Long Sleeve für Trail Running und Ultra (X-Bionic Corefusion Run). Die Release-Version 2027 kommt als Short Sleeve und Crop Top.
+      <p data-de="Reduziert, teal auf schwarz — das Textil liegt nah am Körper, wie eine zweite Haut. Konzept-Entwurf als Long Sleeve für Trail Running und Ultra (X-Bionic Corefusion Run). Die Release-Version 2027 kommt als Short Sleeve und Crop Top."
+         data-en="Stripped back, teal on black — the fabric sits close to the body, like a second skin. Concept draft as a long sleeve for trail running and ultra (X-Bionic Corefusion Run). The 2027 release version comes as short sleeve and crop top.">
+        Reduziert, teal auf schwarz — das Textil liegt nah am Körper, wie eine zweite Haut. Konzept-Entwurf als Long Sleeve für Trail Running und Ultra (X-Bionic Corefusion Run). Die Release-Version 2027 kommt als Short Sleeve und Crop Top.
       </p>
     </div>
     <div class="gallery-grid">
@@ -1924,9 +1937,9 @@ alt=""
            data-en="A snake doesn’t shed to look different. It sheds because the old skin can no longer grow with it. Growth makes the old obsolete before the new is even visible.">
           Eine Schlange häutet sich nicht, weil sie anders aussehen will. Sie häutet sich, weil die alte Haut nicht mehr mitwächst. Wachstum macht das Alte obsolet, noch bevor das Neue sichtbar wird.
         </p>
-        <p data-de="Second Skin nimmt genau das auf: nicht laut, nicht dekorativ, sondern als Form, die den Wechsel mitträgt."
-           data-en="Second Skin takes that up: not loud, not decorative, but as a form that carries the change with you.">
-          Second Skin nimmt genau das auf: nicht laut, nicht dekorativ, sondern als Form, die den Wechsel mitträgt.
+        <p data-de="Second Skin nimmt genau das auf: nicht laut, nicht dekorativ, sondern als Form, die die Transformation mitträgt."
+           data-en="Second Skin takes that up: not loud, not decorative, but as a form that carries the transformation with you.">
+          Second Skin nimmt genau das auf: nicht laut, nicht dekorativ, sondern als Form, die die Transformation mitträgt.
         </p>
       </div>
       <div class="pullquote">
@@ -1969,9 +1982,11 @@ alt=""
           Erneuerung heisst nicht, das Alte zu verwerfen. Es heisst, den Zwischenraum auszuhalten, auch wenn er noch keine Antwort gibt.
         </p>
       </div>
+      <!-- LET ME TRY temporarily off
       <div class="statement-side" aria-hidden="true">
         <div class="statement-canvas" id="canvas-let-me-try" data-statement="let-me-try"></div>
       </div>
+      -->
     </div>
   </section>
 
@@ -2003,34 +2018,33 @@ alt=""
       <h2 data-de="Warum Teal" data-en="Why teal">Warum Teal</h2>
     </div>
 
-    <div class="color-grid">
-      <div class="swatch-wrap">
-        <div class="swatch" role="img" aria-label="Second Skin Teal"></div>
-      </div>
-
-      <div>
-        <p class="bridge-line"
-           data-de="Im liminalen Zustand braucht der Körper keine Argumente. Er braucht eine spürbare Qualität – und genau hier setzt die Farbe an."
-           data-en="In the liminal state the body needs no arguments. It needs a tangible quality – and this is exactly where colour comes in.">
-          Im liminalen Zustand braucht der Körper keine Argumente. Er braucht eine spürbare Qualität – und genau hier setzt die Farbe an.
-        </p>
+    <div class="color-body">
+      <p class="bridge-line"
+         data-de="Im liminalen Zustand braucht der Körper keine Argumente. Er braucht eine spürbare Qualität – und genau hier setzt die Farbe an."
+         data-en="In the liminal state the body needs no arguments. It needs a tangible quality – and this is exactly where colour comes in.">
+        Im liminalen Zustand braucht der Körper keine Argumente. Er braucht eine spürbare Qualität – und genau hier setzt die Farbe an.
+      </p>
+      <div class="color-mid">
+        <div class="swatch-wrap">
+          <div class="swatch" role="img" aria-label="Second Skin Teal"></div>
+        </div>
         <p data-de="In der Farbpsychologie gilt als gesichert: Kühle, kurzwellige Farbtöne wie Blau und Grün werden mit niedrigerer physiologischer Erregung und beruhigender Wirkung assoziiert, warme Farbtöne wie Rot mit höherer Erregung und stärkerer Reizintensität (Elliot &amp; Maier, 2014). Teal liegt als Blau-Grün-Ton genau in diesem kühlen, arousal-senkenden Spektrum."
            data-en="In color psychology, it's well established that cool, short-wavelength hues like blue and green are associated with lower physiological arousal and a calming effect, while warm hues like red are linked to higher arousal and stronger perceived intensity (Elliot &amp; Maier, 2014). As a blue-green tone, teal sits squarely within this cool, arousal-lowering spectrum.">
           In der Farbpsychologie gilt als gesichert: Kühle, kurzwellige Farbtöne wie Blau und Grün werden mit niedrigerer physiologischer Erregung und beruhigender Wirkung assoziiert, warme Farbtöne wie Rot mit höherer Erregung und stärkerer Reizintensität (Elliot &amp; Maier, 2014). Teal liegt als Blau-Grün-Ton genau in diesem kühlen, arousal-senkenden Spektrum.
         </p>
-
-        <p class="color-claim"
-           data-de="Weniger Reiz. Mehr Fokus."
-           data-en="Less stimulus. More focus.">
-          Weniger Reiz. Mehr Fokus.
-        </p>
-
-        <p class="note"
-           data-de="„Weniger Schmerz. Mehr Ausdauer.“ ist das Produktversprechen. Was die Forschung zeigt, ist zurückhaltender."
-           data-en="“Less Pain. More Endurance.” is the product promise. What the research shows is more modest.">
-          „Weniger Schmerz. Mehr Ausdauer.“ ist das Produktversprechen. Was die Forschung zeigt, ist zurückhaltender.
-        </p>
       </div>
+
+      <p class="color-claim"
+         data-de="Weniger Reiz. Mehr Fokus."
+         data-en="Less stimulus. More focus.">
+        Weniger Reiz. Mehr Fokus.
+      </p>
+
+      <p class="note"
+         data-de="„Weniger Schmerz. Mehr Ausdauer.“ ist das Produktversprechen. Was die Forschung zeigt, ist zurückhaltender."
+         data-en="“Less Pain. More Endurance.” is the product promise. What the research shows is more modest.">
+        „Weniger Schmerz. Mehr Ausdauer.“ ist das Produktversprechen. Was die Forschung zeigt, ist zurückhaltender.
+      </p>
     </div>
   </section>
 
@@ -2767,21 +2781,55 @@ alt=""
   if (!host) return;
 
   var hovering = false;
-  host.addEventListener('pointerenter', function () { hovering = true; });
-  host.addEventListener('pointerleave', function () { hovering = false; });
-  host.addEventListener('pointerdown', function () { hovering = true; });
-  host.addEventListener('pointerup', function () { hovering = false; });
-  host.addEventListener('pointercancel', function () { hovering = false; });
+  var pulseTimer = null;
+  function isTouchScreen() {
+    return window.matchMedia('(hover: none), (max-width: 900px)').matches;
+  }
+  function clearPulseTimer() {
+    if (pulseTimer) {
+      clearTimeout(pulseTimer);
+      pulseTimer = null;
+    }
+  }
+  function startTouchPulse() {
+    hovering = true;
+    clearPulseTimer();
+    pulseTimer = setTimeout(function () {
+      hovering = false;
+      pulseTimer = null;
+    }, 10000);
+  }
+
+  host.addEventListener('pointerenter', function (e) {
+    if (e.pointerType === 'mouse') hovering = true;
+  });
+  host.addEventListener('pointerleave', function (e) {
+    if (e.pointerType === 'mouse') hovering = false;
+  });
+  host.addEventListener('pointerdown', function (e) {
+    if (isTouchScreen() || e.pointerType === 'touch') {
+      e.preventDefault();
+      startTouchPulse();
+    } else {
+      hovering = true;
+    }
+  });
+  host.addEventListener('pointerup', function (e) {
+    if (!(isTouchScreen() || e.pointerType === 'touch')) hovering = false;
+  });
+  host.addEventListener('pointercancel', function (e) {
+    if (!(isTouchScreen() || e.pointerType === 'touch')) hovering = false;
+  });
 
   var sketch = function (p) {
     var t = 0;
     var pulse = 0;
     // Soft gradient fills + transparent stroke rings
     var fills = [
-      { scale: 1.02, alpha: 0.22, phase: 0.2 },
-      { scale: 0.78, alpha: 0.34, phase: 1.0 },
-      { scale: 0.52, alpha: 0.52, phase: 1.9 },
-      { scale: 0.30, alpha: 0.72, phase: 2.8 }
+      { scale: 1.06, alpha: 0.24, phase: 0.2 },
+      { scale: 0.82, alpha: 0.38, phase: 1.0 },
+      { scale: 0.56, alpha: 0.56, phase: 1.9 },
+      { scale: 0.32, alpha: 0.78, phase: 2.8 }
     ];
     var rings = [
       { scale: 1.28, weight: 1.3, alpha: 18, phase: 0.0, breathOff: 0.0 },
@@ -2875,13 +2923,13 @@ alt=""
       var cx = p.width / 2;
       var cy = p.height / 2;
 
-      // gradient cores — stronger presence, clearer breath
+      // gradient cores — stronger grow / shrink, amplified on pulse
       for (var f = 0; f < fills.length; f++) {
         var fill = fills[f];
         var fillBreath = reduceMotion
           ? 1
-          : 1 + p.sin(t * 0.55 + fill.phase) * (0.22 + pulse * 0.12);
-        var fillAlpha = fill.alpha * (0.92 + pulse * 0.18);
+          : 1 + p.sin(t * 0.55 + fill.phase) * (0.30 + pulse * 0.22);
+        var fillAlpha = fill.alpha * (0.92 + pulse * 0.22);
         drawFill(cx, cy, baseRadius * fill.scale * fillBreath, fillAlpha, fill.phase);
       }
 
@@ -2890,10 +2938,10 @@ alt=""
         var ring = rings[i];
         var ringBreath = reduceMotion
           ? 1
-          : 1 + p.sin(t * 0.52 + ring.breathOff) * (0.16 + pulse * 0.1);
+          : 1 + p.sin(t * 0.52 + ring.breathOff) * (0.18 + pulse * 0.14);
         var drift = reduceMotion
           ? 0
-          : p.sin(t * 0.38 + ring.phase) * 0.055 * (1 + pulse * 0.5);
+          : p.sin(t * 0.38 + ring.phase) * 0.06 * (1 + pulse * 0.55);
         var scale = ring.scale + drift;
         var alpha = Math.round(ring.alpha * (0.85 + pulse * 0.3));
         drawRing(cx, cy, baseRadius * scale * ringBreath, ring.weight, alpha, ring.phase);
@@ -3112,7 +3160,7 @@ alt=""
 
   function boot() {
     createStatementSketch('canvas-let-it-go', 'let-it-go');
-    createStatementSketch('canvas-let-me-try', 'let-me-try');
+    // createStatementSketch('canvas-let-me-try', 'let-me-try');
 
     var observer = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
