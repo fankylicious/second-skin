@@ -1521,9 +1521,9 @@ alt=""
        data-en="A Swiss multisport brand with over 800 patents. Their clothing warms, cools and supports the body – depending on what it needs at the moment. Developed for high demands, but just as much for anyone who simply enjoys being active outdoors.">
       Eine Schweizer Multisport-Marke mit über 800 Patenten. Die Kleidung wärmt, kühlt und stützt den Körper – je nachdem, was er gerade braucht. Entwickelt für hohe Anforderungen, aber genauso für alle, die einfach gern draussen aktiv sind.
     </p>
-    <details class="xbionic-more">
+    <details class="expand-more">
       <summary data-de="Mehr erfahren" data-en="Read more">Mehr erfahren</summary>
-      <div class="xbionic-body">
+      <div class="expand-body">
         <p data-de="Bei X-Bionic dreht sich viel um Innovation. Seit über 25 Jahren steckt die Marke Energie in Technik, die den Körper besser unterstützt: Thermoregulation, Kompression und intelligentes Feuchtigkeitsmanagement. Jedes Detail soll einen klaren Zweck haben, damit man sich beim Sport weniger mit der Ausrüstung beschäftigen muss und mehr mit dem, was man gerade macht."
            data-en="At X-Bionic, a lot revolves around innovation. For more than 25 years the brand has invested energy in technology that better supports the body: thermoregulation, compression and intelligent moisture management. Every detail is meant to serve a clear purpose, so you can focus less on the gear and more on what you are doing.">
           Bei X-Bionic dreht sich viel um Innovation. Seit über 25 Jahren steckt die Marke Energie in Technik, die den Körper besser unterstützt: Thermoregulation, Kompression und intelligentes Feuchtigkeitsmanagement. Jedes Detail soll einen klaren Zweck haben, damit man sich beim Sport weniger mit der Ausrüstung beschäftigen muss und mehr mit dem, was man gerade macht.
@@ -1540,7 +1540,7 @@ alt=""
            data-en="In the end, the products are about motivating people to move and go into nature – whether together with others or in those intense moments when you are fully present with yourself. Less distraction from the equipment, more quality of life through movement.">
           Am Ende geht es bei den Produkten darum, Menschen zu motivieren, sich zu bewegen und in die Natur zu gehen – ob gemeinsam mit anderen oder in den intensiven Momenten, in denen man ganz bei sich ist. Weniger Ablenkung durch die Ausrüstung, mehr Lebensqualität durch Bewegung.
         </p>
-        <a href="https://www.x-bionic.com/" target="_blank" rel="noopener">x-bionic.com</a>
+        <a class="expand-link" href="https://www.x-bionic.com/" target="_blank" rel="noopener">x-bionic.com</a>
       </div>
     </details>
   </section>
@@ -1848,12 +1848,11 @@ alt=""
   });
 
   // X-Bionic expand label
-  var xbionicMore = document.querySelector('.xbionic-more');
-  if (xbionicMore) {
-    xbionicMore.addEventListener('toggle', function () {
-      var summary = xbionicMore.querySelector('summary');
+  document.querySelectorAll('.expand-more').forEach(function (details) {
+    details.addEventListener('toggle', function () {
+      var summary = details.querySelector('summary');
       if (!summary) return;
-      if (xbionicMore.open) {
+      if (details.open) {
         summary.setAttribute('data-de', 'Weniger anzeigen');
         summary.setAttribute('data-en', 'Show less');
       } else {
@@ -1864,7 +1863,7 @@ alt=""
         ? summary.getAttribute('data-de')
         : summary.getAttribute('data-en');
     });
-  }
+  });
 })();
 </script>
 </body>
