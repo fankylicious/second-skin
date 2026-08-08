@@ -4,22 +4,34 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Second Skin: Limited Edition · X-Bionic Exclusive by EinOhm</title>
-<meta name="description" content="Second Skin: X-Bionic Limited Edition Shirt for Trail Running and Ultra. Less Pain. More Endurance. Will be released early 2027.">
+<meta name="description"
+      content="Second Skin: X-Bionic Limited Edition Shirt für Trail Running und Ultra. Weniger Schmerz. Mehr Ausdauer. Erscheint Anfang 2027."
+      data-de="Second Skin: X-Bionic Limited Edition Shirt für Trail Running und Ultra. Weniger Schmerz. Mehr Ausdauer. Erscheint Anfang 2027."
+      data-en="Second Skin: X-Bionic Limited Edition Shirt for Trail Running and Ultra. Less Pain. More Endurance. Will be released early 2027.">
 <link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon-32x32.png" type="image/png" sizes="32x32">
+<link rel="icon" href="/favicon-16x16.png" type="image/png" sizes="16x16">
 <link rel="icon" href="/secondskin-icon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="/secondskin-icon-192.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
 <link rel="canonical" href="https://secondskin.run/">
 <meta name="robots" content="index, follow">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://secondskin.run/">
 <meta property="og:title" content="Second Skin: Limited Edition · X-Bionic Exclusive by EinOhm">
-<meta property="og:description" content="Second Skin: X-Bionic Limited Edition Shirt for Trail Running and Ultra. Less Pain. More Endurance. Will be released early 2027.">
+<meta property="og:description"
+      content="Second Skin: X-Bionic Limited Edition Shirt für Trail Running und Ultra. Weniger Schmerz. Mehr Ausdauer. Erscheint Anfang 2027."
+      data-de="Second Skin: X-Bionic Limited Edition Shirt für Trail Running und Ultra. Weniger Schmerz. Mehr Ausdauer. Erscheint Anfang 2027."
+      data-en="Second Skin: X-Bionic Limited Edition Shirt for Trail Running and Ultra. Less Pain. More Endurance. Will be released early 2027.">
 <meta property="og:image" content="https://secondskin.run/gallery-artseries.png">
-<meta property="og:locale" content="de_CH">
+<meta property="og:locale" content="de_CH" id="og-locale">
+<meta property="og:locale:alternate" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Second Skin: Limited Edition · X-Bionic Exclusive by EinOhm">
-<meta name="twitter:description" content="Second Skin: X-Bionic Limited Edition Shirt for Trail Running and Ultra. Less Pain. More Endurance.">
+<meta name="twitter:description"
+      content="Second Skin: X-Bionic Limited Edition Shirt für Trail Running und Ultra. Weniger Schmerz. Mehr Ausdauer."
+      data-de="Second Skin: X-Bionic Limited Edition Shirt für Trail Running und Ultra. Weniger Schmerz. Mehr Ausdauer."
+      data-en="Second Skin: X-Bionic Limited Edition Shirt for Trail Running and Ultra. Less Pain. More Endurance.">
 <meta name="twitter:image" content="https://secondskin.run/gallery-artseries.png">
 <script type="application/ld+json">
 {
@@ -27,7 +39,7 @@
   "@type": "WebSite",
   "name": "Second Skin",
   "url": "https://secondskin.run/",
-  "description": "Second Skin: X-Bionic Limited Edition Shirt for Trail Running and Ultra. Less Pain. More Endurance.",
+  "description": "Second Skin: X-Bionic Limited Edition Shirt für Trail Running und Ultra. Weniger Schmerz. Mehr Ausdauer.",
   "inLanguage": ["de", "en"]
 }
 </script>
@@ -141,7 +153,10 @@
     text-decoration:none;
     line-height:1;
   }
-  .site-brand span{ color:var(--teal-bright); }
+  .site-brand span{
+    color:transparent;
+    -webkit-text-stroke:1px var(--teal-bright);
+  }
   .site-header__actions{
     display:flex;
     align-items:center;
@@ -412,6 +427,7 @@
   /* GALLERY */
   .gallery{ background:var(--black); padding-top:3.5rem; padding-bottom:3.5rem; }
   .gallery-intro{
+    max-width:var(--content);
     margin:-1.2rem 0 2.2rem;
     font-size:1.05rem;
     line-height:1.7;
@@ -501,6 +517,22 @@
   @media (max-width:600px){
     .gallery-item .img-wrap{ height:240px;}
     .img-protect-badge{ font-size:.62rem; letter-spacing:.1em; padding:.55rem .75rem; }
+    .thought-bubble__body p,
+    .color .thought-bubble__body p,
+    .pullquote{
+      font-size:1.08rem;
+      line-height:1.45;
+      letter-spacing:0.01em;
+    }
+    .hero h1{
+      font-size:clamp(2.55rem, 11vw, 3.8rem);
+    }
+    .section-head h2{
+      font-size:clamp(1.4rem, 5.5vw, 1.85rem);
+    }
+    .poem-title{
+      font-size:clamp(1.7rem, 7vw, 2.4rem);
+    }
   }
 
   /* STORY — two columns, equal width */
@@ -512,9 +544,9 @@
     border:1px solid var(--line);
   }
   .story-visual .img-wrap{
+    width:100%;
     height:auto;
     aspect-ratio:1024 / 367;
-    max-height:min(340px, 42vw);
     overflow:hidden;
     background:#000;
   }
@@ -523,7 +555,7 @@
     width:100%;
     height:100%;
     object-fit:cover;
-    object-position:center;
+    object-position:center center;
     transition:transform .55s cubic-bezier(.2,.8,.2,1);
   }
   .story-visual:hover img{ transform:scale(1.03); }
@@ -564,10 +596,12 @@
   .pullquote{
     align-self:start;
     border-left:2px solid var(--teal-bright);
-    padding-left:1.6rem;
+    padding-left:1.5rem;
     font-style:italic;
-    font-size:clamp(1.1rem, 2.2vw, 1.3rem);
+    font-size:clamp(1.18rem, 2.2vw, 1.4rem);
     line-height:1.5;
+    letter-spacing:0.01em;
+    font-weight:500;
     color:var(--teal-bright);
   }
   .pullquote small{
@@ -632,8 +666,12 @@
   /* COLOR — two columns */
   .color{
     background:var(--panel);
-    border-top:1px solid var(--line);
+    border-top:none;
     border-bottom:1px solid var(--line);
+    padding-top:2rem;
+  }
+  #renewal.emotion-arc{
+    padding-bottom:3.25rem;
   }
   .bridge-line{
     max-width:var(--measure);
@@ -650,26 +688,52 @@
     border-bottom:none;
     border-top:1px solid var(--line);
   }
+  .color-quote{
+    max-width:min(var(--measure), 36rem);
+    margin:0 auto;
+    text-align:center;
+  }
+  #breath-circle{
+    width:clamp(140px, 28vw, 180px);
+    height:clamp(140px, 28vw, 180px);
+    margin:0 auto 1.8rem;
+  }
+  #breath-circle canvas{
+    display:block;
+    width:100% !important;
+    height:100% !important;
+  }
   .thought-bubble{
-    max-width:min(var(--measure), 34rem);
-    margin:0 0 2.8rem;
+    max-width:none;
+    margin:0;
     border:none;
+  }
+  .color-quote__rule{
+    display:block;
+    width:100%;
+    height:1px;
+    margin:3.5rem 0 5.5rem;
+    border:none;
+    background:linear-gradient(90deg, transparent, var(--teal) 18%, var(--teal-bright) 50%, var(--teal) 82%, transparent);
+    opacity:.65;
   }
   .thought-bubble__body{
     margin:0;
-    padding:1.3rem 1.45rem 1.4rem;
-    background:var(--teal-bright);
+    padding:0;
+    background:transparent;
     border:none;
-    border-radius:2px;
-    color:#041210;
+    color:var(--text);
   }
+  /* Thought-Bubble & Pullquote stärker angleichen */
+  .thought-bubble__body p,
   .color .thought-bubble__body p{
     margin:0;
-    font-size:1.05rem;
-    line-height:1.55;
-    color:#041210;
+    font-size:clamp(1.18rem, 2.2vw, 1.4rem);
+    line-height:1.5;
+    letter-spacing:0.01em;
+    font-weight:500;
+    color:var(--text);
     font-style:normal;
-    font-weight:600;
   }
   .color-grid{
     display:grid;
@@ -699,8 +763,64 @@
     background:radial-gradient(circle at 30% 20%, rgba(95,232,211,.5), transparent 60%);
     mix-blend-mode:screen;
   }
+
+  /* ==========================================================================
+     SCALE ACCENTS — snake-scale-teal.png
+     Dezent: Custom Cursor · Flächen · Linien
+     (Swatch bleibt bei diagonalen Streifen)
+     Zum Abschalten: diesen gesamten Block auskommentieren.
+     ========================================================================== */
+  body{
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 18 18'%3E%3Ccircle cx='9' cy='9' r='2.8' fill='%233ea89b' fill-opacity='0.85'/%3E%3Ccircle cx='9' cy='9' r='5.5' fill='none' stroke='%233ea89b' stroke-opacity='0.35' stroke-width='1'/%3E%3C/svg%3E") 9 9, auto;
+  }
+  a, button, .btn, summary, .nav-toggle, .lang-bar button, .product-link, .artist-links a, .expand-link{
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Ccircle cx='10' cy='10' r='3.2' fill='%235fe8d3'/%3E%3Ccircle cx='10' cy='10' r='6.5' fill='none' stroke='%235fe8d3' stroke-opacity='0.4' stroke-width='1.2'/%3E%3C/svg%3E") 10 10, pointer;
+  }
+  .scale-accent{
+    position:relative;
+  }
+  .scale-accent::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background-image:url('snake-scale-teal.png');
+    background-size:380px;
+    background-repeat:repeat;
+    opacity:0.022;
+    mix-blend-mode:soft-light;
+    pointer-events:none;
+    z-index:0;
+    border-radius:inherit;
+  }
+  .color.scale-accent > *,
+  .thought-bubble.scale-accent > *{
+    position:relative;
+    z-index:1;
+  }
+  .hero.scale-accent::before{
+    opacity:0.016;
+    background-size:420px;
+  }
+  .scale-line{
+    height:1px;
+    margin:0 0 1.6rem;
+    border:none;
+    background:
+      linear-gradient(90deg, transparent, var(--teal), transparent),
+      url('snake-scale-teal.png') center / 200px;
+    opacity:0.4;
+    mix-blend-mode:soft-light;
+  }
+  /* ===== /SCALE ACCENTS ================================================ */
   .color p{ color:#cfd8d5; max-width:none; font-size:1.02rem;}
   .color p + p{ margin-top:1rem;}
+  .color .bridge-line{
+    margin:0 0 1.2rem;
+    padding-bottom:1.1rem;
+    border-bottom:1px solid var(--line);
+    color:#a8b5b1;
+    font-size:1.05rem;
+  }
   .color .color-claim{
     margin-top:1.8rem;
     padding-top:1.2rem;
@@ -708,6 +828,11 @@
     color:var(--teal-bright);
     font-size:1.15rem;
     letter-spacing:.02em;
+  }
+  .color .note{
+    margin-top:.85rem;
+    color:var(--muted);
+    font-size:.92rem;
   }
 
   /* POEM */
@@ -937,14 +1062,21 @@
     position:relative; overflow:hidden;
   }
   .bar-fill{
+    position:relative;
     height:100%; width:0%;
     background:linear-gradient(90deg, var(--teal), var(--teal-bright));
     transition:width .7s cubic-bezier(.2,.8,.2,1), background .3s ease;
   }
   .bar-fill::after{
     content:"";
-    position:absolute; inset:0;
-    background-image:repeating-linear-gradient(135deg, rgba(0,0,0,.15) 0 4px, transparent 4px 8px);
+    position:absolute;
+    inset:0;
+    background-image:repeating-linear-gradient(
+      135deg,
+      rgba(0,0,0,.08) 0 4px,
+      transparent 4px 8px
+    );
+    opacity:0.28;
   }
   .bar-fill.is-over{
     background:linear-gradient(90deg, var(--teal-bright), #9ff5e6);
@@ -1035,6 +1167,9 @@
   .register .lead{
     font-size:1.02rem;
     margin-bottom:1.2rem;
+  }
+  .register .lead.register-echo{
+    margin-bottom:2.8rem;
   }
   .register .form-success + .lead{
     margin-top:2.4rem;
@@ -1244,6 +1379,7 @@
     justify-self:end;
     width:clamp(180px, 26vw, 280px);
     background:transparent;
+    isolation:isolate;
   }
   .artist-portrait img{
     display:block;
@@ -1252,6 +1388,7 @@
     object-fit:contain;
     object-position:center top;
     background:transparent;
+    mix-blend-mode:lighten;
     transition:transform .35s cubic-bezier(.2,.8,.2,1);
     will-change:transform;
   }
@@ -1409,6 +1546,9 @@
       padding-top:6rem;
       padding-bottom:6rem;
     }
+    #renewal.emotion-arc{ padding-bottom:2.75rem; }
+    .color{ padding-top:1.5rem; }
+    .color-quote__rule{ margin:2.75rem 0 4.5rem; }
     hr.arc-breath{ padding:.85rem 0 1rem; }
     .gallery{ padding-top:3.5rem; }
     .artist-grid{ gap:1.2rem;}
@@ -1431,7 +1571,7 @@
       line-height:1.5;
       overflow-wrap:anywhere;
     }
-    .story-visual .img-wrap{ max-height:min(220px, 48vw); }
+    .story-visual .img-wrap{ aspect-ratio:1024 / 367; }
     .ticker-cta{ width:100%; justify-content:center; }
     .section-head{
       flex-wrap:wrap;
@@ -1457,6 +1597,8 @@
       padding-top:5rem;
       padding-bottom:5rem;
     }
+    #renewal.emotion-arc{ padding-bottom:2.25rem; }
+    .color{ padding-top:1.25rem; }
     .gallery-item .img-wrap{ height:min(240px, 70vw); }
     .btn-register{
       font-size:1.2rem;
@@ -1522,7 +1664,7 @@ alt=""
       <li><a href="#renewal"><span class="site-nav__num">03</span><span data-de="Angst &amp; Erneuerung" data-en="Fear &amp; Renewal">Angst &amp; Erneuerung</span></a></li>
       <li><a href="#color"><span class="site-nav__num">04</span><span data-de="Warum Teal" data-en="Why teal">Warum Teal</span></a></li>
       <li><a href="#product"><span class="site-nav__num">05</span><span data-de="Produkt" data-en="Product">Produkt</span></a></li>
-      <li><a href="#register"><span class="site-nav__num">06</span><span data-de="Interesse anmelden" data-en="Show interest">Interesse anmelden</span></a></li>
+      <li><a href="#register"><span class="site-nav__num">06</span><span data-de="Interesse anmelden" data-en="Share interest">Interesse anmelden</span></a></li>
       <li><a href="#xbionic"><span class="site-nav__num">07</span><span>X-Bionic</span></a></li>
       <li><a href="#verbier"><span class="site-nav__num">08</span><span>Verbier Ultra</span></a></li>
       <li><a href="#artist"><span class="site-nav__num">09</span><span data-de="Über den Künstler" data-en="About the artist">Über den Künstler</span></a></li>
@@ -1533,7 +1675,8 @@ alt=""
   </nav>
 
   <!-- HERO -->
-  <div class="hero" id="top">
+  <!-- scale-accent: optional (CSS-Block „SCALE ACCENTS“ steuert Sichtbarkeit) -->
+  <div class="hero scale-accent" id="top">
     <div class="crack"></div>
     <div class="scaletex"></div>
     <div class="hero-inner">
@@ -1545,8 +1688,8 @@ alt=""
       <div class="meta">
         <span><strong data-de="Inspiriert von:" data-en="Inspired by:">Inspiriert von:</strong> <span data-de="Häutungsprozess der Schlange" data-en="the snake’s shedding process">Häutungsprozess der Schlange</span></span>
         <span><strong data-de="Colorway:" data-en="Colorway:">Colorway:</strong> <span data-de="Teal auf Schwarz" data-en="teal on black">Teal auf Schwarz</span></span>
-        <span><strong data-de="Produkt:" data-en="Product:">Produkt:</strong> <span data-de="X-Bionic Corefusion Run Short Sleeve"
-             data-en="X-Bionic Corefusion Run Short Sleeve">X-Bionic Corefusion Run Short Sleeve</span></span>
+        <span><strong data-de="Produkt:" data-en="Product:">Produkt:</strong> <span data-de="X-Bionic Corefusion Run Short Sleeve / Crop Top"
+             data-en="X-Bionic Corefusion Run Short Sleeve / Crop Top">X-Bionic Corefusion Run Short Sleeve / Crop Top</span></span>
         <span><strong data-de="Release:" data-en="Release:">Release:</strong> <span data-de="Anfang 2027" data-en="early 2027">Anfang 2027</span></span>
       </div>
       <div class="hero-cta">
@@ -1567,25 +1710,25 @@ alt=""
       <h2 data-de="Konzept Design" data-en="Concept Design">Konzept Design</h2>
     </div>
     <div class="gallery-intro">
-      <p data-de="Das Textil liegt nah am Körper: reduziert, teal auf schwarz. Wie eine Haut, die eng anliegt. Ein Limited Edition Shirt für Trail Running und Ultra."
-         data-en="The fabric sits close to the body: stripped back, teal on black. Like a skin held close. A limited edition shirt for trail running and ultra.">
-        Das Textil liegt nah am Körper: reduziert, teal auf schwarz. Wie eine Haut, die eng anliegt. Ein Limited Edition Shirt für Trail Running und Ultra.
+      <p data-de="Das Textil liegt nah am Körper: reduziert, teal auf schwarz. Wie eine Haut, die sich geschmeidig anschmiegt. Konzept-Entwurf als Long Sleeve für Trail Running und Ultra (X-Bionic Corefusion Run). Die geplante Release-Umsetzung 2027 ist als Short Sleeve und Crop Top vorgesehen."
+         data-en="The textile sits close to the body: reduced, teal on black. Like a skin that sits sleek against it. Concept draft as a long sleeve for trail running and ultra (X-Bionic Corefusion Run). The planned 2027 release is intended as short sleeve and crop top.">
+        Das Textil liegt nah am Körper: reduziert, teal auf schwarz. Wie eine Haut, die sich geschmeidig anschmiegt. Konzept-Entwurf als Long Sleeve für Trail Running und Ultra (X-Bionic Corefusion Run). Die geplante Release-Umsetzung 2027 ist als Short Sleeve und Crop Top vorgesehen.
       </p>
     </div>
     <div class="gallery-grid">
       <figure class="gallery-item">
         <div class="img-wrap img-protect img-protect--blur" data-protect>
           <img src="gallery-artseries.png"
-               alt="Second Skin · EinOhm Artwork Prototype Long Sleeve · Teal on Black · X-Bionic · secondskin.run"
-               title="Second Skin · EinOhm Artwork · Prototype (Long Sleeve)"
+               alt="Second Skin · EinOhm Artwork · Entwurf · X-Bionic Corefusion Run Long Sleeve · Teal on Black · secondskin.run"
+               title="Second Skin · EinOhm Artwork · Corefusion Run Long Sleeve (Prototype) 2027"
                draggable="false"
                loading="lazy">
           <span class="img-protect-badge"
-                data-de="Konzeptvorschau"
-                data-en="Concept preview">Konzeptvorschau</span>
+                data-de="Coming soon"
+                data-en="Coming soon">Coming soon</span>
         </div>
-        <figcaption data-de="EinOhm Artwork · Prototype (Long Sleeve)"
-                    data-en="EinOhm Artwork · Prototype (Long Sleeve)">EinOhm Artwork · Prototype (Long Sleeve)</figcaption>
+        <figcaption data-de="EinOhm Artwork · Entwurf · Corefusion Run Long Sleeve (Prototyp) 2027"
+                    data-en="EinOhm Artwork · Draft · Corefusion Run Long Sleeve (Prototype) 2027">EinOhm Artwork · Entwurf · Corefusion Run Long Sleeve (Prototyp) 2027</figcaption>
       </figure>
     </div>
   </section>
@@ -1598,17 +1741,17 @@ alt=""
     </div>
     <div class="concept-body">
       <p class="lead-line"
-         data-de="Wachstum beginnt nicht mit dem Neuen. Es beginnt damit, das Alte loszulassen."
-         data-en="Growth doesn’t begin with the new. It begins with letting go of the old.">
-        Wachstum beginnt nicht mit dem Neuen. Es beginnt damit, das Alte loszulassen.
+         data-de="Wachstum beginnt nicht mit dem Neuen. Es beginnt damit,<br>das Alte loszulassen."
+         data-en="Growth doesn’t begin with the new. It begins with<br>letting go of the old.">
+        Wachstum beginnt nicht mit dem Neuen. Es beginnt damit,<br>das Alte loszulassen.
       </p>
       <p data-de="Das Alte schützt nicht mehr. Es engt ein. Wer weiterlaufen will, muss es abstreifen, und für einen Moment nicht wissen, was darunter kommt."
          data-en="The old no longer protects; it constrains. To keep going, you cast it off, and for a moment don’t know what waits underneath.">
         Das Alte schützt nicht mehr. Es engt ein. Wer weiterlaufen will, muss es abstreifen, und für einen Moment nicht wissen, was darunter kommt.
       </p>
-      <p data-de="Jede:r Ultra-Runner:in kennt den Moment:<br>Die Beine machen zu. Der Kopf rechnet noch. Zwischen «ich kann nicht» und dem nächsten Schritt liegt ein Nichtwissen. Genau dort braucht es Nähe, etwas, das hält, wenn der Wille schon weg ist."
-         data-en="Every ultra runner knows the moment:<br>The legs shut down. The head keeps counting. Between “I can’t” and the next step sits a not-knowing. That’s where closeness matters, something that holds when willpower is already gone.">
-        Jede:r Ultra-Runner:in kennt den Moment:<br>Die Beine machen zu. Der Kopf rechnet noch. Zwischen «ich kann nicht» und dem nächsten Schritt liegt ein Nichtwissen. Genau dort braucht es Nähe, etwas, das hält, wenn der Wille schon weg ist.
+      <p data-de="Jede:r Ultra-Runner:in kennt den Moment. Die Beine machen zu. Der Kopf rechnet noch. Zwischen «ich kann nicht» und dem nächsten Schritt liegt ein Nichtwissen. Genau dort braucht es Nähe, etwas, das hält, wenn der Wille schon weg ist."
+         data-en="Every ultra runner knows the moment. The legs shut down. The head keeps counting. Between “I can’t” and the next step sits a not-knowing. That’s where closeness matters, something that holds when willpower is already gone.">
+        Jede:r Ultra-Runner:in kennt den Moment. Die Beine machen zu. Der Kopf rechnet noch. Zwischen «ich kann nicht» und dem nächsten Schritt liegt ein Nichtwissen. Genau dort braucht es Nähe, etwas, das hält, wenn der Wille schon weg ist.
       </p>
       <p class="closing"
          data-de="Loslassen ist kein Verlust. Es ist der Schritt ins Offene, und der Bedarf nach etwas, das trägt, bevor du wieder selbst trägst."
@@ -1680,35 +1823,39 @@ alt=""
     </div>
     <div class="concept-body">
       <p class="lead-line"
-         data-de="Zwischen dem Ablegen und dem Ankommen liegt ein leerer Raum."
-         data-en="Between casting off and arriving lies an empty space.">
-        Zwischen dem Ablegen und dem Ankommen liegt ein leerer Raum.
+         data-de="Zwischen dem Ablegen und dem Neuen liegt ein leerer Raum."
+         data-en="Between casting off and the new lies an empty space.">
+        Zwischen dem Ablegen und dem Neuen liegt ein leerer Raum.
       </p>
       <p data-de="In diesem Zwischenraum ist zuerst nichts Fertiges. Keine neue Form, keine Sicherheit, nur der hohle Raum im Körper, wenn etwas fehlt und noch keinen Namen hat. Die Angst sitzt nicht im Ablegen. Sie sitzt im Weitergehen, ohne zu wissen wohin."
-         data-en="In that in-between, nothing finished comes first. No new form, no certainty, only the hollow in the body when something is missing and still has no name. The fear isn’t in the casting off. It’s in keeping on without knowing where to.">
+         data-en="In this in-between space, nothing finished comes first. No new form, no certainty — only the hollow in the body when something is missing and still has no name. Fear does not sit in the casting off. It sits in continuing without knowing where to.">
         In diesem Zwischenraum ist zuerst nichts Fertiges. Keine neue Form, keine Sicherheit, nur der hohle Raum im Körper, wenn etwas fehlt und noch keinen Namen hat. Die Angst sitzt nicht im Ablegen. Sie sitzt im Weitergehen, ohne zu wissen wohin.
       </p>
       <p class="closing"
          data-de="Erneuerung heisst nicht, das Alte zu verwerfen. Es heisst, den Zwischenraum auszuhalten, auch wenn er noch keine Antwort gibt."
-         data-en="Renewal isn’t discarding the old. It’s staying with the in-between, even when it has no answer yet.">
+         data-en="Renewal does not mean discarding the old. It means staying with the in-between, even when it offers no answer yet.">
         Erneuerung heisst nicht, das Alte zu verwerfen. Es heisst, den Zwischenraum auszuhalten, auch wenn er noch keine Antwort gibt.
       </p>
     </div>
   </section>
 
-  <!-- COLOR -->
-  <section class="color" id="color">
-    <figure class="thought-bubble"
-            data-de-label="Zitat"
-            data-en-label="Quote"
-            aria-label="Zitat">
-      <blockquote class="thought-bubble__body">
-        <p data-de="„Im Zwischenraum braucht der Körper keine Lautstärke. Er braucht Ruhe, und eine Farbe, die sie hält.“"
-           data-en="“In the in-between, the body doesn’t need volume. It needs calm, and a color that can hold it.”">
-          „Im Zwischenraum braucht der Körper keine Lautstärke. Er braucht Ruhe, und eine Farbe, die sie hält.“
-        </p>
-      </blockquote>
-    </figure>
+  <!-- COLOR — scale-accent / scale-line: optional (CSS-Block „SCALE ACCENTS“) -->
+  <section class="color scale-accent" id="color">
+    <div class="color-quote">
+      <div id="breath-circle" aria-hidden="true"></div>
+      <figure class="thought-bubble"
+              data-de-label="Zitat"
+              data-en-label="Quote"
+              aria-label="Zitat">
+        <blockquote class="thought-bubble__body">
+          <p data-de="„Im Zwischenraum braucht der Körper keine Lautstärke. Er braucht Ruhe – und eine Farbe, die sie hält.“"
+             data-en="“In the in-between space the body needs no volume. It needs stillness – and a colour that holds it.”">
+            „Im Zwischenraum braucht der Körper keine Lautstärke. Er braucht Ruhe – und eine Farbe, die sie hält.“
+          </p>
+        </blockquote>
+      </figure>
+    </div>
+    <hr class="color-quote__rule" aria-hidden="true">
 
     <div class="section-head">
       <span class="num">04</span>
@@ -1718,17 +1865,17 @@ alt=""
     <div class="color-grid">
       <div class="swatch-wrap">
         <div class="swatch" role="img" aria-label="Second Skin Teal"></div>
-        <p class="swatch-caption"
-           data-de="Second Skin – Teal"
-           data-en="Second Skin – Teal">
-          Second Skin – Teal
-        </p>
       </div>
 
       <div>
-        <p data-de="In der Farbpsychologie gilt als gesichert: Kühle Farbtöne (Blau/Grün) werden mit niedrigerer physiologischer Erregung und beruhigender Wirkung assoziiert – warme Farbtöne (Rot) dagegen mit höherer Erregung (Elliot &amp; Maier, 2014). Teal liegt als Blau-Grün-Ton genau in diesem kühlen Spektrum."
-           data-en="In color psychology it is well established that cool hues (blue/green) are associated with lower physiological arousal and a calming effect, while warm hues (red) are linked to higher arousal (Elliot &amp; Maier, 2014). As a blue-green tone, teal sits squarely in this cool spectrum.">
-          In der Farbpsychologie gilt als gesichert: Kühle Farbtöne (Blau/Grün) werden mit niedrigerer physiologischer Erregung und beruhigender Wirkung assoziiert – warme Farbtöne (Rot) dagegen mit höherer Erregung (Elliot &amp; Maier, 2014). Teal liegt als Blau-Grün-Ton genau in diesem kühlen Spektrum.
+        <p class="bridge-line"
+           data-de="Im Zwischenraum braucht der Körper keine Argumente. Er braucht eine spürbare Qualität – und genau hier setzt die Farbe an."
+           data-en="In the in-between space the body needs no arguments. It needs a tangible quality – and this is exactly where colour comes in.">
+          Im Zwischenraum braucht der Körper keine Argumente. Er braucht eine spürbare Qualität – und genau hier setzt die Farbe an.
+        </p>
+        <p data-de="In der Farbpsychologie gilt als gesichert: Kühle, kurzwellige Farbtöne wie Blau und Grün werden mit niedrigerer physiologischer Erregung und beruhigender Wirkung assoziiert, warme Farbtöne wie Rot mit höherer Erregung und stärkerer Reizintensität (Elliot &amp; Maier, 2014). Teal liegt als Blau-Grün-Ton genau in diesem kühlen, arousal-senkenden Spektrum."
+           data-en="In color psychology, it's well established that cool, short-wavelength hues like blue and green are associated with lower physiological arousal and a calming effect, while warm hues like red are linked to higher arousal and stronger perceived intensity (Elliot &amp; Maier, 2014). As a blue-green tone, teal sits squarely within this cool, arousal-lowering spectrum.">
+          In der Farbpsychologie gilt als gesichert: Kühle, kurzwellige Farbtöne wie Blau und Grün werden mit niedrigerer physiologischer Erregung und beruhigender Wirkung assoziiert, warme Farbtöne wie Rot mit höherer Erregung und stärkerer Reizintensität (Elliot &amp; Maier, 2014). Teal liegt als Blau-Grün-Ton genau in diesem kühlen, arousal-senkenden Spektrum.
         </p>
 
         <p class="color-claim"
@@ -1737,16 +1884,11 @@ alt=""
           Weniger Reiz. Mehr Fokus.
         </p>
 
-        <details class="expand-more">
-          <summary data-de="Zusätzliche Beispiele aus der Forschung"
-                   data-en="Additional examples from research">Zusätzliche Beispiele aus der Forschung</summary>
-          <div class="expand-body">
-            <p data-de="Rot kann im Vergleich zu Grün oder Blau mit stärker empfundenem Schmerz einhergehen (Wiercioch-Kuzianik &amp; Bąbel, 2019). In einer Migräne-Studie senkte reines Grünlicht die Schmerzwahrnehmung, während Blau keinen vergleichbaren Effekt zeigte (Noseda, Burstein et al., 2016). Diese Befunde lassen sich nicht 1:1 auf Textilien übertragen – sie unterstreichen aber, warum ein kühler Teal-Ton als Second Skin besonders sinnvoll ist: weniger unnötige Erregung, mehr mentale Klarheit unter Belastung."
-               data-en="Red can be linked to higher perceived pain than green or blue (Wiercioch-Kuzianik &amp; Bąbel, 2019). In a migraine study, pure green light reduced pain perception while blue showed no such effect (Noseda, Burstein et al., 2016). These findings do not transfer one-to-one to textiles – yet they underline why a cool teal tone makes particular sense as a second skin: less unnecessary arousal, more mental clarity under load.">
-              Rot kann im Vergleich zu Grün oder Blau mit stärker empfundenem Schmerz einhergehen (Wiercioch-Kuzianik &amp; Bąbel, 2019). In einer Migräne-Studie senkte reines Grünlicht die Schmerzwahrnehmung, während Blau keinen vergleichbaren Effekt zeigte (Noseda, Burstein et al., 2016). Diese Befunde lassen sich nicht 1:1 auf Textilien übertragen – sie unterstreichen aber, warum ein kühler Teal-Ton als Second Skin besonders sinnvoll ist: weniger unnötige Erregung, mehr mentale Klarheit unter Belastung.
-            </p>
-          </div>
-        </details>
+        <p class="note"
+           data-de="„Weniger Schmerz. Mehr Ausdauer.“ ist unser Markenversprechen. Was die Forschung zeigt, ist zurückhaltender: weniger Reiz, mehr Fokus."
+           data-en="“Less Pain. More Endurance.” is our brand promise. What the research actually shows is more modest: less stimulus, more focus.">
+          „Weniger Schmerz. Mehr Ausdauer.“ ist unser Markenversprechen. Was die Forschung zeigt, ist zurückhaltender: weniger Reiz, mehr Fokus.
+        </p>
       </div>
     </div>
   </section>
@@ -1759,13 +1901,13 @@ alt=""
     </div>
     <div class="product-body">
       <p class="note"
-         data-de="Das Second Skin Design ist für diese Produkte der neuen Kollektion vorgesehen. Teal auf Schwarz, nah am Körper. Voraussichtlich Anfang 2027 erscheint es als eigenes Produkt."
-         data-en="The Second Skin design is intended for these products in the new collection. Teal on black, close to the body. It is expected to appear as its own product in early 2027.">
-        Das Second Skin Design ist für diese Produkte der neuen Kollektion vorgesehen. Teal auf Schwarz, nah am Körper. Voraussichtlich Anfang 2027 erscheint es als eigenes Produkt.
+         data-de="Unten als Referenzbeispiele: bestehende Modelle, auf denen das Second Skin Design gedacht ist. Teal auf Schwarz, nah am Körper. Geplant sind 100 Männer-Stücke (Short Sleeve) und 50 Frauen-Stücke (Crop Top). Das eigene Produkt erscheint voraussichtlich Anfang 2027."
+         data-en="Shown below as reference examples: existing models the Second Skin design is intended for. Teal on black, close to the body. Planned are 100 men’s pieces (short sleeve) and 50 women’s pieces (crop top). The design is expected to appear as its own product in early 2027.">
+        Unten als Referenzbeispiele: bestehende Modelle, auf denen das Second Skin Design gedacht ist. Teal auf Schwarz, nah am Körper. Geplant sind 100 Männer-Stücke (Short Sleeve) und 50 Frauen-Stücke (Crop Top). Das eigene Produkt erscheint voraussichtlich Anfang 2027.
       </p>
       <ul class="product-facts">
         <li>
-          <strong data-de="Männer" data-en="Men">Männer</strong>
+          <strong data-de="Männer · Short Sleeve · Referenz" data-en="Men · Short Sleeve · reference">Männer · Short Sleeve · Referenz</strong>
           <span class="product-line"
                 data-de="X-Bionic Corefusion Run Short Sleeve"
                 data-en="X-Bionic Corefusion Run Short Sleeve">X-Bionic Corefusion Run Short Sleeve</span>
@@ -1773,11 +1915,11 @@ alt=""
              href="https://www.x-bionic.com/products/x-bionic-corefusion-run-shirt-ss-men-1"
              target="_blank"
              rel="noopener"
-             data-de="Produkt ansehen"
-             data-en="View product">Produkt ansehen</a>
+             data-de="Referenz ansehen"
+             data-en="View reference">Referenz ansehen</a>
         </li>
         <li>
-          <strong data-de="Frauen" data-en="Women">Frauen</strong>
+          <strong data-de="Frauen · Crop Top · Referenz" data-en="Women · Crop Top · reference">Frauen · Crop Top · Referenz</strong>
           <span class="product-line"
                 data-de="X-Bionic Crop Top"
                 data-en="X-Bionic Crop Top">X-Bionic Crop Top</span>
@@ -1785,8 +1927,8 @@ alt=""
              href="https://www.x-bionic.com/de-ch/products/x-bionic-energizer-4-0-fitness-crop-top-wmn-1?variant=45404771680539"
              target="_blank"
              rel="noopener"
-             data-de="Produkt ansehen"
-             data-en="View product">Produkt ansehen</a>
+             data-de="Referenz ansehen"
+             data-en="View reference">Referenz ansehen</a>
         </li>
       </ul>
     </div>
@@ -1796,12 +1938,18 @@ alt=""
   <section class="register" id="register">
     <div class="section-head">
       <span class="num">06</span>
-      <h2 data-de="Interesse anmelden" data-en="Show interest">Interesse anmelden</h2>
+      <h2 data-de="Interesse anmelden" data-en="Share interest">Interesse anmelden</h2>
     </div>
     <p class="lead"
-       data-de="Gefällt dir das Konzept? Melde kurz dein Interesse, mit Schnitt und Grösse als Präferenz. Keine Bestellung, keine Verpflichtung und keine Garantie auf eines der geplanten Stücke. Wir melden uns vor dem Release."
-       data-en="Like the concept? Share your interest, with fit and size as a preference. No order, no commitment and no guarantee for one of the planned pieces. We'll get in touch before release.">
-      Gefällt dir das Konzept? Melde kurz dein Interesse, mit Schnitt und Grösse als Präferenz. Keine Bestellung, keine Verpflichtung und keine Garantie auf eines der geplanten Stücke. Wir melden uns vor dem Release.
+       data-de="Gefällt dir das Konzept? Melde kurz dein Interesse, mit Schnitt und Grösse als Präferenz. Geplant sind Short Sleeve (Männer) und Crop Top (Frauen). Keine Bestellung, keine Verpflichtung und keine Garantie auf eines der geplanten Stücke. Wir melden uns vor dem Release."
+       data-en="Like the concept? Share your interest, with fit and size as a preference. Planned are short sleeve (men) and crop top (women). No order, no commitment and no guarantee for one of the planned pieces. We'll get in touch before release.">
+      Gefällt dir das Konzept? Melde kurz dein Interesse, mit Schnitt und Grösse als Präferenz. Geplant sind Short Sleeve (Männer) und Crop Top (Frauen). Keine Bestellung, keine Verpflichtung und keine Garantie auf eines der geplanten Stücke. Wir melden uns vor dem Release.
+    </p>
+
+    <p class="lead register-echo"
+       data-de="Bevor etwas Form annimmt, bleibt ein Moment der Stille. Genau dort beginnt Second Skin."
+       data-en="Before something takes shape, there remains a moment of stillness. That is exactly where Second Skin begins.">
+      Bevor etwas Form annimmt, bleibt ein Moment der Stille. Genau dort beginnt Second Skin.
     </p>
 
     <form id="reg-form" novalidate>
@@ -1867,22 +2015,22 @@ alt=""
     </div>
 
     <p class="lead"
-       data-de="Bei X-Bionic legen wir Wert auf nachhaltige Produktion. Aktuell planen wir 100 Männer- und 50 Frauen-Stücke: Orientierungswerte, die sich am tatsächlichen Interesse ausrichten und sich noch ändern können. Second Skin erscheint Anfang 2027."
-       data-en="At X-Bionic, we care about sustainable production. We currently plan for 100 men’s and 50 women’s pieces: planning figures guided by real interest, and still subject to change. Second Skin will be released early 2027.">
-      Bei X-Bionic legen wir Wert auf nachhaltige Produktion. Aktuell planen wir 100 Männer- und 50 Frauen-Stücke: Orientierungswerte, die sich am tatsächlichen Interesse ausrichten und sich noch ändern können. Second Skin erscheint Anfang 2027.
+       data-de="Bei X-Bionic legen wir Wert auf nachhaltige Produktion. Aktuell planen wir 100 Männer-Stücke (Short Sleeve) und 50 Frauen-Stücke (Crop Top): Orientierungswerte, die sich am tatsächlichen Interesse ausrichten und sich noch ändern können. Second Skin erscheint Anfang 2027."
+       data-en="At X-Bionic, we care about sustainable production. We currently plan for 100 men’s pieces (short sleeve) and 50 women’s pieces (crop top): planning figures guided by real interest, and still subject to change. Second Skin will be released early 2027.">
+      Bei X-Bionic legen wir Wert auf nachhaltige Produktion. Aktuell planen wir 100 Männer-Stücke (Short Sleeve) und 50 Frauen-Stücke (Crop Top): Orientierungswerte, die sich am tatsächlichen Interesse ausrichten und sich noch ändern können. Second Skin erscheint Anfang 2027.
     </p>
 
     <div class="counter" id="edition-ticker" aria-live="polite">
       <div class="counter-block" data-fit="men">
         <div class="counter-row">
-          <span data-de="Männer · geplant" data-en="Men · planned">Männer · geplant</span>
+          <span data-de="Männer · Short Sleeve · geplant" data-en="Men · Short Sleeve · planned">Männer · Short Sleeve · geplant</span>
           <strong class="count-live"><span data-count="men">15</span> / 100</strong>
         </div>
         <div class="bar"><div class="bar-fill" id="bar-men" style="width:15%"></div></div>
       </div>
       <div class="counter-block" data-fit="women">
         <div class="counter-row">
-          <span data-de="Frauen · geplant" data-en="Women · planned">Frauen · geplant</span>
+          <span data-de="Frauen · Crop Top · geplant" data-en="Women · Crop Top · planned">Frauen · Crop Top · geplant</span>
           <strong class="count-live"><span data-count="women">3</span> / 50</strong>
         </div>
         <div class="bar"><div class="bar-fill" id="bar-women" style="width:6%"></div></div>
@@ -1942,9 +2090,9 @@ alt=""
       <h2 data-de="Verbier Ultra 2026" data-en="Verbier Ultra 2026">Verbier Ultra 2026</h2>
     </div>
     <p class="lead"
-       data-de="Verbier Ultra 2026 ist der lebendige Beweis für Second Skin: eine Corefusion-Version, getragen von allen Runnern und dem gesamten Staff."
-       data-en="Verbier Ultra 2026 is living proof of Second Skin: a Corefusion version, worn by every runner and the entire staff.">
-      Verbier Ultra 2026 ist der lebendige Beweis für Second Skin: eine Corefusion-Version, getragen von allen Runnern und dem gesamten Staff.
+       data-de="Auf dem Trail wird Second Skin greifbar. Verbier Ultra 2026 ist der lebendige Beweis: alle Runner und der gesamte Staff werden mit der Verbier-Ultra-dedizierten Edition ausgerüstet."
+       data-en="On the trail, Second Skin becomes tangible. Verbier Ultra 2026 is the living proof: every runner and the entire staff will be equipped with the dedicated Verbier Ultra edition.">
+      Auf dem Trail wird Second Skin greifbar. Verbier Ultra 2026 ist der lebendige Beweis: alle Runner und der gesamte Staff werden mit der Verbier-Ultra-dedizierten Edition ausgerüstet.
     </p>
 
     <div class="values-banner">
@@ -1952,9 +2100,9 @@ alt=""
     </div>
 
     <blockquote class="community-quote">
-      <p data-de="Man läuft allein und kommt gemeinsam an. Anfeuern. Stützen. Geschichten teilen. So wild wie die Trails."
-         data-en="You run alone and arrive together. Cheer. Support. Share stories. As wild as the trails.">
-        Man läuft allein und kommt gemeinsam an. Anfeuern. Stützen. Geschichten teilen. So wild wie die Trails.
+      <p data-de="Man läuft nie allein und ist immer Teil einer grösseren Community. Anfeuern. Stützen. Geschichten teilen. So wild wie die Trails."
+         data-en="You never run alone; you are always part of a larger community. Cheering. Supporting. Sharing stories. As wild as the trails.">
+        Man läuft nie allein und ist immer Teil einer grösseren Community. Anfeuern. Stützen. Geschichten teilen. So wild wie die Trails.
       </p>
       <cite>
         <a href="https://www.verbierultra.com/" target="_blank" rel="noopener"
@@ -1986,9 +2134,9 @@ alt=""
          data-de="Jetzt anmelden"
          data-en="Register now">Jetzt anmelden</a>
       <span class="verbier-cta-note"
-            data-de="Mit der Anmeldung erhältst du das X-Bionic Verbier Ultra Shirt"
-            data-en="With registration you receive the X-Bionic Verbier Ultra shirt">
-        Mit der Anmeldung erhältst du das X-Bionic Verbier Ultra Shirt
+            data-de="Beim Rennen erhältst du das X-Bionic Verbier Ultra Shirt"
+            data-en="At the race you receive the X-Bionic Verbier Ultra shirt">
+        Beim Rennen erhältst du das X-Bionic Verbier Ultra Shirt
       </span>
     </div>
   </section>
@@ -2074,6 +2222,10 @@ alt=""
     document.querySelectorAll('[data-de]').forEach(function (el) {
       var html = lang === 'de' ? el.getAttribute('data-de') : el.getAttribute('data-en');
       if (html == null) return;
+      if (el.tagName === 'META') {
+        el.setAttribute('content', html);
+        return;
+      }
       if (el.tagName === 'IMG') {
         el.setAttribute('alt', html);
         return;
@@ -2088,6 +2240,8 @@ alt=""
     btnDe.classList.toggle('active', lang === 'de');
     btnEn.classList.toggle('active', lang === 'en');
     document.documentElement.lang = lang;
+    var ogLocale = document.getElementById('og-locale');
+    if (ogLocale) ogLocale.setAttribute('content', lang === 'de' ? 'de_CH' : 'en_US');
 
     if (typeof navToggle !== 'undefined' && navToggle) {
       navToggle.setAttribute(
@@ -2415,6 +2569,70 @@ alt=""
         : summary.getAttribute('data-en');
     });
   });
+})();
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+<script>
+(function () {
+  if (typeof p5 === 'undefined') return;
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var host = document.getElementById('breath-circle');
+  if (!host) return;
+
+  var sketch = function (p) {
+    var t = 0;
+
+    function canvasSize() {
+      return Math.max(120, Math.round(host.clientWidth || 140));
+    }
+
+    p.setup = function () {
+      var s = canvasSize();
+      var canvas = p.createCanvas(s, s);
+      canvas.parent('breath-circle');
+      p.noStroke();
+      p.pixelDensity(Math.min(2, window.devicePixelRatio || 1));
+      if (reduceMotion) p.noLoop();
+    };
+
+    p.windowResized = function () {
+      p.resizeCanvas(canvasSize(), canvasSize());
+    };
+
+    p.draw = function () {
+      p.clear();
+      if (!reduceMotion) t += 0.012;
+
+      var baseRadius = p.width * 0.34;
+      var breath = reduceMotion ? 1 : p.sin(t) * 0.08 + 1;
+      var r = baseRadius * breath;
+
+      for (var i = 6; i > 0; i--) {
+        p.fill(62, 168, 155, 12 * (7 - i));
+        p.ellipse(p.width / 2, p.height / 2, r * 2 + i * 10);
+      }
+
+      p.fill(62, 168, 155, 220);
+      p.beginShape();
+      for (var a = 0; a < p.TWO_PI; a += 0.08) {
+        var wave = reduceMotion
+          ? 0
+          : p.sin(a * 3 + t * 1.4) * 1.8
+            + p.sin(a * 5 - t * 0.9) * 1.1
+            + p.sin(a * 2 + t * 0.6) * 0.7;
+        p.vertex(
+          p.width / 2 + p.cos(a) * (r + wave),
+          p.height / 2 + p.sin(a) * (r + wave)
+        );
+      }
+      p.endShape(p.CLOSE);
+
+      p.fill(95, 232, 211, 40);
+      p.ellipse(p.width / 2, p.height / 2, r * 1.35);
+    };
+  };
+
+  new p5(sketch);
 })();
 </script>
 </body>
