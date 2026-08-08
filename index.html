@@ -281,12 +281,13 @@
     grid-template-columns:1fr;
     gap:2px;
     background:var(--line);
+    max-width:var(--content);
   }
   .gallery-item{ background:var(--panel); }
   .gallery-item .img-wrap{
-    height:360px;
+    height:min(420px, 56vw);
     overflow:hidden;
-    background:#000;
+    background:#e8ecea;
   }
   .gallery-item img{
     display:block;
@@ -294,7 +295,7 @@
     height:100%;
     object-fit:contain;
     object-position:center;
-    background:#000;
+    background:#e8ecea;
     transition:transform .5s cubic-bezier(.2,.8,.2,1);
     will-change:transform;
   }
@@ -361,6 +362,64 @@
 
   /* STORY — two columns, equal width */
   .story{ background:var(--black); }
+  .story-visual{
+    max-width:var(--content);
+    margin:0 0 2.6rem;
+    background:#000;
+    border:1px solid var(--line);
+  }
+  .story-visual .img-wrap{
+    height:auto;
+    aspect-ratio:1024 / 367;
+    max-height:min(340px, 42vw);
+    overflow:hidden;
+    background:#000;
+  }
+  .story-visual img{
+    display:block;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center;
+    transition:transform .55s cubic-bezier(.2,.8,.2,1);
+  }
+  .story-visual:hover img{ transform:scale(1.03); }
+  .story-visual figcaption{
+    padding:.7rem 1rem .85rem;
+    font-family:'JetBrains Mono',monospace;
+    font-size:.68rem;
+    letter-spacing:.05em;
+    color:var(--muted);
+  }
+  .story-visual figcaption strong{ color:var(--teal-bright); font-weight:600; }
+  .swatch-caption{
+    margin:.75rem 0 0;
+    font-family:'JetBrains Mono',monospace;
+    font-size:.68rem;
+    letter-spacing:.06em;
+    color:var(--muted);
+    line-height:1.45;
+    max-width:28ch;
+  }
+  .color-meta{
+    margin:0 0 1.15rem;
+    font-family:'JetBrains Mono',monospace;
+    font-size:.72rem;
+    letter-spacing:.06em;
+    line-height:1.55;
+    color:var(--muted);
+  }
+  .color-meta-title{
+    display:block;
+    color:var(--teal-bright);
+    text-transform:uppercase;
+    letter-spacing:.08em;
+  }
+  .color .expand-more{ margin-top:1.4rem; }
+  .color .expand-body p{
+    font-size:.95rem;
+    color:#aeb8b4;
+  }
   .story-grid{
     display:grid;
     grid-template-columns:1fr 1fr;
@@ -401,6 +460,26 @@
     max-width:none;
   }
 
+  /* Soft breath between emotional narrative blocks */
+  .emotion-arc{
+    padding-top:8.75rem;
+    padding-bottom:8.75rem;
+  }
+  hr.arc-breath{
+    border:none;
+    margin:0;
+    padding:1.1rem 0 1.25rem;
+    background:transparent;
+  }
+  hr.arc-breath::after{
+    content:"";
+    display:block;
+    width:2.25rem;
+    height:1px;
+    margin:0 auto;
+    background:rgba(62,168,155,.28);
+  }
+
   /* CONCEPT / VULNERABILITY — single column */
   .concept{
     background:var(--panel);
@@ -426,6 +505,48 @@
     background:var(--panel);
     border-top:1px solid var(--line);
     border-bottom:1px solid var(--line);
+  }
+  .bridge-line{
+    max-width:var(--measure);
+    margin:0 0 2.4rem;
+    padding-bottom:1.5rem;
+    border-bottom:1px solid var(--line);
+    font-size:1.05rem;
+    line-height:1.65;
+    color:#a8b5b1;
+  }
+  .xbionic .bridge-line{
+    margin:1.8rem 0 0;
+    padding:1.4rem 0 0;
+    border-bottom:none;
+    border-top:1px solid var(--line);
+  }
+  .thought-bubble{
+    max-width:min(var(--measure), 36rem);
+    margin:0 0 2.6rem;
+    border:none;
+  }
+  .thought-bubble__body{
+    position:relative;
+    padding:1.25rem 1.4rem 1.35rem;
+    background:rgba(12,21,18,.72);
+    border:1px solid rgba(62,168,155,.35);
+    border-radius:1.6rem 1.6rem 1.6rem 1.1rem;
+    box-shadow:0 10px 28px rgba(0,0,0,.22);
+  }
+  .thought-bubble__body p{
+    margin:0;
+    font-size:1.05rem;
+    line-height:1.65;
+    color:#c5d0cc;
+    font-style:italic;
+  }
+  .thought-bubble__tail{
+    display:block;
+    width:52px;
+    height:34px;
+    margin:.15rem 0 0 1.4rem;
+    overflow:visible;
   }
   .color-grid{
     display:grid;
@@ -498,21 +619,16 @@
     transform:translateY(-50%);
     pointer-events:auto;
   }
-  @media (max-width:960px){
-    .swatch-tip{
-      left:0;
-      top:calc(100% + .65rem);
-      width:min(100%, 86vw);
-      transform:translateY(.25rem);
-    }
-    .swatch-wrap:hover .swatch-tip,
-    .swatch-wrap:focus-within .swatch-tip,
-    .swatch-wrap.is-open .swatch-tip{
-      transform:translateY(0);
-    }
-  }
   .color p{ color:#cfd8d5; max-width:none; font-size:1.02rem;}
   .color p + p{ margin-top:1rem;}
+  .color .color-claim{
+    margin-top:1.8rem;
+    padding-top:1.2rem;
+    border-top:1px solid var(--line);
+    color:var(--teal-bright);
+    font-size:1.15rem;
+    letter-spacing:.02em;
+  }
 
   /* POEM */
   .poem{
@@ -547,6 +663,8 @@
 
   /* VERBIER */
   .verbier{ background:var(--panel-2); border-top:1px solid var(--line); }
+  .verbier .community-quote{ margin:1.6rem 0 2.4rem; }
+  .verbier .values-banner{ margin-bottom:0; }
   .values-banner{
     border-top:1px solid var(--line);
     border-bottom:1px solid var(--line);
@@ -1056,7 +1174,6 @@
   .artist-portrait:hover img{
     transform:translateY(-10px);
   }
-  }
 
   /* X-BIONIC — teaser + expand */
   .xbionic{
@@ -1162,8 +1279,47 @@
     .story-grid,
     .color-grid,
     .mission-grid{ grid-template-columns:1fr; }
-    .swatch-wrap{ max-width:280px; }
+    .color-grid{
+      align-items:stretch;
+      gap:1.6rem;
+    }
+    .swatch-wrap{
+      max-width:min(320px, 100%);
+      margin-bottom:.2rem;
+    }
     .swatch{ height:160px; }
+    /* Mobile: tip sits under the swatch in normal flow — no overlap with body copy */
+    .swatch-tip{
+      position:static;
+      left:auto;
+      top:auto;
+      width:100%;
+      max-width:none;
+      margin-top:0;
+      padding:0 1.05rem;
+      border-width:0;
+      font-size:.88rem;
+      line-height:1.55;
+      box-shadow:none;
+      opacity:0;
+      visibility:hidden;
+      max-height:0;
+      overflow:hidden;
+      transform:none;
+      transition:opacity .22s ease, max-height .28s ease, margin .22s ease, padding .22s ease, visibility .22s ease;
+    }
+    .swatch-wrap:hover .swatch-tip,
+    .swatch-wrap:focus-within .swatch-tip,
+    .swatch-wrap.is-open .swatch-tip{
+      opacity:1;
+      visibility:visible;
+      max-height:22rem;
+      margin-top:1rem;
+      padding:1.05rem 1.1rem;
+      border-width:1px;
+      transform:none;
+      pointer-events:auto;
+    }
     .artist-grid{ grid-template-columns:1fr; }
     .artist-portrait{
       justify-self:start;
@@ -1197,6 +1353,11 @@
     }
     .hero-cta .btn{ width:100%; }
     section{ padding:4.5rem 5vw; }
+    .emotion-arc{
+      padding-top:6rem;
+      padding-bottom:6rem;
+    }
+    hr.arc-breath{ padding:.85rem 0 1rem; }
     .gallery{ padding-top:3.5rem; }
     .artist-grid{ gap:1.2rem;}
     .reserve-grid{ grid-template-columns:1fr;}
@@ -1212,11 +1373,13 @@
     .verbier-cta-note{ max-width:none; }
     .edition-visual{ max-width:100%; }
     .edition-visual .img-wrap{ height:min(200px, 48vw); }
-    .gallery-item figcaption{
+    .gallery-item figcaption,
+    .story-visual figcaption{
       font-size:.65rem;
       line-height:1.5;
       overflow-wrap:anywhere;
     }
+    .story-visual .img-wrap{ max-height:min(220px, 48vw); }
     .ticker-cta{ width:100%; justify-content:center; }
     .section-head{
       flex-wrap:wrap;
@@ -1238,6 +1401,10 @@
     .hero h1{ font-size:clamp(2.8rem, 16vw, 4.2rem); }
     .hero .tagline{ letter-spacing:.08em; }
     section{ padding:3.5rem 4vw; }
+    .emotion-arc{
+      padding-top:5rem;
+      padding-bottom:5rem;
+    }
     .gallery-item .img-wrap{ height:min(240px, 70vw); }
     .btn-register{
       font-size:1.2rem;
@@ -1317,22 +1484,23 @@ alt=""
     <div class="gallery-grid">
       <figure class="gallery-item">
         <div class="img-wrap img-protect img-protect--blur" data-protect>
-          <img src="gallery-artseries.png"
-               alt="X-Bionic Second Skin Trail Running Shirt Teal — Konzeptvorschau"
+          <img src="prototype-teal.png"
+               alt="Second Skin · Corefusion Prototype Long Sleeve · Front / Back · Teal on Black · EinOhm for X-Bionic · secondskin.run"
+               title="Second Skin Corefusion Prototype · Long Sleeve · secondskin.run"
                draggable="false"
                loading="lazy">
           <span class="img-protect-badge"
                 data-de="Konzeptvorschau"
                 data-en="Concept preview">Konzeptvorschau</span>
         </div>
-        <figcaption data-de="EinOhm Artwork · Prototype (Long Sleeve)"
-                    data-en="EinOhm Artwork · Prototype (Long Sleeve)">EinOhm Artwork · Prototype (Long Sleeve)</figcaption>
+        <figcaption data-de="EinOhm Artwork · Prototype (Long Sleeve) · Front / Back"
+                    data-en="EinOhm Artwork · Prototype (Long Sleeve) · Front / Back">EinOhm Artwork · Prototype (Long Sleeve) · Front / Back</figcaption>
       </figure>
     </div>
   </section>
 
   <!-- DESIGN CONCEPT: VULNERABILITY -->
-  <section class="concept" id="concept">
+  <section class="concept emotion-arc" id="concept">
     <div class="section-head">
       <span class="num">01</span>
       <h2 data-de="Loslassen & Vertrauen" data-en="Letting Go & Trust">Loslassen & Vertrauen</h2>
@@ -1340,59 +1508,81 @@ alt=""
     <div class="concept-body">
       <p class="lead-line"
          data-de="Wachstum beginnt nicht mit dem Neuen. Es beginnt damit, das Alte loszulassen."
-         data-en="Growth doesn’t begin with the new — it begins with letting go of the old.">
+         data-en="Growth doesn’t begin with the new. It begins with letting go of the old.">
         Wachstum beginnt nicht mit dem Neuen. Es beginnt damit, das Alte loszulassen.
       </p>
-      <p data-de="Das Alte schützt nicht mehr. Es engt ein. Wer weiterlaufen will, muss es abstreifen – und für einen Moment nicht wissen, was darunter kommt."
-         data-en="The old no longer protects; it constrains. To keep going, you cast it off — and for a moment don’t know what waits underneath.">
-        Das Alte schützt nicht mehr. Es engt ein. Wer weiterlaufen will, muss es abstreifen – und für einen Moment nicht wissen, was darunter kommt.
+      <p data-de="Das Alte schützt nicht mehr. Es engt ein. Wer weiterlaufen will, muss es abstreifen, und für einen Moment nicht wissen, was darunter kommt."
+         data-en="The old no longer protects; it constrains. To keep going, you cast it off, and for a moment don’t know what waits underneath.">
+        Das Alte schützt nicht mehr. Es engt ein. Wer weiterlaufen will, muss es abstreifen, und für einen Moment nicht wissen, was darunter kommt.
       </p>
-      <p data-de="Jede:r Ultra-Runner:in kennt den Moment: Die Beine wollen nicht mehr. Wille allein trägt nicht mehr. Zwischen «ich kann nicht» und «ich gehe weiter» liegt ein Nichtwissen. Genau dort braucht es Nähe – etwas, das nah genug ist, um den Übergang zu halten."
-         data-en="Every ultra runner knows the moment: the legs refuse. Willpower alone isn’t enough. Between “I can’t” and “I keep going” sits a not-knowing. That’s where closeness matters — something near enough to hold the transition.">
-        Jede:r Ultra-Runner:in kennt den Moment: Die Beine wollen nicht mehr. Wille allein trägt nicht mehr. Zwischen «ich kann nicht» und «ich gehe weiter» liegt ein Nichtwissen. Genau dort braucht es Nähe – etwas, das nah genug ist, um den Übergang zu halten.
+      <p data-de="Jede:r Ultra-Runner:in kennt den Moment:<br>Die Beine machen zu. Der Kopf rechnet noch. Zwischen «ich kann nicht» und dem nächsten Schritt liegt ein Nichtwissen. Genau dort braucht es Nähe, etwas, das hält, wenn der Wille schon weg ist."
+         data-en="Every ultra runner knows the moment:<br>The legs shut down. The head keeps counting. Between “I can’t” and the next step sits a not-knowing. That’s where closeness matters, something that holds when willpower is already gone.">
+        Jede:r Ultra-Runner:in kennt den Moment:<br>Die Beine machen zu. Der Kopf rechnet noch. Zwischen «ich kann nicht» und dem nächsten Schritt liegt ein Nichtwissen. Genau dort braucht es Nähe, etwas, das hält, wenn der Wille schon weg ist.
       </p>
       <p class="closing"
-         data-de="Loslassen ist kein Verlust. Es ist der Schritt ins Offene – und der Bedarf nach etwas, das trägt, bevor du wieder selbst trägst."
-         data-en="Letting go isn’t a loss. It’s the step into the open — and the need for something to carry you until you can carry yourself again.">
-        Loslassen ist kein Verlust. Es ist der Schritt ins Offene – und der Bedarf nach etwas, das trägt, bevor du wieder selbst trägst.
+         data-de="Loslassen ist kein Verlust. Es ist der Schritt ins Offene, und der Bedarf nach etwas, das trägt, bevor du wieder selbst trägst."
+         data-en="Letting go isn’t a loss. It’s the step into the open, and the need for something to carry you until you can carry yourself again.">
+        Loslassen ist kein Verlust. Es ist der Schritt ins Offene, und der Bedarf nach etwas, das trägt, bevor du wieder selbst trägst.
       </p>
     </div>
   </section>
 
+  <hr class="arc-breath" aria-hidden="true">
+
   <!-- STORY -->
-  <section class="story" id="story">
+  <section class="story emotion-arc" id="story">
     <div class="section-head">
       <span class="num">02</span>
       <h2 data-de="Die Story hinter dem Design" data-en="The Story Behind the Design">Die Story hinter dem Design</h2>
     </div>
+    <figure class="story-visual">
+      <div class="img-wrap img-protect" data-protect>
+        <img src="second-skin-teal-snake-artwork-einohm-x-bionic.png"
+             width="1024"
+             height="367"
+             loading="lazy"
+             decoding="async"
+             draggable="false"
+             title="Second Skin Teal Snake Artwork · EinOhm for X-Bionic · secondskin.run"
+             data-de="Second Skin Teal Snake Artwork von EinOhm für X-Bionic — Designinspiration Häutung · secondskin.run"
+             data-en="Second Skin teal snake artwork by EinOhm for X-Bionic — shedding design inspiration · secondskin.run"
+             alt="Second Skin Teal Snake Artwork von EinOhm für X-Bionic — Designinspiration Häutung · secondskin.run">
+      </div>
+      <figcaption data-de="<strong>Second Skin Artwork</strong> · Teal Snake · EinOhm"
+                  data-en="<strong>Second Skin Artwork</strong> · Teal Snake · EinOhm">
+        <strong>Second Skin Artwork</strong> · Teal Snake · EinOhm
+      </figcaption>
+    </figure>
     <div class="story-grid">
       <div>
-        <p data-de="Eine Schlange häutet sich nicht, weil sie anders aussehen will. Sie häutet sich, weil die alte Haut nicht mehr mitwächst. Wachstum macht das Alte obsolet – noch bevor das Neue sichtbar wird."
-           data-en="A snake doesn’t shed to look different. It sheds because the old skin can no longer grow with it. Growth makes the old obsolete — before the new is even visible.">
-          Eine Schlange häutet sich nicht, weil sie anders aussehen will. Sie häutet sich, weil die alte Haut nicht mehr mitwächst. Wachstum macht das Alte obsolet – noch bevor das Neue sichtbar wird.
+        <p data-de="Eine Schlange häutet sich nicht, weil sie anders aussehen will. Sie häutet sich, weil die alte Haut nicht mehr mitwächst. Wachstum macht das Alte obsolet, noch bevor das Neue sichtbar wird."
+           data-en="A snake doesn’t shed to look different. It sheds because the old skin can no longer grow with it. Growth makes the old obsolete before the new is even visible.">
+          Eine Schlange häutet sich nicht, weil sie anders aussehen will. Sie häutet sich, weil die alte Haut nicht mehr mitwächst. Wachstum macht das Alte obsolet, noch bevor das Neue sichtbar wird.
         </p>
-        <p data-de="Second Skin erzählt genau diesen Übergang: nicht laut, nicht dekorativ – sondern als Form, die den Wechsel mitträgt."
-           data-en="Second Skin tells exactly that transition: not loud, not decorative — but as a form that carries the change with you.">
-          Second Skin erzählt genau diesen Übergang: nicht laut, nicht dekorativ – sondern als Form, die den Wechsel mitträgt.
+        <p data-de="Second Skin nimmt genau das auf: nicht laut, nicht dekorativ, sondern als Form, die den Wechsel mitträgt."
+           data-en="Second Skin takes that up: not loud, not decorative, but as a form that carries the change with you.">
+          Second Skin nimmt genau das auf: nicht laut, nicht dekorativ, sondern als Form, die den Wechsel mitträgt.
         </p>
       </div>
       <div class="pullquote">
-        <span data-de="„Du trägst nicht nur ein Shirt. Du trägst die Erinnerung, dass das, was darunter freigelegt wird, stärker und ehrlicher ist als das, was abgelegt wurde.“"
-              data-en="“You’re not just wearing a shirt. You’re wearing the reminder that what’s revealed underneath is stronger — and more honest — than what was left behind.”">
-          „Du trägst nicht nur ein Shirt. Du trägst die Erinnerung, dass das, was darunter freigelegt wird, stärker und ehrlicher ist als das, was abgelegt wurde.“
+        <span data-de="„Du trägst nicht nur ein Shirt. Du trägst die Erinnerung, dass das Freigelegte stärker und ehrlicher ist als das Abgelegte.“"
+              data-en="“You’re not just wearing a shirt. You’re wearing the reminder that what’s revealed is stronger and more honest than what was left behind.”">
+          „Du trägst nicht nur ein Shirt. Du trägst die Erinnerung, dass das Freigelegte stärker und ehrlicher ist als das Abgelegte.“
         </span>
         <small data-de="Die Idee in einem Satz" data-en="The idea, in one line">Die Idee in einem Satz</small>
         <p class="idea-line"
-           data-de="Das Shirt ist wie eine zweite Haut — nah am Körper, genau dort, wo die erste abfällt."
-           data-en="The shirt is a second skin — close to the body, right where the first one falls away.">
-          Das Shirt ist wie eine zweite Haut — nah am Körper, genau dort, wo die erste abfällt.
+           data-de="Eine zweite Haut, nah genug, dass nichts dazwischenliegt."
+           data-en="A second skin, close enough that nothing sits between.">
+          Eine zweite Haut, nah genug, dass nichts dazwischenliegt.
         </p>
       </div>
     </div>
   </section>
 
+  <hr class="arc-breath" aria-hidden="true">
+
   <!-- RENEWAL -->
-  <section class="concept" id="renewal">
+  <section class="concept emotion-arc" id="renewal">
     <div class="section-head">
       <span class="num">03</span>
       <h2 data-de="Angst &amp; Erneuerung" data-en="Fear &amp; Renewal">Angst &amp; Erneuerung</h2>
@@ -1403,20 +1593,36 @@ alt=""
          data-en="Between casting off and arriving lies an empty space.">
         Zwischen dem Ablegen und dem Ankommen liegt ein leerer Raum.
       </p>
-      <p data-de="In diesem Zwischenraum ist zuerst nichts Fertiges. Keine neue Form, keine Sicherheit – nur die Unruhe, dass etwas fehlt und noch keinen Namen hat. Die Angst sitzt nicht im Ablegen. Sie sitzt im Warten."
-         data-en="In that in-between, nothing finished comes first. No new form, no certainty — only the unease of something missing, still without a name. The fear isn’t in the casting off. It’s in the waiting.">
-        In diesem Zwischenraum ist zuerst nichts Fertiges. Keine neue Form, keine Sicherheit – nur die Unruhe, dass etwas fehlt und noch keinen Namen hat. Die Angst sitzt nicht im Ablegen. Sie sitzt im Warten.
+      <p data-de="In diesem Zwischenraum ist zuerst nichts Fertiges. Keine neue Form, keine Sicherheit, nur der hohle Raum im Körper, wenn etwas fehlt und noch keinen Namen hat. Die Angst sitzt nicht im Ablegen. Sie sitzt im Weitergehen, ohne zu wissen wohin."
+         data-en="In that in-between, nothing finished comes first. No new form, no certainty, only the hollow in the body when something is missing and still has no name. The fear isn’t in the casting off. It’s in keeping on without knowing where to.">
+        In diesem Zwischenraum ist zuerst nichts Fertiges. Keine neue Form, keine Sicherheit, nur der hohle Raum im Körper, wenn etwas fehlt und noch keinen Namen hat. Die Angst sitzt nicht im Ablegen. Sie sitzt im Weitergehen, ohne zu wissen wohin.
       </p>
       <p class="closing"
-         data-de="Erneuerung heisst nicht, das Alte zu verwerfen. Es heisst, den Zwischenraum auszuhalten – auch wenn er noch keine Antwort gibt."
-         data-en="Renewal isn’t discarding the old. It’s staying with the in-between — even when it has no answer yet.">
-        Erneuerung heisst nicht, das Alte zu verwerfen. Es heisst, den Zwischenraum auszuhalten – auch wenn er noch keine Antwort gibt.
+         data-de="Erneuerung heisst nicht, das Alte zu verwerfen. Es heisst, den Zwischenraum auszuhalten, auch wenn er noch keine Antwort gibt."
+         data-en="Renewal isn’t discarding the old. It’s staying with the in-between, even when it has no answer yet.">
+        Erneuerung heisst nicht, das Alte zu verwerfen. Es heisst, den Zwischenraum auszuhalten, auch wenn er noch keine Antwort gibt.
       </p>
     </div>
   </section>
 
   <!-- COLOR -->
-  <section class="color">
+  <section class="color" id="color">
+    <figure class="thought-bubble"
+            data-de-label="Gedanke"
+            data-en-label="Thought"
+            aria-label="Gedanke">
+      <div class="thought-bubble__body">
+        <p data-de="Im Zwischenraum braucht der Körper keine Lautstärke. Er braucht Ruhe, und eine Farbe, die sie hält."
+           data-en="In the in-between, the body doesn’t need volume. It needs calm, and a color that can hold it.">
+          Im Zwischenraum braucht der Körper keine Lautstärke. Er braucht Ruhe, und eine Farbe, die sie hält.
+        </p>
+      </div>
+      <svg class="thought-bubble__tail" viewBox="0 0 52 34" aria-hidden="true" focusable="false">
+        <circle cx="14" cy="8" r="5.5" fill="rgba(12,21,18,.72)" stroke="rgba(62,168,155,.4)" stroke-width="1"/>
+        <circle cx="28" cy="18" r="3.6" fill="rgba(12,21,18,.72)" stroke="rgba(62,168,155,.35)" stroke-width="1"/>
+        <circle cx="40" cy="27" r="2.2" fill="rgba(12,21,18,.72)" stroke="rgba(62,168,155,.3)" stroke-width="1"/>
+      </svg>
+    </figure>
     <div class="section-head">
       <span class="num">04</span>
       <h2 data-de="Warum Teal" data-en="Why teal">Warum Teal</h2>
@@ -1428,26 +1634,50 @@ alt=""
                 id="teal-swatch"
                 aria-describedby="teal-evidence"
                 aria-expanded="false"
-                data-de-label="Teal — Evidenz zur Farbwirkung anzeigen"
-                data-en-label="Teal — show evidence on color effects"
-                aria-label="Teal — Evidenz zur Farbwirkung anzeigen">
+                data-de-label="Second Skin Teal · Farbpsychologie · X-Bionic Corefusion by EinOhm"
+                data-en-label="Second Skin Teal · color psychology · X-Bionic Corefusion by EinOhm"
+                aria-label="Second Skin Teal · Farbpsychologie · X-Bionic Corefusion by EinOhm"
+                title="Second Skin Teal · X-Bionic Corefusion by EinOhm · secondskin.run">
           <span class="swatch-hint" data-de="Evidenz" data-en="Evidence">Evidenz</span>
         </button>
+        <p class="swatch-caption"
+           data-de="Second Skin Teal · X-Bionic Corefusion by EinOhm<br>Farbkonzept · secondskin.run"
+           data-en="Second Skin Teal · X-Bionic Corefusion by EinOhm<br>Color concept · secondskin.run">
+          Second Skin Teal · X-Bionic Corefusion by EinOhm<br>Farbkonzept · secondskin.run
+        </p>
         <div class="swatch-tip" id="teal-evidence" role="tooltip"
-             data-de="Grüne und blaue Lichtreize zeigen in mehreren Studien (u. a. Ibrahim et al., Burstein/Harvard, experimentelle Schmerzmodelle) reduzierte Schmerzintensität und Stressmarker. Rot wirkt eher hyperalgesisch. Teal (Blau-Grün) sitzt genau in dem Spektrum, das mit niedriger Arousal und positiver Valenz assoziiert wird."
-             data-en="Green and blue light stimuli have been linked in several studies (including Ibrahim et al., Burstein/Harvard, experimental pain models) to reduced pain intensity and stress markers. Red tends to be hyperalgesic. Teal (blue-green) sits in the spectrum associated with lower arousal and positive valence.">
-          Grüne und blaue Lichtreize zeigen in mehreren Studien (u. a. Ibrahim et al., Burstein/Harvard, experimentelle Schmerzmodelle) reduzierte Schmerzintensität und Stressmarker. Rot wirkt eher hyperalgesisch. Teal (Blau-Grün) sitzt genau in dem Spektrum, das mit niedriger Arousal und positiver Valenz assoziiert wird.
+             data-de="Kühle Farbtöne (Blau/Grün) werden mit niedrigerer physiologischer Erregung assoziiert, warme (Rot) mit höherer (Elliot &amp; Maier, 2014). Teal liegt als Blau-Grün-Ton in diesem kühlen Spektrum."
+             data-en="Cool hues (blue/green) are associated with lower physiological arousal; warm hues (red) with higher arousal (Elliot &amp; Maier, 2014). As a blue-green tone, teal sits in that cool spectrum.">
+          Kühle Farbtöne (Blau/Grün) werden mit niedrigerer physiologischer Erregung assoziiert, warme (Rot) mit höherer (Elliot &amp; Maier, 2014). Teal liegt als Blau-Grün-Ton in diesem kühlen Spektrum.
         </div>
       </div>
       <div>
-        <p data-de="Das Teal im Schwarz ist keine Dekoration. Studien zeigen, dass Blau- und Grüntöne – und damit auch Teal – mit geringerer Schmerzwahrnehmung und reduziertem Stress in Verbindung gebracht werden. In experimentellen Settings und klinischen Kontexten (u. a. bei Migräne und akuten Eingriffen) führten grüne und blaue Lichtreize zu messbar niedrigeren Schmerz- und Stresswerten. Teal liegt genau in diesem Spektrum: weniger empfundener Schmerz, mehr Fokus. Die Ruhe, die aufblitzt, wenn der Körper aufhört zu diskutieren."
-           data-en="The teal in the black is not decoration. Studies link blue and green hues — and with them teal — to lower pain perception and reduced stress. In experimental settings and clinical contexts (including migraine and acute procedures), green and blue light stimuli have led to measurably lower pain and stress scores. Teal sits right in that spectrum: less perceived pain, more focus. The calm that flashes through when the body stops arguing.">
-          Das Teal im Schwarz ist keine Dekoration. Studien zeigen, dass Blau- und Grüntöne – und damit auch Teal – mit geringerer Schmerzwahrnehmung und reduziertem Stress in Verbindung gebracht werden. In experimentellen Settings und klinischen Kontexten (u. a. bei Migräne und akuten Eingriffen) führten grüne und blaue Lichtreize zu messbar niedrigeren Schmerz- und Stresswerten. Teal liegt genau in diesem Spektrum: weniger empfundener Schmerz, mehr Fokus. Die Ruhe, die aufblitzt, wenn der Körper aufhört zu diskutieren.
+        <p class="color-meta">
+          <span class="color-meta-title"
+                data-de="Second Skin Teal · X-Bionic Corefusion by EinOhm"
+                data-en="Second Skin Teal · X-Bionic Corefusion by EinOhm">Second Skin Teal · X-Bionic Corefusion by EinOhm</span>
+          <span data-de="Farbkonzept · secondskin.run"
+                data-en="Color concept · secondskin.run">Farbkonzept · secondskin.run</span>
         </p>
-        <p data-de="Weniger Schmerz. Mehr Ausdauer."
-           data-en="Less Pain. More Endurance.">
-          Weniger Schmerz. Mehr Ausdauer.
+        <p data-de="In der Farbpsychologie gilt als gesichert: Kühle, kurzwellige Farbtöne wie Blau und Grün werden mit niedrigerer physiologischer Erregung und beruhigender Wirkung assoziiert, warme Farbtöne wie Rot mit höherer Erregung und stärkerer Reizintensität (Elliot &amp; Maier, 2014). Teal liegt als Blau-Grün-Ton genau in diesem kühlen, arousal-senkenden Spektrum."
+           data-en="In color psychology, it's well established that cool, short-wavelength hues like blue and green are associated with lower physiological arousal and a calming effect, while warm hues like red are linked to higher arousal and stronger perceived intensity (Elliot &amp; Maier, 2014). As a blue-green tone, teal sits squarely within this cool, arousal-lowering spectrum.">
+          In der Farbpsychologie gilt als gesichert: Kühle, kurzwellige Farbtöne wie Blau und Grün werden mit niedrigerer physiologischer Erregung und beruhigender Wirkung assoziiert, warme Farbtöne wie Rot mit höherer Erregung und stärkerer Reizintensität (Elliot &amp; Maier, 2014). Teal liegt als Blau-Grün-Ton genau in diesem kühlen, arousal-senkenden Spektrum.
         </p>
+        <p class="color-claim"
+           data-de="Weniger Reiz. Mehr Fokus."
+           data-en="Less stimulus. More focus.">
+          Weniger Reiz. Mehr Fokus.
+        </p>
+        <details class="expand-more">
+          <summary data-de="Zusätzliche Beispiele aus der Forschung"
+                   data-en="Additional examples from research">Zusätzliche Beispiele aus der Forschung</summary>
+          <div class="expand-body">
+            <p data-de="Vertiefend, nicht als Hauptbeleg für Sportbekleidung: Rot kann im Vergleich zu Grün oder Blau mit stärkerem empfundenen Schmerz einhergehen (Wiercioch-Kuzianik &amp; Bąbel, 2019). In einer Migräne-Studie senkte ein schmales Band reinen Grünlichts die Schmerzwahrnehmung, während Blau keinen solchen Effekt zeigte (Noseda, Burstein et al., 2016). Diese Befunde sind kontextgebunden und lassen sich nicht 1:1 auf Teal in Kleidung übertragen."
+               data-en="As further context, not as a primary claim for sportswear: red can be linked to higher perceived pain than green or blue (Wiercioch-Kuzianik &amp; Bąbel, 2019). In a migraine study, a narrow band of pure green light reduced pain perception, while blue showed no such effect (Noseda, Burstein et al., 2016). These findings are context-specific and do not transfer one-to-one to teal in clothing.">
+              Vertiefend, nicht als Hauptbeleg für Sportbekleidung: Rot kann im Vergleich zu Grün oder Blau mit stärkerem empfundenen Schmerz einhergehen (Wiercioch-Kuzianik &amp; Bąbel, 2019). In einer Migräne-Studie senkte ein schmales Band reinen Grünlichts die Schmerzwahrnehmung, während Blau keinen solchen Effekt zeigte (Noseda, Burstein et al., 2016). Diese Befunde sind kontextgebunden und lassen sich nicht 1:1 auf Teal in Kleidung übertragen.
+            </p>
+          </div>
+        </details>
       </div>
     </div>
   </section>
@@ -1460,22 +1690,22 @@ alt=""
     </div>
     <div class="concept-body">
       <p class="lead-line"
-         data-de="Corefusion ist die Design-Serie von EinOhm für X-Bionic."
-         data-en="Corefusion is the design series by EinOhm for X-Bionic.">
-        Corefusion ist die Design-Serie von EinOhm für X-Bionic.
+         data-de="Corefusion ist die Design-Serie von EinOhm für X-Bionic — kein Einzelstück, sondern ein Rahmen für Limited Editions."
+         data-en="Corefusion is EinOhm’s design series for X-Bionic — not a one-off, but a frame for limited editions.">
+        Corefusion ist die Design-Serie von EinOhm für X-Bionic — kein Einzelstück, sondern ein Rahmen für Limited Editions.
       </p>
       <p data-de="Sie erkundet die Schwelle zwischen Körper und zweiter Haut — dort, wo Funktion auf Metapher trifft und das Shirt mehr wird als Stoff."
          data-en="It explores the threshold between body and second skin — where function meets metaphor, and the shirt becomes more than fabric.">
         Sie erkundet die Schwelle zwischen Körper und zweiter Haut — dort, wo Funktion auf Metapher trifft und das Shirt mehr wird als Stoff.
       </p>
-      <p data-de="Second Skin ist die erste Limited Edition innerhalb dieser Serie. Ein Shortsleeve-Run-Shirt in Teal auf Schwarz — gemacht für den Moment, in dem die alte Form abfällt und etwas Stärkeres Gestalt annimmt."
-         data-en="Second Skin is the first limited edition within this series. A short-sleeve run shirt in teal on black, built for the moment when the old form falls away and something stronger begins to take shape.">
-        Second Skin ist die erste Limited Edition innerhalb dieser Serie. Ein Shortsleeve-Run-Shirt in Teal auf Schwarz — gemacht für den Moment, in dem die alte Form abfällt und etwas Stärkeres Gestalt annimmt.
+      <p data-de="Second Skin ist die erste Limited Edition innerhalb dieser Serie. Teal auf Schwarz. Shortsleeve. Der Auftakt — nicht die Ausnahme."
+         data-en="Second Skin is the first limited edition in that series. Teal on black. Shortsleeve. The opening chapter — not the exception.">
+        Second Skin ist die erste Limited Edition innerhalb dieser Serie. Teal auf Schwarz. Shortsleeve. Der Auftakt — nicht die Ausnahme.
       </p>
       <p class="closing"
-         data-de="Eine Version dieses Designs ist bereits am Verbier Ultra 2026 im Einsatz — getragen von allen Runnern und dem gesamten Staff. Lebendiger Beweis, dass das Konzept nicht auf der Seite bleibt."
-         data-en="A version of this design is already in use at the Verbier Ultra 2026 — worn by every runner and the entire staff. Living proof the concept doesn’t stay on the page.">
-        Eine Version dieses Designs ist bereits am Verbier Ultra 2026 im Einsatz — getragen von allen Runnern und dem gesamten Staff. Lebendiger Beweis, dass das Konzept nicht auf der Seite bleibt.
+         data-de="Mit Verbier Ultra 2026 ist Corefusion bereits unterwegs: eine Version des Designs, getragen von allen Runnern und dem gesamten Staff. Die Serie beginnt nicht auf dem Papier — sie beginnt auf dem Trail."
+         data-en="With Verbier Ultra 2026, Corefusion is already on the trail: a version of the design, worn by every runner and the entire staff. The series doesn’t begin on the page — it begins out there.">
+        Mit Verbier Ultra 2026 ist Corefusion bereits unterwegs: eine Version des Designs, getragen von allen Runnern und dem gesamten Staff. Die Serie beginnt nicht auf dem Papier — sie beginnt auf dem Trail.
       </p>
     </div>
   </section>
@@ -1508,9 +1738,9 @@ alt=""
         </li>
       </ul>
       <p class="note"
-         data-de="Beide tragen dasselbe Second Skin Design — Teal auf Schwarz, nah am Körper. Die Stückzahlen sind bewusst begrenzt und orientieren sich am tatsächlichen Bedarf."
-         data-en="Both carry the same Second Skin design — teal on black, close to the body. Piece counts are kept intentionally limited and follow actual demand.">
-        Beide tragen dasselbe Second Skin Design — Teal auf Schwarz, nah am Körper. Die Stückzahlen sind bewusst begrenzt und orientieren sich am tatsächlichen Bedarf.
+         data-de="Beide tragen dasselbe Second Skin Design — Teal auf Schwarz, nah am Körper. 100 (Männer) und 50 (Frauen) sind aktuelle Planungszahlen: bewusst begrenzt, am tatsächlichen Bedarf orientiert — und bis zum Release noch anpassbar."
+         data-en="Both carry the same Second Skin design — teal on black, close to the body. 100 (men) and 50 (women) are current planning numbers: intentionally limited, guided by actual demand — and still adjustable before release.">
+        Beide tragen dasselbe Second Skin Design — Teal auf Schwarz, nah am Körper. 100 (Männer) und 50 (Frauen) sind aktuelle Planungszahlen: bewusst begrenzt, am tatsächlichen Bedarf orientiert — und bis zum Release noch anpassbar.
       </p>
     </div>
   </section>
@@ -1522,10 +1752,32 @@ alt=""
       <h2 data-de="Interesse anmelden" data-en="Show interest">Interesse anmelden</h2>
     </div>
     <p class="lead"
-       data-de="Bei X-Bionic legen wir Wert auf nachhaltige Produktion. Wir ermitteln zuerst den Bedarf — und produzieren nur so viel, wie wirklich gewünscht wird. Second Skin erscheint Anfang 2027."
-       data-en="At X-Bionic, we care about sustainable production. We first determine demand — and produce only as much as is truly wanted. Second Skin will be released early 2027.">
-      Bei X-Bionic legen wir Wert auf nachhaltige Produktion. Wir ermitteln zuerst den Bedarf — und produzieren nur so viel, wie wirklich gewünscht wird. Second Skin erscheint Anfang 2027.
+       data-de="Bei X-Bionic legen wir Wert auf nachhaltige Produktion. Aktuell planen wir 100 Männer- und 50 Frauen-Stücke — Orientierungswerte, die sich am tatsächlichen Interesse ausrichten und sich noch ändern können. Second Skin erscheint Anfang 2027."
+       data-en="At X-Bionic, we care about sustainable production. We currently plan for 100 men’s and 50 women’s pieces — planning figures guided by real interest, and still subject to change. Second Skin will be released early 2027.">
+      Bei X-Bionic legen wir Wert auf nachhaltige Produktion. Aktuell planen wir 100 Männer- und 50 Frauen-Stücke — Orientierungswerte, die sich am tatsächlichen Interesse ausrichten und sich noch ändern können. Second Skin erscheint Anfang 2027.
     </p>
+
+    <div class="counter" id="edition-ticker" aria-live="polite">
+      <div class="counter-block" data-fit="men">
+        <div class="counter-row">
+          <span data-de="Männer · geplant" data-en="Men · planned">Männer · geplant</span>
+          <strong class="count-live"><span data-count="men">15</span> / 100</strong>
+        </div>
+        <div class="bar"><div class="bar-fill" id="bar-men" style="width:15%"></div></div>
+      </div>
+      <div class="counter-block" data-fit="women">
+        <div class="counter-row">
+          <span data-de="Frauen · geplant" data-en="Women · planned">Frauen · geplant</span>
+          <strong class="count-live"><span data-count="women">3</span> / 50</strong>
+        </div>
+        <div class="bar"><div class="bar-fill" id="bar-women" style="width:6%"></div></div>
+      </div>
+      <p class="counter-caption"
+         data-de="Interesse / aktuelle Planung — keine Reservierung, Stückzahlen können sich anpassen."
+         data-en="Interest / current planning — not a reservation; piece counts may still adjust.">
+        Interesse / aktuelle Planung — keine Reservierung, Stückzahlen können sich anpassen.
+      </p>
+    </div>
 
     <p class="lead"
        data-de="Gefällt dir das Konzept? Melde kurz dein Interesse — mit Schnitt und Grösse als Präferenz. Keine Bestellung, keine Verpflichtung — und keine Garantie auf eines der geplanten Stücke. Wir melden uns vor dem Release."
@@ -1618,9 +1870,9 @@ alt=""
            data-en="This is combined with a typically Swiss care for design. Function and form are taken equally seriously: the products should not only perform technically, but also feel and look precise and well thought-out in fit and appearance.">
           Dazu kommt eine typisch schweizerische Sorgfalt im Design. Funktion und Form werden gleich ernst genommen: Die Produkte sollen nicht nur technisch überzeugen, sondern auch in Passform und Erscheinungsbild präzise und durchdacht wirken.
         </p>
-        <p data-de="Ein gutes Beispiel für die technische Seite ist der Trailrunning-Schuh <a class=&quot;expand-link&quot; href=&quot;https://www.x-bionic.com/products/x-bionic-terraskin-x00-c&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;>TerraSkin® X00/C</a>. Zwei Jahre Entwicklung, damit Schuh und Socke als ein System funktionieren statt als zwei getrennte Teile. Beim Aufsetzen dämpft er, hält den Fuss aber trotzdem stabil – fast wie eine kleine Federung. Die Sohle ist vom Muster eines Spinnennetzes inspiriert und soll dadurch besseren Grip haben. Laut Hersteller bis zu 27 % mehr Bodenkontakt als bei anderen Marken. Im X00/C steckt zusätzlich eine Carbonplatte für mehr Reaktionsfähigkeit auf unebenem Gelände."
-           data-en="A good example of the technical side is the <a class=&quot;expand-link&quot; href=&quot;https://www.x-bionic.com/products/x-bionic-terraskin-x00-c&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;>TerraSkin® X00/C</a> trail running shoe. Two years of development so that shoe and sock work as one system rather than two separate parts. It cushions on landing while still keeping the foot stable – almost like a small suspension. The outsole is inspired by the pattern of a spider’s web and is designed to provide better grip. According to the manufacturer, up to 27 % more ground contact than competing products. The X00/C also includes a carbon plate for more reactivity on uneven terrain.">
-          Ein gutes Beispiel für die technische Seite ist der Trailrunning-Schuh <a class="expand-link" href="https://www.x-bionic.com/products/x-bionic-terraskin-x00-c" target="_blank" rel="noopener">TerraSkin® X00/C</a>. Zwei Jahre Entwicklung, damit Schuh und Socke als ein System funktionieren statt als zwei getrennte Teile. Beim Aufsetzen dämpft er, hält den Fuss aber trotzdem stabil – fast wie eine kleine Federung. Die Sohle ist vom Muster eines Spinnennetzes inspiriert und soll dadurch besseren Grip haben. Laut Hersteller bis zu 27 % mehr Bodenkontakt als bei anderen Marken. Im X00/C steckt zusätzlich eine Carbonplatte für mehr Reaktionsfähigkeit auf unebenem Gelände.
+        <p data-de="Ein Beispiel für diese Denkweise ist der Trailrunning-Schuh <a class=&quot;expand-link&quot; href=&quot;https://www.x-bionic.com/products/x-bionic-terraskin-x00-c&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;>TerraSkin® X00/C</a>: Schuh und Socke als ein System, mehr Grip auf dem Trail — und eine Carbonplatte für Reaktionsfähigkeit auf unebenem Gelände."
+           data-en="One example of that thinking is the <a class=&quot;expand-link&quot; href=&quot;https://www.x-bionic.com/products/x-bionic-terraskin-x00-c&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;>TerraSkin® X00/C</a> trail shoe: shoe and sock as one system, more grip on the trail — plus a carbon plate for reactivity on uneven ground.">
+          Ein Beispiel für diese Denkweise ist der Trailrunning-Schuh <a class="expand-link" href="https://www.x-bionic.com/products/x-bionic-terraskin-x00-c" target="_blank" rel="noopener">TerraSkin® X00/C</a>: Schuh und Socke als ein System, mehr Grip auf dem Trail — und eine Carbonplatte für Reaktionsfähigkeit auf unebenem Gelände.
         </p>
         <p data-de="Am Ende geht es bei den Produkten darum, Menschen zu motivieren, sich zu bewegen und in die Natur zu gehen – ob gemeinsam mit anderen oder in den intensiven Momenten, in denen man ganz bei sich ist. Weniger Ablenkung durch die Ausrüstung, mehr Lebensqualität durch Bewegung."
            data-en="In the end, the products are about motivating people to move and go into nature – whether together with others or in those intense moments when you are fully present with yourself. Less distraction from the equipment, more quality of life through movement.">
@@ -1629,6 +1881,11 @@ alt=""
         <a class="expand-link" href="https://www.x-bionic.com/" target="_blank" rel="noopener">x-bionic.com</a>
       </div>
     </details>
+    <p class="bridge-line"
+       data-de="Und genau dieser Anspruch trägt Second Skin weiter — hinaus auf den Trail, wo das Konzept den Körper wirklich berührt."
+       data-en="And that same demand carries Second Skin further — out onto the trail, where the concept meets the body for real.">
+      Und genau dieser Anspruch trägt Second Skin weiter — hinaus auf den Trail, wo das Konzept den Körper wirklich berührt.
+    </p>
   </section>
 
   <!-- VERBIER ULTRA 2026 -->
@@ -1638,9 +1895,9 @@ alt=""
       <h2 data-de="Verbier Ultra 2026" data-en="Verbier Ultra 2026">Verbier Ultra 2026</h2>
     </div>
     <p class="lead"
-       data-de="Eine Version von Second Skin aus der Corefusion-Serie ist dieses Jahr am Verbier Ultra im Einsatz — getragen von allen Runnern und dem gesamten Staff."
-       data-en="A version of Second Skin from the Corefusion series is in use at this year’s Verbier Ultra — worn by every runner and the entire staff.">
-      Eine Version von Second Skin aus der Corefusion-Serie ist dieses Jahr am Verbier Ultra im Einsatz — getragen von allen Runnern und dem gesamten Staff.
+       data-de="Verbier Ultra 2026 ist der lebendige Beweis für Second Skin: eine Corefusion-Version, getragen von allen Runnern und dem gesamten Staff."
+       data-en="Verbier Ultra 2026 is living proof of Second Skin: a Corefusion version, worn by every runner and the entire staff.">
+      Verbier Ultra 2026 ist der lebendige Beweis für Second Skin: eine Corefusion-Version, getragen von allen Runnern und dem gesamten Staff.
     </p>
 
     <div class="values-banner">
@@ -1648,23 +1905,16 @@ alt=""
     </div>
 
     <blockquote class="community-quote">
-      <p data-de="Die Ultra-Trail-Community ist Familie. Man läuft allein — und kommt gemeinsam an. Anfeuern. Stützen. Geschichten teilen. So wild wie die Trails."
-         data-en="The ultra-trail community is family. You run alone — and arrive together. Cheer. Support. Share stories. As wild as the trails.">
-        Die Ultra-Trail-Community ist Familie. Man läuft allein — und kommt gemeinsam an. Anfeuern. Stützen. Geschichten teilen. So wild wie die Trails.
+      <p data-de="Man läuft allein — und kommt gemeinsam an. Anfeuern. Stützen. Geschichten teilen. So wild wie die Trails."
+         data-en="You run alone — and arrive together. Cheer. Support. Share stories. As wild as the trails.">
+        Man läuft allein — und kommt gemeinsam an. Anfeuern. Stützen. Geschichten teilen. So wild wie die Trails.
       </p>
       <cite>
-        <a href="https://www.verbierultra.com/" target="_blank" rel="noopener">verbierultra.com · Communauté</a>
+        <a href="https://www.verbierultra.com/" target="_blank" rel="noopener"
+           data-de="Les Coureurs UltraSolidaires · Val de Bagnes · Pur. Brut. Essentiel."
+           data-en="Les Coureurs UltraSolidaires · Val de Bagnes · Pur. Brut. Essentiel.">Les Coureurs UltraSolidaires · Val de Bagnes · Pur. Brut. Essentiel.</a>
       </cite>
-      <a class="values-link" href="https://www.verbierultra.com/" target="_blank" rel="noopener">Pur. Brut. Essentiel.</a>
     </blockquote>
-
-    <hr class="section-divider">
-
-    <p class="lead" style="margin-bottom:2rem"
-       data-de="Organisiert von der Non-Profit-Association <strong>Les Coureurs UltraSolidaires</strong> seit 2023: zurück zum Wesentlichen, roh und authentisch im Val de Bagnes."
-       data-en="Organised by the non-profit association <strong>Les Coureurs UltraSolidaires</strong> since 2023: back to the essentials, raw and authentic in Val de Bagnes.">
-      Organisiert von der Non-Profit-Association <strong>Les Coureurs UltraSolidaires</strong> seit 2023: zurück zum Wesentlichen, roh und authentisch im Val de Bagnes.
-    </p>
 
     <div class="edition-visual">
       <div class="img-wrap img-protect" data-protect>
@@ -1675,8 +1925,8 @@ alt=""
       </div>
       <div class="edition-caption">
         <strong>Verbier Ultra Edition</strong>
-        <span data-de=" · Corefusion Run Shirt · für Runner und Staff · Swiss Engineered"
-              data-en=" · Corefusion Run Shirt · for runners and staff · Swiss Engineered"> · Corefusion Run Shirt · für Runner und Staff · Swiss Engineered</span>
+        <span data-de=" · Second Skin auf dem Trail"
+              data-en=" · Second Skin on the trail"> · Second Skin auf dem Trail</span>
       </div>
     </div>
 
@@ -1763,7 +2013,7 @@ alt=""
   var sizesMen = ['S', 'M', 'L', 'XL'];
   var sizesWomen = ['S', 'M', 'L'];
   var LIMITS = { men: 100, women: 50 };
-  var BASE = { men: 18, women: 0 };
+  var BASE = { men: 15, women: 3 };
   var TICKER_KEY = 'secondskin_ticker';
   var REG_KEY = 'secondskin_registrations';
 

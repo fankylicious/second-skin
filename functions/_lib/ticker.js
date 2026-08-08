@@ -1,7 +1,7 @@
 /** Shared demand ticker helpers (Cloudflare KV binding: TICKER) */
 
 export const LIMITS = { men: 100, women: 50 };
-export const BASE = { men: 18, women: 0 };
+export const BASE = { men: 15, women: 3 };
 const COUNTS_KEY = 'counts';
 
 export function normalizeFit(fit) {
