@@ -86,7 +86,7 @@
     --form:680px;
   }
   *{box-sizing:border-box; margin:0; padding:0;}
-  html{scroll-behavior:smooth;}
+  html{scroll-behavior:smooth; scroll-padding-top:4.75rem;}
   body{
     background:var(--black);
     color:var(--text);
@@ -94,8 +94,8 @@
     line-height:1.6;
     overflow-x:hidden;
     -webkit-font-smoothing:antialiased;
-    overflow-x:hidden;
   }
+  body.nav-open{ overflow:hidden; }
 
   .scaletex{
     position:absolute; inset:0;
@@ -113,10 +113,43 @@
     color:var(--teal-bright);
   }
 
-  /* LANG */
+  /* SITE HEADER + MOBILE NAV */
+  .site-header{
+    position:fixed;
+    top:0; left:0; right:0;
+    z-index:40;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:1rem;
+    padding:.7rem 8vw;
+    background:rgba(8,11,10,.72);
+    border-bottom:1px solid transparent;
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+    transition:border-color .25s ease, background .25s ease;
+  }
+  .site-header.is-scrolled{
+    border-bottom-color:rgba(34,51,48,.85);
+    background:rgba(8,11,10,.92);
+  }
+  .site-brand{
+    font-family:'Bebas Neue',sans-serif;
+    font-size:1.35rem;
+    letter-spacing:.04em;
+    color:var(--text);
+    text-decoration:none;
+    line-height:1;
+  }
+  .site-brand span{ color:var(--teal-bright); }
+  .site-header__actions{
+    display:flex;
+    align-items:center;
+    gap:.65rem;
+  }
   .lang-bar{
-    position:absolute; top:1.4rem; right:8vw; z-index:5;
-    display:flex; gap:4px;
+    display:flex;
+    gap:4px;
   }
   .lang-bar button{
     background:transparent;
@@ -134,6 +167,116 @@
     border-color:var(--teal);
     color:#041210;
   }
+  .nav-toggle{
+    display:none;
+    position:relative;
+    width:2.6rem;
+    height:2.6rem;
+    padding:0;
+    border:1px solid var(--line);
+    background:rgba(15,22,19,.65);
+    color:var(--text);
+    cursor:pointer;
+    border-radius:2px;
+  }
+  .nav-toggle:focus-visible{
+    outline:2px solid var(--teal-bright);
+    outline-offset:2px;
+  }
+  .nav-toggle__bars,
+  .nav-toggle__bars::before,
+  .nav-toggle__bars::after{
+    content:"";
+    display:block;
+    position:absolute;
+    left:50%;
+    width:1.1rem;
+    height:1.5px;
+    background:currentColor;
+    transform:translateX(-50%);
+    transition:transform .28s ease, opacity .2s ease, top .28s ease;
+  }
+  .nav-toggle__bars{ top:50%; margin-top:-.75px; }
+  .nav-toggle__bars::before{ top:-6px; }
+  .nav-toggle__bars::after{ top:6px; }
+  .nav-toggle[aria-expanded="true"] .nav-toggle__bars{
+    background:transparent;
+  }
+  .nav-toggle[aria-expanded="true"] .nav-toggle__bars::before{
+    top:0;
+    transform:translateX(-50%) rotate(45deg);
+  }
+  .nav-toggle[aria-expanded="true"] .nav-toggle__bars::after{
+    top:0;
+    transform:translateX(-50%) rotate(-45deg);
+  }
+  .site-nav{
+    position:fixed;
+    inset:0;
+    z-index:39;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    padding:5.5rem 8vw 3rem;
+    background:rgba(6,9,8,.97);
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+    transition:opacity .28s ease, visibility .28s ease;
+  }
+  .site-nav.is-open{
+    opacity:1;
+    visibility:visible;
+    pointer-events:auto;
+  }
+  .site-nav__list{
+    list-style:none;
+    display:grid;
+    gap:.15rem;
+    max-width:28rem;
+    margin:0;
+    padding:0;
+  }
+  .site-nav__list a{
+    display:grid;
+    grid-template-columns:2.4rem 1fr;
+    align-items:baseline;
+    gap:.75rem;
+    padding:.7rem 0;
+    color:var(--text);
+    text-decoration:none;
+    border-bottom:1px solid rgba(34,51,48,.7);
+    font-family:'Bebas Neue',sans-serif;
+    font-size:clamp(1.55rem, 5.5vw, 2.1rem);
+    letter-spacing:.02em;
+    line-height:1.1;
+    transition:color .2s ease, padding-left .2s ease;
+  }
+  .site-nav__list a:hover,
+  .site-nav__list a:focus-visible{
+    color:var(--teal-bright);
+    padding-left:.35rem;
+  }
+  .site-nav__list a:focus-visible{
+    outline:none;
+  }
+  .site-nav__num{
+    font-family:'JetBrains Mono',monospace;
+    font-size:.72rem;
+    letter-spacing:.12em;
+    color:var(--teal-bright);
+  }
+  .site-nav__cta{
+    margin-top:1.6rem;
+    display:inline-flex;
+    width:fit-content;
+  }
+  @media (max-width:960px){
+    .nav-toggle{ display:inline-flex; align-items:center; justify-content:center; }
+  }
+  @media (min-width:961px){
+    .site-nav{ display:none; }
+  }
 
   /* HERO */
   .hero{
@@ -142,7 +285,7 @@
     display:flex;
     flex-direction:column;
     justify-content:center;
-    padding:8vh 8vw 10vh;
+    padding:calc(8vh + 3.2rem) 8vw 10vh;
     overflow:hidden;
     background:linear-gradient(180deg, var(--black) 0%, #060908 100%);
   }
@@ -508,36 +651,25 @@
     border-top:1px solid var(--line);
   }
   .thought-bubble{
-    --bubble:#ffffff;
-    --bubble-ink:#0a1210;
-    --bubble-stroke:#0a1210;
     max-width:min(var(--measure), 34rem);
     margin:0 0 2.8rem;
     border:none;
-    filter:drop-shadow(0 10px 18px rgba(0,0,0,.28));
   }
   .thought-bubble__body{
-    position:relative;
-    z-index:1;
-    padding:1.35rem 1.55rem 1.45rem;
-    background:var(--bubble);
-    border:3px solid var(--bubble-stroke);
-    border-radius:2.4rem;
+    margin:0;
+    padding:1.25rem 1.4rem 1.35rem;
+    background:var(--teal-bright);
+    border:none;
+    border-radius:2px;
+    color:#041210;
   }
   .thought-bubble__body p{
     margin:0;
     font-size:1.05rem;
     line-height:1.55;
-    color:var(--bubble-ink);
+    color:#041210;
     font-style:normal;
     font-weight:600;
-  }
-  .thought-bubble__tail{
-    display:block;
-    width:56px;
-    height:36px;
-    margin:-3px 0 0 2.2rem;
-    overflow:visible;
   }
   .color-grid{
     display:grid;
@@ -952,7 +1084,7 @@
     border-color:var(--text);
   }
   .product .note{
-    margin:0;
+    margin:0 0 1.4rem;
     color:var(--muted);
     font-size:.92rem;
   }
@@ -1279,7 +1411,7 @@
     .reserve-grid{ grid-template-columns:1fr;}
     .hero .crack{ width:100%; right:-30%;}
     .flow-step{ grid-template-columns:80px minmax(0,1fr); gap:.8rem;}
-    .lang-bar{ right:4vw; top:1rem; }
+    .site-header{ padding:.65rem 5vw; }
     .values-link{ letter-spacing:.12em; }
     .verbier-cta{
       flex-direction:column;
@@ -1340,7 +1472,12 @@
     html{ scroll-behavior:auto; }
     .gallery-item img,
     .artist-portrait img,
-    .btn{ transition:none; }
+    .btn,
+    .nav-toggle__bars,
+    .nav-toggle__bars::before,
+    .nav-toggle__bars::after,
+    .site-nav,
+    .site-nav__list a{ transition:none; }
     .artist-portrait:hover img{ transform:none; }
   }
 </style>
@@ -1353,14 +1490,48 @@ alt=""
 /></noscript>
 <!-- End Meta Pixel (noscript) -->
 
+  <header class="site-header" id="site-header">
+    <a class="site-brand" href="#top" data-de-label="Zum Anfang" data-en-label="Back to top" aria-label="Zum Anfang">SECOND <span>SKIN</span></a>
+    <div class="site-header__actions">
+      <div class="lang-bar">
+        <button type="button" id="btn-de" class="active">DE</button>
+        <button type="button" id="btn-en">EN</button>
+      </div>
+      <button type="button"
+              class="nav-toggle"
+              id="nav-toggle"
+              aria-controls="site-nav"
+              aria-expanded="false"
+              data-de-label="Menü öffnen"
+              data-en-label="Open menu"
+              aria-label="Menü öffnen">
+        <span class="nav-toggle__bars" aria-hidden="true"></span>
+      </button>
+    </div>
+  </header>
+
+  <nav class="site-nav" id="site-nav" aria-hidden="true">
+    <ul class="site-nav__list">
+      <li><a href="#design"><span class="site-nav__num">00</span><span data-de="Konzept Design" data-en="Concept Design">Konzept Design</span></a></li>
+      <li><a href="#concept"><span class="site-nav__num">01</span><span data-de="Loslassen &amp; Vertrauen" data-en="Letting Go &amp; Trust">Loslassen &amp; Vertrauen</span></a></li>
+      <li><a href="#story"><span class="site-nav__num">02</span><span data-de="Die Story" data-en="The Story">Die Story</span></a></li>
+      <li><a href="#renewal"><span class="site-nav__num">03</span><span data-de="Angst &amp; Erneuerung" data-en="Fear &amp; Renewal">Angst &amp; Erneuerung</span></a></li>
+      <li><a href="#color"><span class="site-nav__num">04</span><span data-de="Warum Teal" data-en="Why teal">Warum Teal</span></a></li>
+      <li><a href="#product"><span class="site-nav__num">05</span><span data-de="Produkt" data-en="Product">Produkt</span></a></li>
+      <li><a href="#register"><span class="site-nav__num">06</span><span data-de="Interesse anmelden" data-en="Show interest">Interesse anmelden</span></a></li>
+      <li><a href="#xbionic"><span class="site-nav__num">07</span><span>X-Bionic</span></a></li>
+      <li><a href="#verbier"><span class="site-nav__num">08</span><span>Verbier Ultra</span></a></li>
+      <li><a href="#artist"><span class="site-nav__num">09</span><span data-de="Über den Künstler" data-en="About the artist">Über den Künstler</span></a></li>
+    </ul>
+    <a class="btn btn-primary site-nav__cta" href="#register"
+       data-de="Interessiert?"
+       data-en="Interested?">Interessiert?</a>
+  </nav>
+
   <!-- HERO -->
-  <div class="hero">
+  <div class="hero" id="top">
     <div class="crack"></div>
     <div class="scaletex"></div>
-    <div class="lang-bar">
-      <button type="button" id="btn-de" class="active">DE</button>
-      <button type="button" id="btn-en">EN</button>
-    </div>
     <div class="hero-inner">
       <span class="eyebrow">Limited Edition · X-Bionic Exclusive by EinOhm</span>
       <h1>SECOND <span>SKIN</span></h1>
@@ -1370,8 +1541,8 @@ alt=""
       <div class="meta">
         <span><strong data-de="Inspiriert von:" data-en="Inspired by:">Inspiriert von:</strong> <span data-de="Häutung" data-en="shedding">Häutung</span></span>
         <span><strong data-de="Colorway:" data-en="Colorway:">Colorway:</strong> <span data-de="Teal auf Schwarz" data-en="teal on black">Teal auf Schwarz</span></span>
-        <span><strong data-de="Produkt:" data-en="Product:">Produkt:</strong> <span data-de="Corefusion Run Shirt · Shortsleeve"
-             data-en="Corefusion Run Shirt · Shortsleeve">Corefusion Run Shirt · Shortsleeve</span></span>
+        <span><strong data-de="Produkt:" data-en="Product:">Produkt:</strong> <span data-de="X-Bionic Corefusion Run Short Sleeve"
+             data-en="X-Bionic Corefusion Run Short Sleeve">X-Bionic Corefusion Run Short Sleeve</span></span>
         <span><strong data-de="Release:" data-en="Release:">Release:</strong> <span data-de="Anfang 2027" data-en="early 2027">Anfang 2027</span></span>
       </div>
       <div class="hero-cta">
@@ -1524,18 +1695,15 @@ alt=""
   <!-- COLOR -->
   <section class="color" id="color">
     <figure class="thought-bubble"
-            data-de-label="Sprechblase"
-            data-en-label="Speech bubble"
-            aria-label="Sprechblase">
-      <div class="thought-bubble__body">
-        <p data-de="Im Zwischenraum braucht der Körper keine Lautstärke. Er braucht Ruhe, und eine Farbe, die sie hält."
-           data-en="In the in-between, the body doesn’t need volume. It needs calm, and a color that can hold it.">
-          Im Zwischenraum braucht der Körper keine Lautstärke. Er braucht Ruhe, und eine Farbe, die sie hält.
+            data-de-label="Zitat"
+            data-en-label="Quote"
+            aria-label="Zitat">
+      <blockquote class="thought-bubble__body">
+        <p data-de="„Im Zwischenraum braucht der Körper keine Lautstärke. Er braucht Ruhe, und eine Farbe, die sie hält.“"
+           data-en="“In the in-between, the body doesn’t need volume. It needs calm, and a color that can hold it.”">
+          „Im Zwischenraum braucht der Körper keine Lautstärke. Er braucht Ruhe, und eine Farbe, die sie hält.“
         </p>
-      </div>
-      <svg class="thought-bubble__tail" viewBox="0 0 56 36" aria-hidden="true" focusable="false">
-        <path d="M8 2 L38 2 L14 34 Z" fill="#ffffff" stroke="#0a1210" stroke-width="3" stroke-linejoin="round"/>
-      </svg>
+      </blockquote>
     </figure>
     <div class="section-head">
       <span class="num">04</span>
@@ -1574,42 +1742,24 @@ alt=""
     </div>
   </section>
 
-  <!-- COREFUSION -->
-  <section class="concept" id="corefusion">
-    <div class="section-head">
-      <span class="num">05</span>
-      <h2>Corefusion</h2>
-    </div>
-    <div class="concept-body">
-      <p class="lead-line"
-         data-de="Corefusion ist die Design-Serie von EinOhm für X-Bionic — kein Einzelstück, sondern ein Rahmen für Limited Editions."
-         data-en="Corefusion is EinOhm’s design series for X-Bionic — not a one-off, but a frame for limited editions.">
-        Corefusion ist die Design-Serie von EinOhm für X-Bionic — kein Einzelstück, sondern ein Rahmen für Limited Editions.
-      </p>
-      <p data-de="Sie erkundet die Schwelle zwischen Körper und zweiter Haut — dort, wo Funktion auf Metapher trifft und das Shirt mehr wird als Stoff."
-         data-en="It explores the threshold between body and second skin — where function meets metaphor, and the shirt becomes more than fabric.">
-        Sie erkundet die Schwelle zwischen Körper und zweiter Haut — dort, wo Funktion auf Metapher trifft und das Shirt mehr wird als Stoff.
-      </p>
-      <p data-de="Second Skin ist die erste Limited Edition innerhalb dieser Serie. Teal auf Schwarz. Shortsleeve. Der Auftakt — nicht die Ausnahme."
-         data-en="Second Skin is the first limited edition in that series. Teal on black. Shortsleeve. The opening chapter — not the exception.">
-        Second Skin ist die erste Limited Edition innerhalb dieser Serie. Teal auf Schwarz. Shortsleeve. Der Auftakt — nicht die Ausnahme.
-      </p>
-    </div>
-  </section>
-
   <!-- PRODUCT -->
   <section class="product" id="product">
     <div class="section-head">
-      <span class="num">06</span>
+      <span class="num">05</span>
       <h2 data-de="Produkt" data-en="Product">Produkt</h2>
     </div>
     <div class="product-body">
+      <p class="note"
+         data-de="Das Second Skin Design ist für diese Produkte der neuen Kollektion vorgesehen. Teal auf Schwarz, nah am Körper. Voraussichtlich Anfang 2027 erscheint es als eigenes Produkt."
+         data-en="The Second Skin design is intended for these products in the new collection. Teal on black, close to the body. It is expected to appear as its own product in early 2027.">
+        Das Second Skin Design ist für diese Produkte der neuen Kollektion vorgesehen. Teal auf Schwarz, nah am Körper. Voraussichtlich Anfang 2027 erscheint es als eigenes Produkt.
+      </p>
       <ul class="product-facts">
         <li>
           <strong data-de="Männer" data-en="Men">Männer</strong>
           <span class="product-line"
-                data-de="Corefusion Run Shirt · Shortsleeve"
-                data-en="Corefusion Run Shirt · Shortsleeve">Corefusion Run Shirt · Shortsleeve</span>
+                data-de="X-Bionic Corefusion Run Short Sleeve"
+                data-en="X-Bionic Corefusion Run Short Sleeve">X-Bionic Corefusion Run Short Sleeve</span>
           <a class="product-link"
              href="https://www.x-bionic.com/products/x-bionic-corefusion-run-shirt-ss-men-1"
              target="_blank"
@@ -1620,8 +1770,8 @@ alt=""
         <li>
           <strong data-de="Frauen" data-en="Women">Frauen</strong>
           <span class="product-line"
-                data-de="Corefusion Run Crop Top · eigener Schnitt"
-                data-en="Corefusion Run Crop Top · dedicated cut">Corefusion Run Crop Top · eigener Schnitt</span>
+                data-de="X-Bionic Crop Top"
+                data-en="X-Bionic Crop Top">X-Bionic Crop Top</span>
           <a class="product-link"
              href="https://www.x-bionic.com/de-ch/products/x-bionic-energizer-4-0-fitness-crop-top-wmn-1?variant=45404771680539"
              target="_blank"
@@ -1630,18 +1780,13 @@ alt=""
              data-en="View product">Produkt ansehen</a>
         </li>
       </ul>
-      <p class="note"
-         data-de="Beide Modelle tragen dasselbe Second Skin Design — Teal auf Schwarz, nah am Körper. Das Design ist für eine zukünftige Limited Edition gedacht und wird voraussichtlich Anfang 2027 als eigenes Produkt erscheinen."
-         data-en="Both models carry the same Second Skin design — teal on black, close to the body. The design is intended for a future limited edition and is expected to appear as its own product in early 2027.">
-        Beide Modelle tragen dasselbe Second Skin Design — Teal auf Schwarz, nah am Körper. Das Design ist für eine zukünftige Limited Edition gedacht und wird voraussichtlich Anfang 2027 als eigenes Produkt erscheinen.
-      </p>
     </div>
   </section>
 
   <!-- INTEREST -->
   <section class="register" id="register">
     <div class="section-head">
-      <span class="num">07</span>
+      <span class="num">06</span>
       <h2 data-de="Interesse anmelden" data-en="Show interest">Interesse anmelden</h2>
     </div>
     <p class="lead"
@@ -1744,7 +1889,7 @@ alt=""
   <!-- X-BIONIC -->
   <section class="xbionic" id="xbionic" aria-labelledby="xbionic-heading">
     <div class="section-head">
-      <span class="num">08</span>
+      <span class="num">07</span>
       <h2 id="xbionic-heading">X-Bionic</h2>
     </div>
     <p class="lead"
@@ -1784,7 +1929,7 @@ alt=""
   <!-- VERBIER ULTRA 2026 -->
   <section class="verbier" id="verbier">
     <div class="section-head">
-      <span class="num">09</span>
+      <span class="num">08</span>
       <h2 data-de="Verbier Ultra 2026" data-en="Verbier Ultra 2026">Verbier Ultra 2026</h2>
     </div>
     <p class="lead"
@@ -1842,7 +1987,7 @@ alt=""
   <!-- ARTIST -->
   <section class="artist" id="artist" aria-labelledby="artist-heading">
     <div class="section-head">
-      <span class="num">10</span>
+      <span class="num">09</span>
       <h2 id="artist-heading" data-de="Über den Künstler" data-en="About the artist">Über den Künstler</h2>
     </div>
     <div class="artist-grid">
@@ -1935,6 +2080,15 @@ alt=""
     btnEn.classList.toggle('active', lang === 'en');
     document.documentElement.lang = lang;
 
+    if (typeof navToggle !== 'undefined' && navToggle) {
+      navToggle.setAttribute(
+        'aria-label',
+        lang === 'de'
+          ? (navOpen ? 'Menü schliessen' : 'Menü öffnen')
+          : (navOpen ? 'Close menu' : 'Open menu')
+      );
+    }
+
     var size = document.getElementById('size');
     if (size && size.options[0] && !size.options[0].value) {
       if (size.disabled) {
@@ -1957,6 +2111,56 @@ alt=""
 
   btnDe.addEventListener('click', function () { setLang('de'); });
   btnEn.addEventListener('click', function () { setLang('en'); });
+
+  var siteHeader = document.getElementById('site-header');
+  var navToggle = document.getElementById('nav-toggle');
+  var siteNav = document.getElementById('site-nav');
+  var navOpen = false;
+
+  function setNavOpen(open) {
+    navOpen = !!open;
+    if (!siteNav || !navToggle) return;
+    siteNav.classList.toggle('is-open', navOpen);
+    siteNav.setAttribute('aria-hidden', navOpen ? 'false' : 'true');
+    if ('inert' in siteNav) siteNav.inert = !navOpen;
+    navToggle.setAttribute('aria-expanded', navOpen ? 'true' : 'false');
+    navToggle.setAttribute(
+      'aria-label',
+      currentLang === 'de'
+        ? (navOpen ? 'Menü schliessen' : 'Menü öffnen')
+        : (navOpen ? 'Close menu' : 'Open menu')
+    );
+    document.body.classList.toggle('nav-open', navOpen);
+  }
+
+  if (navToggle && siteNav) {
+    if ('inert' in siteNav) siteNav.inert = true;
+    navToggle.addEventListener('click', function () {
+      setNavOpen(!navOpen);
+    });
+    siteNav.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () { setNavOpen(false); });
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && navOpen) {
+        setNavOpen(false);
+        navToggle.focus();
+      }
+    });
+    window.addEventListener('resize', function () {
+      if (navOpen && window.matchMedia('(min-width: 961px)').matches) {
+        setNavOpen(false);
+      }
+    });
+  }
+
+  if (siteHeader) {
+    var onScrollHeader = function () {
+      siteHeader.classList.toggle('is-scrolled', window.scrollY > 12);
+    };
+    onScrollHeader();
+    window.addEventListener('scroll', onScrollHeader, { passive: true });
+  }
 
   function normalizeCounts(raw) {
     return {
