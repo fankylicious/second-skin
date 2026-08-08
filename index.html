@@ -895,6 +895,29 @@
     margin-bottom:1.4rem;
     max-width:var(--measure);
   }
+  .artist-quote{
+    margin:0 0 1.6rem;
+    padding:0 0 0 1.2rem;
+    border-left:2px solid var(--teal-bright);
+    max-width:var(--measure);
+  }
+  .artist-quote p{
+    margin:0;
+    font-size:clamp(1.05rem, 2.2vw, 1.2rem);
+    line-height:1.45;
+    font-style:italic;
+    color:var(--teal-bright);
+  }
+  .artist-quote cite{
+    display:block;
+    margin-top:.75rem;
+    font-style:normal;
+    font-family:'JetBrains Mono',monospace;
+    font-size:.68rem;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:var(--muted);
+  }
   .artist-links{
     display:flex;
     gap:1.6rem;
@@ -1452,6 +1475,13 @@ alt=""
              data-en="Data &amp; Systems Architect at X-Bionic and visual artist. For him, creativity is not an add-on to technology, but a future skill. He deliberately seeks the thresholds between seemingly incompatible fields such as nature and technology, art or sport — and sees exactly there the potential for unfolding, new connections, and innovation.">
             Data &amp; Systems Architect bei X-Bionic und Visual Artist. Für ihn ist Kreativität keine Ergänzung zur Technik, sondern eine Zukunftskompetenz. Er sucht bewusst die Schwellen zwischen scheinbar Unverbindbarem wie Natur und Technologie, Kunst oder Sport – und sieht genau dort das Potenzial für Entfaltung, neue Verbindungen und Innovation.
           </p>
+          <blockquote class="artist-quote">
+            <p data-de="«Nach 300 Versuchen, ein Artwork für X-Bionic zu gestalten — ich träume immer noch von meinem eigenen Graphic Design. Let's try.»"
+               data-en="“After 300 tries designing an artwork for X-Bionic — I still dream about my own graphic design. Let's try.”">
+              «Nach 300 Versuchen, ein Artwork für X-Bionic zu gestalten — ich träume immer noch von meinem eigenen Graphic Design. Let's try.»
+            </p>
+            <cite>EinOhm</cite>
+          </blockquote>
           <figure class="artist-portrait">
             <img src="author-fankhauser-einohm.png"
                  width="440"
