@@ -871,9 +871,9 @@
   .artist{ background:var(--panel); border-top:1px solid var(--line);}
   .artist-grid{
     display:grid;
-    grid-template-columns:minmax(0,1fr) minmax(220px,340px);
-    gap:clamp(1.6rem, 4vw, 3.5rem);
-    align-items:center;
+    grid-template-columns:minmax(0,1fr) auto;
+    gap:clamp(1.4rem, 3.5vw, 2.8rem);
+    align-items:start;
   }
   .artist-copy{ min-width:0; }
   .artist-title{
@@ -911,26 +911,17 @@
   .artist-portrait{
     margin:0;
     justify-self:end;
-    width:100%;
-    max-width:340px;
+    width:clamp(160px, 22vw, 220px);
+    position:sticky;
+    top:1.5rem;
   }
   .artist-portrait img{
     display:block;
     width:100%;
     height:auto;
-    max-height:min(520px, 70vh);
     object-fit:contain;
-    object-position:center bottom;
+    object-position:center top;
     background:transparent;
-  }
-  .artist-portrait figcaption{
-    margin-top:.7rem;
-    font-family:'JetBrains Mono',monospace;
-    font-size:.68rem;
-    letter-spacing:.08em;
-    text-transform:uppercase;
-    color:var(--muted);
-    text-align:center;
   }
 
   /* LOGOS */
@@ -979,9 +970,10 @@
     .swatch{ height:160px; max-width:280px; }
     .artist-portrait{
       justify-self:center;
-      max-width:260px;
+      position:static;
+      width:min(180px, 42vw);
+      order:-1;
     }
-    .artist-portrait img{ max-height:340px; }
     .artist-alias{ margin-bottom:1rem; }
   }
 
@@ -1417,8 +1409,8 @@ alt=""
       </div>
       <figure class="artist-portrait">
         <img src="author-fankhauser-einohm.png"
-             width="680"
-             height="1020"
+             width="440"
+             height="660"
              loading="lazy"
              decoding="async"
              fetchpriority="low"
@@ -1426,8 +1418,6 @@ alt=""
              data-de="Thomas Fankhauser (EinOhm) — Data &amp; Systems Architect bei X-Bionic und Visual Artist, Illustration für Second Skin Second Chance"
              data-en="Thomas Fankhauser (EinOhm) — Data &amp; Systems Architect at X-Bionic and visual artist, illustration for Second Skin Second Chance"
              alt="Thomas Fankhauser (EinOhm) — Data &amp; Systems Architect bei X-Bionic und Visual Artist, Illustration für Second Skin Second Chance">
-        <figcaption data-de="Thomas Fankhauser · EinOhm"
-                    data-en="Thomas Fankhauser · EinOhm">Thomas Fankhauser · EinOhm</figcaption>
       </figure>
     </div>
   </section>
