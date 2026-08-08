@@ -1,7 +1,9 @@
 /** Shared demand ticker helpers (Cloudflare KV binding: TICKER) */
 
 export const LIMITS = { men: 100, women: 50 };
-export const BASE = { men: 15, women: 3 };
+export const BASE = { men: 5, women: 3 };
+/** Previous seed — used once to rebase stored counts when BASE.men was lowered. */
+const PREV_BASE = { men: 15, women: 3 };
 const COUNTS_KEY = 'counts';
 
 export function normalizeFit(fit) {
@@ -15,10 +17,12 @@ export async function readCounts(env) {
   try {
     const raw = await env.TICKER.get(COUNTS_KEY, 'json');
     if (!raw || typeof raw !== 'object') return fallback;
-    return {
-      men: clampCount(raw.men, BASE.men),
-      women: clampCount(raw.women, BASE.women),
-    };
+    const counts = normalizeStoredCounts(raw);
+    // Persist seed rebase once so KV stays consistent across sessions
+    if (counts.men !== Number(raw.men) || counts.women !== Number(raw.women)) {
+      await env.TICKER.put(COUNTS_KEY, JSON.stringify(counts));
+    }
+    return counts;
   } catch {
     return fallback;
   }
@@ -26,7 +30,9 @@ export async function readCounts(env) {
 
 export async function incrementCount(env, fit, email) {
   const key = normalizeFit(fit);
-  if (!key) return readCounts(env);
+  if (!key) {
+    return { counts: await readCounts(env), duplicated: false, persisted: false };
+  }
 
   if (!env.TICKER) {
     const counts = await readCounts(env);
@@ -42,13 +48,37 @@ export async function incrementCount(env, fit, email) {
     }
   }
 
+  // Bump only the selected fit; the other gender count stays untouched.
+  // Email key prevents double-count across sessions/browsers for the same address.
   const counts = await readCounts(env);
-  counts[key] += 1;
-  await env.TICKER.put(COUNTS_KEY, JSON.stringify(counts));
+  const next = { men: counts.men, women: counts.women };
+  next[key] += 1;
+  await env.TICKER.put(COUNTS_KEY, JSON.stringify(next));
   if (emailKey) {
-    await env.TICKER.put(emailKey, JSON.stringify({ fit: key, at: new Date().toISOString() }));
+    await env.TICKER.put(
+      emailKey,
+      JSON.stringify({ fit: key, at: new Date().toISOString() })
+    );
   }
-  return { counts, duplicated: false, persisted: true };
+  return { counts: next, duplicated: false, persisted: true };
+}
+
+/** Absolute counts with BASE floor; rebase if KV still carries the old men seed. */
+function normalizeStoredCounts(raw) {
+  let men = Number(raw.men);
+  let women = Number(raw.women);
+
+  if (Number.isFinite(men) && men >= PREV_BASE.men && BASE.men < PREV_BASE.men) {
+    men = BASE.men + Math.max(0, Math.floor(men) - PREV_BASE.men);
+  }
+  if (Number.isFinite(women) && women >= PREV_BASE.women && BASE.women < PREV_BASE.women) {
+    women = BASE.women + Math.max(0, Math.floor(women) - PREV_BASE.women);
+  }
+
+  return {
+    men: clampCount(men, BASE.men),
+    women: clampCount(women, BASE.women),
+  };
 }
 
 function clampCount(value, min) {
