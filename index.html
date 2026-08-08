@@ -27,6 +27,27 @@
   "inLanguage": ["de", "en"]
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Thomas Fankhauser",
+  "alternateName": "EinOhm",
+  "jobTitle": "Data & Systems Architect",
+  "worksFor": {
+    "@type": "Organization",
+    "name": "X-Bionic"
+  },
+  "url": "https://thomasfankhauser.ch",
+  "image": "https://secondskin.run/author-fankhauser-einohm.png",
+  "sameAs": [
+    "https://www.linkedin.com/in/thomasfankhauser/",
+    "https://instagram.com/edition_einohm",
+    "https://thomasfankhauser.ch"
+  ],
+  "description": "Data & Systems Architect at X-Bionic and visual artist. Creator of Second Skin · Second Chance."
+}
+</script>
 <!-- Meta Pixel Code -->
 <script>
   window.META_PIXEL_ID = '1357278253275422';
@@ -845,13 +866,15 @@
     pointer-events:none !important;
   }
 
-  /* ARTIST — two columns */
+  /* ARTIST — copy left, portrait right */
   .artist{ background:var(--panel); border-top:1px solid var(--line);}
   .artist-grid{
     display:grid;
-    grid-template-columns:minmax(180px,280px) minmax(0,1fr);
-    gap:clamp(1.4rem, 3vw, 3rem);
+    grid-template-columns:minmax(0,1fr) minmax(220px,340px);
+    gap:clamp(1.6rem, 4vw, 3.5rem);
+    align-items:center;
   }
+  .artist-copy{ min-width:0; }
   .artist-title{
     font-family:'Bebas Neue',sans-serif;
     font-size:clamp(2rem, 4vw, 2.4rem);
@@ -860,6 +883,7 @@
   }
   .artist-alias{
     margin-top:.4rem;
+    margin-bottom:1.4rem;
     font-family:'JetBrains Mono',monospace;
     font-size:.85rem;
     letter-spacing:.1em;
@@ -870,6 +894,7 @@
     color:#cfd8d5;
     font-size:1.02rem;
     margin-bottom:1.6rem;
+    max-width:var(--measure);
   }
   .artist-links{ display:flex; gap:1.6rem; flex-wrap:wrap;}
   .artist-links a{
@@ -882,6 +907,30 @@
     padding-bottom:2px;
   }
   .artist-links a:hover{ color:var(--text); border-color:var(--text);}
+  .artist-portrait{
+    margin:0;
+    justify-self:end;
+    width:100%;
+    max-width:340px;
+  }
+  .artist-portrait img{
+    display:block;
+    width:100%;
+    height:auto;
+    max-height:min(520px, 70vh);
+    object-fit:contain;
+    object-position:center bottom;
+    background:transparent;
+  }
+  .artist-portrait figcaption{
+    margin-top:.7rem;
+    font-family:'JetBrains Mono',monospace;
+    font-size:.68rem;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--muted);
+    text-align:center;
+  }
 
   /* LOGOS */
   .logos{
@@ -927,6 +976,12 @@
     .artist-grid,
     .mission-grid{ grid-template-columns:1fr; }
     .swatch{ height:160px; max-width:280px; }
+    .artist-portrait{
+      justify-self:center;
+      max-width:260px;
+    }
+    .artist-portrait img{ max-height:340px; }
+    .artist-alias{ margin-bottom:1rem; }
   }
 
   @media (max-width:820px){
@@ -1349,27 +1404,43 @@ alt=""
   </section>
 
   <!-- ARTIST -->
-  <section class="artist">
+  <section class="artist" id="artist" aria-labelledby="artist-heading">
     <div class="section-head">
       <span class="num">08</span>
-      <h2 data-de="Über den Artist" data-en="About the artist">Über den Artist</h2>
+      <h2 id="artist-heading" data-de="Über den Artist" data-en="About the artist">Über den Artist</h2>
     </div>
     <div class="artist-grid">
-      <div class="artist-name">
-        <div class="artist-title">Thomas Fankhauser</div>
-        <div class="artist-alias">EinOhm</div>
-      </div>
-      <div class="artist-bio">
-        <p data-de="Data &amp; Systems Architect bei X-Bionic und Visual Artist. Für ihn ist Kreativität keine Ergänzung zur Technik, sondern eine Zukunftskompetenz. Er sucht bewusst die Schwellen zwischen scheinbar Unverbindbarem wie Natur und Technologie, Kunst oder Sport – und sieht genau dort das Potenzial für Entfaltung, neue Verbindungen und Innovation."
-           data-en="Data &amp; Systems Architect at X-Bionic and visual artist. For him, creativity is not an add-on to technology, but a future skill. He deliberately seeks the thresholds between seemingly incompatible fields such as nature and technology, art or sport — and sees exactly there the potential for unfolding, new connections, and innovation.">
-          Data &amp; Systems Architect bei X-Bionic und Visual Artist. Für ihn ist Kreativität keine Ergänzung zur Technik, sondern eine Zukunftskompetenz. Er sucht bewusst die Schwellen zwischen scheinbar Unverbindbarem wie Natur und Technologie, Kunst oder Sport – und sieht genau dort das Potenzial für Entfaltung, neue Verbindungen und Innovation.
-        </p>
-        <div class="artist-links">
-          <a href="https://thomasfankhauser.ch" target="_blank" rel="noopener">thomasfankhauser.ch</a>
-          <a href="https://www.linkedin.com/in/thomasfankhauser/" target="_blank" rel="noopener">LinkedIn</a>
-          <a href="https://instagram.com/edition_einohm" target="_blank" rel="noopener">@edition_einohm</a>
+      <div class="artist-copy">
+        <div class="artist-name">
+          <div class="artist-title">Thomas Fankhauser</div>
+          <div class="artist-alias">EinOhm</div>
+        </div>
+        <div class="artist-bio">
+          <p data-de="Data &amp; Systems Architect bei X-Bionic und Visual Artist. Für ihn ist Kreativität keine Ergänzung zur Technik, sondern eine Zukunftskompetenz. Er sucht bewusst die Schwellen zwischen scheinbar Unverbindbarem wie Natur und Technologie, Kunst oder Sport – und sieht genau dort das Potenzial für Entfaltung, neue Verbindungen und Innovation."
+             data-en="Data &amp; Systems Architect at X-Bionic and visual artist. For him, creativity is not an add-on to technology, but a future skill. He deliberately seeks the thresholds between seemingly incompatible fields such as nature and technology, art or sport — and sees exactly there the potential for unfolding, new connections, and innovation.">
+            Data &amp; Systems Architect bei X-Bionic und Visual Artist. Für ihn ist Kreativität keine Ergänzung zur Technik, sondern eine Zukunftskompetenz. Er sucht bewusst die Schwellen zwischen scheinbar Unverbindbarem wie Natur und Technologie, Kunst oder Sport – und sieht genau dort das Potenzial für Entfaltung, neue Verbindungen und Innovation.
+          </p>
+          <div class="artist-links">
+            <a href="https://thomasfankhauser.ch" target="_blank" rel="noopener">thomasfankhauser.ch</a>
+            <a href="https://www.linkedin.com/in/thomasfankhauser/" target="_blank" rel="noopener">LinkedIn</a>
+            <a href="https://instagram.com/edition_einohm" target="_blank" rel="noopener">@edition_einohm</a>
+          </div>
         </div>
       </div>
+      <figure class="artist-portrait">
+        <img src="author-fankhauser-einohm.png"
+             width="680"
+             height="1020"
+             loading="lazy"
+             decoding="async"
+             fetchpriority="low"
+             title="Thomas Fankhauser · EinOhm · Second Skin Second Chance"
+             data-de="Thomas Fankhauser (EinOhm) — Data &amp; Systems Architect bei X-Bionic und Visual Artist, Illustration für Second Skin Second Chance"
+             data-en="Thomas Fankhauser (EinOhm) — Data &amp; Systems Architect at X-Bionic and visual artist, illustration for Second Skin Second Chance"
+             alt="Thomas Fankhauser (EinOhm) — Data &amp; Systems Architect bei X-Bionic und Visual Artist, Illustration für Second Skin Second Chance">
+        <figcaption data-de="Thomas Fankhauser · EinOhm"
+                    data-en="Thomas Fankhauser · EinOhm">Thomas Fankhauser · EinOhm</figcaption>
+      </figure>
     </div>
   </section>
 
@@ -1414,6 +1485,10 @@ alt=""
     document.querySelectorAll('[data-de]').forEach(function (el) {
       var html = lang === 'de' ? el.getAttribute('data-de') : el.getAttribute('data-en');
       if (html == null) return;
+      if (el.tagName === 'IMG') {
+        el.setAttribute('alt', html);
+        return;
+      }
       if (html.indexOf('<') !== -1) el.innerHTML = html;
       else el.textContent = html;
     });
