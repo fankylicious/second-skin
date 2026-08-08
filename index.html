@@ -6,9 +6,9 @@
 <title>Second Skin: Limited Edition · X-Bionic Exclusive by EinOhm</title>
 <meta name="description" content="Second Skin — X-Bionic Limited Edition Shirt for Trail Running and Ultra. Less Pain. More Endurance. Will be released early 2027.">
 <link rel="icon" href="/favicon.ico" sizes="any">
-<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
-<link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
+<link rel="icon" href="/secondskin-icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/secondskin-icon-192.png">
+<link rel="manifest" href="/site.webmanifest">
 <link rel="canonical" href="https://secondskin.run/">
 <meta name="robots" content="index, follow">
 <meta property="og:type" content="website">
@@ -774,31 +774,24 @@
     margin-bottom:1.2rem;
   }
   .register .lead + .lead{ margin-bottom:1.4rem; }
-  .product-facts{
+  .product .product-body{
     max-width:var(--measure);
-    margin:0 0 2rem;
-    padding:1.2rem 0;
-    border-top:1px solid var(--line);
-    border-bottom:1px solid var(--line);
+    display:grid;
+    gap:1rem;
   }
-  .product-facts h3{
-    font-family:'JetBrains Mono',monospace;
-    font-size:.72rem;
-    letter-spacing:.14em;
-    text-transform:uppercase;
-    color:var(--teal-bright);
-    margin-bottom:.9rem;
-  }
-  .product-facts ul{
+  .product-facts{
     list-style:none;
     display:grid;
-    gap:.65rem;
-    margin:0 0 1rem;
+    gap:1.1rem;
+    margin:0;
+    padding:0;
   }
   .product-facts li{
     color:#dbe4e1;
     font-size:.98rem;
     line-height:1.45;
+    display:grid;
+    gap:.35rem;
   }
   .product-facts li strong{
     font-family:'JetBrains Mono',monospace;
@@ -807,12 +800,34 @@
     text-transform:uppercase;
     color:var(--muted);
     font-weight:500;
-    margin-right:.45rem;
   }
-  .product-facts .note{
+  .product-facts .product-line{
+    color:#dbe4e1;
+  }
+  .product-facts .product-link{
+    justify-self:start;
+    font-family:'JetBrains Mono',monospace;
+    font-size:.72rem;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--teal-bright);
+    text-decoration:none;
+    border-bottom:1px solid var(--teal);
+    padding-bottom:2px;
+    width:fit-content;
+  }
+  .product-facts .product-link:hover{
+    color:var(--text);
+    border-color:var(--text);
+  }
+  .product .note{
     margin:0;
     color:var(--muted);
     font-size:.92rem;
+  }
+  @media (max-width:720px){
+    .product{ padding-top:5.5rem; padding-bottom:5.5rem; }
+    .product .section-head{ margin-bottom:1.8rem; }
   }
   .form-grid{
     display:grid;
@@ -1248,7 +1263,8 @@ alt=""
                 data-de="Konzeptvorschau"
                 data-en="Concept preview">Konzeptvorschau</span>
         </div>
-        <figcaption><strong>EinOhm Artwork</strong> · Long Sleeve · Prototype</figcaption>
+        <figcaption data-de="EinOhm Artwork · Prototype (Long Sleeve)"
+                    data-en="EinOhm Artwork · Prototype (Long Sleeve)">EinOhm Artwork · Prototype (Long Sleeve)</figcaption>
       </figure>
     </div>
   </section>
@@ -1386,10 +1402,45 @@ alt=""
     </div>
   </section>
 
-  <!-- LIMITED EDITION + INTEREST -->
-  <section class="register" id="register">
+  <!-- PRODUCT -->
+  <section class="product" id="product">
     <div class="section-head">
       <span class="num">06</span>
+      <h2 data-de="Produkt" data-en="Product">Produkt</h2>
+    </div>
+    <div class="product-body">
+      <ul class="product-facts">
+        <li>
+          <strong data-de="Männer" data-en="Men">Männer</strong>
+          <span class="product-line"
+                data-de="Corefusion Run Shirt · Shortsleeve · aktuell geplant auf 100 Stück"
+                data-en="Corefusion Run Shirt · Shortsleeve · currently planned at 100 pieces">Corefusion Run Shirt · Shortsleeve · aktuell geplant auf 100 Stück</span>
+          <a class="product-link"
+             href="https://www.x-bionic.com/products/x-bionic-corefusion-run-shirt-ss-men-1"
+             target="_blank"
+             rel="noopener"
+             data-de="Produkt ansehen"
+             data-en="View product">Produkt ansehen</a>
+        </li>
+        <li>
+          <strong data-de="Frauen" data-en="Women">Frauen</strong>
+          <span class="product-line"
+                data-de="Corefusion Run Crop Top · eigener Schnitt · aktuell geplant auf 50 Stück"
+                data-en="Corefusion Run Crop Top · dedicated cut · currently planned at 50 pieces">Corefusion Run Crop Top · eigener Schnitt · aktuell geplant auf 50 Stück</span>
+        </li>
+      </ul>
+      <p class="note"
+         data-de="Beide tragen dasselbe Second Skin Design — Teal auf Schwarz, nah am Körper. Stückzahlen sind aktuelle Planung und können sich noch ändern."
+         data-en="Both carry the same Second Skin design — teal on black, close to the body. Piece counts are current planning and may still change.">
+        Beide tragen dasselbe Second Skin Design — Teal auf Schwarz, nah am Körper. Stückzahlen sind aktuelle Planung und können sich noch ändern.
+      </p>
+    </div>
+  </section>
+
+  <!-- INTEREST -->
+  <section class="register" id="register">
+    <div class="section-head">
+      <span class="num">07</span>
       <h2 data-de="Interesse anmelden" data-en="Show interest">Interesse anmelden</h2>
     </div>
     <p class="lead"
@@ -1397,27 +1448,6 @@ alt=""
        data-en="At X-Bionic, we care about sustainable production. We first determine demand — and produce only as much as is truly wanted. Second Skin will be released early 2027.">
       Bei X-Bionic legen wir Wert auf nachhaltige Produktion. Wir ermitteln zuerst den Bedarf — und produzieren nur so viel, wie wirklich gewünscht wird. Second Skin erscheint Anfang 2027.
     </p>
-
-    <div class="product-facts">
-      <h3 data-de="Produkt" data-en="Product">Produkt</h3>
-      <ul>
-        <li>
-          <strong data-de="Männer" data-en="Men">Männer</strong>
-          <span data-de="Corefusion Run Shirt · Shortsleeve · aktuell geplant auf 100 Stück"
-                data-en="Corefusion Run Shirt · Shortsleeve · currently planned at 100 pieces">Corefusion Run Shirt · Shortsleeve · aktuell geplant auf 100 Stück</span>
-        </li>
-        <li>
-          <strong data-de="Frauen" data-en="Women">Frauen</strong>
-          <span data-de="Corefusion Run Crop Top · eigener Schnitt · aktuell geplant auf 50 Stück"
-                data-en="Corefusion Run Crop Top · dedicated cut · currently planned at 50 pieces">Corefusion Run Crop Top · eigener Schnitt · aktuell geplant auf 50 Stück</span>
-        </li>
-      </ul>
-      <p class="note"
-         data-de="Beide tragen dasselbe Second Skin Design — Teal auf Schwarz, nah am Körper."
-         data-en="Both carry the same Second Skin design — teal on black, close to the body.">
-        Beide tragen dasselbe Second Skin Design — Teal auf Schwarz, nah am Körper.
-      </p>
-    </div>
 
     <p class="lead"
        data-de="Gefällt dir das Konzept? Melde kurz dein Interesse — mit Schnitt und Grösse als Präferenz. Keine Bestellung, keine Verpflichtung — und keine Garantie auf eines der geplanten Stücke. Wir melden uns vor dem Release."
@@ -1491,7 +1521,7 @@ alt=""
   <!-- X-BIONIC -->
   <section class="xbionic" id="xbionic" aria-labelledby="xbionic-heading">
     <div class="section-head">
-      <span class="num">07</span>
+      <span class="num">08</span>
       <h2 id="xbionic-heading">X-Bionic</h2>
     </div>
     <p class="lead"
@@ -1510,9 +1540,9 @@ alt=""
            data-en="This is combined with a typically Swiss care for design. Function and form are taken equally seriously: the products should not only perform technically, but also feel and look precise and well thought-out in fit and appearance.">
           Dazu kommt eine typisch schweizerische Sorgfalt im Design. Funktion und Form werden gleich ernst genommen: Die Produkte sollen nicht nur technisch überzeugen, sondern auch in Passform und Erscheinungsbild präzise und durchdacht wirken.
         </p>
-        <p data-de="Ein gutes Beispiel für die technische Seite ist der Trailrunning-Schuh TerraSkin®. Zwei Jahre Entwicklung, damit Schuh und Socke als ein System funktionieren statt als zwei getrennte Teile. Beim Aufsetzen dämpft er, hält den Fuss aber trotzdem stabil – fast wie eine kleine Federung. Die Sohle ist vom Muster eines Spinnennetzes inspiriert und soll dadurch besseren Grip haben. Laut Hersteller bis zu 27 % mehr Bodenkontakt als bei anderen Marken. Im Topmodell steckt zusätzlich eine Carbonplatte für mehr Reaktionsfähigkeit auf unebenem Gelände."
-           data-en="A good example of the technical side is the TerraSkin® trail running shoe. Two years of development so that shoe and sock work as one system rather than two separate parts. It cushions on landing while still keeping the foot stable – almost like a small suspension. The outsole is inspired by the pattern of a spider’s web and is designed to provide better grip. According to the manufacturer, up to 27 % more ground contact than competing products. The top model also includes a carbon plate for more reactivity on uneven terrain.">
-          Ein gutes Beispiel für die technische Seite ist der Trailrunning-Schuh TerraSkin®. Zwei Jahre Entwicklung, damit Schuh und Socke als ein System funktionieren statt als zwei getrennte Teile. Beim Aufsetzen dämpft er, hält den Fuss aber trotzdem stabil – fast wie eine kleine Federung. Die Sohle ist vom Muster eines Spinnennetzes inspiriert und soll dadurch besseren Grip haben. Laut Hersteller bis zu 27 % mehr Bodenkontakt als bei anderen Marken. Im Topmodell steckt zusätzlich eine Carbonplatte für mehr Reaktionsfähigkeit auf unebenem Gelände.
+        <p data-de="Ein gutes Beispiel für die technische Seite ist der Trailrunning-Schuh <a class=&quot;expand-link&quot; href=&quot;https://www.x-bionic.com/products/x-bionic-terraskin-x00-c&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;>TerraSkin® X00/C</a>. Zwei Jahre Entwicklung, damit Schuh und Socke als ein System funktionieren statt als zwei getrennte Teile. Beim Aufsetzen dämpft er, hält den Fuss aber trotzdem stabil – fast wie eine kleine Federung. Die Sohle ist vom Muster eines Spinnennetzes inspiriert und soll dadurch besseren Grip haben. Laut Hersteller bis zu 27 % mehr Bodenkontakt als bei anderen Marken. Im X00/C steckt zusätzlich eine Carbonplatte für mehr Reaktionsfähigkeit auf unebenem Gelände."
+           data-en="A good example of the technical side is the <a class=&quot;expand-link&quot; href=&quot;https://www.x-bionic.com/products/x-bionic-terraskin-x00-c&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;>TerraSkin® X00/C</a> trail running shoe. Two years of development so that shoe and sock work as one system rather than two separate parts. It cushions on landing while still keeping the foot stable – almost like a small suspension. The outsole is inspired by the pattern of a spider’s web and is designed to provide better grip. According to the manufacturer, up to 27 % more ground contact than competing products. The X00/C also includes a carbon plate for more reactivity on uneven terrain.">
+          Ein gutes Beispiel für die technische Seite ist der Trailrunning-Schuh <a class="expand-link" href="https://www.x-bionic.com/products/x-bionic-terraskin-x00-c" target="_blank" rel="noopener">TerraSkin® X00/C</a>. Zwei Jahre Entwicklung, damit Schuh und Socke als ein System funktionieren statt als zwei getrennte Teile. Beim Aufsetzen dämpft er, hält den Fuss aber trotzdem stabil – fast wie eine kleine Federung. Die Sohle ist vom Muster eines Spinnennetzes inspiriert und soll dadurch besseren Grip haben. Laut Hersteller bis zu 27 % mehr Bodenkontakt als bei anderen Marken. Im X00/C steckt zusätzlich eine Carbonplatte für mehr Reaktionsfähigkeit auf unebenem Gelände.
         </p>
         <p data-de="Am Ende geht es bei den Produkten darum, Menschen zu motivieren, sich zu bewegen und in die Natur zu gehen – ob gemeinsam mit anderen oder in den intensiven Momenten, in denen man ganz bei sich ist. Weniger Ablenkung durch die Ausrüstung, mehr Lebensqualität durch Bewegung."
            data-en="In the end, the products are about motivating people to move and go into nature – whether together with others or in those intense moments when you are fully present with yourself. Less distraction from the equipment, more quality of life through movement.">
@@ -1526,7 +1556,7 @@ alt=""
   <!-- VERBIER ULTRA 2026 -->
   <section class="verbier" id="verbier">
     <div class="section-head">
-      <span class="num">08</span>
+      <span class="num">09</span>
       <h2 data-de="Verbier Ultra 2026" data-en="Verbier Ultra 2026">Verbier Ultra 2026</h2>
     </div>
     <p class="lead"
@@ -1591,7 +1621,7 @@ alt=""
   <!-- ARTIST -->
   <section class="artist" id="artist" aria-labelledby="artist-heading">
     <div class="section-head">
-      <span class="num">09</span>
+      <span class="num">10</span>
       <h2 id="artist-heading" data-de="Über den Künstler" data-en="About the artist">Über den Künstler</h2>
     </div>
     <div class="artist-grid">

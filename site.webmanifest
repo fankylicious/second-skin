@@ -1,0 +1,21 @@
+{
+  "name": "Second Skin",
+  "short_name": "Second Skin",
+  "description": "Second Skin — X-Bionic Limited Edition by EinOhm",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#041210",
+  "theme_color": "#041210",
+  "icons": [
+    {
+      "src": "/secondskin-icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/secondskin-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
