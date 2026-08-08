@@ -773,7 +773,47 @@
     font-size:1.02rem;
     margin-bottom:1.2rem;
   }
-  .register .lead + .lead{ margin-bottom:2.2rem; }
+  .register .lead + .lead{ margin-bottom:1.4rem; }
+  .product-facts{
+    max-width:var(--measure);
+    margin:0 0 2rem;
+    padding:1.2rem 0;
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+  }
+  .product-facts h3{
+    font-family:'JetBrains Mono',monospace;
+    font-size:.72rem;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--teal-bright);
+    margin-bottom:.9rem;
+  }
+  .product-facts ul{
+    list-style:none;
+    display:grid;
+    gap:.65rem;
+    margin:0 0 1rem;
+  }
+  .product-facts li{
+    color:#dbe4e1;
+    font-size:.98rem;
+    line-height:1.45;
+  }
+  .product-facts li strong{
+    font-family:'JetBrains Mono',monospace;
+    font-size:.72rem;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--muted);
+    font-weight:500;
+    margin-right:.45rem;
+  }
+  .product-facts .note{
+    margin:0;
+    color:var(--muted);
+    font-size:.92rem;
+  }
   .form-grid{
     display:grid;
     gap:1rem;
@@ -1350,17 +1390,39 @@ alt=""
   <section class="register" id="register">
     <div class="section-head">
       <span class="num">06</span>
-      <h2 data-de="Limited Edition · X-Bionic Exclusive" data-en="Limited Edition · X-Bionic Exclusive">Limited Edition · X-Bionic Exclusive</h2>
+      <h2 data-de="Interesse anmelden" data-en="Show interest">Interesse anmelden</h2>
     </div>
     <p class="lead"
        data-de="Bei X-Bionic legen wir Wert auf nachhaltige Produktion. Wir ermitteln zuerst den Bedarf — und produzieren nur so viel, wie wirklich gewünscht wird. Second Skin erscheint Anfang 2027."
        data-en="At X-Bionic, we care about sustainable production. We first determine demand — and produce only as much as is truly wanted. Second Skin will be released early 2027.">
       Bei X-Bionic legen wir Wert auf nachhaltige Produktion. Wir ermitteln zuerst den Bedarf — und produzieren nur so viel, wie wirklich gewünscht wird. Second Skin erscheint Anfang 2027.
     </p>
+
+    <div class="product-facts">
+      <h3 data-de="Produkt" data-en="Product">Produkt</h3>
+      <ul>
+        <li>
+          <strong data-de="Männer" data-en="Men">Männer</strong>
+          <span data-de="Corefusion Run Shirt · Shortsleeve · aktuell geplant auf 100 Stück"
+                data-en="Corefusion Run Shirt · Shortsleeve · currently planned at 100 pieces">Corefusion Run Shirt · Shortsleeve · aktuell geplant auf 100 Stück</span>
+        </li>
+        <li>
+          <strong data-de="Frauen" data-en="Women">Frauen</strong>
+          <span data-de="Corefusion Run Crop Top · eigener Schnitt · aktuell geplant auf 50 Stück"
+                data-en="Corefusion Run Crop Top · dedicated cut · currently planned at 50 pieces">Corefusion Run Crop Top · eigener Schnitt · aktuell geplant auf 50 Stück</span>
+        </li>
+      </ul>
+      <p class="note"
+         data-de="Beide tragen dasselbe Second Skin Design — Teal auf Schwarz, nah am Körper."
+         data-en="Both carry the same Second Skin design — teal on black, close to the body.">
+        Beide tragen dasselbe Second Skin Design — Teal auf Schwarz, nah am Körper.
+      </p>
+    </div>
+
     <p class="lead"
-       data-de="Gefällt dir das Konzept? Melde kurz dein Interesse — mit Schnitt und Grösse als Präferenz. Keine Bestellung, keine Verpflichtung. Wir melden uns vor dem Release."
-       data-en="Like the concept? Share your interest — with fit and size as a preference. No order, no commitment. We'll get in touch before release.">
-      Gefällt dir das Konzept? Melde kurz dein Interesse — mit Schnitt und Grösse als Präferenz. Keine Bestellung, keine Verpflichtung. Wir melden uns vor dem Release.
+       data-de="Gefällt dir das Konzept? Melde kurz dein Interesse — mit Schnitt und Grösse als Präferenz. Keine Bestellung, keine Verpflichtung — und keine Garantie auf eines der geplanten Stücke. Wir melden uns vor dem Release."
+       data-en="Like the concept? Share your interest — with fit and size as a preference. No order, no commitment — and no guarantee for one of the planned pieces. We'll get in touch before release.">
+      Gefällt dir das Konzept? Melde kurz dein Interesse — mit Schnitt und Grösse als Präferenz. Keine Bestellung, keine Verpflichtung — und keine Garantie auf eines der geplanten Stücke. Wir melden uns vor dem Release.
     </p>
 
     <form id="reg-form" novalidate>
