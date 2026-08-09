@@ -334,13 +334,14 @@
     color:transparent;
     -webkit-text-stroke:1.5px var(--teal-bright);
   }
-  /* === SKIN shine (easy remove): delete this block + class "skin-shine" on hero h1 span === */
+  /* === SKIN shine (easy remove): delete this block + class "skin-shine" on hero h1 span + JS "SKIN shine" === */
   .hero h1 span.skin-shine{
     position:relative;
     display:inline-block;
     color:transparent;
     -webkit-text-fill-color:transparent;
     -webkit-text-stroke:1.5px var(--teal-bright);
+    cursor:pointer;
   }
   .hero h1 span.skin-shine::after{
     content:"SKIN";
@@ -351,6 +352,7 @@
     -webkit-text-fill-color:transparent;
     -webkit-text-stroke:1.5px #e0ffff;
     pointer-events:none;
+    opacity:0;
     -webkit-mask-image:linear-gradient(
       110deg,
       transparent 0%,
@@ -371,14 +373,18 @@
     mask-size:200% 100%;
     -webkit-mask-repeat:no-repeat;
     mask-repeat:no-repeat;
-    animation:skin-shine 3.5s ease-in-out infinite;
+  }
+  .hero h1 span.skin-shine.is-shining::after{
+    opacity:1;
+    animation:skin-shine 3.5s ease-in-out 1;
   }
   @keyframes skin-shine{
     0%{ -webkit-mask-position:200% 0; mask-position:200% 0; }
     100%{ -webkit-mask-position:-200% 0; mask-position:-200% 0; }
   }
   @media (prefers-reduced-motion:reduce){
-    .hero h1 span.skin-shine::after{ animation:none; opacity:0; }
+    .hero h1 span.skin-shine::after,
+    .hero h1 span.skin-shine.is-shining::after{ animation:none; opacity:0; }
   }
   @media (max-width:820px){
     .hero h1 span.skin-shine::after{ -webkit-text-stroke-width:1.2px; }
@@ -923,11 +929,32 @@
     background:repeating-linear-gradient(135deg, var(--teal) 0 6px, #0c1512 6px 12px);
     overflow:hidden;
   }
+  /* Alte Haut: Schuppen-Textur, peelt organisch von links nach rechts */
+  .swatch-skin{
+    position:absolute;
+    inset:0;
+    z-index:1;
+    pointer-events:none;
+    background:
+      url('snake-scale-teal.png') 0 50% / 160px repeat,
+      #070d0b;
+    filter:brightness(.42) saturate(.55) contrast(1.05);
+    opacity:0;
+    will-change:clip-path, transform, opacity;
+  }
+  .swatch.is-ready .swatch-skin{
+    opacity:1;
+  }
+  .swatch.is-shed .swatch-skin{
+    opacity:1;
+  }
   .swatch::after{
     content:"";
     position:absolute; inset:0;
+    z-index:0;
     background:radial-gradient(circle at 30% 20%, rgba(95,232,211,.5), transparent 60%);
     mix-blend-mode:screen;
+    pointer-events:none;
   }
 
   /* ==========================================================================
@@ -1346,7 +1373,7 @@
   }
   .flow-step .v{ color:#dbe4e1; font-size:.98rem; min-width:0;}
 
-  /* REGISTER — single column measure + form */
+  /* REGISTER — kurz: Stille → Frage → CTA; Formular im Popup */
   .register{
     background:var(--panel);
     border-top:1px solid var(--line);
@@ -1356,18 +1383,37 @@
     font-size:1.02rem;
     margin-bottom:1.2rem;
   }
-  .register .lead + .lead:not(.register-echo){
-    margin-top:2.2rem;
+  .register .register-echo{
+    margin-bottom:1.6rem;
   }
-  .register .lead.register-echo{
+  .register .register-ask{
+    margin-bottom:1.75rem;
+    color:var(--text);
+  }
+  .register-cta{
+    margin:0 0 .5rem;
+  }
+  .register.is-submitted .register-cta{
+    display:none;
+  }
+  .register .form-success{
+    display:none;
     margin-top:2.4rem;
-    margin-bottom:2.8rem;
   }
-  .register .form-success + .live-ticker,
+  .register .form-success.show{
+    display:block;
+  }
   .register .live-ticker{
-    margin-top:4.75rem;
+    display:none;
+    margin-top:2.4rem;
     padding-top:2.15rem;
     border-top:1px solid var(--line);
+  }
+  .register .live-ticker.is-visible{
+    display:block;
+  }
+  .register .form-success.show + .live-ticker.is-visible{
+    margin-top:2.8rem;
   }
   .live-ticker-teaser{
     max-width:520px;
@@ -1401,7 +1447,8 @@
     background:var(--teal-bright);
     color:#041210;
   }
-  .ticker-overlay{
+  .ticker-overlay,
+  .interest-overlay{
     position:fixed;
     inset:0;
     z-index:100;
@@ -1416,11 +1463,13 @@
     visibility:hidden;
     transition:opacity .35s ease, visibility .35s ease;
   }
-  .ticker-overlay.is-open{
+  .ticker-overlay.is-open,
+  .interest-overlay.is-open{
     opacity:1;
     visibility:visible;
   }
-  .ticker-modal{
+  .ticker-modal,
+  .interest-modal{
     position:relative;
     background:rgba(12,18,16,.95);
     border:1px solid rgba(94,232,211,.18);
@@ -1431,7 +1480,8 @@
     padding:clamp(1.5rem, 3vw, 2.5rem);
     -webkit-overflow-scrolling:touch;
   }
-  .ticker-close{
+  .ticker-close,
+  .interest-close{
     position:absolute;
     top:1rem;
     right:1.25rem;
@@ -1444,23 +1494,45 @@
     opacity:.7;
     transition:opacity .2s ease;
   }
-  .ticker-close:hover{ opacity:1; }
-  .ticker-modal .live-ticker__title{
+  .ticker-close:hover,
+  .interest-close:hover{ opacity:1; }
+  .ticker-modal .live-ticker__title,
+  .interest-modal .interest-modal__title{
     margin:0 0 1.15rem;
     padding-right:2rem;
   }
-  .ticker-modal .lead{
+  .interest-modal__title{
+    font-family:'JetBrains Mono',monospace;
+    font-size:.78rem;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:var(--teal-bright);
+  }
+  .ticker-modal .lead,
+  .interest-modal .lead{
+    margin-bottom:1.1rem;
+    font-size:.98rem;
+  }
+  .interest-modal .lead + .lead{
     margin-bottom:1.6rem;
+    color:var(--muted);
+    font-size:.92rem;
   }
   .ticker-modal .counter{
     margin-bottom:0;
   }
+  .interest-modal .form-grid,
+  .interest-modal .form-actions{
+    max-width:none;
+  }
   @media (max-width:680px){
-    .ticker-overlay{
+    .ticker-overlay,
+    .interest-overlay{
       padding:max(0.75rem, env(safe-area-inset-top)) max(0.75rem, env(safe-area-inset-right)) max(0.75rem, env(safe-area-inset-bottom)) max(0.75rem, env(safe-area-inset-left));
       align-items:flex-start;
     }
-    .ticker-close{
+    .ticker-close,
+    .interest-close{
       top:.65rem;
       right:.75rem;
     }
@@ -1947,14 +2019,14 @@
   .process-step:focus-within .img-protect--blur img,
   .process-step .img-protect--blur.is-peek img,
   .process-step .img-protect--blur:active img{
-    filter:none;
+    filter:blur(0.5px) saturate(1.06) brightness(1);
     transform:scale(1);
   }
   .process-step:hover .img-protect--blur::after,
   .process-step:focus-within .img-protect--blur::after,
   .process-step .img-protect--blur.is-peek::after,
   .process-step .img-protect--blur:active::after{
-    opacity:0;
+    opacity:.12;
   }
   .process-step figcaption{
     padding:.8rem .9rem .95rem;
@@ -2329,7 +2401,9 @@
     .process-overlay,
     .process-open,
     .ticker-overlay,
+    .interest-overlay,
     .ticker-more{ transition:none; }
+    .swatch-skin{ display:none; }
   }
 </style>
 </head>
@@ -2628,7 +2702,9 @@ alt=""
           In der Farbpsychologie ist gut belegt: Kühle, kurzwellige Töne wie Blau und Grün wirken beruhigend und senken die physiologische Erregung. Warme Töne wie Rot steigern sie und wirken intensiver (Elliot &amp; Maier, 2014). Teal liegt als Blau-Grün-Ton genau in diesem kühlen Spektrum und unterstützt dadurch einen ruhigeren, fokussierteren Zustand.
         </p>
         <div class="swatch-wrap" aria-hidden="true">
-          <div class="swatch" role="img" aria-label="Second Skin Teal"></div>
+          <div class="swatch" role="img" aria-label="Second Skin Teal">
+            <span class="swatch-skin"></span>
+          </div>
         </div>
       </div>
 
@@ -2693,79 +2769,99 @@ alt=""
       <span class="num">06</span>
       <h2 data-de="Interesse anmelden" data-en="Share interest">Interesse anmelden</h2>
     </div>
-    <p class="lead"
-       data-de="Gefällt dir das Konzept? Melde kurz dein Interesse, mit Schnitt und Grösse als Präferenz."
-       data-en="Like the concept? Share your interest, with fit and size as a preference.">
-      Gefällt dir das Konzept? Melde kurz dein Interesse, mit Schnitt und Grösse als Präferenz.
-    </p>
-    <p class="lead"
-       data-de="Geplant sind X-Bionic Corefusion Short Sleeve (Männer) und Crop Top (Frauen). Keine Bestellung, keine Verpflichtung und keine Garantie auf eines der geplanten Stücke."
-       data-en="Planned are X-Bionic Corefusion Short Sleeve (men) and Crop Top (women). No order, no commitment and no guarantee for one of the planned pieces.">
-      Geplant sind X-Bionic Corefusion Short Sleeve (Männer) und Crop Top (Frauen). Keine Bestellung, keine Verpflichtung und keine Garantie auf eines der geplanten Stücke.
-    </p>
-
-    <!-- Option (direkter, aktiv): 
-         DE: Bevor etwas Form annimmt, hältst du kurz inne. Genau dort beginnt Second Skin.
-         EN: Before something takes shape, you pause for a moment. That is exactly where Second Skin begins. -->
     <p class="lead register-echo"
        data-de="Bevor etwas Form annimmt, bleibt ein Moment der Stille. Genau dort beginnt Second Skin."
        data-en="Before something takes shape, there remains a moment of stillness. That is exactly where Second Skin begins.">
       Bevor etwas Form annimmt, bleibt ein Moment der Stille. Genau dort beginnt Second Skin.
     </p>
+    <p class="lead register-ask"
+       data-de="Gefällt dir das Konzept?"
+       data-en="Like the concept?">
+      Gefällt dir das Konzept?
+    </p>
+    <div class="register-cta">
+      <button class="btn btn-primary" id="interest-open" type="button"
+              aria-expanded="false"
+              aria-controls="interest-overlay"
+              data-de="Interessiert?"
+              data-en="Interested?">
+        Interessiert?
+      </button>
+    </div>
 
-    <form id="reg-form" novalidate>
-      <div class="form-grid two">
-        <div class="field">
-          <label for="firstname" data-de="Vorname" data-en="First name">Vorname</label>
-          <input id="firstname" name="firstname" type="text" autocomplete="given-name" required>
-        </div>
-        <div class="field">
-          <label for="lastname" data-de="Name" data-en="Last name">Name</label>
-          <input id="lastname" name="lastname" type="text" autocomplete="family-name" required>
-        </div>
-      </div>
+    <div class="interest-overlay" id="interest-overlay" hidden>
+      <div class="interest-modal" role="dialog" aria-modal="true" aria-labelledby="interest-modal-title">
+        <button class="interest-close" id="interest-close" type="button"
+                data-de-label="Schliessen" data-en-label="Close" aria-label="Schliessen">×</button>
 
-      <div class="form-grid" style="margin-top:1rem">
-        <div class="field">
-          <label for="email" data-de="E-Mail-Adresse" data-en="Email address">E-Mail-Adresse</label>
-          <input id="email" name="email" type="email" autocomplete="email" required>
-        </div>
-      </div>
-
-      <div class="form-grid two" style="margin-top:1rem">
-        <div class="field">
-          <label id="fit-label" data-de="Schnitt" data-en="Fit">Schnitt</label>
-          <div class="chip-wrap" role="radiogroup" aria-labelledby="fit-label">
-            <label class="opt">
-              <input type="radio" name="gender" value="men" required>
-              <span data-de="Männer" data-en="Men">Männer</span>
-            </label>
-            <label class="opt">
-              <input type="radio" name="gender" value="women">
-              <span data-de="Frauen" data-en="Women">Frauen</span>
-            </label>
-          </div>
-        </div>
-        <div class="field">
-          <label for="size" data-de="Grösse" data-en="Size">Grösse</label>
-          <select id="size" name="size" required disabled>
-            <option value="" data-de="Zuerst Schnitt wählen" data-en="Choose fit first">Zuerst Schnitt wählen</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="form-actions">
-        <button type="submit" class="btn btn-primary" id="reg-submit"
-                data-de="Interesse melden"
-                data-en="Share interest">Interesse melden</button>
-        <p class="form-error" id="form-error"
-           data-de="Bitte alle Felder korrekt ausfüllen."
-           data-en="Please fill in all fields correctly.">
-          Bitte alle Felder korrekt ausfüllen.
+        <h3 class="interest-modal__title" id="interest-modal-title"
+            data-de="Interesse anmelden" data-en="Share interest">Interesse anmelden</h3>
+        <p class="lead"
+           data-de="Melde kurz dein Interesse — mit Schnitt und Grösse als Präferenz."
+           data-en="Share your interest briefly — with fit and size as a preference.">
+          Melde kurz dein Interesse — mit Schnitt und Grösse als Präferenz.
         </p>
+        <p class="lead"
+           data-de="Geplant sind X-Bionic Corefusion Short Sleeve (Männer) und Crop Top (Frauen). Keine Bestellung, keine Verpflichtung und keine Garantie auf eines der geplanten Stücke."
+           data-en="Planned are X-Bionic Corefusion Short Sleeve (men) and Crop Top (women). No order, no commitment and no guarantee for one of the planned pieces.">
+          Geplant sind X-Bionic Corefusion Short Sleeve (Männer) und Crop Top (Frauen). Keine Bestellung, keine Verpflichtung und keine Garantie auf eines der geplanten Stücke.
+        </p>
+
+        <form id="reg-form" novalidate>
+          <div class="form-grid two">
+            <div class="field">
+              <label for="firstname" data-de="Vorname" data-en="First name">Vorname</label>
+              <input id="firstname" name="firstname" type="text" autocomplete="given-name" required>
+            </div>
+            <div class="field">
+              <label for="lastname" data-de="Name" data-en="Last name">Name</label>
+              <input id="lastname" name="lastname" type="text" autocomplete="family-name" required>
+            </div>
+          </div>
+
+          <div class="form-grid" style="margin-top:1rem">
+            <div class="field">
+              <label for="email" data-de="E-Mail-Adresse" data-en="Email address">E-Mail-Adresse</label>
+              <input id="email" name="email" type="email" autocomplete="email" required>
+            </div>
+          </div>
+
+          <div class="form-grid two" style="margin-top:1rem">
+            <div class="field">
+              <label id="fit-label" data-de="Schnitt" data-en="Fit">Schnitt</label>
+              <div class="chip-wrap" role="radiogroup" aria-labelledby="fit-label">
+                <label class="opt">
+                  <input type="radio" name="gender" value="men" required>
+                  <span data-de="Männer" data-en="Men">Männer</span>
+                </label>
+                <label class="opt">
+                  <input type="radio" name="gender" value="women">
+                  <span data-de="Frauen" data-en="Women">Frauen</span>
+                </label>
+              </div>
+            </div>
+            <div class="field">
+              <label for="size" data-de="Grösse" data-en="Size">Grösse</label>
+              <select id="size" name="size" required disabled>
+                <option value="" data-de="Zuerst Schnitt wählen" data-en="Choose fit first">Zuerst Schnitt wählen</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary" id="reg-submit"
+                    data-de="Interesse melden"
+                    data-en="Share interest">Interesse melden</button>
+            <p class="form-error" id="form-error"
+               data-de="Bitte alle Felder korrekt ausfüllen."
+               data-en="Please fill in all fields correctly.">
+              Bitte alle Felder korrekt ausfüllen.
+            </p>
+          </div>
+          <input type="text" name="website" id="reg-website" autocomplete="off" tabindex="-1" aria-hidden="true" class="hp-field">
+        </form>
       </div>
-      <input type="text" name="website" id="reg-website" autocomplete="off" tabindex="-1" aria-hidden="true" class="hp-field">
-    </form>
+    </div>
 
     <div class="form-success" id="form-success" aria-live="polite">
       <h3 data-de="Danke für dein Interesse." data-en="Thanks for your interest.">Danke für dein Interesse.</h3>
@@ -2775,7 +2871,7 @@ alt=""
       </p>
     </div>
 
-    <div class="live-ticker">
+    <div class="live-ticker" id="live-ticker" hidden>
       <div class="live-ticker-teaser">
         <h3 class="live-ticker__title" data-de="Live Ticker" data-en="Live Ticker">Live Ticker</h3>
         <p class="live-ticker-short"
@@ -3058,9 +3154,9 @@ alt=""
             </li>
           </ul>
           <p class="process-credits__note"
-             data-de="* Der Blureffekt verschwindet bei Hover oder Klick."
-             data-en="* The blur effect disappears on hover or click.">
-            * Der Blureffekt verschwindet bei Hover oder Klick.
+             data-de="* Der Blureffekt wird bei Hover oder Klick stark reduziert, bleibt aber leicht sichtbar."
+             data-en="* On hover or click the blur is strongly reduced, but a slight blur remains.">
+            * Der Blureffekt wird bei Hover oder Klick stark reduziert, bleibt aber leicht sichtbar.
           </p>
         </aside>
       </div>
@@ -3111,6 +3207,48 @@ alt=""
   var PREV_BASE = { men: 15, women: 3 };
   var TICKER_KEY = 'secondskin_ticker';
   var REG_KEY = 'secondskin_registrations';
+
+  /* === SKIN shine (easy remove with CSS block) === */
+  (function initSkinShine() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var skin = document.querySelector('.hero h1 span.skin-shine');
+    var hero = document.getElementById('top') || document.querySelector('.hero');
+    if (!skin || !hero) return;
+
+    var pending = false;
+    function playShine(force) {
+      if (pending && !force) return;
+      pending = true;
+      skin.classList.remove('is-shining');
+      void skin.offsetWidth;
+      skin.classList.add('is-shining');
+    }
+    skin.addEventListener('animationend', function () {
+      skin.classList.remove('is-shining');
+      pending = false;
+    });
+    skin.addEventListener('click', function () { playShine(true); });
+
+    var inView = false;
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            if (!inView) {
+              inView = true;
+              playShine();
+            }
+          } else {
+            inView = false;
+          }
+        });
+      }, { threshold: 0.45 });
+      io.observe(hero);
+    } else {
+      playShine();
+    }
+  })();
+  /* === /SKIN shine === */
 
   var btnDe = document.getElementById('btn-de');
   var btnEn = document.getElementById('btn-en');
@@ -3330,13 +3468,34 @@ alt=""
   var formError = document.getElementById('form-error');
   var formSuccess = document.getElementById('form-success');
   var regSubmit = document.getElementById('reg-submit');
+  var registerSection = document.getElementById('register');
+  var liveTicker = document.getElementById('live-ticker');
+  var interestModalApi = null;
+
+  function hasRegisteredLocally() {
+    try {
+      var existing = JSON.parse(localStorage.getItem(REG_KEY) || '[]');
+      return existing.some(function (r) { return r && r.mailOk; });
+    } catch (err) {
+      return false;
+    }
+  }
+
+  function revealAfterInterest() {
+    if (registerSection) registerSection.classList.add('is-submitted');
+    if (formSuccess) formSuccess.classList.add('show');
+    if (liveTicker) {
+      liveTicker.hidden = false;
+      liveTicker.classList.add('is-visible');
+    }
+  }
 
   function showFormError(message) {
     formError.textContent = message;
     formError.classList.add('show');
   }
 
-  form.addEventListener('submit', async function (e) {
+  if (form) form.addEventListener('submit', async function (e) {
     e.preventDefault();
     formError.classList.remove('show');
     var firstname = form.firstname.value.trim();
@@ -3417,10 +3576,14 @@ alt=""
       localStorage.setItem(REG_KEY, JSON.stringify(existing));
     } catch (err) {}
 
-    form.style.display = 'none';
-    formSuccess.classList.add('show');
+    if (interestModalApi) interestModalApi.close();
+    revealAfterInterest();
     setLang(currentLang);
-    formSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    if (liveTicker) {
+      liveTicker.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    } else if (formSuccess) {
+      formSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
 
     if (typeof fbq === 'function' && window.META_PIXEL_ID) {
       fbq('track', 'CompleteRegistration', {
@@ -3436,6 +3599,9 @@ alt=""
     }
   });
 
+  if (hasRegisteredLocally()) {
+    revealAfterInterest();
+  }
   // Verbier Ultra external registration tracking
   var verbierBtn = document.getElementById('verbier-register-btn');
   if (verbierBtn) {
@@ -3651,6 +3817,9 @@ alt=""
     }
 
     function openOverlay(fromEl) {
+      if (typeof options.beforeOpen === 'function' && options.beforeOpen(fromEl) === false) {
+        return;
+      }
       if (closeTimer) {
         clearTimeout(closeTimer);
         closeTimer = null;
@@ -3731,6 +3900,27 @@ alt=""
 
   bindOverlay('artist-open', 'artist-overlay', 'artist-close');
   bindOverlay('ticker-open', 'ticker-overlay', 'ticker-close');
+  interestModalApi = bindOverlay('interest-open', 'interest-overlay', 'interest-close', {
+    beforeOpen: function () {
+      if (!hasRegisteredLocally()) return true;
+      revealAfterInterest();
+      var target = liveTicker || registerSection;
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return false;
+    },
+    onOpen: function () {
+      var first = document.getElementById('firstname');
+      if (first) first.focus();
+    }
+  });
+  if (interestModalApi) {
+    document.querySelectorAll('a[href="#register"]').forEach(function (el) {
+      var label = (el.getAttribute('data-de') || el.textContent || '').trim();
+      if (/^interessiert/i.test(label) || /^interested/i.test(label)) {
+        interestModalApi.addTrigger(el);
+      }
+    });
+  }
   var processModal = bindOverlay('process-open', 'process', 'process-close', {
     onOpen: function () {
       if (history.replaceState) history.replaceState(null, '', '#process');
@@ -3753,6 +3943,97 @@ alt=""
   if (location.hash === '#process' && processModal) {
     processModal.open(navProcess || document.getElementById('process-open'));
   }
+
+  /* Teal-Swatch: organische Häutung einmalig, dann Stopp */
+  (function () {
+    var swatch = document.querySelector('.swatch');
+    var skin = swatch && swatch.querySelector('.swatch-skin');
+    if (!swatch || !skin) return;
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduceMotion) return;
+
+    var DURATION = 3400;
+    var EDGE_STEPS = 11;
+
+    function organicProgress(t) {
+      // Prozess: zögert an, zieht, fängt kurz, löst sich
+      var stops = [
+        [0, 0],
+        [0.14, 0.03],
+        [0.32, 0.22],
+        [0.46, 0.40],
+        [0.54, 0.44],
+        [0.72, 0.74],
+        [0.88, 0.92],
+        [1, 1]
+      ];
+      for (var i = 1; i < stops.length; i++) {
+        if (t <= stops[i][0]) {
+          var t0 = stops[i - 1][0];
+          var t1 = stops[i][0];
+          var p0 = stops[i - 1][1];
+          var p1 = stops[i][1];
+          var u = (t - t0) / (t1 - t0);
+          var s = u * u * (3 - 2 * u);
+          return p0 + (p1 - p0) * s;
+        }
+      }
+      return 1;
+    }
+
+    function setSkinClip(progress, time) {
+      var base = progress * 100;
+      var amp = 3.2 * (1 - progress * 0.55);
+      var pts = [];
+      for (var i = 0; i <= EDGE_STEPS; i++) {
+        var y = (i / EDGE_STEPS) * 100;
+        var wobble =
+          Math.sin(i * 1.15 + time * 2.4) * amp +
+          Math.sin(i * 2.6 + time * 1.3) * amp * 0.4 +
+          Math.sin(i * 0.55 + time * 3.1) * amp * 0.25;
+        pts.push((base + wobble).toFixed(2) + '% ' + y.toFixed(2) + '%');
+      }
+      skin.style.clipPath = 'polygon(' + pts.join(',') + ',100% 100%,100% 0%)';
+      skin.style.webkitClipPath = skin.style.clipPath;
+      var drag = progress * 2.4;
+      skin.style.transform = 'translateX(' + drag.toFixed(2) + '%)';
+      skin.style.opacity = String(1 - Math.pow(progress, 2.2) * 0.35);
+      skin.style.backgroundPosition = (-progress * 28).toFixed(1) + 'px 50%';
+    }
+
+    function runShed() {
+      swatch.classList.add('is-shed');
+      var start = performance.now();
+
+      function frame(now) {
+        var t = Math.min(1, (now - start) / DURATION);
+        var p = organicProgress(t);
+        setSkinClip(p, (now - start) / 1000);
+        if (t < 1) {
+          requestAnimationFrame(frame);
+          return;
+        }
+        skin.style.opacity = '0';
+        skin.style.visibility = 'hidden';
+        swatch.classList.remove('is-ready', 'is-shed');
+      }
+
+      requestAnimationFrame(frame);
+    }
+
+    swatch.classList.add('is-ready');
+    setSkinClip(0, 0);
+
+    var shedObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        shedObserver.unobserve(swatch);
+        runShed();
+      });
+    }, { threshold: 0.55, rootMargin: '0px 0px -6% 0px' });
+
+    shedObserver.observe(swatch);
+  })();
 })();
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
