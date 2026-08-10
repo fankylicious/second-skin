@@ -62,15 +62,16 @@ export async function onRequestPost(context) {
 
   const from = env.FROM_EMAIL || 'Second Skin <registration@secondskin.run>';
   const replyTo = env.REPLY_TO_EMAIL || extractAddress(from) || 'registration@secondskin.run';
-  const copy = userCopy(lang, firstname, fit, size);
+  const fitLabel = fitDisplayLabel(fit, lang);
+  const copy = userCopy(lang, firstname, fitLabel, size);
 
-  const subjectNotify = `Second Skin interest: ${firstname} ${lastname} (${fit}/${size})`;
+  const subjectNotify = `Second Skin interest: ${firstname} ${lastname} (${fitLabel}/${size})`;
   const textNotify = [
     'New Second Skin interest signup',
     '',
     `Name: ${firstname} ${lastname}`,
     `Email: ${email}`,
-    `Fit: ${fit}`,
+    `Fit: ${fitLabel}`,
     `Size: ${size}`,
     `Lang: ${lang}`,
     `At: ${new Date().toISOString()}`,
@@ -119,6 +120,12 @@ export async function onRequestPost(context) {
 function extractAddress(from) {
   const match = String(from).match(/<([^>]+)>/);
   return match ? match[1].trim() : String(from).trim();
+}
+
+/** User-facing fit label; API value stays men|women. */
+function fitDisplayLabel(fit, lang) {
+  if (fit === 'women') return lang === 'de' ? 'Frauen' : 'Women';
+  return 'Unisex / Oversize';
 }
 
 function userCopy(lang, firstname, fit, size) {

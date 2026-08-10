@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Second Skin — Interesse anmelden</title>
+<meta name="description"
+      content="Melde dein Interesse an Second Skin: Schnitt und Grösse als Präferenz. Keine Bestellung, keine Verpflichtung."
+      data-de="Melde dein Interesse an Second Skin: Schnitt und Grösse als Präferenz. Keine Bestellung, keine Verpflichtung."
+      data-en="Share your interest in Second Skin: fit and size as preference. No order, no commitment.">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon-32x32.png" type="image/png" sizes="32x32">
+<link rel="icon" href="/favicon-16x16.png" type="image/png" sizes="16x16">
+<link rel="icon" href="/secondskin-icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="canonical" href="https://secondskin.run/interest">
+<meta name="robots" content="noindex, follow">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://secondskin.run/interest">
+<meta property="og:title" content="Second Skin — Interesse anmelden"
+      data-de="Second Skin — Interesse anmelden"
+      data-en="Second Skin — Share interest">
+<meta property="og:description"
+      content="Melde dein Interesse an Second Skin: Schnitt und Grösse als Präferenz. Keine Bestellung, keine Verpflichtung."
+      data-de="Melde dein Interesse an Second Skin: Schnitt und Grösse als Präferenz. Keine Bestellung, keine Verpflichtung."
+      data-en="Share your interest in Second Skin: fit and size as preference. No order, no commitment.">
+<meta property="og:image" content="https://secondskin.run/gallery-konzept-front.png">
+<meta property="og:locale" content="de_CH" id="og-locale">
+<meta property="og:locale:alternate" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Second Skin — Interesse anmelden"
+      data-de="Second Skin — Interesse anmelden"
+      data-en="Second Skin — Share interest">
+<meta name="twitter:description"
+      content="Melde dein Interesse an Second Skin: Schnitt und Grösse als Präferenz."
+      data-de="Melde dein Interesse an Second Skin: Schnitt und Grösse als Präferenz."
+      data-en="Share your interest in Second Skin: fit and size as preference.">
+<meta name="twitter:image" content="https://secondskin.run/gallery-konzept-front.png">
+<!-- Meta Pixel Code -->
+<script>
+  window.META_PIXEL_ID = '1357278253275422';
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1357278253275422');
+  fbq('track', 'PageView');
+</script>
+<!-- End Meta Pixel Code -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black:#080b0a;
+    --panel:#0f1613;
+    --teal:#3ea89b;
+    --teal-bright:#5fe8d3;
+    --text:#eef3f1;
+    --muted:#8b9a95;
+    --line:#223330;
+    --gutter-x:clamp(1rem, 4vw, 2.5rem);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{ accent-color:var(--teal-bright); }
+  ::selection{
+    background:rgba(95,232,211,.35);
+    color:var(--text);
+  }
+  body{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    background:
+      radial-gradient(ellipse 70% 45% at 20% -5%, rgba(62,168,155,.16), transparent 55%),
+      radial-gradient(circle at 1px 1px, rgba(94,232,211,0.045) 1px, transparent 1px),
+      var(--black);
+    background-size:auto, 14px 14px, auto;
+    color:var(--text);
+    font-family:'Inter',sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .site-header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:1rem;
+    padding:.85rem var(--gutter-x);
+    border-bottom:1px solid rgba(34,51,48,.85);
+    background:rgba(8,11,10,.88);
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+  }
+  .site-brand{
+    font-family:'Bebas Neue',sans-serif;
+    font-size:clamp(1.2rem, 3vw, 1.35rem);
+    letter-spacing:.04em;
+    color:var(--text);
+    text-decoration:none;
+    line-height:1;
+  }
+  .site-brand span{ color:var(--teal-bright); }
+  .lang-bar{ display:flex; gap:4px; }
+  .lang-bar button{
+    background:transparent;
+    border:1px solid var(--line);
+    color:var(--muted);
+    font-family:'JetBrains Mono',monospace;
+    font-size:.68rem;
+    letter-spacing:.1em;
+    padding:.35rem .55rem;
+    transition:all .25s ease;
+    cursor:pointer;
+  }
+  .lang-bar button.active{
+    background:var(--teal);
+    border-color:var(--teal);
+    color:#041210;
+  }
+  main{
+    flex:1;
+    width:100%;
+    max-width:68rem;
+    margin:0 auto;
+    padding:clamp(1.25rem, 4vw, 2.75rem) var(--gutter-x) 2rem;
+  }
+  .layout{
+    display:grid;
+    gap:clamp(1.25rem, 3vw, 2rem);
+    align-items:start;
+  }
+  /* Large: visuals + text equal width */
+  @media (min-width:900px){
+    .layout{
+      grid-template-columns:minmax(0, 1fr) minmax(0, 1fr);
+      gap:2.25rem;
+      align-items:start;
+    }
+  }
+  .visuals{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:.65rem;
+    width:100%;
+  }
+  /* Bigger screens: front + back side by side */
+  @media (min-width:560px){
+    .visuals{
+      grid-template-columns:minmax(0, 1fr) minmax(0, 1fr);
+      gap:.75rem;
+    }
+  }
+  @media (min-width:900px){
+    .visuals{
+      position:sticky;
+      top:1rem;
+      align-self:start;
+    }
+  }
+  .visual{
+    background:rgba(12,18,16,.92);
+    border:1px solid rgba(94,232,211,.18);
+    overflow:hidden;
+    min-width:0;
+  }
+  .visual .img-wrap{
+    aspect-ratio:1 / 1;
+    background:#000;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+  }
+  .visual img{
+    display:block;
+    width:92%;
+    height:92%;
+    object-fit:contain;
+    object-position:center;
+  }
+  .img-protect{
+    position:relative;
+    user-select:none;
+    -webkit-user-select:none;
+  }
+  .img-protect img{
+    pointer-events:none;
+    -webkit-user-drag:none;
+    user-select:none;
+  }
+  .img-protect--blur img{
+    filter:blur(3.2px) saturate(1.05) brightness(.96);
+    transform:scale(1.03);
+  }
+  .img-protect--blur::after{
+    content:'';
+    position:absolute;
+    inset:0;
+    background:
+      linear-gradient(180deg, rgba(8,11,10,.08), rgba(8,11,10,.28)),
+      radial-gradient(ellipse at center, transparent 40%, rgba(8,11,10,.35) 100%);
+    pointer-events:none;
+  }
+  @media (min-width:560px){
+    .img-protect--blur img{
+      filter:blur(1.5px) saturate(1.05) brightness(.97);
+      transform:scale(1.015);
+    }
+    .img-protect--blur::after{
+      opacity:.55;
+    }
+  }
+  .img-protect-badge{
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%, -50%);
+    z-index:1;
+    font-family:'JetBrains Mono',monospace;
+    font-size:clamp(.58rem, 2.2vw, .68rem);
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:var(--teal-bright);
+    background:rgba(8,11,10,.72);
+    border:1px solid rgba(94,232,211,.35);
+    padding:.45rem .7rem;
+    max-width:90%;
+    text-align:center;
+    pointer-events:none;
+  }
+  .visual figcaption{
+    padding:.65rem .85rem .8rem;
+    font-family:'JetBrains Mono',monospace;
+    font-size:.64rem;
+    letter-spacing:.08em;
+    color:var(--muted);
+  }
+  .content,
+  .panel{
+    width:100%;
+    min-width:0;
+  }
+  .panel{
+    background:rgba(12,18,16,.92);
+    border:1px solid rgba(94,232,211,.18);
+    padding:clamp(1.2rem, 3vw, 1.85rem);
+  }
+  .page-title{
+    font-family:'JetBrains Mono',monospace;
+    font-size:.78rem;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:var(--teal-bright);
+    margin:0 0 1rem;
+  }
+  .eyebrow{
+    display:block;
+    font-family:'JetBrains Mono',monospace;
+    font-size:.68rem;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:var(--muted);
+    margin:0 0 .55rem;
+  }
+  .project-blurb{
+    color:var(--text);
+    font-size:clamp(1rem, 1.8vw, 1.08rem);
+    line-height:1.55;
+    margin:0 0 .85rem;
+  }
+  .project-blurb strong{
+    color:var(--teal-bright);
+    font-weight:600;
+  }
+  .project-meta{
+    font-family:'JetBrains Mono',monospace;
+    font-size:.68rem;
+    letter-spacing:.06em;
+    color:var(--muted);
+    margin:0 0 1.35rem;
+    padding-bottom:1.2rem;
+    border-bottom:1px solid var(--line);
+  }
+  .lead{
+    color:#cfd8d5;
+    font-size:clamp(.95rem, 1.5vw, 1rem);
+    margin-bottom:1rem;
+  }
+  .lead.muted{
+    margin-bottom:1rem;
+    color:var(--muted);
+    font-size:.9rem;
+  }
+  .story-link{
+    display:inline-block;
+    margin-bottom:1.4rem;
+    font-size:.9rem;
+    color:var(--teal-bright);
+    text-decoration:none;
+    border-bottom:1px solid rgba(95,232,211,.35);
+    transition:border-color .25s ease, color .25s ease;
+  }
+  .story-link:hover{
+    color:#8ff0e0;
+    border-bottom-color:rgba(143,240,224,.7);
+  }
+  .form-grid{
+    display:grid;
+    gap:1rem;
+    width:100%;
+  }
+  @media (min-width:520px){
+    .form-grid.two{ grid-template-columns:1fr 1fr; }
+    .form-grid.two.fit-size{ grid-template-columns:1.15fr .85fr; }
+  }
+  .field label{
+    display:block;
+    font-family:'JetBrains Mono',monospace;
+    font-size:.68rem;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--muted);
+    margin-bottom:.4rem;
+  }
+  .field input, .field select{
+    width:100%;
+    background:var(--black);
+    border:1px solid var(--line);
+    color:var(--text);
+    font-family:inherit;
+    font-size:16px; /* avoid iOS zoom */
+    padding:.85rem .9rem;
+    outline:none;
+    transition:border-color .25s ease;
+  }
+  .field input:focus, .field select:focus{ border-color:var(--teal-bright); }
+  .field input:focus-visible, .field select:focus-visible{
+    outline:2px solid var(--teal-bright);
+    outline-offset:2px;
+  }
+  .field select{
+    appearance:none;
+    accent-color:var(--teal-bright);
+    background-image:
+      linear-gradient(45deg, transparent 50%, var(--teal-bright) 50%),
+      linear-gradient(135deg, var(--teal-bright) 50%, transparent 50%);
+    background-position: calc(100% - 18px) 55%, calc(100% - 12px) 55%;
+    background-size:6px 6px, 6px 6px;
+    background-repeat:no-repeat;
+  }
+  .field select option{
+    background:var(--black);
+    color:var(--text);
+  }
+  .field select:disabled{ opacity:.45; cursor:not-allowed; }
+  .chip-wrap{ display:flex; gap:.6rem; }
+  .chip-wrap .opt{ flex:1; position:relative; }
+  .chip-wrap .opt input{
+    position:absolute; opacity:0; width:0; height:0;
+    accent-color:var(--teal-bright);
+  }
+  .chip-wrap .opt span{
+    display:flex; align-items:center; justify-content:center;
+    text-align:center;
+    min-height:2.85rem;
+    padding:.65rem .45rem;
+    border:1px solid var(--line);
+    background:var(--black);
+    font-family:'JetBrains Mono',monospace;
+    font-size:clamp(.58rem, 2.4vw, .64rem);
+    letter-spacing:.05em;
+    line-height:1.25;
+    text-transform:uppercase;
+    color:var(--muted);
+    cursor:pointer;
+    transition:border-color .25s ease, color .25s ease, background .25s ease;
+  }
+  .chip-wrap .opt:hover span{
+    border-color:var(--teal);
+    color:var(--text);
+  }
+  .chip-wrap .opt input:focus-visible + span{
+    outline:2px solid var(--teal-bright);
+    outline-offset:2px;
+  }
+  .chip-wrap .opt input:checked + span{
+    border-color:var(--teal-bright);
+    color:var(--teal-bright);
+    background:rgba(95,232,211,.08);
+  }
+  .form-actions{
+    margin-top:1.35rem;
+    display:flex;
+    flex-direction:column;
+    align-items:stretch;
+  }
+  @media (min-width:520px){
+    .form-actions{ align-items:flex-end; }
+  }
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center;
+    font-family:'JetBrains Mono',monospace;
+    font-size:.72rem;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    text-decoration:none;
+    padding:.9rem 1.3rem;
+    border:1px solid transparent;
+    cursor:pointer;
+    transition:transform .25s ease, background .25s ease, color .25s ease, border-color .25s ease;
+  }
+  .btn:hover{ transform:translateY(-1px); }
+  .btn:disabled{ opacity:.55; cursor:wait; transform:none; }
+  .btn-primary{ background:var(--teal-bright); color:#041210; width:100%; }
+  @media (min-width:520px){
+    .btn-primary{ width:auto; }
+  }
+  .btn-primary:hover{ background:#8ff0e0; }
+  .btn-ghost{
+    background:transparent;
+    border-color:var(--line);
+    color:var(--text);
+  }
+  .btn-ghost:hover{
+    border-color:var(--teal-bright);
+    color:var(--teal-bright);
+  }
+  .form-error{
+    display:none;
+    width:100%;
+    margin-top:.8rem;
+    font-size:.85rem;
+    color:#e8a0a0;
+    text-align:left;
+  }
+  @media (min-width:520px){
+    .form-error{ text-align:right; }
+  }
+  .form-error.show{ display:block; }
+  .form-success{
+    display:none;
+    border:1px solid var(--teal);
+    background:rgba(95,232,211,.06);
+    padding:1.4rem 1.2rem;
+  }
+  .form-success.show{ display:block; }
+  .form-success h3{
+    font-family:'Bebas Neue',sans-serif;
+    font-size:clamp(1.5rem, 4vw, 1.8rem);
+    color:var(--teal-bright);
+    letter-spacing:.02em;
+    margin-bottom:.4rem;
+  }
+  .form-success p{ color:var(--muted); margin-bottom:1.25rem; }
+  .hp-field{
+    position:absolute !important;
+    left:-9999px !important;
+    width:1px !important;
+    height:1px !important;
+    opacity:0 !important;
+    pointer-events:none !important;
+  }
+  .back-link{
+    display:inline-block;
+    margin-top:1.5rem;
+    font-family:'JetBrains Mono',monospace;
+    font-size:.7rem;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:var(--muted);
+    text-decoration:none;
+    border-bottom:1px solid transparent;
+    transition:color .25s ease, border-color .25s ease;
+  }
+  .back-link:hover{
+    color:var(--teal-bright);
+    border-bottom-color:rgba(95,232,211,.45);
+  }
+  footer{
+    padding:1.25rem var(--gutter-x) 1.75rem;
+    text-align:center;
+    font-family:'JetBrains Mono',monospace;
+    font-size:.68rem;
+    letter-spacing:.08em;
+    color:var(--muted);
+  }
+  @media (max-width:519px){
+    .form-grid.two.fit-size{ grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1357278253275422&ev=PageView&noscript=1"
+alt=""
+/></noscript>
+
+<header class="site-header">
+  <a class="site-brand" href="/" data-de-label="Zur Startseite" data-en-label="Back to homepage" aria-label="Zur Startseite">SECOND <span>SKIN</span></a>
+  <div class="lang-bar">
+    <button type="button" id="btn-de" class="active">DE</button>
+    <button type="button" id="btn-en">EN</button>
+  </div>
+</header>
+
+<main>
+  <div class="layout">
+    <div class="visuals">
+      <figure class="visual">
+        <div class="img-wrap img-protect img-protect--blur" data-protect>
+          <img src="gallery-konzept-front.png"
+               alt="Second Skin · Konzept Entwurf · Front"
+               width="656"
+               height="656"
+               draggable="false"
+               loading="eager"
+               decoding="async">
+          <span class="img-protect-badge"
+                data-de="Coming soon..."
+                data-en="Coming soon...">Coming soon...</span>
+        </div>
+        <figcaption data-de="Design Pattern · Front"
+                    data-en="Design Pattern · Front">Design Pattern · Front</figcaption>
+      </figure>
+      <figure class="visual">
+        <div class="img-wrap img-protect img-protect--blur" data-protect>
+          <img src="gallery-konzept-back.png"
+               alt="Second Skin · Konzept Entwurf · Back"
+               width="654"
+               height="654"
+               draggable="false"
+               loading="eager"
+               decoding="async">
+          <span class="img-protect-badge"
+                data-de="Coming soon..."
+                data-en="Coming soon...">Coming soon...</span>
+        </div>
+        <figcaption data-de="Design Pattern · Back"
+                    data-en="Design Pattern · Back">Design Pattern · Back</figcaption>
+      </figure>
+    </div>
+
+    <div class="content">
+      <div class="panel" id="form-panel">
+        <span class="eyebrow"
+              data-de="Konzept &amp; Design · EinOhm × X-Bionic"
+              data-en="Concept &amp; Design · EinOhm × X-Bionic">Konzept &amp; Design · EinOhm × X-Bionic</span>
+        <h1 class="page-title"
+            data-de="Interesse anmelden"
+            data-en="Share interest">Interesse anmelden</h1>
+        <p class="project-blurb"
+           data-de="Limitierte Trail-Running Shirts mit psychologischen Effekten. Inspiriert vom Häutungsprozess der Schlange — <strong>Second Skin</strong>, teal auf schwarz, nah am Körper."
+           data-en="Limited trail-running shirts with psychological effects. Inspired by the snake’s shedding process — <strong>Second Skin</strong>, teal on black, close to the body.">
+          Limitierte Trail-Running Shirts mit psychologischen Effekten. Inspiriert vom Häutungsprozess der Schlange — <strong>Second Skin</strong>, teal auf schwarz, nah am Körper.
+        </p>
+        <p class="project-meta"
+           data-de="Release voraussichtlich Frühjahr 2027"
+           data-en="Expected release spring 2027">Release voraussichtlich Frühjahr 2027</p>
+        <p class="lead"
+           data-de="Melde kurz dein Interesse mit Schnitt und Grösse als Präferenz."
+           data-en="Share your interest briefly with fit and size as your preference.">
+          Melde kurz dein Interesse mit Schnitt und Grösse als Präferenz.
+        </p>
+        <p class="lead muted"
+           data-de="Geplant ist X-Bionic Corefusion Short Sleeve (Unisex). Keine Bestellung, keine Verpflichtung und keine Garantie auf eines der geplanten Stücke."
+           data-en="Planned is X-Bionic Corefusion Short Sleeve (Unisex). No order, no commitment and no guarantee for one of the planned pieces.">
+          Geplant ist X-Bionic Corefusion Short Sleeve (Unisex). Keine Bestellung, keine Verpflichtung und keine Garantie auf eines der geplanten Stücke.
+        </p>
+        <a class="story-link" href="/#story"
+           data-de="Mehr über die Story erfahren →"
+           data-en="Learn more about the story →">Mehr über die Story erfahren →</a>
+
+        <form id="reg-form" novalidate>
+          <div class="form-grid two">
+            <div class="field">
+              <label for="firstname" data-de="Vorname" data-en="First name">Vorname</label>
+              <input id="firstname" name="firstname" type="text" autocomplete="given-name" required>
+            </div>
+            <div class="field">
+              <label for="lastname" data-de="Name" data-en="Last name">Name</label>
+              <input id="lastname" name="lastname" type="text" autocomplete="family-name" required>
+            </div>
+          </div>
+
+          <div class="form-grid" style="margin-top:1rem">
+            <div class="field">
+              <label for="email" data-de="E-Mail-Adresse" data-en="Email address">E-Mail-Adresse</label>
+              <input id="email" name="email" type="email" autocomplete="email" required>
+            </div>
+          </div>
+
+          <div class="form-grid two fit-size" style="margin-top:1rem">
+            <div class="field">
+              <label id="fit-label" data-de="Schnitt" data-en="Fit">Schnitt</label>
+              <div class="chip-wrap" role="radiogroup" aria-labelledby="fit-label">
+                <label class="opt">
+                  <input type="radio" name="gender" value="men" checked required>
+                  <span data-de="Unisex" data-en="Unisex">Unisex</span>
+                </label>
+              </div>
+            </div>
+            <div class="field">
+              <label for="size" data-de="Grösse" data-en="Size">Grösse</label>
+              <select id="size" name="size" required>
+                <option value="" data-de="Grösse wählen" data-en="Select size">Grösse wählen</option>
+                <option value="S">S</option>
+                <option value="M">M</option>
+                <option value="L">L</option>
+                <option value="XL">XL</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary" id="reg-submit"
+                    data-de="Interesse melden"
+                    data-en="Share interest">Interesse melden</button>
+            <p class="form-error" id="form-error"
+               data-de="Bitte alle Felder korrekt ausfüllen."
+               data-en="Please fill in all fields correctly.">
+              Bitte alle Felder korrekt ausfüllen.
+            </p>
+          </div>
+          <input type="text" name="website" id="reg-website" autocomplete="off" tabindex="-1" aria-hidden="true" class="hp-field">
+        </form>
+      </div>
+
+      <div class="form-success" id="form-success" aria-live="polite">
+        <h3 data-de="Danke für dein Interesse." data-en="Thanks for your interest.">Danke für dein Interesse.</h3>
+        <p data-de="Wir haben deine Meldung erhalten und melden uns vor dem Release."
+           data-en="We've received your note and will get in touch before release.">
+          Wir haben deine Meldung erhalten und melden uns vor dem Release.
+        </p>
+        <a class="btn btn-ghost" href="/"
+           data-de="Zur Konzeptseite"
+           data-en="To the concept page">Zur Konzeptseite</a>
+      </div>
+    </div>
+  </div>
+
+  <a class="back-link" href="/"
+     data-de="← Zurück zu Second Skin"
+     data-en="← Back to Second Skin">← Zurück zu Second Skin</a>
+</main>
+
+<footer>
+  <span data-de="© 2026 EinOhm · Konzept Design"
+        data-en="© 2026 EinOhm · Concept Design">© 2026 EinOhm · Konzept Design</span>
+</footer>
+
+<script>
+(function () {
+  var REG_KEY = 'secondskin_registrations';
+  var currentLang = 'de';
+  var btnDe = document.getElementById('btn-de');
+  var btnEn = document.getElementById('btn-en');
+  var sizeSelect = document.getElementById('size');
+  var form = document.getElementById('reg-form');
+  var formError = document.getElementById('form-error');
+  var formSuccess = document.getElementById('form-success');
+  var formPanel = document.getElementById('form-panel');
+  var regSubmit = document.getElementById('reg-submit');
+
+  function setLang(lang) {
+    currentLang = lang;
+    document.querySelectorAll('[data-de]').forEach(function (el) {
+      var html = lang === 'de' ? el.getAttribute('data-de') : el.getAttribute('data-en');
+      if (html == null) return;
+      if (el.tagName === 'META') {
+        el.setAttribute('content', html);
+        return;
+      }
+      if (html.indexOf('<') !== -1) el.innerHTML = html;
+      else el.textContent = html;
+    });
+    document.querySelectorAll('[data-de-label]').forEach(function (el) {
+      var label = lang === 'de' ? el.getAttribute('data-de-label') : el.getAttribute('data-en-label');
+      if (label) el.setAttribute('aria-label', label);
+    });
+    btnDe.classList.toggle('active', lang === 'de');
+    btnEn.classList.toggle('active', lang === 'en');
+    document.documentElement.lang = lang;
+    var ogLocale = document.getElementById('og-locale');
+    if (ogLocale) ogLocale.setAttribute('content', lang === 'de' ? 'de_CH' : 'en_US');
+    document.title = lang === 'de'
+      ? 'Second Skin — Interesse anmelden'
+      : 'Second Skin — Share interest';
+
+    if (sizeSelect && sizeSelect.options[0] && !sizeSelect.options[0].value) {
+      sizeSelect.options[0].textContent = lang === 'de' ? 'Grösse wählen' : 'Select size';
+    }
+    if (formError && !formError.classList.contains('show')) {
+      formError.textContent = lang === 'de'
+        ? formError.getAttribute('data-de')
+        : formError.getAttribute('data-en');
+    }
+  }
+
+  btnDe.addEventListener('click', function () { setLang('de'); });
+  btnEn.addEventListener('click', function () { setLang('en'); });
+
+  function showFormError(message) {
+    formError.textContent = message;
+    formError.classList.add('show');
+  }
+
+  function revealSuccess() {
+    if (formPanel) formPanel.hidden = true;
+    if (formSuccess) formSuccess.classList.add('show');
+  }
+
+  function hasRegisteredLocally() {
+    try {
+      var existing = JSON.parse(localStorage.getItem(REG_KEY) || '[]');
+      return existing.some(function (r) { return r && r.mailOk; });
+    } catch (err) {
+      return false;
+    }
+  }
+
+  if (form) form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    formError.classList.remove('show');
+    var firstname = form.firstname.value.trim();
+    var lastname = form.lastname.value.trim();
+    var email = form.email.value.trim();
+    var genderEl = form.querySelector('input[name="gender"]:checked');
+    var size = form.size.value;
+    var website = (document.getElementById('reg-website') || {}).value || '';
+    var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    if (!firstname || !lastname || !emailOk || !genderEl || !size) {
+      showFormError(currentLang === 'de'
+        ? formError.getAttribute('data-de')
+        : formError.getAttribute('data-en'));
+      return;
+    }
+
+    var fit = 'men';
+    if (regSubmit) {
+      regSubmit.disabled = true;
+      regSubmit.textContent = currentLang === 'de' ? 'Wird gesendet…' : 'Sending…';
+    }
+
+    var payload = {
+      firstname: firstname,
+      lastname: lastname,
+      email: email,
+      fit: fit,
+      size: size,
+      lang: currentLang,
+      website: website
+    };
+
+    var mailOk = false;
+    try {
+      var res = await fetch('/api/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      var data = null;
+      try { data = await res.json(); } catch (err) { data = null; }
+      mailOk = !!(res.ok && data && data.ok);
+    } catch (err) {
+      mailOk = false;
+    }
+
+    if (!mailOk) {
+      if (regSubmit) {
+        regSubmit.disabled = false;
+        regSubmit.textContent = currentLang === 'de' ? 'Interesse melden' : 'Share interest';
+      }
+      showFormError(currentLang === 'de'
+        ? 'Senden fehlgeschlagen. Bitte später erneut versuchen.'
+        : 'Sending failed. Please try again later.');
+      return;
+    }
+
+    try {
+      var existing = JSON.parse(localStorage.getItem(REG_KEY) || '[]');
+      existing.push({
+        firstname: firstname,
+        lastname: lastname,
+        email: email,
+        fit: fit,
+        size: size,
+        mailOk: true,
+        at: new Date().toISOString()
+      });
+      localStorage.setItem(REG_KEY, JSON.stringify(existing));
+    } catch (err) {}
+
+    revealSuccess();
+    setLang(currentLang);
+    if (formSuccess) formSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+    if (typeof fbq === 'function' && window.META_PIXEL_ID) {
+      fbq('track', 'CompleteRegistration', {
+        content_name: 'Second Skin Pre-Release',
+        status: true,
+        fit: fit,
+        size: size
+      });
+      fbq('trackCustom', 'PreReleaseSignup', {
+        fit: fit,
+        size: size
+      });
+    }
+  });
+
+  document.querySelectorAll('img').forEach(function (img) {
+    img.setAttribute('draggable', 'false');
+    img.addEventListener('contextmenu', function (e) { e.preventDefault(); });
+    img.addEventListener('dragstart', function (e) { e.preventDefault(); });
+  });
+
+  if (hasRegisteredLocally()) {
+    revealSuccess();
+  }
+
+  setLang('de');
+})();
+</script>
+</body>
+</html>
