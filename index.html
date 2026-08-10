@@ -2006,10 +2006,8 @@
   }
   .artist-close:hover{ opacity:1; }
   .artist-modal-grid{
-    display:grid;
-    grid-template-columns:minmax(0,1fr) minmax(120px, 155px);
-    gap:clamp(1.4rem, 3vw, 2.25rem);
-    align-items:center;
+    display:block;
+    min-width:0;
   }
   .artist-modal .artist-alias{ margin-bottom:0; }
   .artist-modal .artist-bio{
@@ -2039,30 +2037,6 @@
     color:var(--text);
     border-bottom-color:var(--text);
   }
-  .artist-modal .artist-portrait{
-    margin:0;
-    width:100%;
-    max-width:155px;
-    justify-self:end;
-    background:transparent;
-  }
-  .artist-modal .artist-portrait img{
-    display:block;
-    width:100%;
-    max-height:min(52vh, 380px);
-    height:auto;
-    object-fit:contain;
-    object-position:center bottom;
-    filter:drop-shadow(0 12px 30px rgba(0,0,0,.45));
-  }
-  @media (max-width:900px){
-    .artist-modal-grid{
-      grid-template-columns:minmax(0,1fr) minmax(110px, 140px);
-      gap:1.6rem;
-    }
-    .artist-modal .artist-portrait{ max-width:140px; }
-    .artist-modal .artist-portrait img{ max-height:min(46vh, 320px); }
-  }
   @media (max-width:680px){
     .artist-overlay{
       padding:max(0.5rem, env(safe-area-inset-top)) max(0.5rem, env(safe-area-inset-right)) max(0.5rem, env(safe-area-inset-bottom)) max(0.5rem, env(safe-area-inset-left));
@@ -2077,23 +2051,6 @@
       border:none;
       border-radius:0;
       padding:max(1.15rem, env(safe-area-inset-top)) max(1rem, env(safe-area-inset-right)) max(1.25rem, env(safe-area-inset-bottom)) max(1rem, env(safe-area-inset-left));
-    }
-    .artist-modal-grid{
-      grid-template-columns:1fr;
-      gap:1.25rem;
-      min-width:0;
-    }
-    .artist-modal .artist-portrait{
-      order:-1;
-      max-width:min(140px, 42vw);
-      width:100%;
-      margin:0 auto;
-      justify-self:center;
-    }
-    .artist-modal .artist-portrait img{
-      max-height:min(32dvh, 220px);
-      width:100%;
-      height:auto;
     }
     .artist-modal .artist-title{
       font-size:clamp(1.65rem, 8vw, 2rem);
@@ -3274,18 +3231,6 @@ alt=""
               <a href="https://www.linkedin.com/in/thomasfankhauser/" target="_blank" rel="noopener">LinkedIn</a>
             </div>
           </div>
-
-          <figure class="artist-portrait img-protect" data-protect>
-            <img src="author-fankhauser-einohm.webp"
-                 width="407"
-                 height="942"
-                 loading="lazy"
-                 decoding="async"
-                 draggable="false"
-                 data-de="Thomas Fankhauser (EinOhm), Illustration für Second Skin"
-                 data-en="Thomas Fankhauser (EinOhm), illustration for Second Skin"
-                 alt="Thomas Fankhauser (EinOhm)">
-          </figure>
         </div>
       </div>
     </div>
@@ -3323,39 +3268,8 @@ alt=""
 
         <aside class="process-credits" aria-labelledby="process-credits-title">
           <h3 class="process-credits__title" id="process-credits-title"
-              data-de="Besonderer Dank gilt:"
-              data-en="Special thanks to:">Besonderer Dank gilt:</h3>
-          <ul class="process-credits__list">
-            <li class="process-credits__dedicate"
-                data-de="Helen und Auriel, <span class=&quot;process-credits__emph&quot;>ihr bedeutet mir die Welt &lt;3</span>"
-                data-en="Helen and Auriel, <span class=&quot;process-credits__emph&quot;>you mean the world to me &lt;3</span>">
-              Helen und Auriel, <span class="process-credits__emph">ihr bedeutet mir die Welt &lt;3</span>
-            </li>
-            <li data-de="… Fäbu <a href=&quot;https://inckd.com&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;>inckd.com</a> für die Inspiration und Weiterentwicklung meiner Schlangenhaut-Idee zur Second Skin"
-                data-en="… Fäbu <a href=&quot;https://inckd.com&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;>inckd.com</a> for the inspiration and further development of my snakeskin idea into Second Skin">
-              … Fäbu <a href="https://inckd.com" target="_blank" rel="noopener">inckd.com</a> für die Inspiration und Weiterentwicklung meiner Schlangenhaut-Idee zur Second Skin
-            </li>
-            <li data-de="… Raphael Risi <a href=&quot;https://www.atelier-risi.ch/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;>atelier-risi.ch</a> für die gemeinsame Malerei und den kreativen Austausch"
-                data-en="… Raphael Risi <a href=&quot;https://www.atelier-risi.ch/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;>atelier-risi.ch</a> for the collaborative painting and creative exchange">
-              … Raphael Risi <a href="https://www.atelier-risi.ch/" target="_blank" rel="noopener">atelier-risi.ch</a> für die gemeinsame Malerei und den kreativen Austausch
-            </li>
-            <li data-de="… Raziq für die Second Chance Extension"
-                data-en="… Raziq for the Second Chance Extension">
-              … Raziq für die Second Chance Extension
-            </li>
-            <li data-de="… meinem Chef für das Fördern von Out-of-the-Box-Denken"
-                data-en="… my manager for fostering out-of-the-box thinking">
-              … meinem Chef für das Fördern von Out-of-the-Box-Denken
-            </li>
-            <li data-de="… dem Grande Capo für das Vertrauen in das Grafikdesign und dem Product Team dafür, mir geholfen zu haben, einen Traum zu verwirklichen"
-                data-en="… the Grande Capo for the trust in the graphic design and the product team for helping me realize a dream">
-              … dem Grande Capo für das Vertrauen in das Grafikdesign und dem Product Team dafür, mir geholfen zu haben, einen Traum zu verwirklichen
-            </li>
-            <li data-de="… X-Bionic für die Möglichkeit zur Partizipation als Mitarbeitender"
-                data-en="… X-Bionic for the chance to participate as an employee">
-              … X-Bionic für die Möglichkeit zur Partizipation als Mitarbeitender
-            </li>
-          </ul>
+              data-de="Danke allen Beteiligten"
+              data-en="Thanks to everyone involved">Danke allen Beteiligten</h3>
           <p class="process-credits__note"
              data-de="* Der Blur schützt das Muster. Beim Darüberfahren wird er transparenter."
              data-en="* The blur protects the pattern. On hover it becomes more transparent.">
