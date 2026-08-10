@@ -646,8 +646,8 @@
     user-select:none;
   }
   .img-protect--blur img{
-    filter:blur(1.4px) saturate(1.06) brightness(.98);
-    transform:scale(1.015);
+    filter:blur(4.2px) saturate(1.05) brightness(.95);
+    transform:scale(1.035);
     transition:filter .45s ease, transform .45s ease;
   }
   .img-protect--blur::after{
@@ -655,58 +655,74 @@
     position:absolute;
     inset:0;
     background:
-      radial-gradient(ellipse at 50% 45%, transparent 35%, rgba(8,11,10,.22) 80%),
-      linear-gradient(180deg, rgba(8,11,10,.06), rgba(8,11,10,.28));
+      radial-gradient(ellipse at 50% 45%, transparent 18%, rgba(8,11,10,.48) 74%),
+      linear-gradient(180deg, rgba(8,11,10,.16), rgba(8,11,10,.52));
     pointer-events:none;
     opacity:1;
     transition:opacity .45s ease;
   }
-  /* Peek: more of the design visible on hover */
+  /* Peek: still protected — detail stays soft */
   .gallery-item:hover .img-protect--blur img,
   .gallery-item:focus-within .img-protect--blur img,
+  .edition-visual:hover .img-protect--blur img,
+  .edition-visual:focus-within .img-protect--blur img,
   .img-protect--blur.is-peek img,
   .img-protect--blur:active img{
-    transform:scale(1.02);
-    filter:blur(0.35px) saturate(1.1) brightness(1.02);
+    transform:scale(1.04);
+    filter:blur(1.8px) saturate(1.08) brightness(1);
   }
   .gallery-item:hover .img-protect--blur::after,
   .gallery-item:focus-within .img-protect--blur::after,
+  .edition-visual:hover .img-protect--blur::after,
+  .edition-visual:focus-within .img-protect--blur::after,
   .img-protect--blur.is-peek::after,
   .img-protect--blur:active::after{
-    opacity:.18;
+    opacity:.32;
   }
-  /* Desktop: soft protect blur — pattern stays readable */
+  /* Desktop: gallery + Verbier soft-protect; process patterns stay heavier */
   @media (min-width:900px){
-    .gallery-item .img-protect--blur img{
-      filter:blur(0.7px) saturate(1.05) brightness(.99);
-      transform:scale(1.01);
+    .gallery-item .img-protect--blur img,
+    .edition-visual .img-protect--blur img{
+      filter:blur(3.6px) saturate(1.05) brightness(.96);
+      transform:scale(1.03);
     }
     .gallery-item:hover .img-protect--blur img,
     .gallery-item:focus-within .img-protect--blur img,
     .gallery-item .img-protect--blur.is-peek img,
-    .gallery-item .img-protect--blur:active img{
-      filter:blur(0.2px) saturate(1.08) brightness(1.01);
-      transform:scale(1.015);
+    .gallery-item .img-protect--blur:active img,
+    .edition-visual:hover .img-protect--blur img,
+    .edition-visual:focus-within .img-protect--blur img,
+    .edition-visual .img-protect--blur.is-peek img,
+    .edition-visual .img-protect--blur:active img{
+      filter:blur(1.5px) saturate(1.07) brightness(1);
+      transform:scale(1.035);
     }
-    .gallery-item .img-protect--blur::after{
-      opacity:.35;
+    .gallery-item .img-protect--blur::after,
+    .edition-visual .img-protect--blur::after{
+      opacity:.7;
     }
     .process-step .img-protect--blur img{
-      filter:blur(1.8px) saturate(1.05) brightness(.97);
-      transform:scale(1.02);
+      filter:blur(6.5px) saturate(1.05) brightness(.94);
+      transform:scale(1.05);
+    }
+    .process-step .img-protect--blur::after{
+      background:
+        radial-gradient(ellipse at 50% 45%, transparent 12%, rgba(8,11,10,.55) 72%),
+        linear-gradient(180deg, rgba(8,11,10,.22), rgba(8,11,10,.62));
+      opacity:1;
     }
     .process-step:hover .img-protect--blur img,
     .process-step:focus-within .img-protect--blur img,
     .process-step .img-protect--blur.is-peek img,
     .process-step .img-protect--blur:active img{
-      filter:blur(0.6px) saturate(1.06) brightness(1);
-      transform:scale(1);
+      filter:blur(2.8px) saturate(1.06) brightness(.98);
+      transform:scale(1.02);
     }
     .process-step:hover .img-protect--blur::after,
     .process-step:focus-within .img-protect--blur::after,
     .process-step .img-protect--blur.is-peek::after,
     .process-step .img-protect--blur:active::after{
-      opacity:.2;
+      opacity:.42;
     }
   }
   .img-protect-badge{
@@ -1284,6 +1300,15 @@
     transition:transform .5s cubic-bezier(.2,.8,.2,1);
   }
   .edition-visual:hover img{ transform:scale(1.03); }
+  .edition-visual:hover .img-protect--blur img,
+  .edition-visual:focus-within .img-protect--blur img{
+    transform:scale(1.04);
+  }
+  .edition-visual .img-protect--blur{
+    position:relative;
+    width:100%;
+    cursor:pointer;
+  }
   .edition-caption{
     margin-top:1rem;
     font-size:.92rem;
@@ -2162,18 +2187,27 @@
   .process-step .img-protect--blur{
     cursor:pointer;
   }
+  .process-step .img-protect--blur img{
+    filter:blur(5.5px) saturate(1.05) brightness(.94);
+    transform:scale(1.04);
+  }
+  .process-step .img-protect--blur::after{
+    background:
+      radial-gradient(ellipse at 50% 45%, transparent 14%, rgba(8,11,10,.5) 74%),
+      linear-gradient(180deg, rgba(8,11,10,.18), rgba(8,11,10,.58));
+  }
   .process-step:hover .img-protect--blur img,
   .process-step:focus-within .img-protect--blur img,
   .process-step .img-protect--blur.is-peek img,
   .process-step .img-protect--blur:active img{
-    filter:blur(0.5px) saturate(1.06) brightness(1);
-    transform:scale(1);
+    filter:blur(2.4px) saturate(1.06) brightness(.98);
+    transform:scale(1.015);
   }
   .process-step:hover .img-protect--blur::after,
   .process-step:focus-within .img-protect--blur::after,
   .process-step .img-protect--blur.is-peek::after,
   .process-step .img-protect--blur:active::after{
-    opacity:.16;
+    opacity:.38;
   }
   .process-step figcaption{
     padding:.8rem .9rem .95rem;
@@ -3239,7 +3273,7 @@ alt=""
     </blockquote>
 
     <div class="edition-visual">
-      <div class="img-wrap img-protect" data-protect>
+      <div class="img-wrap img-protect img-protect--blur" data-protect>
         <img src="gallery-verbier.webp"
              alt="X-Bionic Verbier Ultra Limited Edition Trail Running Shirt Teal"
              width="1200"
@@ -3247,6 +3281,9 @@ alt=""
              draggable="false"
              loading="lazy"
              decoding="async">
+        <span class="img-protect-badge"
+              data-de="Coming soon..."
+              data-en="Coming soon...">Coming soon...</span>
       </div>
       <div class="edition-caption">
         <strong>Verbier Ultra Edition</strong>
