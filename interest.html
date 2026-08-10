@@ -126,22 +126,18 @@
   main{
     flex:1;
     width:100%;
-    max-width:68rem;
+    max-width:42rem;
     margin:0 auto;
     padding:clamp(1.25rem, 4vw, 2.75rem) var(--gutter-x) 2rem;
   }
+  @media (min-width:560px){
+    main{ max-width:52rem; }
+  }
   .layout{
     display:grid;
+    grid-template-columns:1fr;
     gap:clamp(1.25rem, 3vw, 2rem);
     align-items:start;
-  }
-  /* Large: visuals + text equal width */
-  @media (min-width:900px){
-    .layout{
-      grid-template-columns:minmax(0, 1fr) minmax(0, 1fr);
-      gap:2.25rem;
-      align-items:start;
-    }
   }
   .visuals{
     display:grid;
@@ -149,18 +145,11 @@
     gap:.65rem;
     width:100%;
   }
-  /* Bigger screens: front + back side by side */
+  /* Front + back side by side; form follows directly below */
   @media (min-width:560px){
     .visuals{
       grid-template-columns:minmax(0, 1fr) minmax(0, 1fr);
       gap:.75rem;
-    }
-  }
-  @media (min-width:900px){
-    .visuals{
-      position:sticky;
-      top:1rem;
-      align-self:start;
     }
   }
   .visual{
@@ -602,6 +591,10 @@ alt=""
                 <label class="opt">
                   <input type="radio" name="gender" value="men" checked required>
                   <span data-de="Unisex" data-en="Unisex">Unisex</span>
+                </label>
+                <label class="opt">
+                  <input type="radio" name="gender" value="women" required>
+                  <span data-de="Women" data-en="Women">Women</span>
                 </label>
               </div>
             </div>
