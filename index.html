@@ -679,7 +679,7 @@
   .img-protect--blur:active::after{
     opacity:.32;
   }
-  /* Desktop: gallery + Verbier soft-protect; process patterns stay readable */
+  /* Desktop: gallery + Verbier soft-protect; process patterns stay strongly blurred */
   @media (min-width:900px){
     .gallery-item .img-protect--blur img,
     .edition-visual .img-protect--blur img{
@@ -702,21 +702,21 @@
       opacity:.7;
     }
     .process-step .img-protect--blur img{
-      filter:blur(1.8px) saturate(1.05) brightness(.97);
-      transform:scale(1.02);
+      filter:blur(7.5px) saturate(1.04) brightness(.92);
+      transform:scale(1.06);
     }
     .process-step:hover .img-protect--blur img,
     .process-step:focus-within .img-protect--blur img,
     .process-step .img-protect--blur.is-peek img,
     .process-step .img-protect--blur:active img{
-      filter:blur(0.6px) saturate(1.06) brightness(1);
-      transform:scale(1);
+      filter:blur(4.2px) saturate(1.05) brightness(.95);
+      transform:scale(1.04);
     }
     .process-step:hover .img-protect--blur::after,
     .process-step:focus-within .img-protect--blur::after,
     .process-step .img-protect--blur.is-peek::after,
     .process-step .img-protect--blur:active::after{
-      opacity:.2;
+      opacity:.55;
     }
   }
   .img-protect-badge{
@@ -2229,28 +2229,29 @@
   .process-step .img-protect--blur{
     cursor:pointer;
   }
-  /* Process patterns: lighter protect blur (readable on mobile); gallery/Verbier stay stronger */
+  /* Process patterns (03+04): strong protect blur — detail stays unreadable */
   .process-step .img-protect--blur img{
-    filter:blur(1.4px) saturate(1.06) brightness(.98);
-    transform:scale(1.015);
+    filter:blur(7.2px) saturate(1.04) brightness(.92);
+    transform:scale(1.06);
   }
   .process-step .img-protect--blur::after{
     background:
-      radial-gradient(ellipse at 50% 45%, transparent 22%, rgba(8,11,10,.28) 78%),
-      linear-gradient(180deg, rgba(8,11,10,.08), rgba(8,11,10,.32));
+      radial-gradient(ellipse at 50% 45%, transparent 10%, rgba(8,11,10,.58) 72%),
+      linear-gradient(180deg, rgba(8,11,10,.22), rgba(8,11,10,.64));
+    opacity:1;
   }
   .process-step:hover .img-protect--blur img,
   .process-step:focus-within .img-protect--blur img,
   .process-step .img-protect--blur.is-peek img,
   .process-step .img-protect--blur:active img{
-    filter:blur(0.5px) saturate(1.06) brightness(1);
-    transform:scale(1);
+    filter:blur(4px) saturate(1.05) brightness(.95);
+    transform:scale(1.04);
   }
   .process-step:hover .img-protect--blur::after,
   .process-step:focus-within .img-protect--blur::after,
   .process-step .img-protect--blur.is-peek::after,
   .process-step .img-protect--blur:active::after{
-    opacity:.16;
+    opacity:.55;
   }
   .process-step figcaption{
     padding:.8rem .9rem .95rem;
