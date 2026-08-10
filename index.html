@@ -1323,26 +1323,41 @@
   .verbier-cta{
     display:flex;
     flex-wrap:wrap;
-    align-items:baseline;
-    gap:1rem 2rem;
+    align-items:center;
+    gap:1rem 1.5rem;
     margin-top:.35rem;
   }
+  /* Verbier Ultra — sand/gold from edition + Coming-Soon frame language */
   .verbier-register-link{
-    display:inline-block;
-    font-family:'Bebas Neue',sans-serif;
-    font-size:clamp(2rem, 5.5vw, 3.25rem);
-    letter-spacing:.06em;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    font-family:'JetBrains Mono',monospace;
+    font-size:.78rem;
+    letter-spacing:.18em;
     line-height:1;
+    text-transform:uppercase;
     text-decoration:none;
-    color:var(--verbier-sand);
-    border-bottom:2px solid var(--verbier-sand);
-    padding-bottom:.12em;
-    transition:color .25s ease, border-color .25s ease;
+    color:#0a0906;
+    background:var(--verbier-sand);
+    border:1px solid var(--verbier-sand);
+    padding:1.05rem 1.7rem;
+    transition:
+      transform .25s ease,
+      color .25s ease,
+      background .25s ease,
+      border-color .25s ease,
+      box-shadow .25s ease;
+    box-shadow:0 10px 28px rgba(168,134,82,.22);
   }
   .verbier-register-link:hover{
-    color:var(--verbier-sand-bright);
+    transform:translateY(-1px);
+    color:#0a0906;
+    background:var(--verbier-sand-bright);
     border-color:var(--verbier-sand-bright);
+    box-shadow:0 14px 36px rgba(168,134,82,.32);
   }
+  .verbier-register-link:active{ transform:translateY(0); }
   .verbier-cta-note{
     font-family:inherit;
     font-size:1.02rem;
@@ -2585,7 +2600,10 @@
     #breath-circle{ margin:1.85rem auto 1.7rem; }
     #color .section-head{ margin-top:4.75rem; }
     .verbier-register-link{
-      font-size:clamp(1.75rem, 8vw, 2.4rem);
+      font-size:.72rem;
+      letter-spacing:.14em;
+      padding:1rem 1.35rem;
+      width:100%;
     }
     .btn-interest{
       font-size:.95rem;
@@ -3293,7 +3311,7 @@ alt=""
     </div>
 
     <div class="verbier-cta">
-      <a class="verbier-register-link"
+      <a class="btn verbier-register-link"
          href="https://onreg.datasport.com/de/verbier-ultra-2026"
          target="_blank"
          rel="noopener"
