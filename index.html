@@ -646,8 +646,8 @@
     user-select:none;
   }
   .img-protect--blur img{
-    filter:blur(3.6px) saturate(1.05) brightness(.96);
-    transform:scale(1.03);
+    filter:blur(1.4px) saturate(1.06) brightness(.98);
+    transform:scale(1.015);
     transition:filter .45s ease, transform .45s ease;
   }
   .img-protect--blur::after{
@@ -655,8 +655,8 @@
     position:absolute;
     inset:0;
     background:
-      radial-gradient(ellipse at 50% 45%, transparent 20%, rgba(8,11,10,.45) 75%),
-      linear-gradient(180deg, rgba(8,11,10,.15), rgba(8,11,10,.55));
+      radial-gradient(ellipse at 50% 45%, transparent 35%, rgba(8,11,10,.22) 80%),
+      linear-gradient(180deg, rgba(8,11,10,.06), rgba(8,11,10,.28));
     pointer-events:none;
     opacity:1;
     transition:opacity .45s ease;
@@ -666,47 +666,47 @@
   .gallery-item:focus-within .img-protect--blur img,
   .img-protect--blur.is-peek img,
   .img-protect--blur:active img{
-    transform:scale(1.04);
-    filter:blur(0.9px) saturate(1.1) brightness(1.02);
+    transform:scale(1.02);
+    filter:blur(0.35px) saturate(1.1) brightness(1.02);
   }
   .gallery-item:hover .img-protect--blur::after,
   .gallery-item:focus-within .img-protect--blur::after,
   .img-protect--blur.is-peek::after,
   .img-protect--blur:active::after{
-    opacity:.26;
+    opacity:.18;
   }
-  /* Desktop: softer blur on gallery mockups; stronger protect blur on process design patterns */
+  /* Desktop: soft protect blur — pattern stays readable */
   @media (min-width:900px){
     .gallery-item .img-protect--blur img{
-      filter:blur(1.6px) saturate(1.05) brightness(.97);
-      transform:scale(1.015);
+      filter:blur(0.7px) saturate(1.05) brightness(.99);
+      transform:scale(1.01);
     }
     .gallery-item:hover .img-protect--blur img,
     .gallery-item:focus-within .img-protect--blur img,
     .gallery-item .img-protect--blur.is-peek img,
     .gallery-item .img-protect--blur:active img{
-      filter:blur(0.45px) saturate(1.08) brightness(1.01);
-      transform:scale(1.03);
+      filter:blur(0.2px) saturate(1.08) brightness(1.01);
+      transform:scale(1.015);
     }
     .gallery-item .img-protect--blur::after{
-      opacity:.55;
+      opacity:.35;
     }
     .process-step .img-protect--blur img{
-      filter:blur(4.2px) saturate(1.05) brightness(.96);
-      transform:scale(1.04);
+      filter:blur(1.8px) saturate(1.05) brightness(.97);
+      transform:scale(1.02);
     }
     .process-step:hover .img-protect--blur img,
     .process-step:focus-within .img-protect--blur img,
     .process-step .img-protect--blur.is-peek img,
     .process-step .img-protect--blur:active img{
-      filter:blur(1.8px) saturate(1.06) brightness(1);
+      filter:blur(0.6px) saturate(1.06) brightness(1);
       transform:scale(1);
     }
     .process-step:hover .img-protect--blur::after,
     .process-step:focus-within .img-protect--blur::after,
     .process-step .img-protect--blur.is-peek::after,
     .process-step .img-protect--blur:active::after{
-      opacity:.28;
+      opacity:.2;
     }
   }
   .img-protect-badge{
@@ -2156,8 +2156,8 @@
     -webkit-user-select:none;
   }
   .process-step--wip img{
-    filter:blur(1.4px) saturate(.96) brightness(.97);
-    transform:scale(1.02);
+    filter:blur(0.6px) saturate(.98) brightness(.98);
+    transform:scale(1.01);
   }
   .process-step .img-protect--blur{
     cursor:pointer;
@@ -2166,14 +2166,14 @@
   .process-step:focus-within .img-protect--blur img,
   .process-step .img-protect--blur.is-peek img,
   .process-step .img-protect--blur:active img{
-    filter:blur(1.6px) saturate(1.06) brightness(1);
+    filter:blur(0.5px) saturate(1.06) brightness(1);
     transform:scale(1);
   }
   .process-step:hover .img-protect--blur::after,
   .process-step:focus-within .img-protect--blur::after,
   .process-step .img-protect--blur.is-peek::after,
   .process-step .img-protect--blur:active::after{
-    opacity:.22;
+    opacity:.16;
   }
   .process-step figcaption{
     padding:.8rem .9rem .95rem;
