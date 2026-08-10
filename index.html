@@ -679,7 +679,7 @@
   .img-protect--blur:active::after{
     opacity:.32;
   }
-  /* Desktop: gallery + Verbier soft-protect; process patterns stay heavier */
+  /* Desktop: gallery + Verbier soft-protect; process patterns stay readable */
   @media (min-width:900px){
     .gallery-item .img-protect--blur img,
     .edition-visual .img-protect--blur img{
@@ -702,27 +702,21 @@
       opacity:.7;
     }
     .process-step .img-protect--blur img{
-      filter:blur(6.5px) saturate(1.05) brightness(.94);
-      transform:scale(1.05);
-    }
-    .process-step .img-protect--blur::after{
-      background:
-        radial-gradient(ellipse at 50% 45%, transparent 12%, rgba(8,11,10,.55) 72%),
-        linear-gradient(180deg, rgba(8,11,10,.22), rgba(8,11,10,.62));
-      opacity:1;
+      filter:blur(1.8px) saturate(1.05) brightness(.97);
+      transform:scale(1.02);
     }
     .process-step:hover .img-protect--blur img,
     .process-step:focus-within .img-protect--blur img,
     .process-step .img-protect--blur.is-peek img,
     .process-step .img-protect--blur:active img{
-      filter:blur(2.8px) saturate(1.06) brightness(.98);
-      transform:scale(1.02);
+      filter:blur(0.6px) saturate(1.06) brightness(1);
+      transform:scale(1);
     }
     .process-step:hover .img-protect--blur::after,
     .process-step:focus-within .img-protect--blur::after,
     .process-step .img-protect--blur.is-peek::after,
     .process-step .img-protect--blur:active::after{
-      opacity:.42;
+      opacity:.2;
     }
   }
   .img-protect-badge{
@@ -974,7 +968,7 @@
     margin-bottom:0.35rem;
   }
   #breath-circle{
-    width:min(100%, clamp(16rem, 58vw, 27.5rem));
+    width:min(100%, clamp(20rem, 78vmin, 40rem));
     height:auto;
     aspect-ratio:1;
     max-width:100%;
@@ -990,6 +984,11 @@
     width:100% !important;
     height:100% !important;
     overflow:visible;
+  }
+  @media (max-width:639px){
+    #breath-circle{
+      width:min(100%, clamp(16.5rem, 88vw, 100%));
+    }
   }
   .thought-bubble{
     max-width:none;
@@ -2208,27 +2207,28 @@
   .process-step .img-protect--blur{
     cursor:pointer;
   }
+  /* Process patterns: lighter protect blur (readable on mobile); gallery/Verbier stay stronger */
   .process-step .img-protect--blur img{
-    filter:blur(5.5px) saturate(1.05) brightness(.94);
-    transform:scale(1.04);
+    filter:blur(1.4px) saturate(1.06) brightness(.98);
+    transform:scale(1.015);
   }
   .process-step .img-protect--blur::after{
     background:
-      radial-gradient(ellipse at 50% 45%, transparent 14%, rgba(8,11,10,.5) 74%),
-      linear-gradient(180deg, rgba(8,11,10,.18), rgba(8,11,10,.58));
+      radial-gradient(ellipse at 50% 45%, transparent 22%, rgba(8,11,10,.28) 78%),
+      linear-gradient(180deg, rgba(8,11,10,.08), rgba(8,11,10,.32));
   }
   .process-step:hover .img-protect--blur img,
   .process-step:focus-within .img-protect--blur img,
   .process-step .img-protect--blur.is-peek img,
   .process-step .img-protect--blur:active img{
-    filter:blur(2.4px) saturate(1.06) brightness(.98);
-    transform:scale(1.015);
+    filter:blur(0.5px) saturate(1.06) brightness(1);
+    transform:scale(1);
   }
   .process-step:hover .img-protect--blur::after,
   .process-step:focus-within .img-protect--blur::after,
   .process-step .img-protect--blur.is-peek::after,
   .process-step .img-protect--blur:active::after{
-    opacity:.38;
+    opacity:.16;
   }
   .process-step figcaption{
     padding:.8rem .9rem .95rem;
@@ -4074,7 +4074,7 @@ alt=""
           '<div class="img-wrap img-protect' + protectClass + '" data-protect>' +
             '<img src="' + step.src + '"' +
                  ' width="800" height="1000"' +
-                 ' loading="lazy" decoding="async" draggable="false"' +
+                 ' loading="eager" decoding="async" fetchpriority="low" draggable="false"' +
                  ' alt="' + alt.replace(/"/g, '&quot;') + '"' +
                  ' data-de="' + step.altDe.replace(/"/g, '&quot;') + '"' +
                  ' data-en="' + step.altEn.replace(/"/g, '&quot;') + '">' +
@@ -4098,6 +4098,12 @@ alt=""
     gallery.querySelectorAll('img, [data-protect]').forEach(function (el) {
       el.addEventListener('contextmenu', function (e) { e.preventDefault(); });
       el.addEventListener('dragstart', function (e) { e.preventDefault(); });
+    });
+    // Nudge decode after modal is visible (lazy/hidden often left blanks on mobile)
+    gallery.querySelectorAll('img').forEach(function (img) {
+      if (typeof img.decode === 'function') {
+        img.decode().catch(function () {});
+      }
     });
     bindProcessBlurPeek(gallery);
   }
@@ -4240,7 +4246,10 @@ alt=""
   }
   var processModal = bindOverlay('process-open', 'process', 'process-close', {
     onOpen: function () {
-      ensureProcessGallery();
+      // Wait until overlay is visible so images paint reliably on mobile Safari
+      requestAnimationFrame(function () {
+        ensureProcessGallery();
+      });
       if (history.replaceState) history.replaceState(null, '', '#process');
       else location.hash = 'process';
     },
@@ -4443,6 +4452,7 @@ alt=""
     var sketch = function (p) {
       var t = 0;
       var pulse = 0;
+      var refSize = 440;
       var fills = [
         { scale: 1.06, alpha: 0.24, phase: 0.2 },
         { scale: 0.82, alpha: 0.38, phase: 1.0 },
@@ -4458,17 +4468,23 @@ alt=""
       ];
 
       function canvasSize() {
-        return Math.max(220, Math.round(host.clientWidth || 240));
+        var w = Math.round(host.clientWidth || 0);
+        return Math.max(160, w || 240);
+      }
+
+      function unit() {
+        return p.width / refSize;
       }
 
       function maxRadius() {
-        return p.width * 0.48;
+        return p.width * 0.495;
       }
 
       function organicPoints(cx, cy, radius, phase) {
         var pts = [];
         var step = 0.07;
-        var amp = reduceMotion ? 0 : (3.6 + pulse * 2.4);
+        var u = unit();
+        var amp = reduceMotion ? 0 : (3.6 + pulse * 2.4) * u;
         for (var a = 0; a < p.TWO_PI + step; a += step) {
           var wave = reduceMotion
             ? 0
@@ -4498,7 +4514,7 @@ alt=""
         g.addColorStop(0.4, 'rgba(62, 168, 155, ' + alpha + ')');
         g.addColorStop(1, 'rgba(62, 168, 155, 0)');
         ctx.fillStyle = g;
-        var pad = 12;
+        var pad = 12 * unit();
         ctx.fillRect(cx - radius - pad, cy - radius - pad, (radius + pad) * 2, (radius + pad) * 2);
         ctx.restore();
       }
@@ -4508,11 +4524,16 @@ alt=""
         p.noFill();
         p.strokeJoin(p.ROUND);
         p.stroke(62, 168, 155, alpha);
-        p.strokeWeight(weight * (1 + pulse * 0.12));
+        p.strokeWeight(weight * unit() * (1 + pulse * 0.12));
         p.beginShape();
         for (var i = 0; i < pts.length; i++) p.vertex(pts[i][0], pts[i][1]);
         p.endShape(p.CLOSE);
         p.noStroke();
+      }
+
+      function syncCanvasSize() {
+        var s = canvasSize();
+        if (s !== p.width || s !== p.height) p.resizeCanvas(s, s);
       }
 
       p.setup = function () {
@@ -4520,11 +4541,15 @@ alt=""
         var canvas = p.createCanvas(s, s);
         canvas.parent('breath-circle');
         p.pixelDensity(Math.min(2, window.devicePixelRatio || 1));
+        if (typeof ResizeObserver !== 'undefined') {
+          var ro = new ResizeObserver(function () { syncCanvasSize(); });
+          ro.observe(host);
+        }
         if (reduceMotion) p.noLoop();
       };
 
       p.windowResized = function () {
-        p.resizeCanvas(canvasSize(), canvasSize());
+        syncCanvasSize();
       };
 
       p.draw = function () {
@@ -4541,7 +4566,7 @@ alt=""
             : Math.max(0, pulse - 0.04);
         }
 
-        var baseRadius = p.width * 0.30;
+        var baseRadius = p.width * 0.345;
         var cx = p.width / 2;
         var cy = p.height / 2;
 
