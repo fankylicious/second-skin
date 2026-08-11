@@ -3,6 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>
+(function () {
+  try {
+    if (sessionStorage.getItem('ss_access') === '1') document.documentElement.classList.add('access-open');
+    else document.documentElement.classList.add('access-locked');
+  } catch (e) {
+    document.documentElement.classList.add('access-locked');
+  }
+})();
+</script>
 <title>We all need a second skin.</title>
 <meta name="description"
       content="Limitierte Trail-Running Shirts von EinOhm × X-Bionic. Inspiriert vom Häutungsprozess der Schlange. Voraussichtlich Frühjahr 2027."
@@ -2685,6 +2695,118 @@
     content-visibility:auto;
     contain-intrinsic-size:auto 640px;
   }
+
+  /* LIMITED ACCESS — hero only until unlock */
+  html.access-locked .site-gated,
+  html.access-locked .nav-toggle,
+  html.access-locked .site-nav{
+    display:none !important;
+  }
+  html.access-locked body{
+    overflow:hidden;
+  }
+  html.access-locked .hero{
+    min-height:100vh;
+    min-height:100dvh;
+  }
+  html.access-locked .hero-cta-design{ display:none !important; }
+  html.access-open .hero-cta-access{ display:none !important; }
+  html.access-locked .hero-cta,
+  html.access-open .hero-cta{
+    grid-template-columns:minmax(0, 14rem);
+  }
+  .access-overlay{
+    position:fixed;
+    inset:0;
+    z-index:120;
+    background:rgba(6,10,9,.88);
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:max(1rem, env(safe-area-inset-top)) max(1rem, env(safe-area-inset-right)) max(1rem, env(safe-area-inset-bottom)) max(1rem, env(safe-area-inset-left));
+    opacity:0;
+    visibility:hidden;
+    transition:opacity .35s ease, visibility .35s ease;
+  }
+  .access-overlay.is-open{
+    opacity:1;
+    visibility:visible;
+  }
+  .access-modal{
+    position:relative;
+    background:rgba(12,18,16,.96);
+    border:1px solid rgba(94,232,211,.18);
+    max-width:min(26rem, 100%);
+    width:100%;
+    padding:clamp(1.5rem, 3vw, 2.25rem);
+  }
+  .access-close{
+    position:absolute;
+    top:.75rem;
+    right:.9rem;
+    background:none;
+    border:none;
+    color:var(--teal-bright);
+    font-size:1.8rem;
+    line-height:1;
+    padding:.2rem .45rem;
+    opacity:.7;
+    transition:opacity .2s ease;
+  }
+  .access-close:hover{ opacity:1; }
+  .access-modal__title{
+    font-family:'JetBrains Mono',monospace;
+    font-size:.78rem;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:var(--teal-bright);
+    margin:0 2rem 1rem 0;
+  }
+  .access-modal__lead{
+    margin:0 0 1.25rem;
+    font-size:.98rem;
+    line-height:1.55;
+    color:#cfd8d5;
+  }
+  .access-form .field{ margin:0 0 1rem; }
+  .access-form label{
+    display:block;
+    font-family:'JetBrains Mono',monospace;
+    font-size:.68rem;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:var(--muted);
+    margin-bottom:.45rem;
+  }
+  .access-form input[type="password"]{
+    width:100%;
+    background:rgba(8,12,11,.75);
+    border:1px solid var(--line);
+    color:var(--text);
+    font-family:'Inter',sans-serif;
+    font-size:1rem;
+    padding:.85rem 1rem;
+  }
+  .access-form input[type="password"]:focus{
+    outline:none;
+    border-color:var(--teal-bright);
+  }
+  .access-form .form-actions{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    gap:.75rem 1rem;
+    margin-top:1.15rem;
+  }
+  .access-error{
+    margin:0;
+    font-size:.82rem;
+    color:#f0a0a0;
+    display:none;
+  }
+  .access-error.show{ display:block; }
 </style>
 </head>
 <body>
@@ -2764,13 +2886,19 @@ alt=""
         </div>
       </dl>
       <div class="hero-cta">
-        <a class="btn btn-primary" href="#design"
+        <button class="btn btn-primary hero-cta-access" id="access-open" type="button"
+                data-de="Limited Access"
+                data-en="Limited Access">
+          Limited Access
+        </button>
+        <a class="btn btn-primary hero-cta-design" href="#design"
            data-de="Konzept Design"
            data-en="Concept Design">Konzept Design</a>
       </div>
     </div>
   </div>
 
+  <div class="site-gated" id="site-gated">
   <!-- GALLERY / DESIGN CONCEPT -->
   <section class="gallery" id="design">
     <div class="section-head">
@@ -3306,6 +3434,39 @@ alt=""
     <span data-de="© 2026 EinOhm · Konzept Design"
           data-en="© 2026 EinOhm · Concept Design">© 2026 EinOhm · Konzept Design</span>
   </footer>
+  </div>
+
+  <div class="access-overlay" id="access-overlay" hidden>
+    <div class="access-modal" role="dialog" aria-modal="true" aria-labelledby="access-modal-title">
+      <button class="access-close" id="access-close" type="button"
+              data-de-label="Schliessen" data-en-label="Close" aria-label="Schliessen">×</button>
+      <h3 class="access-modal__title" id="access-modal-title"
+          data-de="Limited Access"
+          data-en="Limited Access">Limited Access</h3>
+      <p class="access-modal__lead"
+         data-de="Gib das Passwort ein, um den vollständigen Inhalt freizuschalten."
+         data-en="Enter the password to unlock the full content.">
+        Gib das Passwort ein, um den vollständigen Inhalt freizuschalten.
+      </p>
+      <form class="access-form" id="access-form" novalidate>
+        <div class="field">
+          <label for="access-password" data-de="Passwort" data-en="Password">Passwort</label>
+          <input id="access-password" name="password" type="password" autocomplete="current-password" required>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary" id="access-submit"
+                  data-de="Freischalten"
+                  data-en="Unlock">Freischalten</button>
+          <p class="access-error" id="access-error"
+             data-de="Passwort ungültig."
+             data-en="Invalid password.">
+            Passwort ungültig.
+          </p>
+        </div>
+      </form>
+    </div>
+  </div>
+
 
 <script>
 (function () {
@@ -3315,6 +3476,116 @@ alt=""
   var TICKER_KEY = 'secondskin_ticker';
   var REG_KEY = 'secondskin_registrations';
   var processGalleryRendered = false;
+
+  /* === LIMITED ACCESS GATE === */
+  (function initAccessGate() {
+    var ACCESS_KEY = 'ss_access';
+    var root = document.documentElement;
+    var overlay = document.getElementById('access-overlay');
+    var openBtn = document.getElementById('access-open');
+    var closeBtn = document.getElementById('access-close');
+    var form = document.getElementById('access-form');
+    var input = document.getElementById('access-password');
+    var submitBtn = document.getElementById('access-submit');
+    var errEl = document.getElementById('access-error');
+    if (!overlay || !form || !input) return;
+
+    function isUnlocked() {
+      try { return sessionStorage.getItem(ACCESS_KEY) === '1'; } catch (e) { return false; }
+    }
+
+    function setUnlocked(on) {
+      root.classList.toggle('access-locked', !on);
+      root.classList.toggle('access-open', on);
+      try {
+        if (on) sessionStorage.setItem(ACCESS_KEY, '1');
+        else sessionStorage.removeItem(ACCESS_KEY);
+      } catch (e) {}
+    }
+
+    function openOverlay() {
+      errEl.classList.remove('show');
+      overlay.hidden = false;
+      requestAnimationFrame(function () {
+        overlay.classList.add('is-open');
+      });
+      document.body.style.overflow = 'hidden';
+      setTimeout(function () { input.focus(); }, 50);
+    }
+
+    function closeOverlay() {
+      overlay.classList.remove('is-open');
+      document.body.style.overflow = '';
+      setTimeout(function () {
+        overlay.hidden = true;
+        input.value = '';
+        errEl.classList.remove('show');
+      }, 350);
+    }
+
+    function unlockSite() {
+      setUnlocked(true);
+      closeOverlay();
+      if (openBtn) openBtn.setAttribute('aria-expanded', 'false');
+    }
+
+    if (isUnlocked()) setUnlocked(true);
+    else setUnlocked(false);
+
+    if (openBtn) {
+      openBtn.addEventListener('click', function () {
+        openBtn.setAttribute('aria-expanded', 'true');
+        openOverlay();
+      });
+    }
+    if (closeBtn) closeBtn.addEventListener('click', closeOverlay);
+    overlay.addEventListener('click', function (e) {
+      if (e.target === overlay) closeOverlay();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && overlay.classList.contains('is-open')) closeOverlay();
+    });
+
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      errEl.classList.remove('show');
+      var password = input.value;
+      if (!password) {
+        errEl.classList.add('show');
+        return;
+      }
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        var lang = document.documentElement.lang === 'en' ? 'en' : 'de';
+        submitBtn.textContent = lang === 'en' ? 'Checking…' : 'Prüfen…';
+      }
+      var ok = false;
+      try {
+        var res = await fetch('/api/access', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ password: password })
+        });
+        var data = null;
+        try { data = await res.json(); } catch (err) { data = null; }
+        ok = !!(res.ok && data && data.ok);
+      } catch (err) {
+        ok = false;
+      }
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        var langDone = document.documentElement.lang === 'en' ? 'en' : 'de';
+        submitBtn.textContent = langDone === 'en' ? 'Unlock' : 'Freischalten';
+      }
+      if (!ok) {
+        errEl.classList.add('show');
+        input.select();
+        return;
+      }
+      unlockSite();
+    });
+  })();
+  /* === /LIMITED ACCESS GATE === */
 
   /* === SKIN shine (easy remove with CSS block) === */
   (function initSkinShine() {
