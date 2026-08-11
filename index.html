@@ -2711,6 +2711,8 @@
   }
   html.access-locked .hero-cta-design{ display:none !important; }
   html.access-open .hero-cta-access{ display:none !important; }
+  html.access-locked .hero-unlocked-only{ display:none !important; }
+  html.access-open .hero-locked-only{ display:none !important; }
   html.access-locked .hero-cta,
   html.access-open .hero-cta{
     grid-template-columns:minmax(0, 14rem);
@@ -2858,7 +2860,10 @@ alt=""
     <div class="crack"></div>
     <div class="scaletex"></div>
     <div class="hero-inner">
-      <span class="eyebrow"
+      <span class="eyebrow hero-locked-only"
+            data-de="Konzept &amp; Design · EinOhm"
+            data-en="Concept &amp; Design · EinOhm">Konzept &amp; Design · EinOhm</span>
+      <span class="eyebrow hero-unlocked-only"
             data-de="Konzept &amp; Design · EinOhm × X-Bionic"
             data-en="Concept &amp; Design · EinOhm × X-Bionic">Konzept &amp; Design · EinOhm × X-Bionic</span>
       <h1>SECOND <span class="skin-shine">SKIN</span></h1>
@@ -2873,10 +2878,14 @@ alt=""
         </div>
         <div class="spec">
           <dt data-de="Produkt" data-en="Product">Produkt</dt>
-          <dd data-de="X-Bionic <a class=&quot;meta-link&quot; href=&quot;https://www.x-bionic.com/de-ch/search?q=Corefusion+Run+Shortsleeve&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;>Corefusion Run Short Sleeve</a> / <a class=&quot;meta-link&quot; href=&quot;https://www.x-bionic.com/de-ch/search?q=crop+top&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;>Crop Top</a>"
+          <dd class="hero-locked-only"
+              data-de="Trail Running Shirt Short Sleeve"
+              data-en="Trail Running Shirt Short Sleeve">Trail Running Shirt Short Sleeve</dd>
+          <dd class="hero-unlocked-only"
+              data-de="X-Bionic <a class=&quot;meta-link&quot; href=&quot;https://www.x-bionic.com/de-ch/search?q=Corefusion+Run+Shortsleeve&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;>Corefusion Run Short Sleeve</a> / <a class=&quot;meta-link&quot; href=&quot;https://www.x-bionic.com/de-ch/search?q=crop+top&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;>Crop Top</a>"
               data-en="X-Bionic <a class=&quot;meta-link&quot; href=&quot;https://www.x-bionic.com/de-ch/search?q=Corefusion+Run+Shortsleeve&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;>Corefusion Run Short Sleeve</a> / <a class=&quot;meta-link&quot; href=&quot;https://www.x-bionic.com/de-ch/search?q=crop+top&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;>Crop Top</a>">X-Bionic <a class="meta-link" href="https://www.x-bionic.com/de-ch/search?q=Corefusion+Run+Shortsleeve" target="_blank" rel="noopener">Corefusion Run Short Sleeve</a> / <a class="meta-link" href="https://www.x-bionic.com/de-ch/search?q=crop+top" target="_blank" rel="noopener">Crop Top</a></dd>
         </div>
-        <div class="spec">
+        <div class="spec hero-unlocked-only">
           <dt data-de="Colorway" data-en="Colorway">Colorway</dt>
           <dd data-de="Teal auf Schwarz" data-en="teal on black">Teal auf Schwarz</dd>
         </div>
