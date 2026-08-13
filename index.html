@@ -644,7 +644,7 @@
   }
   .gallery-item figcaption strong{ color:var(--teal-bright); font-weight:600;}
 
-  /* Protected design images (download soft-block; blur only with --blur) */
+  /* Protected design images (download soft-block) */
   .img-protect{
     position:relative;
     user-select:none;
@@ -654,80 +654,6 @@
     pointer-events:none;
     -webkit-user-drag:none;
     user-select:none;
-  }
-  .img-protect--blur img{
-    filter:blur(4.2px) saturate(1.05) brightness(.95);
-    transform:scale(1.035);
-    transition:filter .45s ease, transform .45s ease;
-  }
-  .img-protect--blur::after{
-    content:'';
-    position:absolute;
-    inset:0;
-    background:
-      radial-gradient(ellipse at 50% 45%, transparent 18%, rgba(8,11,10,.48) 74%),
-      linear-gradient(180deg, rgba(8,11,10,.16), rgba(8,11,10,.52));
-    pointer-events:none;
-    opacity:1;
-    transition:opacity .45s ease;
-  }
-  /* Peek: still protected — detail stays soft */
-  .gallery-item:hover .img-protect--blur img,
-  .gallery-item:focus-within .img-protect--blur img,
-  .edition-visual:hover .img-protect--blur img,
-  .edition-visual:focus-within .img-protect--blur img,
-  .img-protect--blur.is-peek img,
-  .img-protect--blur:active img{
-    transform:scale(1.04);
-    filter:blur(1.8px) saturate(1.08) brightness(1);
-  }
-  .gallery-item:hover .img-protect--blur::after,
-  .gallery-item:focus-within .img-protect--blur::after,
-  .edition-visual:hover .img-protect--blur::after,
-  .edition-visual:focus-within .img-protect--blur::after,
-  .img-protect--blur.is-peek::after,
-  .img-protect--blur:active::after{
-    opacity:.32;
-  }
-  /* Desktop: gallery + Verbier soft-protect; process patterns stay strongly blurred */
-  @media (min-width:900px){
-    .gallery-item .img-protect--blur img,
-    .edition-visual .img-protect--blur img{
-      filter:blur(3.6px) saturate(1.05) brightness(.96);
-      transform:scale(1.03);
-    }
-    .gallery-item:hover .img-protect--blur img,
-    .gallery-item:focus-within .img-protect--blur img,
-    .gallery-item .img-protect--blur.is-peek img,
-    .gallery-item .img-protect--blur:active img,
-    .edition-visual:hover .img-protect--blur img,
-    .edition-visual:focus-within .img-protect--blur img,
-    .edition-visual .img-protect--blur.is-peek img,
-    .edition-visual .img-protect--blur:active img{
-      filter:blur(1.5px) saturate(1.07) brightness(1);
-      transform:scale(1.035);
-    }
-    .gallery-item .img-protect--blur::after,
-    .edition-visual .img-protect--blur::after{
-      opacity:.7;
-    }
-    .process-step .img-protect--blur img{
-      filter:blur(7.5px) saturate(1.04) brightness(.92);
-      transform:scale(1.06);
-    }
-    .process-step:hover .img-protect--blur img,
-    .process-step:focus-within .img-protect--blur img,
-    .process-step .img-protect--blur.is-peek img,
-    .process-step .img-protect--blur:active img{
-      filter:blur(4.2px) saturate(1.05) brightness(.95);
-      transform:scale(1.04);
-    }
-    .process-step:hover .img-protect--blur::after,
-    .process-step:focus-within .img-protect--blur::after,
-    .process-step .img-protect--blur.is-peek::after,
-    .process-step .img-protect--blur:active::after{
-      opacity:.55;
-    }
   }
   .img-protect-badge{
     position:absolute;
@@ -1315,15 +1241,6 @@
     transition:transform .5s cubic-bezier(.2,.8,.2,1);
   }
   .edition-visual:hover img{ transform:scale(1.03); }
-  .edition-visual:hover .img-protect--blur img,
-  .edition-visual:focus-within .img-protect--blur img{
-    transform:scale(1.04);
-  }
-  .edition-visual .img-protect--blur{
-    position:relative;
-    width:100%;
-    cursor:pointer;
-  }
   .edition-caption{
     margin-top:1rem;
     font-size:.92rem;
@@ -2193,33 +2110,6 @@
     filter:blur(0.6px) saturate(.98) brightness(.98);
     transform:scale(1.01);
   }
-  .process-step .img-protect--blur{
-    cursor:pointer;
-  }
-  /* Process patterns (03+04): strong protect blur — detail stays unreadable */
-  .process-step .img-protect--blur img{
-    filter:blur(7.2px) saturate(1.04) brightness(.92);
-    transform:scale(1.06);
-  }
-  .process-step .img-protect--blur::after{
-    background:
-      radial-gradient(ellipse at 50% 45%, transparent 10%, rgba(8,11,10,.58) 72%),
-      linear-gradient(180deg, rgba(8,11,10,.22), rgba(8,11,10,.64));
-    opacity:1;
-  }
-  .process-step:hover .img-protect--blur img,
-  .process-step:focus-within .img-protect--blur img,
-  .process-step .img-protect--blur.is-peek img,
-  .process-step .img-protect--blur:active img{
-    filter:blur(4px) saturate(1.05) brightness(.95);
-    transform:scale(1.04);
-  }
-  .process-step:hover .img-protect--blur::after,
-  .process-step:focus-within .img-protect--blur::after,
-  .process-step .img-protect--blur.is-peek::after,
-  .process-step .img-protect--blur:active::after{
-    opacity:.55;
-  }
   .process-step figcaption{
     padding:.8rem .9rem .95rem;
     font-family:'JetBrains Mono',monospace;
@@ -2242,26 +2132,9 @@
     letter-spacing:.02em;
     text-transform:none;
   }
-  .process-step__note{
-    display:block;
-    margin-top:.35rem;
-    color:var(--muted);
-    font-size:.64rem;
-    letter-spacing:.02em;
-    text-transform:none;
-    font-weight:400;
-  }
   .process-credits{
     border-top:1px solid var(--line);
     padding-top:1.4rem;
-  }
-  .process-credits__note{
-    margin:1.15rem 0 0;
-    font-size:.72rem;
-    line-height:1.5;
-    font-weight:400;
-    font-style:normal;
-    color:var(--muted);
   }
   .process-credits__title{
     font-family:'JetBrains Mono',monospace;
@@ -2674,8 +2547,6 @@
     .nav-toggle__bars::after,
     .site-nav,
     .site-nav__list a,
-    .img-protect--blur img,
-    .img-protect--blur::after,
     .artist-overlay,
     .artist-more,
     .process-overlay,
@@ -2933,7 +2804,7 @@ alt=""
     </div>
     <div class="gallery-grid">
       <figure class="gallery-item">
-        <div class="img-wrap img-protect img-protect--blur" data-protect>
+        <div class="img-wrap img-protect" data-protect>
           <img src="gallery-konzept-front.webp"
                alt="Second Skin · Konzept Entwurf · Front · X-Bionic Corefusion Run Long Sleeve · Teal on Black · secondskin.run"
                title="Second Skin · Konzept Entwurf · Front"
@@ -2952,7 +2823,7 @@ alt=""
         </figcaption>
       </figure>
       <figure class="gallery-item">
-        <div class="img-wrap img-protect img-protect--blur" data-protect>
+        <div class="img-wrap img-protect" data-protect>
           <img src="gallery-konzept-back.webp"
                alt="Second Skin · Konzept Entwurf · Back · X-Bionic Corefusion Run Long Sleeve · Teal on Black · secondskin.run"
                title="Second Skin · Konzept Entwurf · Back"
@@ -3265,7 +3136,7 @@ alt=""
     </blockquote>
 
     <div class="edition-visual">
-      <div class="img-wrap img-protect img-protect--blur" data-protect>
+      <div class="img-wrap img-protect" data-protect>
         <img src="gallery-verbier.webp"
              alt="X-Bionic Verbier Ultra Limited Edition Trail Running Shirt Teal"
              width="1200"
@@ -3399,11 +3270,6 @@ alt=""
           <h3 class="process-credits__title" id="process-credits-title"
               data-de="Danke allen Beteiligten"
               data-en="Thanks to everyone involved">Danke allen Beteiligten</h3>
-          <p class="process-credits__note"
-             data-de="* Der Blur schützt das Muster. Beim Darüberfahren wird er transparenter."
-             data-en="* The blur protects the pattern. On hover it becomes more transparent.">
-            * Der Blur schützt das Muster. Beim Darüberfahren wird er transparenter.
-          </p>
         </aside>
       </div>
     </div>
@@ -4012,16 +3878,6 @@ alt=""
     }
   });
 
-  // Gallery blur peek on hover / touch
-  document.querySelectorAll('.img-protect--blur').forEach(function (el) {
-    var clearPeek = function () { el.classList.remove('is-peek'); };
-    el.addEventListener('pointerenter', function () { el.classList.add('is-peek'); });
-    el.addEventListener('pointerleave', clearPeek);
-    el.addEventListener('pointerdown', function () { el.classList.add('is-peek'); });
-    el.addEventListener('pointerup', clearPeek);
-    el.addEventListener('pointercancel', clearPeek);
-  });
-
   // X-Bionic expand label
   document.querySelectorAll('.expand-more').forEach(function (details) {
     details.addEventListener('toggle', function () {
@@ -4073,8 +3929,7 @@ alt=""
       roleEn: 'Simple draft / pitch first colours',
       altDe: 'Teal, stark texturiertes Schuppen- und Schlangenhaut-Muster mit organischen Formen',
       altEn: 'Teal, heavily textured scale and snakeskin pattern with organic forms',
-      soft: false,
-      protect: true
+      soft: false
     },
     {
       src: 'process-05-final.webp',
@@ -4085,22 +3940,9 @@ alt=""
       roleEn: 'Current state, Second Skin realization',
       altDe: 'Cyan-schwarzes, komplexes Muster mit geometrischen und organischen Elementen',
       altEn: 'Cyan-black complex pattern with geometric and organic elements',
-      soft: false,
-      protect: true
+      soft: false
     }
   ];
-
-  function bindProcessBlurPeek(root) {
-    if (!root) return;
-    root.querySelectorAll('.img-protect--blur').forEach(function (el) {
-      var clearPeek = function () { el.classList.remove('is-peek'); };
-      el.addEventListener('pointerenter', function () { el.classList.add('is-peek'); });
-      el.addEventListener('pointerleave', clearPeek);
-      el.addEventListener('pointerdown', function () { el.classList.add('is-peek'); });
-      el.addEventListener('pointerup', clearPeek);
-      el.addEventListener('pointercancel', clearPeek);
-    });
-  }
 
   function renderProcessGallery(lang) {
     var gallery = document.getElementById('process-gallery');
@@ -4110,24 +3952,12 @@ alt=""
       var alt = lang === 'en' ? step.altEn : step.altDe;
       var title = lang === 'en' ? step.titleEn : step.titleDe;
       var softClass = step.soft ? ' process-step--wip' : '';
-      var protectClass = step.protect ? ' img-protect--blur' : '';
-      var star = step.protect ? '*' : '';
-      var stageDe = step.stage + ' · ' + step.titleDe + star;
-      var stageEn = step.stage + ' · ' + step.titleEn + star;
-      var stageText = step.stage + ' · ' + title + star;
-      var noteHtml = '';
-      if (step.protect && step.protectNoteDe) {
-        var note = lang === 'en' ? step.protectNoteEn : step.protectNoteDe;
-        noteHtml =
-          '<span class="process-step__note"' +
-            ' data-de="(' + step.protectNoteDe.replace(/"/g, '&quot;') + ')"' +
-            ' data-en="(' + step.protectNoteEn.replace(/"/g, '&quot;') + ')">' +
-            '(' + note + ')' +
-          '</span>';
-      }
+      var stageDe = step.stage + ' · ' + step.titleDe;
+      var stageEn = step.stage + ' · ' + step.titleEn;
+      var stageText = step.stage + ' · ' + title;
       return (
         '<figure class="process-step' + softClass + '" role="listitem">' +
-          '<div class="img-wrap img-protect' + protectClass + '" data-protect>' +
+          '<div class="img-wrap img-protect" data-protect>' +
             '<img src="' + step.src + '"' +
                  ' width="800" height="1000"' +
                  ' loading="eager" decoding="async" fetchpriority="low" draggable="false"' +
@@ -4144,7 +3974,6 @@ alt=""
             '<span class="process-step__label"' +
                   ' data-de="' + step.roleDe.replace(/"/g, '&quot;') + '"' +
                   ' data-en="' + step.roleEn.replace(/"/g, '&quot;') + '">' + role + '</span>' +
-            noteHtml +
           '</figcaption>' +
         '</figure>'
       );
@@ -4161,7 +3990,6 @@ alt=""
         img.decode().catch(function () {});
       }
     });
-    bindProcessBlurPeek(gallery);
   }
 
   function ensureProcessGallery() {
