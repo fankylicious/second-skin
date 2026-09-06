@@ -133,10 +133,18 @@
 
   .scaletex{
     position:absolute; inset:0;
+    z-index:1;
+    pointer-events:none;
+  }
+  .scaletex canvas{
+    display:block;
+    width:100%;
+    height:100%;
+  }
+  .scaletex.is-static{
     background-image:
       radial-gradient(circle at 1px 1px, rgba(94,232,211,0.06) 1px, transparent 1px);
     background-size:14px 14px;
-    pointer-events:none;
   }
 
   .eyebrow{
@@ -2694,7 +2702,7 @@ alt=""
   <!-- scale-accent: optional (CSS-Block „SCALE ACCENTS“ steuert Sichtbarkeit) -->
   <div class="hero scale-accent" id="top">
     <div class="crack"></div>
-    <div class="scaletex"></div>
+    <div class="scaletex" id="scaletex" aria-hidden="true"></div>
     <div class="hero-inner">
       <span class="eyebrow hero-locked-only"
             data-de="Konzept &amp; Design · EinOhm"
@@ -3299,6 +3307,170 @@ alt=""
   </div>
 
 
+<script>
+(function initScaleTex() {
+  var host = document.getElementById('scaletex');
+  var hero = document.getElementById('top');
+  if (!host || !hero) return;
+
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  if (reduceMotion || !canHover) {
+    host.classList.add('is-static');
+    return;
+  }
+
+  var canvas = document.createElement('canvas');
+  host.appendChild(canvas);
+  var ctx = canvas.getContext('2d', { alpha: true });
+  if (!ctx) {
+    host.classList.add('is-static');
+    return;
+  }
+
+  var GAP = 14;
+  var RADIUS = 150;
+  var STRENGTH = 34;
+  var EASE = 0.2;
+  var REST_A = 0.09;
+  var MOVE_A = 0.48;
+  var REST_S = 1.35;
+  var MOVE_S = 2.35;
+
+  var dots = [];
+  var mouse = { x: 0, y: 0, on: false };
+  var running = false;
+  var settling = 0;
+  var cssW = 0;
+  var cssH = 0;
+
+  function resize() {
+    var rect = hero.getBoundingClientRect();
+    cssW = Math.max(1, Math.round(rect.width));
+    cssH = Math.max(1, Math.round(rect.height));
+    var dpr = Math.min(2, window.devicePixelRatio || 1);
+    canvas.width = Math.round(cssW * dpr);
+    canvas.height = Math.round(cssH * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+    dots = [];
+    var cols = Math.ceil(cssW / GAP) + 1;
+    var rows = Math.ceil(cssH / GAP) + 1;
+    for (var r = 0; r < rows; r++) {
+      for (var c = 0; c < cols; c++) {
+        var ox = c * GAP + 1;
+        var oy = r * GAP + 1;
+        dots.push({ x: ox, y: oy, ox: ox, oy: oy });
+      }
+    }
+    draw();
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, cssW, cssH);
+    var mx = mouse.x;
+    var my = mouse.y;
+    var active = mouse.on;
+    var maxMove = 0;
+    var hot = [];
+
+    ctx.fillStyle = 'rgba(95,232,211,' + REST_A + ')';
+    for (var i = 0; i < dots.length; i++) {
+      var d = dots[i];
+      var tx = d.ox;
+      var ty = d.oy;
+      var influence = 0;
+
+      if (active) {
+        var dx = d.ox - mx;
+        var dy = d.oy - my;
+        var dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < RADIUS && dist > 0.001) {
+          influence = 1 - dist / RADIUS;
+          influence *= influence;
+          var push = STRENGTH * influence;
+          tx = d.ox + (dx / dist) * push;
+          ty = d.oy + (dy / dist) * push;
+        }
+      }
+
+      d.x += (tx - d.x) * EASE;
+      d.y += (ty - d.y) * EASE;
+
+      var move = Math.abs(d.x - d.ox) + Math.abs(d.y - d.oy);
+      if (move > maxMove) maxMove = move;
+
+      if (influence > 0.02 || move > 0.6) {
+        hot.push(d, influence, move);
+      } else {
+        ctx.fillRect(d.x, d.y, REST_S, REST_S);
+      }
+    }
+
+    ctx.fillStyle = 'rgba(95,232,211,' + MOVE_A + ')';
+    for (var h = 0; h < hot.length; h += 3) {
+      var pt = hot[h];
+      var inf = Math.max(hot[h + 1], Math.min(1, hot[h + 2] / STRENGTH));
+      var s = REST_S + (MOVE_S - REST_S) * inf;
+      ctx.globalAlpha = REST_A / MOVE_A + (1 - REST_A / MOVE_A) * inf;
+      ctx.fillRect(pt.x, pt.y, s, s);
+    }
+    ctx.globalAlpha = 1;
+    return maxMove;
+  }
+
+  function tick() {
+    running = true;
+    var maxMove = draw();
+    if (mouse.on) {
+      settling = 0;
+      requestAnimationFrame(tick);
+      return;
+    }
+    if (maxMove > 0.08 && settling < 90) {
+      settling++;
+      requestAnimationFrame(tick);
+      return;
+    }
+    running = false;
+    draw();
+  }
+
+  function startLoop() {
+    if (!running) requestAnimationFrame(tick);
+  }
+
+  function localPoint(e) {
+    var rect = hero.getBoundingClientRect();
+    mouse.x = e.clientX - rect.left;
+    mouse.y = e.clientY - rect.top;
+  }
+
+  hero.addEventListener('pointerenter', function (e) {
+    if (e.pointerType && e.pointerType !== 'mouse') return;
+    mouse.on = true;
+    localPoint(e);
+    startLoop();
+  });
+  hero.addEventListener('pointermove', function (e) {
+    if (e.pointerType && e.pointerType !== 'mouse') return;
+    mouse.on = true;
+    localPoint(e);
+    startLoop();
+  });
+  hero.addEventListener('pointerleave', function () {
+    mouse.on = false;
+    settling = 0;
+    startLoop();
+  });
+
+  resize();
+  window.addEventListener('resize', resize);
+  if (typeof ResizeObserver !== 'undefined') {
+    new ResizeObserver(resize).observe(hero);
+  }
+})();
+</script>
 <script>
 (function () {
   var LIMITS = { men: 100, women: 50 };
