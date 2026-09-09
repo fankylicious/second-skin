@@ -552,17 +552,27 @@
     width:100%;
     max-width:min(40rem, 100%);
   }
+  .hero-cta .btn-primary,
+  .access-form .btn-primary{
+    background:transparent;
+    color:var(--muted);
+    border-color:var(--line);
+  }
   .hero-cta .btn-primary{
     width:100%;
-    background:var(--black);
-    color:#fff;
-    border:1px solid rgba(255,255,255,.7);
-    border-radius:9999px;
   }
-  .hero-cta .btn-primary:hover{
-    background:var(--black);
-    color:#fff;
-    border-color:#fff;
+  .hero-cta .btn-primary:hover,
+  .access-form .btn-primary:hover{
+    background:rgba(238,243,241,.04);
+    color:var(--text);
+    border-color:rgba(238,243,241,.35);
+  }
+  html.access-open .hero-cta .btn-primary{
+    color:var(--text);
+  }
+  html.access-open .hero-cta .btn-primary:hover{
+    color:var(--teal-bright);
+    border-color:rgba(95,232,211,.35);
   }
   .hero-cta .btn-ghost{
     justify-self:start;
@@ -2688,7 +2698,7 @@
   .access-modal{
     position:relative;
     background:rgba(12,18,16,.96);
-    border:1px solid rgba(94,232,211,.18);
+    border:1px solid var(--line);
     max-width:min(26rem, 100%);
     width:100%;
     padding:clamp(1.5rem, 3vw, 2.25rem);
@@ -2699,27 +2709,30 @@
     right:.9rem;
     background:none;
     border:none;
-    color:var(--teal-bright);
+    color:var(--muted);
     font-size:1.8rem;
     line-height:1;
     padding:.2rem .45rem;
     opacity:.7;
-    transition:opacity .2s ease;
+    transition:opacity .2s ease, color .2s ease;
   }
-  .access-close:hover{ opacity:1; }
+  .access-close:hover{
+    opacity:1;
+    color:var(--text);
+  }
   .access-modal__title{
     font-family:'JetBrains Mono',monospace;
     font-size:.78rem;
     letter-spacing:.16em;
     text-transform:uppercase;
-    color:var(--teal-bright);
+    color:var(--muted);
     margin:0 2rem 1rem 0;
   }
   .access-modal__lead{
     margin:0 0 1.25rem;
     font-size:.98rem;
     line-height:1.55;
-    color:#cfd8d5;
+    color:var(--muted);
   }
   .access-form .field{ margin:0 0 1rem; }
   .access-form label{
@@ -2742,7 +2755,7 @@
   }
   .access-form input[type="password"]:focus{
     outline:none;
-    border-color:var(--teal-bright);
+    border-color:rgba(238,243,241,.35);
   }
   .access-form .form-actions{
     display:flex;
