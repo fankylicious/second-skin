@@ -2469,8 +2469,61 @@
       --gutter-right:clamp(1rem, 4vw, 1.25rem);
       --section-y:clamp(3.25rem, 12vw, 4.5rem);
     }
-    .hero{ padding:6.5rem var(--gutter-x) 3.5rem; }
-    .hero h1{ font-size:clamp(2.45rem, 12.5vw, 3.8rem); }
+    html.access-locked .hero{
+      min-height:100svh;
+      min-height:100dvh;
+      justify-content:flex-start;
+      padding-top:max(4.75rem, calc(env(safe-area-inset-top) + 3.25rem));
+      padding-bottom:max(2rem, env(safe-area-inset-bottom));
+    }
+    .hero{
+      padding:max(4.75rem, calc(env(safe-area-inset-top) + 3.25rem)) var(--gutter-x) 2.5rem;
+    }
+    .hero .eyebrow{
+      margin-bottom:.95rem;
+      font-size:.68rem;
+      letter-spacing:.1em;
+    }
+    .hero h1{
+      font-size:clamp(1.95rem, 9.2vw, 2.75rem);
+      line-height:.93;
+    }
+    .hero .tagline-sub{
+      margin-top:1.1rem;
+      font-size:.66rem;
+      letter-spacing:.07em;
+      line-height:1.5;
+    }
+    .hero .meta{
+      margin-top:1.85rem;
+    }
+    .hero .meta .spec{
+      grid-template-columns:1fr;
+      gap:.18rem;
+      padding:.45rem 0;
+    }
+    .hero .meta dt{
+      font-size:.56rem;
+      letter-spacing:.16em;
+    }
+    .hero .meta dd{
+      font-size:.71rem;
+      line-height:1.48;
+    }
+    .hero-cta{
+      margin-top:1.5rem;
+      max-width:100%;
+    }
+    .hero-cta .btn{
+      font-size:.66rem;
+      padding:.78rem .95rem;
+    }
+    .scaletex-pause{
+      width:2rem;
+      height:2rem;
+      right:max(.75rem, env(safe-area-inset-right));
+      bottom:max(.75rem, env(safe-area-inset-bottom));
+    }
     .thought-bubble__body p,
     .color .thought-bubble__body p,
     .pullquote{
@@ -2516,14 +2569,19 @@
 
   @media (max-width:400px){
     .hero h1{
-      font-size:clamp(2.35rem, 13vw, 3.15rem);
+      font-size:clamp(1.82rem, 8.8vw, 2.35rem);
       letter-spacing:0.005em;
     }
     .hero h1 span{ -webkit-text-stroke-width:1px; }
-    .hero .eyebrow,
+    .hero .eyebrow{
+      font-size:.62rem;
+    }
     .hero .tagline-sub{
-      font-size:clamp(.72rem, 3.4vw, .85rem);
+      font-size:.62rem;
       letter-spacing:.06em;
+    }
+    .hero .meta dd{
+      font-size:.68rem;
     }
   }
 
@@ -3390,6 +3448,7 @@ alt=""
     'uniform float u_time;',
     'uniform float u_seed;',
     'uniform vec3 u_mouse;',
+    'uniform float u_compact;',
     'float hash21(vec2 p){',
     '  p = fract(p * vec2(234.34, 435.32) + u_seed);',
     '  p += dot(p, p + 34.23);',
@@ -3403,10 +3462,12 @@ alt=""
     '}',
     'vec2 snakePos(float u, float t){',
     '  float a = u_res.x / u_res.y;',
-    '  float sl = sin(t * 0.11 + u_seed) * 0.032;',
+    '  float sl = sin(t * 0.11 + u_seed) * mix(0.032, 0.022, u_compact);',
     '  float w1 = sin(u * 6.2831853 * 0.88 + t * 0.07 + u_seed);',
     '  float w2 = sin(u * 6.2831853 * 1.85 + t * 0.15 + u_seed * 0.7);',
-    '  return vec2((u - 0.5) * a * 1.58, w1 * 0.20 + w2 * 0.04 + sl);',
+    '  float amp = mix(0.20, 0.12, u_compact);',
+    '  float y = w1 * amp + w2 * mix(0.04, 0.025, u_compact) + sl - u_compact * 0.14;',
+    '  return vec2((u - 0.5) * a * mix(1.58, 1.28, u_compact), y);',
     '}',
     'vec4 snakeHit(vec2 p, float t){',
     '  float dist = 80.0;',
@@ -3472,7 +3533,7 @@ alt=""
     '  vec2 tang = hit.zw;',
     '  vec2 nrm = vec2(-tang.y, tang.x);',
     '  float body = smoothstep(0.0, 0.28, along) * (1.0 - smoothstep(0.74, 1.0, along));',
-    '  float halfW = mix(0.07, 0.15, body);',
+    '  float halfW = mix(mix(0.055, 0.12, body), mix(0.07, 0.15, body), u_compact);',
     '  float membrane = smoothstep(halfW + 0.20, halfW * 0.42, dist);',
     '  float skin = smoothstep(halfW + 0.09, halfW * 0.22, dist);',
     '  float molt = 1.0 - smoothstep(0.0, 0.16, abs(fract(along - t * 0.011) - 0.5));',
@@ -3514,8 +3575,9 @@ alt=""
     '  a += skin * (0.20 * face + 0.11 * silk + 0.06 * micro);',
     '  a += touch * 0.10 * (0.5 + 0.5 * face);',
     '  a += molt * membrane * 0.03;',
-    '  float textZone = smoothstep(0.48, 0.10, uv.x) * smoothstep(0.18, 0.62, 1.0 - uv.y);',
-    '  a *= mix(1.0, 0.55, textZone * (1.0 - membrane * 0.3));',
+    '  float textZone = smoothstep(mix(0.48, 0.62, u_compact), 0.10, uv.x) * smoothstep(mix(0.18, 0.28, u_compact), mix(0.62, 0.72, u_compact), 1.0 - uv.y);',
+    '  a *= mix(1.0, mix(0.55, 0.38, u_compact), textZone * (1.0 - membrane * 0.3));',
+    '  a *= mix(1.0, 0.9, u_compact);',
     '  col += (hash21(gl_FragCoord.xy) - 0.5) * 0.012;',
     '  gl_FragColor = vec4(col, clamp(a, 0.0, 0.74));',
     '}'
@@ -3557,6 +3619,7 @@ alt=""
   var uTime = gl.getUniformLocation(prog, 'u_time');
   var uSeed = gl.getUniformLocation(prog, 'u_seed');
   var uMouse = gl.getUniformLocation(prog, 'u_mouse');
+  var uCompact = gl.getUniformLocation(prog, 'u_compact');
   gl.enableVertexAttribArray(0);
   gl.vertexAttribPointer(0, 2, gl.FLOAT, false, 0, 0);
   gl.disable(gl.DEPTH_TEST);
@@ -3578,7 +3641,7 @@ alt=""
     var rect = hero.getBoundingClientRect();
     cssW = Math.max(1, Math.round(rect.width));
     cssH = Math.max(1, Math.round(rect.height));
-    var dpr = Math.min(2, window.devicePixelRatio || 1);
+    var dpr = Math.min(cssW < 640 ? 1.35 : 2, window.devicePixelRatio || 1);
     canvas.width = Math.round(cssW * dpr);
     canvas.height = Math.round(cssH * dpr);
     canvas.style.width = cssW + 'px';
@@ -3609,6 +3672,7 @@ alt=""
     gl.uniform1f(uTime, animT);
     gl.uniform1f(uSeed, seed);
     gl.uniform3f(uMouse, mouse.x / cssW, 1 - mouse.y / cssH, mouse.amt);
+    gl.uniform1f(uCompact, cssW < 720 ? 1.0 : 0.0);
     gl.drawArrays(gl.TRIANGLES, 0, 3);
   }
 
