@@ -471,13 +471,41 @@
     color:var(--teal-bright);
     border-bottom-color:rgba(95,232,211,.45);
   }
+  .privacy-note{
+    margin:1rem 0 0;
+    color:var(--muted);
+    font-size:.82rem;
+    line-height:1.5;
+  }
   footer{
     padding:1.25rem var(--gutter-x) 1.75rem;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:.75rem;
     text-align:center;
     font-family:'JetBrains Mono',monospace;
     font-size:.68rem;
     letter-spacing:.08em;
     color:var(--muted);
+  }
+  .footer-note{
+    max-width:38rem;
+    margin:0;
+    font-size:.68rem;
+    letter-spacing:.02em;
+    line-height:1.55;
+    color:var(--muted);
+  }
+  .footer-note a{
+    color:var(--muted);
+    text-decoration:none;
+    border-bottom:1px solid transparent;
+    padding-bottom:1px;
+  }
+  .footer-note a:hover{
+    color:var(--teal-bright);
+    border-bottom-color:rgba(95,232,211,.4);
   }
   @media (max-width:519px){
     .form-grid.two.fit-size{ grid-template-columns:1fr; }
@@ -544,9 +572,9 @@ alt=""
             data-de="Interesse anmelden"
             data-en="Share interest">Interesse anmelden</h1>
         <p class="project-blurb"
-           data-de="Limitierte Trail-Running Shirts mit psychologischen Effekten. Inspiriert vom Häutungsprozess der Schlange — <strong>Second Skin</strong>, teal auf schwarz, nah am Körper."
-           data-en="Limited trail-running shirts with psychological effects. Inspired by the snake’s shedding process — <strong>Second Skin</strong>, teal on black, close to the body.">
-          Limitierte Trail-Running Shirts mit psychologischen Effekten. Inspiriert vom Häutungsprozess der Schlange — <strong>Second Skin</strong>, teal auf schwarz, nah am Körper.
+           data-de="Limitierte Trail-Running Shirts. Weniger Reibung. Mehr Fokus. Inspiriert vom Häutungsprozess der Schlange — <strong>Second Skin</strong>, teal auf schwarz, nah am Körper."
+           data-en="Limited trail-running shirts. Less friction. More focus. Inspired by the snake’s shedding process — <strong>Second Skin</strong>, teal on black, close to the body.">
+          Limitierte Trail-Running Shirts. Weniger Reibung. Mehr Fokus. Inspiriert vom Häutungsprozess der Schlange — <strong>Second Skin</strong>, teal auf schwarz, nah am Körper.
         </p>
         <p class="project-meta"
            data-de="Release voraussichtlich Frühjahr 2027"
@@ -620,6 +648,11 @@ alt=""
               Bitte alle Felder korrekt ausfüllen.
             </p>
           </div>
+          <p class="privacy-note"
+             data-de="Ich nutze Name, E-Mail, Schnitt und Grösse nur, um mich vor dem Release zu melden. Kein Verkauf der Daten. Die Seite lädt ein Meta-Pixel (Facebook)."
+             data-en="I use name, email, fit and size only to get in touch before release. Your data is not sold. The page loads a Meta Pixel (Facebook).">
+            Ich nutze Name, E-Mail, Schnitt und Grösse nur, um mich vor dem Release zu melden. Kein Verkauf der Daten. Die Seite lädt ein Meta-Pixel (Facebook).
+          </p>
           <input type="text" name="website" id="reg-website" autocomplete="off" tabindex="-1" aria-hidden="true" class="hp-field">
         </form>
       </div>
@@ -645,6 +678,11 @@ alt=""
 <footer>
   <span data-de="© 2026 EinOhm · Konzept Design"
         data-en="© 2026 EinOhm · Concept Design">© 2026 EinOhm · Konzept Design</span>
+  <p class="footer-note"
+     data-de="Bei der Interessenmeldung speichere ich Name, E-Mail, Schnitt und Grösse, um mich vor dem Release zu melden. Die Seite nutzt ein Meta-Pixel. Fragen über <a href=&quot;https://thomasfankhauser.ch&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;>thomasfankhauser.ch</a>."
+     data-en="If you share interest, I store name, email, fit and size so I can get in touch before release. The site uses a Meta Pixel. Questions via <a href=&quot;https://thomasfankhauser.ch&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;>thomasfankhauser.ch</a>.">
+    Bei der Interessenmeldung speichere ich Name, E-Mail, Schnitt und Grösse, um mich vor dem Release zu melden. Die Seite nutzt ein Meta-Pixel. Fragen über <a href="https://thomasfankhauser.ch" target="_blank" rel="noopener">thomasfankhauser.ch</a>.
+  </p>
 </footer>
 
 <script>
